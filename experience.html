@@ -1,0 +1,624 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description" content="Experience and Education of Mudrik Dau — Professional experience at White Bird Cleaning Company, Zan Drive Car Rental, and ICE field placement. Education at Zanzibar University." />
+    <meta name="author" content="Mudrik Mohamed Othman (DAU)" />
+    <meta name="theme-color" content="#05060a" />
+
+    <title>Experience & Education — MUDRIK DAU</title>
+
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Sora:wght@300;400;500;600;700;800&family=Space+Grotesk:wght@300;400;500;600;700&family=JetBrains+Mono:wght@300;400;500&display=swap" rel="stylesheet" />
+
+    <!-- Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" />
+
+    <!-- Styles -->
+    <link rel="stylesheet" href="css/global.css" />
+    <link rel="stylesheet" href="css/navbar.css" />
+    <link rel="stylesheet" href="css/controls.css" />
+    <link rel="stylesheet" href="css/animations.css" />
+    <link rel="stylesheet" href="css/experience.css" />
+
+    <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Crect width='100' height='100' rx='20' fill='%2305060a'/%3E%3Ctext x='50' y='68' font-size='52' font-family='Arial' font-weight='bold' fill='%2300e5ff' text-anchor='middle'%3ED%3C/text%3E%3C/svg%3E" />
+
+    <!-- FOUC Guard -->
+    <script>
+        (function () {
+            try {
+                var t = localStorage.getItem('dau:theme');
+                if (t === 'light' || t === 'dark') {
+                    document.documentElement.setAttribute('data-theme', t);
+                } else if (window.matchMedia && window.matchMedia('(prefers-color-scheme: light)').matches) {
+                    document.documentElement.setAttribute('data-theme', 'light');
+                } else {
+                    document.documentElement.setAttribute('data-theme', 'dark');
+                }
+                var l = localStorage.getItem('dau:lang');
+                if (l && ['en','sw','zh','ar','fr'].indexOf(l) !== -1) {
+                    document.documentElement.setAttribute('lang', l);
+                    document.documentElement.setAttribute('dir', l === 'ar' ? 'rtl' : 'ltr');
+                }
+            } catch (e) {}
+        })();
+    </script>
+</head>
+<body>
+
+    <!-- ==================== LOADING SCREEN ==================== -->
+    <div class="loader" id="loader">
+        <div class="loader__content">
+            <div class="loader__logo">
+                <span class="loader__letter">D</span>
+                <span class="loader__letter">A</span>
+                <span class="loader__letter">U</span>
+            </div>
+            <div class="loader__bar">
+                <div class="loader__bar-fill" id="loaderBar"></div>
+            </div>
+            <p class="loader__text">INITIALIZING <span class="loader__dots">...</span></p>
+        </div>
+    </div>
+
+    <!-- ==================== CUSTOM CURSOR ==================== -->
+    <div class="cursor" id="cursor">
+        <div class="cursor__dot"></div>
+        <div class="cursor__ring"></div>
+    </div>
+
+    <!-- ==================== BACKGROUND LAYERS ==================== -->
+    <div class="bg-layers">
+        <div class="bg-grid"></div>
+        <div class="bg-glow bg-glow--1"></div>
+        <div class="bg-glow bg-glow--2"></div>
+        <div class="bg-glow bg-glow--3"></div>
+        <canvas id="particles"></canvas>
+    </div>
+
+    <!-- ==================== NAVBAR ==================== -->
+    <header class="navbar" id="navbar">
+        <div class="navbar__inner">
+            <a href="index.html" class="navbar__brand" aria-label="DAU Home">
+                <span class="navbar__brand-mark">
+                    <span>D</span>
+                </span>
+                <span class="navbar__brand-text">
+                    <span class="navbar__brand-name">MUDRIK <em>DAU</em></span>
+                    <span class="navbar__brand-sub" data-i18n="brand.sub">Full-Stack Developer</span>
+                </span>
+            </a>
+
+            <div class="navbar__actions">
+                <button class="ctrl-btn ctrl-btn--theme" id="themeToggle" aria-label="Toggle theme" title="Toggle theme">
+                    <span class="ctrl-btn__icon">
+                        <i class="fa-solid fa-moon icon-moon"></i>
+                        <i class="fa-solid fa-sun icon-sun"></i>
+                    </span>
+                </button>
+
+                <div class="lang" id="langSwitcher">
+                    <button class="ctrl-btn ctrl-btn--lang" id="langToggle" aria-label="Change language" aria-expanded="false">
+                        <span class="ctrl-btn__icon"><i class="fa-solid fa-globe"></i></span>
+                        <span class="ctrl-btn__label" id="langCurrent">EN</span>
+                        <span class="ctrl-btn__caret"><i class="fa-solid fa-chevron-down"></i></span>
+                    </button>
+
+                    <div class="lang__dropdown" id="langDropdown" role="menu" aria-hidden="true">
+                        <button class="lang__item" data-lang="en" role="menuitem">
+                            <span class="lang__flag">🇬🇧</span>
+                            <span class="lang__name">English</span>
+                            <span class="lang__code">EN</span>
+                        </button>
+                        <button class="lang__item" data-lang="sw" role="menuitem">
+                            <span class="lang__flag">🇹🇿</span>
+                            <span class="lang__name">Kiswahili</span>
+                            <span class="lang__code">SW</span>
+                        </button>
+                        <button class="lang__item" data-lang="zh" role="menuitem">
+                            <span class="lang__flag">🇨🇳</span>
+                            <span class="lang__name">中文</span>
+                            <span class="lang__code">ZH</span>
+                        </button>
+                        <button class="lang__item" data-lang="ar" role="menuitem">
+                            <span class="lang__flag">🇸🇦</span>
+                            <span class="lang__name">العربية</span>
+                            <span class="lang__code">AR</span>
+                        </button>
+                        <button class="lang__item" data-lang="fr" role="menuitem">
+                            <span class="lang__flag">🇫🇷</span>
+                            <span class="lang__name">Français</span>
+                            <span class="lang__code">FR</span>
+                        </button>
+                    </div>
+                </div>
+
+                <button class="navbar__toggle" id="navbarToggle" aria-label="Open menu" aria-expanded="false">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </button>
+            </div>
+        </div>
+    </header>
+
+    <!-- ==================== FULLSCREEN MENU ==================== -->
+    <nav class="menu" id="menu" aria-hidden="true">
+        <div class="menu__bg"></div>
+        <div class="menu__inner">
+            <div class="menu__aside">
+                <div class="menu__aside-block">
+                    <span class="menu__aside-label" data-i18n="menu.aside.location">Location</span>
+                    <span class="menu__aside-value">Maungani / Kombeni, Zanzibar</span>
+                </div>
+                <div class="menu__aside-block">
+                    <span class="menu__aside-label" data-i18n="menu.aside.email">Email</span>
+                    <a href="mailto:mudrikdau@gmail.com" class="menu__aside-value">mudrikdau@gmail.com</a>
+                </div>
+                <div class="menu__aside-block">
+                    <span class="menu__aside-label" data-i18n="menu.aside.availability">Availability</span>
+                    <span class="menu__aside-value menu__aside-value--status">
+                        <span class="dot dot--live"></span>
+                        <span data-i18n="menu.aside.open">Open to opportunities</span>
+                    </span>
+                </div>
+                <div class="menu__aside-block">
+                    <span class="menu__aside-label" data-i18n="menu.aside.socials">Socials</span>
+                    <div class="menu__socials">
+                        <a href="https://github.com/mudrikdau-ux" target="_blank" rel="noopener" aria-label="GitHub"><i class="fa-brands fa-github"></i></a>
+                        <a href="https://www.linkedin.com/in/mudrik-dau" target="_blank" rel="noopener" aria-label="LinkedIn"><i class="fa-brands fa-linkedin-in"></i></a>
+                        <a href="https://www.instagram.com/youngw_04" target="_blank" rel="noopener" aria-label="Instagram"><i class="fa-brands fa-instagram"></i></a>
+                        <a href="https://x.com/" target="_blank" rel="noopener" aria-label="X"><i class="fa-brands fa-x-twitter"></i></a>
+                    </div>
+                </div>
+            </div>
+
+            <ul class="menu__list">
+                <li class="menu__item">
+                    <a href="index.html" class="menu__link" data-page="home">
+                        <span class="menu__num">01</span>
+                        <span class="menu__text" data-i18n="menu.home">Home</span>
+                    </a>
+                </li>
+                <li class="menu__item">
+                    <a href="about.html" class="menu__link" data-page="about">
+                        <span class="menu__num">02</span>
+                        <span class="menu__text" data-i18n="menu.about">About</span>
+                    </a>
+                </li>
+                <li class="menu__item">
+                    <a href="skills.html" class="menu__link" data-page="skills">
+                        <span class="menu__num">03</span>
+                        <span class="menu__text" data-i18n="menu.skills">Skills</span>
+                    </a>
+                </li>
+                <li class="menu__item">
+                    <a href="experience.html" class="menu__link" data-page="experience">
+                        <span class="menu__num">04</span>
+                        <span class="menu__text" data-i18n="menu.experience">Experience</span>
+                    </a>
+                </li>
+                <li class="menu__item">
+                    <a href="projects.html" class="menu__link" data-page="projects">
+                        <span class="menu__num">05</span>
+                        <span class="menu__text" data-i18n="menu.projects">Projects</span>
+                    </a>
+                </li>
+                <li class="menu__item">
+                    <a href="certificates.html" class="menu__link" data-page="certificates">
+                        <span class="menu__num">06</span>
+                        <span class="menu__text" data-i18n="menu.certificates">Certificates</span>
+                    </a>
+                </li>
+                <li class="menu__item">
+                    <a href="services.html" class="menu__link" data-page="services">
+                        <span class="menu__num">07</span>
+                        <span class="menu__text" data-i18n="menu.services">Services</span>
+                    </a>
+                </li>
+                <li class="menu__item">
+                    <a href="achievements.html" class="menu__link" data-page="achievements">
+                        <span class="menu__num">08</span>
+                        <span class="menu__text" data-i18n="menu.achievements">Achievements</span>
+                    </a>
+                </li>
+                <li class="menu__item">
+                    <a href="contact.html" class="menu__link" data-page="contact">
+                        <span class="menu__num">09</span>
+                        <span class="menu__text" data-i18n="menu.contact">Contact</span>
+                    </a>
+                </li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- ==================== EXPERIENCE PAGE ==================== -->
+    <main class="exp-page" id="experience">
+
+        <!-- ===================================================
+             HERO
+             =================================================== -->
+        <section class="exp-hero">
+            <div class="container">
+                <div class="exp-hero__inner">
+                    <span class="section-head__label" data-i18n="exp.hero.label">/ Experience & Education</span>
+                    <h1 class="exp-hero__title">
+                        <span data-i18n="exp.hero.titleA">My Professional</span><br />
+                        <em data-i18n="exp.hero.titleB">Journey</em>
+                        <span data-i18n="exp.hero.titleC"> &amp; Growth.</span>
+                    </h1>
+                    <p class="exp-hero__desc" data-i18n="exp.hero.desc">
+                        A timeline of my professional experience, field placements, and academic
+                        background — from offices in Zanzibar to the lecture halls of Zanzibar University.
+                    </p>
+
+                    <div class="exp-hero__stats">
+                        <div class="exp-hero__stat">
+                            <span class="exp-hero__stat-num" data-count="4">0</span>
+                            <span class="exp-hero__stat-label" data-i18n="exp.hero.stat.exp">Experiences</span>
+                        </div>
+                        <div class="exp-hero__stat-divider"></div>
+                        <div class="exp-hero__stat">
+                            <span class="exp-hero__stat-num" data-count="3">0</span>
+                            <span class="exp-hero__stat-label" data-i18n="exp.hero.stat.edu">Education</span>
+                        </div>
+                        <div class="exp-hero__stat-divider"></div>
+                        <div class="exp-hero__stat">
+                            <span class="exp-hero__stat-num" data-count="6">0</span>
+                            <span class="exp-hero__stat-label" data-i18n="exp.hero.stat.years">Years Learning</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ===================================================
+             PROFESSIONAL EXPERIENCE TIMELINE
+             =================================================== -->
+        <section class="exp-timeline">
+            <div class="container">
+
+                <div class="section-head">
+                    <span class="section-head__label" data-i18n="exp.pro.label">/ 01 — Professional Experience</span>
+                    <h2 class="section-head__title">
+                        <span data-i18n="exp.pro.titleA">Where I've</span>
+                        <em data-i18n="exp.pro.titleB">Worked</em>
+                    </h2>
+                </div>
+
+                <div class="timeline">
+
+                    <!-- NYOTA TECH HUB -->
+                    <article class="timeline-item timeline-item--current" data-reveal="up">
+                        <div class="timeline-item__marker">
+                            <i class="fa-solid fa-microchip"></i>
+                        </div>
+                        <div class="timeline-item__card">
+                            <div class="timeline-item__head">
+                                <div class="timeline-item__tagline">
+                                    <span class="timeline-item__badge timeline-item__badge--live" data-i18n="exp.badge.intern">Intern</span>
+                                    <span class="timeline-item__period" data-i18n="exp.nyota.period">2 Months</span>
+                                </div>
+                                <h3 class="timeline-item__title" data-i18n="exp.nyota.title">Nyota Tech Hub Organization</h3>
+                                <p class="timeline-item__org">
+                                    <i class="fa-solid fa-location-dot"></i>
+                                    <span data-i18n="exp.nyota.location">Kiembe Samaki, Zanzibar</span>
+                                </p>
+                            </div>
+
+                            <p class="timeline-item__desc" data-i18n="exp.nyota.desc">
+                                Field placement internship at Nyota Tech Hub — a technology innovation hub
+                                in Zanzibar — where I worked on technology-related projects and gained
+                                hands-on experience in a collaborative tech environment.
+                            </p>
+
+                            <div class="timeline-item__sublabel" data-i18n="exp.responsibilities">Key Activities</div>
+                            <ul class="timeline-item__list">
+                                <li data-i18n="exp.nyota.act1">Worked on technology and innovation projects</li>
+                                <li data-i18n="exp.nyota.act2">Collaborated with tech teams and mentors</li>
+                                <li data-i18n="exp.nyota.act3">Applied software and IT skills in a real-world hub environment</li>
+                                <li data-i18n="exp.nyota.act4">Gained practical experience in the Zanzibar tech ecosystem</li>
+                            </ul>
+
+                            <div class="timeline-item__tags">
+                                <span>Field Placement</span>
+                                <span>Technology</span>
+                                <span>Innovation</span>
+                                <span>Internship</span>
+                            </div>
+                        </div>
+                    </article>
+
+                    <!-- ICE Field Placement -->
+                    <article class="timeline-item" data-reveal="up">
+                        <div class="timeline-item__marker">
+                            <i class="fa-solid fa-briefcase"></i>
+                        </div>
+                        <div class="timeline-item__card">
+                            <div class="timeline-item__head">
+                                <div class="timeline-item__tagline">
+                                    <span class="timeline-item__badge" data-i18n="exp.badge.current">Field Placement</span>
+                                    <span class="timeline-item__period">16 March 2026 — ~5 weeks</span>
+                                </div>
+                                <h3 class="timeline-item__title" data-i18n="exp.ice.title">ICE — Field Placement</h3>
+                                <p class="timeline-item__org">
+                                    <i class="fa-solid fa-location-dot"></i>
+                                    <span data-i18n="exp.ice.location">Zanzibar</span>
+                                </p>
+                            </div>
+
+                            <p class="timeline-item__desc" data-i18n="exp.ice.desc">
+                                Practical field placement working on software development and general IT support
+                                activities, including frontend, backend, database development, and IT administration.
+                            </p>
+
+                            <div class="timeline-item__sublabel" data-i18n="exp.responsibilities">Key Activities</div>
+                            <ul class="timeline-item__list">
+                                <li data-i18n="exp.ice.act1">Worked on the CleanSpark project (frontend, backend, database)</li>
+                                <li data-i18n="exp.ice.act2">IT administration support</li>
+                                <li data-i18n="exp.ice.act3">Windows 11 support and Microsoft Office</li>
+                                <li data-i18n="exp.ice.act4">Networking and Cisco-related work</li>
+                                <li data-i18n="exp.ice.act5">Used VS Code, XAMPP, and system/database tools</li>
+                            </ul>
+
+                            <div class="timeline-item__tags">
+                                <span>Full-Stack</span>
+                                <span>MySQL</span>
+                                <span>Node.js</span>
+                                <span>IT Support</span>
+                                <span>Networking</span>
+                            </div>
+                        </div>
+                    </article>
+
+                    <!-- Zan Drive Car Rental -->
+                    <article class="timeline-item" data-reveal="up">
+                        <div class="timeline-item__marker">
+                            <i class="fa-solid fa-car"></i>
+                        </div>
+                        <div class="timeline-item__card">
+                            <div class="timeline-item__head">
+                                <div class="timeline-item__tagline">
+                                    <span class="timeline-item__badge" data-i18n="exp.badge.role">Office Assistant</span>
+                                    <span class="timeline-item__period">2026</span>
+                                </div>
+                                <h3 class="timeline-item__title" data-i18n="exp.zan.title">Zan Drive Car Rental</h3>
+                                <p class="timeline-item__org">
+                                    <i class="fa-solid fa-location-dot"></i>
+                                    <span data-i18n="exp.zan.location">Kilimani, Zanzibar</span>
+                                </p>
+                            </div>
+
+                            <p class="timeline-item__desc" data-i18n="exp.zan.desc">
+                                Office assistant role with IT-related responsibilities, supporting daily
+                                office operations and technology tasks.
+                            </p>
+
+                            <div class="timeline-item__tags">
+                                <span>Office Admin</span>
+                                <span>IT Support</span>
+                                <span>Customer Service</span>
+                            </div>
+                        </div>
+                    </article>
+
+                    <!-- White Bird Cleaning Company -->
+                    <article class="timeline-item" data-reveal="up">
+                        <div class="timeline-item__marker">
+                            <i class="fa-solid fa-building"></i>
+                        </div>
+                        <div class="timeline-item__card">
+                            <div class="timeline-item__head">
+                                <div class="timeline-item__tagline">
+                                    <span class="timeline-item__badge" data-i18n="exp.badge.role">Office Assistant</span>
+                                    <span class="timeline-item__period">2024 — 2026</span>
+                                </div>
+                                <h3 class="timeline-item__title" data-i18n="exp.wb.title">White Bird Cleaning Company</h3>
+                                <p class="timeline-item__org">
+                                    <i class="fa-solid fa-location-dot"></i>
+                                    <span data-i18n="exp.wb.location">Mlandege, Zanzibar</span>
+                                </p>
+                            </div>
+
+                            <p class="timeline-item__desc" data-i18n="exp.wb.desc">
+                                Office support role covering administrative tasks, documentation, communication,
+                                customer interaction, and observing/assisting with technology-related work.
+                                This experience inspired the development of the CleanSpark system.
+                            </p>
+
+                            <div class="timeline-item__sublabel" data-i18n="exp.skillsGained">Skills Gained</div>
+                            <ul class="timeline-item__list">
+                                <li data-i18n="exp.wb.skill1">Communication and customer interaction</li>
+                                <li data-i18n="exp.wb.skill2">Office administration</li>
+                                <li data-i18n="exp.wb.skill3">Documentation and problem solving</li>
+                                <li data-i18n="exp.wb.skill4">Teamwork and management support</li>
+                            </ul>
+
+                            <div class="timeline-item__tags">
+                                <span>Communication</span>
+                                <span>Administration</span>
+                                <span>Customer Service</span>
+                                <span>Documentation</span>
+                            </div>
+                        </div>
+                    </article>
+
+                </div>
+            </div>
+        </section>
+
+        <!-- ===================================================
+             EDUCATION TIMELINE
+             =================================================== -->
+        <section class="exp-timeline exp-timeline--edu">
+            <div class="container">
+
+                <div class="section-head">
+                    <span class="section-head__label" data-i18n="exp.edu.label">/ 02 — Education</span>
+                    <h2 class="section-head__title">
+                        <span data-i18n="exp.edu.titleA">Academic</span>
+                        <em data-i18n="exp.edu.titleB">Background</em>
+                    </h2>
+                </div>
+
+                <div class="timeline timeline--edu">
+
+                    <!-- Bachelor -->
+                    <article class="timeline-item timeline-item--current" data-reveal="up">
+                        <div class="timeline-item__marker">
+                            <i class="fa-solid fa-graduation-cap"></i>
+                        </div>
+                        <div class="timeline-item__card">
+                            <div class="timeline-item__head">
+                                <div class="timeline-item__tagline">
+                                    <span class="timeline-item__badge timeline-item__badge--live" data-i18n="exp.badge.current">Currently</span>
+                                    <span class="timeline-item__period">2026 — Present</span>
+                                </div>
+                                <h3 class="timeline-item__title" data-i18n="exp.edu.bachelor.title">Bachelor of Information Technology (B.IT)</h3>
+                                <p class="timeline-item__org">
+                                    <i class="fa-solid fa-building-columns"></i>
+                                    <span data-i18n="exp.edu.bachelor.school">Zanzibar University</span>
+                                </p>
+                            </div>
+
+                            <p class="timeline-item__desc" data-i18n="exp.edu.bachelor.desc">
+                                Currently pursuing a Bachelor of Information Technology at Zanzibar University,
+                                focusing on full-stack development, database management, networking, and information systems.
+                            </p>
+
+                            <div class="timeline-item__tags">
+                                <span>Full-Stack</span>
+                                <span>Database</span>
+                                <span>Networking</span>
+                                <span>Information Systems</span>
+                            </div>
+                        </div>
+                    </article>
+
+                    <!-- Diploma -->
+                    <article class="timeline-item" data-reveal="up">
+                        <div class="timeline-item__marker">
+                            <i class="fa-solid fa-certificate"></i>
+                        </div>
+                        <div class="timeline-item__card">
+                            <div class="timeline-item__head">
+                                <div class="timeline-item__tagline">
+                                    <span class="timeline-item__badge" data-i18n="exp.badge.diploma">Diploma</span>
+                                    <span class="timeline-item__period">2024 — 2026</span>
+                                </div>
+                                <h3 class="timeline-item__title" data-i18n="exp.edu.diploma.title">Diploma in Information Technology</h3>
+                                <p class="timeline-item__org">
+                                    <i class="fa-solid fa-building-columns"></i>
+                                    <span data-i18n="exp.edu.diploma.school">Zanzibar University</span>
+                                </p>
+                            </div>
+
+                            <p class="timeline-item__desc" data-i18n="exp.edu.diploma.desc">
+                                Foundational IT studies with practical exposure to programming, databases,
+                                and information systems.
+                            </p>
+
+                            <div class="timeline-item__tags">
+                                <span>Programming</span>
+                                <span>Databases</span>
+                                <span>Systems</span>
+                            </div>
+                        </div>
+                    </article>
+
+                    <!-- Higher Secondary -->
+                    <article class="timeline-item" data-reveal="up">
+                        <div class="timeline-item__marker">
+                            <i class="fa-solid fa-book-open"></i>
+                        </div>
+                        <div class="timeline-item__card">
+                            <div class="timeline-item__head">
+                                <div class="timeline-item__tagline">
+                                    <span class="timeline-item__badge" data-i18n="exp.badge.secondary">Secondary</span>
+                                    <span class="timeline-item__period" data-i18n="exp.edu.hs.period">Completed</span>
+                                </div>
+                                <h3 class="timeline-item__title" data-i18n="exp.edu.hs.title">Higher Secondary Education</h3>
+                                <p class="timeline-item__org">
+                                    <i class="fa-solid fa-location-dot"></i>
+                                    <span data-i18n="exp.edu.hs.school">Zanzibar, Tanzania</span>
+                                </p>
+                            </div>
+
+                            <p class="timeline-item__desc" data-i18n="exp.edu.hs.desc">
+                                Science stream with focus on Mathematics, Physics, and Computer Science.
+                                This education developed analytical thinking and problem-solving skills
+                                and provided the foundation for further studies in Information Technology.
+                            </p>
+
+                            <div class="timeline-item__tags">
+                                <span>Mathematics</span>
+                                <span>Physics</span>
+                                <span>Computer Science</span>
+                            </div>
+                        </div>
+                    </article>
+
+                </div>
+            </div>
+        </section>
+
+        <!-- ===================================================
+             CTA
+             =================================================== -->
+        <section class="exp-cta">
+            <div class="container">
+                <div class="exp-cta__inner" data-reveal="scale">
+                    <h2 class="exp-cta__title">
+                        <span data-i18n="exp.cta.titleA">Want the full</span>
+                        <em data-i18n="exp.cta.titleB">picture?</em>
+                    </h2>
+                    <p class="exp-cta__desc" data-i18n="exp.cta.desc">
+                        Download my CV or get in touch to discuss opportunities.
+                    </p>
+                    <div class="exp-cta__actions">
+                        <a href="assets/cv/Mudrik-Dau-CV.pdf" class="btn btn--primary" data-cursor="hover" download>
+                            <span class="btn__text" data-i18n="exp.cta.cv">Download CV</span>
+                            <span class="btn__icon"><i class="fa-solid fa-download"></i></span>
+                        </a>
+                        <a href="contact.html" class="btn btn--ghost" data-cursor="hover">
+                            <span class="btn__text" data-i18n="exp.cta.contact">Contact Me</span>
+                            <span class="btn__icon"><i class="fa-solid fa-envelope"></i></span>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+    <!-- ==================== FOOTER ==================== -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer__inner">
+                <div class="footer__brand">
+                    <span class="footer__brand-mark">D</span>
+                    <div>
+                        <span class="footer__brand-name">MUDRIK DAU</span>
+                        <span class="footer__brand-sub" data-i18n="brand.sub">Full-Stack Developer | IT Student</span>
+                    </div>
+                </div>
+                <p class="footer__copy">
+                    © <span id="year"></span> Mudrik Mohamed Othman. <span data-i18n="footer.copy">Built with care in Zanzibar.</span>
+                </p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Scripts -->
+    <script src="js/i18n.js"></script>
+    <script src="js/theme.js"></script>
+    <script src="js/global.js"></script>
+    <script src="js/navbar.js"></script>
+    <script src="js/particles.js"></script>
+    <script src="js/animations.js"></script>
+    <script src="js/experience.js"></script>
+</body>
+</html>

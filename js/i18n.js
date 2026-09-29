@@ -1,0 +1,3458 @@
+/* =========================================================
+   i18n — Multi-language system (EN, SW, ZH, AR, FR)
+   ========================================================= */
+
+(function () {
+    'use strict';
+
+    const STORAGE_KEY = 'dau:lang';
+    const DEFAULT_LANG = 'en';
+    const SUPPORTED = ['en', 'sw', 'zh', 'ar', 'fr'];
+    const RTL_LANGS = ['ar'];
+
+    /* =========================================================
+       TRANSLATIONS
+       ========================================================= */
+    const TRANSLATIONS = {
+        en: {
+            /* ---------- GLOBAL ---------- */
+            'brand.sub': 'Full-Stack Developer',
+
+            /* ---------- MENU ---------- */
+            'menu.home': 'Home',
+            'menu.about': 'About',
+            'menu.skills': 'Skills',
+            'menu.experience': 'Experience',
+            'menu.projects': 'Projects',
+            'menu.certificates': 'Certificates',
+            'menu.services': 'Services',
+            'menu.achievements': 'Achievements',
+            'menu.contact': 'Contact',
+
+            /* ---------- MENU ASIDE ---------- */
+            'menu.aside.location': 'Location',
+            'menu.aside.email': 'Email',
+            'menu.aside.availability': 'Availability',
+            'menu.aside.socials': 'Socials',
+            'menu.aside.open': 'Open to opportunities',
+
+            /* ---------- HERO ---------- */
+            'hero.tagline': 'Based in Zanzibar, Tanzania',
+            'hero.roleStatic': 'I am a',
+            'hero.roles.0': 'Full-Stack Developer',
+            'hero.roles.1': 'IT Student',
+            'hero.roles.2': 'Technology Enthusiast',
+            'hero.roles.3': 'Problem Solver',
+            'hero.desc': 'Creating practical digital solutions through technology, creativity, and problem solving — from Zanzibar to the world.',
+            'hero.cta.primary': 'Explore My Work',
+            'hero.cta.secondary': 'Download CV',
+            'hero.stats.projects': 'Major Projects',
+            'hero.stats.technologies': 'Technologies',
+            'hero.stats.experiences': 'Work Experiences',
+            'hero.profile': 'Profile',
+            'hero.badge': 'Available',
+            'hero.scroll': 'Scroll',
+
+            /* ---------- MARQUEE ---------- */
+            'marquee.1': 'FULL-STACK DEVELOPMENT',
+            'marquee.2': 'DATABASE DESIGN',
+            'marquee.3': 'REST APIS',
+            'marquee.4': 'IT SUPPORT',
+            'marquee.5': 'NETWORKING',
+            'marquee.6': 'PROBLEM SOLVING',
+
+            /* ---------- FEATURED ---------- */
+            'featured.label': '/ 01 — Selected Work',
+            'featured.titleA': 'Featured',
+            'featured.titleB': 'Projects',
+            'featured.desc': "Practical systems built to solve real problems in Zanzibar's local context.",
+            'featured.cta': 'See All Projects',
+            'project.view': 'View Project',
+            'project.meta.fullstack': 'Full-Stack',
+            'project.cleanspark.tag': 'Cleaning Service Management',
+            'project.cleanspark.desc': 'A cleaning service management system that digitizes customers, bookings, staff, payments, scheduling, and administration.',
+            'project.lams.tag': 'Local Administration Management',
+            'project.lams.desc': 'A local administration management system connecting citizens with ward administration for services, payments, and documents.',
+
+            /* ---------- QUICK ABOUT ---------- */
+            'quickabout.label': '/ 02 — About',
+            'quickabout.titleA': 'Building',
+            'quickabout.titleB': 'practical',
+            'quickabout.titleC': 'digital solutions from Zanzibar.',
+            'quickabout.desc': "I'm Mudrik Mohamed Othman — an IT student and aspiring Full-Stack Developer pursuing a Bachelor of Information Technology at Zanzibar University. I design and develop modern web systems, databases, and digital solutions that solve real-world problems.",
+            'quickabout.link': 'More About Me',
+
+            /* ---------- CTA ---------- */
+            'cta.label': '/ 03 — Get in Touch',
+            'cta.titleA': "Let's build something",
+            'cta.titleB': 'meaningful',
+            'cta.contact': 'Contact Me',
+
+            /* ---------- FOOTER ---------- */
+            'footer.copy': 'Built with care in Zanzibar.',
+
+            /* ---------- ABOUT PAGE ---------- */
+            'about.hero.label': '/ About Me',
+            'about.hero.titleA': 'Passionate IT Student',
+            'about.hero.titleB': 'Creating Practical',
+            'about.hero.titleC': 'Digital Solutions.',
+            'about.hero.desc': "Hello! I'm Mudrik Mohamed Othman (aka DAU) — an IT student and aspiring Full-Stack Developer currently pursuing a Bachelor of Information Technology at Zanzibar University.",
+            'about.hero.location': 'Maungani / Kombeni, Zanzibar',
+            'about.hero.education': 'B.IT — Zanzibar University',
+            'about.hero.status': 'Open to opportunities',
+            'about.hero.cta.cv': 'Download CV',
+            'about.hero.cta.contact': 'Get in Touch',
+            'about.hero.profile': 'Profile',
+            'about.hero.badge1': 'Full-Stack',
+            'about.hero.badge2': 'B.IT Student',
+
+            'about.bio.label': '/ 01 — Biography',
+            'about.bio.headingA': 'My',
+            'about.bio.headingB': 'Story',
+            'about.bio.p1': 'My journey in technology has grown through academic studies, practical projects, and hands-on experience in IT and software development. I enjoy designing and developing modern web-based systems, databases, and digital solutions that solve real-world problems.',
+            'about.bio.p2': 'My interests include full-stack development, database management, networking, cybersecurity, and information systems.',
+            'about.bio.p3': 'Beyond technical development, I have strong communication, public speaking, problem-solving, teaching, teamwork, and managerial skills. I enjoy learning new technologies, sharing knowledge with others, and transforming ideas into practical and user-friendly digital solutions.',
+            'about.bio.p4': 'Outside technology, I enjoy football and video games.',
+
+            'about.info.label': '/ 02 — Personal Information',
+            'about.info.titleA': 'Quick',
+            'about.info.titleB': 'Facts',
+            'about.info.birthday': 'Birthday',
+            'about.info.location': 'Location',
+            'about.info.education': 'Education',
+            'about.info.email': 'Email',
+            'about.info.phone': 'Phone',
+            'about.info.hobbies': 'Hobbies',
+            'about.info.hobbiesValue': 'Football, Video Games',
+
+            'about.edu.label': '/ 03 — Education',
+            'about.edu.titleA': 'Academic',
+            'about.edu.titleB': 'Background',
+            'about.edu.badge.current': 'Currently',
+            'about.edu.bachelor.title': 'Bachelor of Information Technology',
+            'about.edu.bachelor.school': 'Zanzibar University',
+            'about.edu.bachelor.desc': 'Bachelor of Information Technology (B.IT) — currently pursuing.',
+            'about.edu.diploma.title': 'Diploma in Information Technology',
+            'about.edu.diploma.school': 'Zanzibar University',
+            'about.edu.diploma.desc': 'Foundational IT studies with practical exposure to programming, databases, and systems.',
+            'about.edu.highschool.title': 'Higher Secondary Education',
+            'about.edu.highschool.school': 'Zanzibar, Tanzania',
+            'about.edu.highschool.desc': 'Science stream — Mathematics, Physics, and Computer Science.',
+
+            'about.interests.label': '/ 04 — Technical Interests',
+            'about.interests.titleA': "What I'm",
+            'about.interests.titleB': 'Into',
+            'about.interests.desc': 'Areas of technology I actively explore, study, and build with.',
+            'about.interests.1.title': 'Full-Stack Development',
+            'about.interests.1.desc': 'Building modern web applications with HTML, CSS, JavaScript, Node.js, Express, and MySQL.',
+            'about.interests.2.title': 'Database Management',
+            'about.interests.2.desc': 'Designing and managing relational databases with MySQL, SQL, and MariaDB.',
+            'about.interests.3.title': 'Networking',
+            'about.interests.3.desc': 'Computer networking fundamentals, Cisco, configuration, and troubleshooting.',
+            'about.interests.4.title': 'Cybersecurity',
+            'about.interests.4.desc': 'Linux security, network security, security labs, and OSINT — as an active learner.',
+            'about.interests.5.title': 'Information Systems',
+            'about.interests.5.desc': 'Designing practical information systems for real-world local and organizational problems.',
+            'about.interests.6.title': 'IT Support',
+            'about.interests.6.desc': 'Windows support, Microsoft Office, general IT administration, and technical troubleshooting.',
+
+            'about.skills.label': '/ 05 — Professional Skills',
+            'about.skills.titleA': 'Beyond',
+            'about.skills.titleB': 'Code',
+            'about.skills.1': 'Communication',
+            'about.skills.2': 'Public Speaking',
+            'about.skills.3': 'Problem Solving',
+            'about.skills.4': 'Teaching',
+            'about.skills.5': 'Teamwork',
+            'about.skills.6': 'Managerial Skills',
+            'about.skills.7': 'Leadership',
+            'about.skills.8': 'Learning New Technologies',
+
+            'about.cta.titleA': 'Want to see',
+            'about.cta.titleB': "what I've built?",
+            'about.cta.desc': 'Explore my projects and experience, or get in touch directly.',
+            'about.cta.projects': 'View Projects',
+            'about.cta.contact': 'Contact Me',
+
+            /* ---------- SKILLS PAGE ---------- */
+            'skills.hero.label': '/ My Skills',
+            'skills.hero.titleA': 'Tools,',
+            'skills.hero.titleB': 'Technologies',
+            'skills.hero.titleC': '& Skills I Use.',
+            'skills.hero.desc': 'A practical overview of the technologies, tools, and professional abilities I use to design, build, and manage digital solutions.',
+            'skills.hero.stat.tech': 'Technologies',
+            'skills.hero.stat.categories': 'Categories',
+            'skills.hero.stat.soft': 'Soft Skills',
+            'skills.hero.coreLabel': 'Technologies',
+
+            'skills.cats.label': '/ 01 — Categories',
+            'skills.cats.titleA': 'Technical',
+            'skills.cats.titleB': 'Proficiency',
+            'skills.cats.desc': 'Organized skill categories based on my actual hands-on experience. Levels are self-assessed — not objective measurements.',
+
+            'skills.cat1.title': 'Web Development',
+            'skills.cat2.title': 'Backend',
+            'skills.cat3.title': 'Database',
+            'skills.cat4.title': 'Programming Tools',
+            'skills.cat5.title': 'Operating Systems',
+            'skills.cat6.title': 'Networking',
+            'skills.cat6.item1': 'Computer Networking',
+            'skills.cat6.item2': 'Network Configuration',
+
+            'skills.level.advanced': 'Advanced',
+            'skills.level.intermediate': 'Intermediate',
+            'skills.level.learning': 'Learning',
+
+            'skills.stack.label': '/ 02 — Tech Stack',
+            'skills.stack.titleA': 'My',
+            'skills.stack.titleB': 'Toolbox',
+            'skills.stack.desc': 'The technologies I work with daily across my projects.',
+
+            'skills.soft.label': '/ 03 — Professional Skills',
+            'skills.soft.titleA': 'Beyond',
+            'skills.soft.titleB': 'Code',
+            'skills.soft.desc': 'Non-technical abilities that make me effective in real-world settings.',
+            'skills.soft.1.desc': 'Clear, effective communication with teammates, clients, and users.',
+            'skills.soft.2.desc': 'Confident presentation of ideas, projects, and technical concepts.',
+            'skills.soft.3.desc': 'Breaking down complex problems and finding practical solutions.',
+            'skills.soft.4.desc': 'Sharing knowledge and helping others understand technical topics.',
+            'skills.soft.5.desc': 'Collaborating effectively in team environments and group projects.',
+            'skills.soft.6.desc': 'Organizing tasks, managing priorities, and supporting team efforts.',
+            'skills.soft.7.desc': 'Taking initiative and guiding projects toward successful outcomes.',
+            'skills.soft.8.desc': 'Continuously exploring new tools and frameworks to stay current.',
+
+            'skills.learning.label': '/ 04 — Currently Learning',
+            'skills.learning.titleA': 'Always',
+            'skills.learning.titleB': 'Growing',
+            'skills.learning.desc': "Skills and areas I'm actively studying and improving right now.",
+            'skills.learning.1.title': 'Cybersecurity Fundamentals',
+            'skills.learning.1.desc': 'Linux security, network security, security labs, and OSINT techniques.',
+            'skills.learning.2.title': 'Advanced Networking',
+            'skills.learning.2.desc': 'Cisco configuration, subnetting, routing, and switching practice.',
+            'skills.learning.3.title': 'Backend Architecture',
+            'skills.learning.3.desc': 'Scalable API design, authentication patterns, and clean code structure.',
+
+            'skills.cta.titleA': 'Want to see these',
+            'skills.cta.titleB': 'skills in action?',
+            'skills.cta.desc': 'Explore my projects or get in touch to discuss opportunities.',
+            'skills.cta.projects': 'View Projects',
+            'skills.cta.contact': 'Contact Me',
+
+            /* ---------- EXPERIENCE PAGE ---------- */
+            'exp.hero.label': '/ Experience & Education',
+            'exp.hero.titleA': 'My Professional',
+            'exp.hero.titleB': 'Journey',
+            'exp.hero.titleC': ' & Growth.',
+            'exp.hero.desc': 'A timeline of my professional experience, field placements, and academic background — from offices in Zanzibar to the lecture halls of Zanzibar University.',
+            'exp.hero.stat.exp': 'Experiences',
+            'exp.hero.stat.edu': 'Education',
+            'exp.hero.stat.years': 'Years Learning',
+
+            'exp.pro.label': '/ 01 — Professional Experience',
+            'exp.pro.titleA': "Where I've",
+            'exp.pro.titleB': 'Worked',
+
+            'exp.badge.current': 'Currently',
+            'exp.badge.role': 'Office Assistant',
+            'exp.badge.diploma': 'Diploma',
+            'exp.badge.secondary': 'Secondary',
+            'exp.badge.intern': 'Intern',
+            'exp.nyota.title': 'Nyota Tech Hub Organization',
+            'exp.nyota.location': 'Kiembe Samaki, Zanzibar',
+            'exp.nyota.period': '2 Months',
+            'exp.nyota.desc': 'Field placement internship at Nyota Tech Hub — a technology innovation hub in Zanzibar — where I worked on technology-related projects and gained hands-on experience in a collaborative tech environment.',
+            'exp.nyota.act1': 'Worked on technology and innovation projects',
+            'exp.nyota.act2': 'Collaborated with tech teams and mentors',
+            'exp.nyota.act3': 'Applied software and IT skills in a real-world hub environment',
+            'exp.nyota.act4': 'Gained practical experience in the Zanzibar tech ecosystem',
+            'exp.responsibilities': 'Key Activities',
+            'exp.skillsGained': 'Skills Gained',
+
+            'exp.ice.title': 'ICE — Field Placement',
+            'exp.ice.location': 'Zanzibar',
+            'exp.ice.desc': 'Practical field placement working on software development and general IT support activities, including frontend, backend, database development, and IT administration.',
+            'exp.ice.act1': 'Worked on the CleanSpark project (frontend, backend, database)',
+            'exp.ice.act2': 'IT administration support',
+            'exp.ice.act3': 'Windows 11 support and Microsoft Office',
+            'exp.ice.act4': 'Networking and Cisco-related work',
+            'exp.ice.act5': 'Used VS Code, XAMPP, and system/database tools',
+
+            'exp.zan.title': 'Zan Drive Car Rental',
+            'exp.zan.location': 'Kilimani, Zanzibar',
+            'exp.zan.desc': 'Office assistant role with IT-related responsibilities, supporting daily office operations and technology tasks.',
+
+            'exp.wb.title': 'White Bird Cleaning Company',
+            'exp.wb.location': 'Mlandege, Zanzibar',
+            'exp.wb.desc': 'Office support role covering administrative tasks, documentation, communication, customer interaction, and observing/assisting with technology-related work. This experience inspired the development of the CleanSpark system.',
+            'exp.wb.skill1': 'Communication and customer interaction',
+            'exp.wb.skill2': 'Office administration',
+            'exp.wb.skill3': 'Documentation and problem solving',
+            'exp.wb.skill4': 'Teamwork and management support',
+
+            'exp.edu.label': '/ 02 — Education',
+            'exp.edu.titleA': 'Academic',
+            'exp.edu.titleB': 'Background',
+
+            'exp.edu.bachelor.title': 'Bachelor of Information Technology (B.IT)',
+            'exp.edu.bachelor.school': 'Zanzibar University',
+            'exp.edu.bachelor.desc': 'Currently pursuing a Bachelor of Information Technology at Zanzibar University, focusing on full-stack development, database management, networking, and information systems.',
+
+            'exp.edu.diploma.title': 'Diploma in Information Technology',
+            'exp.edu.diploma.school': 'Zanzibar University',
+            'exp.edu.diploma.desc': 'Foundational IT studies with practical exposure to programming, databases, and information systems.',
+
+            'exp.edu.hs.title': 'Higher Secondary Education',
+            'exp.edu.hs.school': 'Zanzibar, Tanzania',
+            'exp.edu.hs.period': 'Completed',
+            'exp.edu.hs.desc': 'Science stream with focus on Mathematics, Physics, and Computer Science. This education developed analytical thinking and problem-solving skills and provided the foundation for further studies in Information Technology.',
+
+            'exp.cta.titleA': 'Want the full',
+            'exp.cta.titleB': 'picture?',
+            'exp.cta.desc': 'Download my CV or get in touch to discuss opportunities.',
+            'exp.cta.cv': 'Download CV',
+            'exp.cta.contact': 'Contact Me',
+
+            /* ---------- PROJECTS PAGE ---------- */
+            'proj.hero.label': '/ Selected Work',
+            'proj.hero.titleA': 'Projects Built to',
+            'proj.hero.titleB': 'Solve Real Problems.',
+            'proj.hero.desc': "Full-stack web applications designed and developed with modern technologies, focused on real-world problems in Zanzibar's local context.",
+            'proj.hero.stat.major': 'Major Projects',
+            'proj.hero.stat.tech': 'Technologies',
+            'proj.hero.stat.domains': 'Domains',
+
+            'proj.filter.all': 'All Projects',
+            'proj.filter.fullstack': 'Full-Stack',
+            'proj.filter.web': 'Web Systems',
+            'proj.filter.local': 'Local Context',
+
+            'proj.card.details': 'View Details',
+            'proj.card.demo': 'Live Demo',
+            'proj.modal.close': 'Close',
+
+            'proj.modal.about.label': 'About this project',
+            'proj.modal.features.label': 'Main Features',
+            'proj.modal.workflow.label': 'Main Workflow',
+            'proj.modal.tech.label': 'Technologies Used',
+            'proj.modal.role.label': 'My Role',
+
+            'project.workflow.customer': 'Customer',
+            'project.workflow.booking': 'Booking',
+            'project.workflow.admin': 'Admin',
+            'project.workflow.staff': 'Staff',
+            'project.workflow.service': 'Service',
+            'project.workflow.payment': 'Payment',
+            'project.workflow.report': 'Report',
+            'project.workflow.citizen': 'Citizen',
+            'project.workflow.application': 'Application',
+            'project.workflow.document': 'Document',
+
+            /* CleanSpark modal */
+            'proj.modal.cleanspark.about.title': 'Cleaning Service Management System',
+            'proj.modal.cleanspark.about.p1': 'CleanSpark is designed to help cleaning businesses manage customers, bookings, staff, cleaning services, payments, scheduling, and administrative operations digitally.',
+            'proj.modal.cleanspark.about.p2': 'The idea came from real problems observed while working in a cleaning company environment in Zanzibar.',
+            'proj.modal.cleanspark.problem.title': 'Problems Addressed',
+            'proj.modal.cleanspark.problem.1': 'Manual customer records',
+            'proj.modal.cleanspark.problem.2': 'Difficult service scheduling',
+            'proj.modal.cleanspark.problem.3': 'Poor worker tracking',
+            'proj.modal.cleanspark.problem.4': 'Manual payment management',
+            'proj.modal.cleanspark.problem.5': 'Poor communication and difficulty tracking bookings',
+            'proj.modal.cleanspark.solution.title': 'Solution',
+            'proj.modal.cleanspark.solution.1': 'Digital customer & booking management',
+            'proj.modal.cleanspark.solution.2': 'Automated scheduling and staff assignment',
+            'proj.modal.cleanspark.solution.3': 'Digital payment tracking (M-Pesa, Airtel Money, HaloPesa, Azam Pay, Cards)',
+            'proj.modal.cleanspark.solution.4': 'Service status tracking and supervisor confirmation',
+            'proj.modal.cleanspark.solution.5': 'Reports and administrative dashboards',
+            'proj.modal.cleanspark.features.title': 'What the System Does',
+            'proj.modal.cleanspark.features.1': 'Customer registration, login, and account management',
+            'proj.modal.cleanspark.features.2': 'Browse and select cleaning services (Unguja, Pemba, Both)',
+            'proj.modal.cleanspark.features.3': 'Make and track bookings; view, download, and share quotes',
+            'proj.modal.cleanspark.features.4': 'Staff/job application workflow with CV, ID, and document upload',
+            'proj.modal.cleanspark.features.5': 'Automated cleaner & supervisor assignment after payment',
+            'proj.modal.cleanspark.features.6': 'Supervisor confirms arrival, service start, and completion',
+            'proj.modal.cleanspark.role.value': 'Designed and developed the full system — frontend, backend, and database — as a full-stack project.',
+
+            /* LAMS modal */
+            'proj.modal.lams.about.title': 'Local Administration Management System',
+            'proj.modal.lams.about.p1': 'LAMS is a local administration management system designed for community service management in Zanzibar. It focuses on the interaction between local administration and citizens.',
+            'proj.modal.lams.about.p2': 'The system digitally manages local administration services, citizens, applications, announcements, payments, documents, and administrative activities.',
+            'proj.modal.lams.problem.title': 'Problems Addressed',
+            'proj.modal.lams.problem.1': 'Manual citizen records',
+            'proj.modal.lams.problem.2': 'Difficult application and document handling',
+            'proj.modal.lams.problem.3': 'Manual payment processing',
+            'proj.modal.lams.problem.4': 'Poor communication between citizens and administration',
+            'proj.modal.lams.problem.5': 'No centralized system for announcements and ward management',
+            'proj.modal.lams.solution.title': 'Solution',
+            'proj.modal.lams.solution.1': 'Digital citizen registration and management',
+            'proj.modal.lams.solution.2': 'Centralized application and payment system',
+            'proj.modal.lams.solution.3': 'Document upload and delivery after payment confirmation',
+            'proj.modal.lams.solution.4': 'Super Admin role for term-limited leadership administration',
+            'proj.modal.lams.solution.5': 'Ward-based filtering and status management',
+            'proj.modal.lams.features.title': 'What the System Does',
+            'proj.modal.lams.features.1': 'Citizen registration, search, and alive/dead status management',
+            'proj.modal.lams.features.2': 'Citizen dashboard: applications, payments, messages, profile, documents',
+            'proj.modal.lams.features.3': 'Application & payment workflow with automatic payment ID',
+            'proj.modal.lams.features.4': 'Pay Now button for unpaid applications; PDF download, share, print for paid ones',
+            'proj.modal.lams.features.5': 'Admin uploads documents, images, and PDFs to send to citizens after payment',
+            'proj.modal.lams.features.6': 'Super Admin manages ward administrators with start/end dates and status',
+            'proj.modal.lams.role.value': 'Designed and developed the full system — frontend, backend, and database — as a full-stack project.',
+
+            'proj.cta.titleA': 'Have a project',
+            'proj.cta.titleB': 'in mind?',
+            'proj.cta.desc': "Let's discuss how we can build something meaningful together.",
+            'proj.cta.contact': 'Start a Conversation',
+            'proj.cta.github': 'View on GitHub',
+
+            /* ---------- CERTIFICATES PAGE ---------- */
+            'cert.hero.label': '/ Certificates',
+            'cert.hero.titleA': 'Certificates &',
+            'cert.hero.titleB': 'Achievements.',
+            'cert.hero.desc': 'A collection of my academic, technical, and training certificates. This page will be updated as new certificates are earned.',
+            'cert.hero.stat.total': 'Total',
+            'cert.hero.stat.tech': 'Technical',
+            'cert.hero.stat.academic': 'Academic',
+
+            'cert.filter.all': 'All',
+            'cert.filter.technical': 'Technical',
+            'cert.filter.academic': 'Academic',
+            'cert.filter.training': 'Training',
+
+            'cert.empty.label': 'Coming Soon',
+            'cert.empty.title': 'Certificates are on the way.',
+            'cert.empty.desc': "I'm currently working on earning and collecting professional certificates in full-stack development, networking, cybersecurity, and related fields. This page will be updated as they arrive.",
+            'cert.empty.contact': 'Contact Me',
+            'cert.empty.projects': 'View Projects',
+
+            'cert.modal.download': 'Download',
+            'cert.modal.close': 'Close',
+
+            'cert.cta.titleA': 'Looking for someone',
+            'cert.cta.titleB': 'committed to growth?',
+            'cert.cta.desc': "I'm continuously learning and building. Let's talk about what I can bring to your team.",
+            'cert.cta.contact': 'Get in Touch',
+            'cert.cta.experience': 'View Experience',
+
+            /* ---------- SERVICES PAGE ---------- */
+            'svc.hero.label': '/ Services',
+            'svc.hero.titleA': 'What I Can',
+            'svc.hero.titleB': 'Build for You.',
+            'svc.hero.desc': 'Practical services built on my actual skills and hands-on experience — from web development to database design and IT support.',
+            'svc.hero.stat.services': 'Services',
+            'svc.hero.stat.categories': 'Categories',
+            'svc.hero.stat.tech': 'Technologies',
+
+            'svc.filter.all': 'All Services',
+            'svc.filter.dev': 'Development',
+            'svc.filter.data': 'Data & Database',
+            'svc.filter.it': 'IT & Support',
+            'svc.filter.consult': 'Consultation',
+
+            'svc.card.cta': 'Request Service',
+
+            'svc.card.1.title': 'Web Development',
+            'svc.card.1.desc': 'Building modern, responsive websites with HTML5, CSS3, JavaScript, and Bootstrap — designed to look great on every device.',
+
+            'svc.card.2.title': 'Full-Stack Development',
+            'svc.card.2.desc': 'End-to-end web application development — from frontend UI to backend APIs and database integration.',
+
+            'svc.card.3.title': 'Website Development',
+            'svc.card.3.desc': 'Complete website builds for personal, business, or organizational use — from concept to deployment.',
+
+            'svc.card.4.title': 'Information System Development',
+            'svc.card.4.desc': 'Custom information systems designed around real business or organizational workflows.',
+
+            'svc.card.5.title': 'Database Development',
+            'svc.card.5.desc': 'Designing and building relational database schemas with MySQL, MariaDB, and SQL — optimized for real applications.',
+
+            'svc.card.6.title': 'Database Management',
+            'svc.card.6.desc': 'Managing, maintaining, and optimizing databases — queries, backups, structure, and performance.',
+
+            'svc.card.7.title': 'IT Support',
+            'svc.card.7.desc': 'Windows support, Microsoft Office, general IT administration, and everyday technical troubleshooting.',
+
+            'svc.card.8.title': 'Networking Support',
+            'svc.card.8.desc': 'Basic network configuration, Cisco-related tasks, and network troubleshooting.',
+
+            'svc.card.9.title': 'Backend & API Development',
+            'svc.card.9.desc': 'REST API development with Node.js and Express — including authentication, JWT, and database integration.',
+
+            'svc.card.10.title': 'Technical Consultation',
+            'svc.card.10.desc': 'Practical advice on web projects, databases, or IT setups — helping you plan the right approach.',
+
+            'svc.process.label': '/ 02 — Process',
+            'svc.process.titleA': 'How I',
+            'svc.process.titleB': 'Work',
+            'svc.process.desc': 'A simple, transparent workflow from first contact to final delivery.',
+            'svc.process.1.title': 'Discussion',
+            'svc.process.1.desc': 'We talk about your goals, requirements, and what success looks like.',
+            'svc.process.2.title': 'Planning',
+            'svc.process.2.desc': 'I map out the structure, technologies, timeline, and deliverables.',
+            'svc.process.3.title': 'Development',
+            'svc.process.3.desc': 'I build the solution with clean code, tested features, and clear progress updates.',
+            'svc.process.4.title': 'Delivery',
+            'svc.process.4.desc': 'Final handover with documentation, support, and post-launch guidance.',
+
+            'svc.why.label': '/ 03 — Why Work With Me',
+            'svc.why.titleA': 'What You',
+            'svc.why.titleB': 'Get',
+            'svc.why.1.title': 'Practical Focus',
+            'svc.why.1.desc': 'Solutions built around real-world problems, not theory.',
+            'svc.why.2.title': 'Clear Communication',
+            'svc.why.2.desc': 'Regular updates and honest, transparent communication throughout.',
+            'svc.why.3.title': 'Problem Solving',
+            'svc.why.3.desc': 'A practical mindset for breaking down complex problems.',
+            'svc.why.4.title': 'Always Learning',
+            'svc.why.4.desc': 'Continuously improving my skills to bring modern approaches.',
+
+            'svc.cta.titleA': 'Ready to start',
+            'svc.cta.titleB': 'a project?',
+            'svc.cta.desc': "Tell me what you need — I'll get back to you as soon as possible.",
+            'svc.cta.contact': 'Contact Me',
+            'svc.cta.projects': 'View Projects',
+
+            /* ---------- ACHIEVEMENTS PAGE ---------- */
+            'ach.hero.label': '/ Achievements',
+            'ach.hero.titleA': 'Milestones &',
+            'ach.hero.titleB': 'Moments That Matter.',
+            'ach.hero.desc': 'A growing record of my academic, project, training, leadership, and technical achievements — updated as I continue to grow.',
+            'ach.hero.stat.projects': 'Projects Built',
+            'ach.hero.stat.exp': 'Experiences',
+            'ach.hero.stat.categories': 'Categories',
+
+            'ach.filter.all': 'All',
+            'ach.filter.academic': 'Academic',
+            'ach.filter.project': 'Project',
+            'ach.filter.training': 'Training',
+            'ach.filter.leadership': 'Leadership',
+            'ach.filter.technical': 'Technical',
+
+            'ach.card.featured': 'Milestone',
+
+            'ach.card.1.title': 'Admitted to Bachelor of Information Technology',
+            'ach.card.1.desc': 'Successfully progressed into the Bachelor of Information Technology (B.IT) program at Zanzibar University.',
+            'ach.card.1.place': 'Zanzibar University',
+
+            'ach.card.2.title': 'Completed Diploma in Information Technology',
+            'ach.card.2.desc': 'Successfully completed foundational IT studies with practical exposure to programming, databases, and information systems.',
+            'ach.card.2.place': 'Zanzibar University',
+
+            'ach.card.3.title': 'Developed CleanSpark — Cleaning Service Management System',
+            'ach.card.3.desc': 'Designed and built a full-stack cleaning service management system from real-world observation of challenges in a Zanzibar cleaning company.',
+            'ach.card.3.tag': 'Full-Stack',
+
+            'ach.card.4.title': 'Developed LAMS — Local Administration Management System',
+            'ach.card.4.desc': 'Designed and developed a full-stack local administration management system connecting citizens with ward administration for services, payments, and documents.',
+            'ach.card.4.tag': 'Full-Stack',
+
+            'ach.card.5.title': 'Completed Field Placement at ICE',
+            'ach.card.5.desc': 'Successfully completed ~5 weeks of practical field placement working on software development and general IT support activities.',
+            'ach.card.5.place': 'Zanzibar',
+
+            'ach.card.6.title': 'Completed 2-Month Internship at Nyota Tech Hub',
+            'ach.card.6.desc': 'Completed a 2-month field placement internship at Nyota Tech Hub, a technology innovation hub in Zanzibar.',
+            'ach.card.6.period': '2 Months',
+
+            'ach.card.7.title': 'Public Speaking & Teaching',
+            'ach.card.7.desc': 'Developed strong public speaking and teaching abilities through presentations, knowledge sharing, and helping peers learn technical topics.',
+            'ach.card.7.tag': 'Ongoing',
+
+            'ach.card.8.title': 'Managerial & Teamwork Experience',
+            'ach.card.8.desc': 'Built practical managerial, teamwork, and customer service skills through office administration roles in Zanzibar.',
+            'ach.card.8.tag': 'Office Roles',
+
+            'ach.card.9.title': 'Full-Stack Development Proficiency',
+            'ach.card.9.desc': 'Built working knowledge across the full stack — HTML, CSS, JavaScript, Node.js, Express, MySQL — through hands-on project work.',
+            'ach.card.9.tag': 'Full-Stack',
+
+            'ach.card.10.title': 'Database Design & Management',
+            'ach.card.10.desc': 'Designed and managed relational databases with MySQL, MariaDB, and SQL for real application projects.',
+
+            'ach.card.11.title': 'Networking & IT Support',
+            'ach.card.11.desc': 'Gained practical experience in computer networking, Cisco-related tasks, Windows support, and general IT administration.',
+
+            'ach.highlights.label': '/ Highlights',
+            'ach.highlights.titleA': 'Key',
+            'ach.highlights.titleB': 'Highlights',
+            'ach.highlights.1': 'Major full-stack projects built',
+            'ach.highlights.2': 'Work & field placements completed',
+            'ach.highlights.3': 'Levels of education completed',
+            'ach.highlights.4': 'Technologies in active use',
+
+            'ach.note.title': 'This page is continuously growing',
+            'ach.note.desc': "I'm actively working on new projects, training, and certifications. As new milestones are reached, this page will be updated to reflect them honestly.",
+
+            'ach.cta.titleA': 'Want to be part',
+            'ach.cta.titleB': 'of the next milestone?',
+            'ach.cta.desc': "Let's talk about how I can contribute to your team or project.",
+            'ach.cta.contact': 'Contact Me',
+            'ach.cta.projects': 'View Projects',
+
+            /* ---------- CONTACT PAGE ---------- */
+            'contact.hero.label': '/ Contact',
+            'contact.hero.titleA': "Let's Build Something",
+            'contact.hero.titleB': 'Meaningful Together.',
+            'contact.hero.desc': "Have a project, an opportunity, or just want to say hello? I'm always happy to connect. Reach out through any channel below.",
+            'contact.hero.status': 'Currently open to opportunities',
+
+            'contact.info.email': 'Email',
+            'contact.info.emailHint': 'Click to send an email',
+            'contact.info.phone': 'Phone',
+            'contact.info.phoneHint': 'Click to call',
+            'contact.info.whatsapp': 'WhatsApp',
+            'contact.info.whatsappHint': 'Click to chat on WhatsApp',
+            'contact.info.location': 'Location',
+
+            'contact.form.label': '/ 01 — Send a Message',
+            'contact.form.titleA': "Let's start a",
+            'contact.form.titleB': 'conversation.',
+            'contact.form.desc': "Fill in the form and I'll get back to you as soon as possible. You can also email me directly at the address on the side.",
+            'contact.form.bullet1': 'Quick response time',
+            'contact.form.bullet2': 'Open to freelance and full-time',
+            'contact.form.bullet3': 'Based in Zanzibar — remote friendly',
+            'contact.form.note': 'This form opens your email app with the message pre-filled — there is no server involved, and nothing is sent automatically.',
+
+            'contact.form.name': 'Your Name',
+            'contact.form.namePlaceholder': 'John Doe',
+            'contact.form.email': 'Your Email',
+            'contact.form.emailPlaceholder': 'you@example.com',
+            'contact.form.subject': 'Subject',
+            'contact.form.subjectPlaceholder': 'Project Inquiry',
+            'contact.form.message': 'Message',
+            'contact.form.messagePlaceholder': 'Tell me about your project or message…',
+            'contact.form.submit': 'Send Message',
+            'contact.form.reset': 'Reset',
+
+            'contact.form.err.nameRequired': 'Please enter your name',
+            'contact.form.err.nameShort': 'Name is too short',
+            'contact.form.err.emailRequired': 'Please enter your email',
+            'contact.form.err.emailInvalid': 'Please enter a valid email',
+            'contact.form.err.subjectRequired': 'Please enter a subject',
+            'contact.form.err.subjectShort': 'Subject is too short',
+            'contact.form.err.messageRequired': 'Please enter a message',
+            'contact.form.err.messageShort': 'Message is too short (min 10 characters)',
+            'contact.form.err.fixErrors': 'Please fix the errors above before submitting.',
+            'contact.form.success': 'Opening your email app — please review and send the message.',
+
+            'contact.social.label': '/ 02 — Social',
+            'contact.social.titleA': 'Find Me',
+            'contact.social.titleB': 'Online',
+            'contact.social.desc': 'Connect with me on the platforms I actually use.',
+
+            'contact.faq.label': '/ 03 — FAQ',
+            'contact.faq.titleA': 'Frequently',
+            'contact.faq.titleB': 'Asked',
+            'contact.faq.1.q': 'Are you available for freelance work?',
+            'contact.faq.1.a': "Yes — I'm open to freelance projects in web development, database work, and IT support. Reach out with your project details.",
+            'contact.faq.2.q': 'Do you work remotely?',
+            'contact.faq.2.a': "Yes. I'm based in Zanzibar but can collaborate remotely with clients and teams anywhere.",
+            'contact.faq.3.q': 'What kind of projects do you take on?',
+            'contact.faq.3.a': 'Web applications, information systems, database design, and IT support. I focus on practical solutions that solve real problems.',
+            'contact.faq.4.q': 'How long does a typical project take?',
+            'contact.faq.4.a': "Depends on scope. Small websites can take 1–2 weeks; larger systems take longer. We'll agree on a clear timeline before starting.",
+
+            'contact.cta.titleA': 'Prefer a direct',
+            'contact.cta.titleB': 'message?',
+            'contact.cta.desc': 'Skip the form — email or WhatsApp me directly.',
+            'contact.cta.whatsapp': 'Chat on WhatsApp',
+
+            'contact.social.copy': 'Copy',
+            'contact.social.copied': 'Copied!',
+            'contact.social.copyId': 'Copy ID',
+            'contact.wechat.title': 'Scan to add me on WeChat',
+            'contact.wechat.subtitle': 'Open WeChat on your phone and scan this QR code.',
+            'contact.wechat.idLabel': 'WeChat ID',
+            'contact.wechat.hint': "Can't scan? Just add my WeChat ID manually.",
+
+            /* ---------- 404 PAGE ---------- */
+            'e404.label': '/ Error 404',
+            'e404.titleA': 'This page has',
+            'e404.titleB': 'vanished.',
+            'e404.desc': "The page you're looking for doesn't exist, was moved, or is temporarily unavailable. Let's get you back on track.",
+            'e404.home': 'Back to Home',
+            'e404.contact': 'Contact Me',
+            'e404.quickLabel': 'Quick Links'
+        },
+
+        sw: {
+            /* ---------- GLOBAL ---------- */
+            'brand.sub': 'Msanidi Programu Kamili',
+
+            /* ---------- MENU ---------- */
+            'menu.home': 'Nyumbani',
+            'menu.about': 'Kuhusu',
+            'menu.skills': 'Ujuzi',
+            'menu.experience': 'Uzoefu',
+            'menu.projects': 'Miradi',
+            'menu.certificates': 'Vyeti',
+            'menu.services': 'Huduma',
+            'menu.achievements': 'Mafanikio',
+            'menu.contact': 'Wasiliana',
+
+            /* ---------- MENU ASIDE ---------- */
+            'menu.aside.location': 'Mahali',
+            'menu.aside.email': 'Barua Pepe',
+            'menu.aside.availability': 'Upatikanaji',
+            'menu.aside.socials': 'Mitandao',
+            'menu.aside.open': 'Niko tayari kwa fursa',
+
+            /* ---------- HERO ---------- */
+            'hero.tagline': 'Napatikana Zanzibar, Tanzania',
+            'hero.roleStatic': 'Mimi ni',
+            'hero.roles.0': 'Msanidi Programu Kamili',
+            'hero.roles.1': 'Mwanafunzi wa IT',
+            'hero.roles.2': 'Mpenda Teknolojia',
+            'hero.roles.3': 'Mtatua Matatizo',
+            'hero.desc': 'Ninatengeneza suluhisho za kidijitali zenye matumizi kwa kutumia teknolojia, ubunifu, na utatuzi wa matatizo — kutoka Zanzibar hadi duniani.',
+            'hero.cta.primary': 'Angalia Kazi Zangu',
+            'hero.cta.secondary': 'Pakua CV',
+            'hero.stats.projects': 'Miradi Mikubwa',
+            'hero.stats.technologies': 'Teknolojia',
+            'hero.stats.experiences': 'Uzoefu wa Kazi',
+            'hero.profile': 'Wasifu',
+            'hero.badge': 'Napatikana',
+            'hero.scroll': 'Sogeza',
+
+            /* ---------- MARQUEE ---------- */
+            'marquee.1': 'UENDELEZAJI KAMILI',
+            'marquee.2': 'USANIFU WA DATA',
+            'marquee.3': 'API ZA REST',
+            'marquee.4': 'MSAADA WA IT',
+            'marquee.5': 'MITANDAO',
+            'marquee.6': 'UTATUZI WA MATATIZO',
+
+            /* ---------- FEATURED ---------- */
+            'featured.label': '/ 01 — Kazi Zilizochaguliwa',
+            'featured.titleA': 'Miradi',
+            'featured.titleB': 'Iliyoangaziwa',
+            'featured.desc': "Mifumo ya vitendo iliyojengwa kutatua matatizo halisi katika muktadha wa Zanzibar.",
+            'featured.cta': 'Ona Miradi Yote',
+            'project.view': 'Ona Mradi',
+            'project.meta.fullstack': 'Kamili',
+            'project.cleanspark.tag': 'Usimamizi wa Huduma za Usafi',
+            'project.cleanspark.desc': 'Mfumo wa usimamizi wa huduma za usafi unaobadilisha wateja, uhifadhi, wafanyakazi, malipo, ratiba, na utawala kuwa wa kidijitali.',
+            'project.lams.tag': 'Usimamizi wa Utawala wa Mitaa',
+            'project.lams.desc': 'Mfumo wa usimamizi wa utawala wa mitaa unaounganisha wananchi na utawala wa kata kwa huduma, malipo, na nyaraka.',
+
+            /* ---------- QUICK ABOUT ---------- */
+            'quickabout.label': '/ 02 — Kuhusu',
+            'quickabout.titleA': 'Kujenga',
+            'quickabout.titleB': 'suluhisho',
+            'quickabout.titleC': 'za kidijitali zenye matumizi kutoka Zanzibar.',
+            'quickabout.desc': "Mimi ni Mudrik Mohamed Othman — mwanafunzi wa IT na msanidi programu kamili anayesoma Shahada ya Teknolojia ya Habari katika Chuo Kikuu cha Zanzibar. Ninabuni na kutengeneza mifumo ya kisasa ya wavuti, hifadhidata, na suluhisho za kidijitali zinazotatua matatizo ya ulimwengu wa kweli.",
+            'quickabout.link': 'Zaidi Kunihusu',
+
+            /* ---------- CTA ---------- */
+            'cta.label': '/ 03 — Wasiliana Nami',
+            'cta.titleA': 'Tujenge kitu',
+            'cta.titleB': 'chenye maana',
+            'cta.contact': 'Wasiliana Nami',
+
+            /* ---------- FOOTER ---------- */
+            'footer.copy': 'Imejengwa kwa upendo Zanzibar.',
+
+            /* ---------- ABOUT PAGE ---------- */
+            'about.hero.label': '/ Kunihusu',
+            'about.hero.titleA': 'Mwanafunzi wa IT mwenye Shauku',
+            'about.hero.titleB': 'Ninatengeneza Suluhisho',
+            'about.hero.titleC': 'za Kidijitali za Vitendo.',
+            'about.hero.desc': 'Habari! Mimi ni Mudrik Mohamed Othman (anayejulikana kama DAU) — mwanafunzi wa IT na msanidi programu kamili anayesoma Shahada ya Teknolojia ya Habari katika Chuo Kikuu cha Zanzibar.',
+            'about.hero.location': 'Maungani / Kombeni, Zanzibar',
+            'about.hero.education': 'B.IT — Chuo Kikuu cha Zanzibar',
+            'about.hero.status': 'Niko tayari kwa fursa',
+            'about.hero.cta.cv': 'Pakua CV',
+            'about.hero.cta.contact': 'Wasiliana Nami',
+            'about.hero.profile': 'Wasifu',
+            'about.hero.badge1': 'Kamili',
+            'about.hero.badge2': 'Mwanafunzi wa B.IT',
+
+            'about.bio.label': '/ 01 — Wasifu',
+            'about.bio.headingA': 'Hadithi',
+            'about.bio.headingB': 'Yangu',
+            'about.bio.p1': 'Safari yangu katika teknolojia imekua kupitia masomo ya kitaaluma, miradi ya vitendo, na uzoefu wa moja kwa moja katika IT na ukuzaji wa programu. Ninapenda kubuni na kutengeneza mifumo ya kisasa ya wavuti, hifadhidata, na suluhisho za kidijitali zinazotatua matatizo ya ulimwengu wa kweli.',
+            'about.bio.p2': 'Maslahi yangu ni pamoja na ukuzaji kamili, usimamizi wa hifadhidata, mitandao, usalama wa mtandao, na mifumo ya habari.',
+            'about.bio.p3': 'Zaidi ya ukuzaji wa kiufundi, nina ujuzi mkubwa wa mawasiliano, kuzungumza hadharani, kutatua matatizo, kufundisha, kufanya kazi kwa pamoja, na ujuzi wa usimamizi. Ninapenda kujifunza teknolojia mpya, kushiriki maarifa na wengine, na kubadilisha mawazo kuwa suluhisho za kidijitali za vitendo na rahisi kutumia.',
+            'about.bio.p4': 'Nje ya teknolojia, ninapenda mpira wa miguu na michezo ya video.',
+
+            'about.info.label': '/ 02 — Taarifa za Kibinafsi',
+            'about.info.titleA': 'Ukurasa',
+            'about.info.titleB': 'wa Haraka',
+            'about.info.birthday': 'Siku ya Kuzaliwa',
+            'about.info.location': 'Mahali',
+            'about.info.education': 'Elimu',
+            'about.info.email': 'Barua Pepe',
+            'about.info.phone': 'Simu',
+            'about.info.hobbies': 'Burudani',
+            'about.info.hobbiesValue': 'Mpira wa Miguu, Michezo ya Video',
+
+            'about.edu.label': '/ 03 — Elimu',
+            'about.edu.titleA': 'Usuli',
+            'about.edu.titleB': 'wa Kitaaluma',
+            'about.edu.badge.current': 'Sasa',
+            'about.edu.bachelor.title': 'Shahada ya Teknolojia ya Habari',
+            'about.edu.bachelor.school': 'Chuo Kikuu cha Zanzibar',
+            'about.edu.bachelor.desc': 'Shahada ya Teknolojia ya Habari (B.IT) — inaendelea.',
+            'about.edu.diploma.title': 'Diploma ya Teknolojia ya Habari',
+            'about.edu.diploma.school': 'Chuo Kikuu cha Zanzibar',
+            'about.edu.diploma.desc': 'Masomo ya msingi ya IT yenye mfiduo wa vitendo kwa programu, hifadhidata, na mifumo.',
+            'about.edu.highschool.title': 'Elimu ya Sekondari ya Juu',
+            'about.edu.highschool.school': 'Zanzibar, Tanzania',
+            'about.edu.highschool.desc': 'Mkondo wa Sayansi — Hisabati, Fizikia, na Sayansi ya Kompyuta.',
+
+            'about.interests.label': '/ 04 — Maslahi ya Kiufundi',
+            'about.interests.titleA': 'Ninachopenda',
+            'about.interests.titleB': 'Kuchunguza',
+            'about.interests.desc': 'Maeneo ya teknolojia ninayochunguza, kusoma, na kujenga nayo.',
+            'about.interests.1.title': 'Ukuzaji Kamili',
+            'about.interests.1.desc': 'Kujenga programu za kisasa za wavuti kwa HTML, CSS, JavaScript, Node.js, Express, na MySQL.',
+            'about.interests.2.title': 'Usimamizi wa Hifadhidata',
+            'about.interests.2.desc': 'Kubuni na kusimamia hifadhidata za uhusiano kwa MySQL, SQL, na MariaDB.',
+            'about.interests.3.title': 'Mitandao',
+            'about.interests.3.desc': 'Misingi ya mitandao ya kompyuta, Cisco, usanidi, na utatuzi wa matatizo.',
+            'about.interests.4.title': 'Usalama wa Mtandao',
+            'about.interests.4.desc': 'Usalama wa Linux, usalama wa mtandao, maabara za usalama, na OSINT — kama mwanafunzi hai.',
+            'about.interests.5.title': 'Mifumo ya Habari',
+            'about.interests.5.desc': 'Kubuni mifumo ya habari ya vitendo kwa matatizo halisi ya ndani na ya kitaasisi.',
+            'about.interests.6.title': 'Msaada wa IT',
+            'about.interests.6.desc': 'Msaada wa Windows, Microsoft Office, utawala wa jumla wa IT, na utatuzi wa kiufundi.',
+
+            'about.skills.label': '/ 05 — Ujuzi wa Kitaaluma',
+            'about.skills.titleA': 'Zaidi ya',
+            'about.skills.titleB': 'Programu',
+            'about.skills.1': 'Mawasiliano',
+            'about.skills.2': 'Kuzungumza Hadharani',
+            'about.skills.3': 'Kutatua Matatizo',
+            'about.skills.4': 'Kufundisha',
+            'about.skills.5': 'Kufanya Kazi kwa Pamoja',
+            'about.skills.6': 'Ujuzi wa Usimamizi',
+            'about.skills.7': 'Uongozi',
+            'about.skills.8': 'Kujifunza Teknolojia Mpya',
+
+            'about.cta.titleA': 'Unataka kuona',
+            'about.cta.titleB': 'nilichojenga?',
+            'about.cta.desc': 'Chunguza miradi yangu na uzoefu, au wasiliana nami moja kwa moja.',
+            'about.cta.projects': 'Ona Miradi',
+            'about.cta.contact': 'Wasiliana Nami',
+
+            /* ---------- SKILLS PAGE ---------- */
+            'skills.hero.label': '/ Ujuzi Wangu',
+            'skills.hero.titleA': 'Zana,',
+            'skills.hero.titleB': 'Teknolojia',
+            'skills.hero.titleC': '& Ujuzi Ninaotumia.',
+            'skills.hero.desc': 'Muhtasari wa vitendo wa teknolojia, zana, na uwezo wa kitaaluma ninaotumia kubuni, kujenga, na kusimamia suluhisho za kidijitali.',
+            'skills.hero.stat.tech': 'Teknolojia',
+            'skills.hero.stat.categories': 'Makundi',
+            'skills.hero.stat.soft': 'Ujuzi wa Kawaida',
+            'skills.hero.coreLabel': 'Teknolojia',
+
+            'skills.cats.label': '/ 01 — Makundi',
+            'skills.cats.titleA': 'Ustadi wa',
+            'skills.cats.titleB': 'Kiufundi',
+            'skills.cats.desc': 'Makundi ya ujuzi yaliyopangwa kulingana na uzoefu wangu halisi. Viwango ni vya kujitathmini — sio vipimo vya kweli.',
+
+            'skills.cat1.title': 'Ukuzaji wa Wavuti',
+            'skills.cat2.title': 'Upande wa Nyuma',
+            'skills.cat3.title': 'Hifadhidata',
+            'skills.cat4.title': 'Zana za Programu',
+            'skills.cat5.title': 'Mifumo ya Uendeshaji',
+            'skills.cat6.title': 'Mitandao',
+            'skills.cat6.item1': 'Mitandao ya Kompyuta',
+            'skills.cat6.item2': 'Usanidi wa Mtandao',
+
+            'skills.level.advanced': 'Juu',
+            'skills.level.intermediate': 'Kati',
+            'skills.level.learning': 'Kujifunza',
+
+            'skills.stack.label': '/ 02 — Teknolojia',
+            'skills.stack.titleA': 'Sanduku',
+            'skills.stack.titleB': 'Langu la Zana',
+            'skills.stack.desc': 'Teknolojia ninazotumia kila siku katika miradi yangu.',
+
+            'skills.soft.label': '/ 03 — Ujuzi wa Kitaaluma',
+            'skills.soft.titleA': 'Zaidi ya',
+            'skills.soft.titleB': 'Programu',
+            'skills.soft.desc': 'Uwezo usio wa kiufundi unaonifanya kuwa mzuri katika mazingira ya kweli.',
+            'skills.soft.1.desc': 'Mawasiliano wazi na yenye ufanisi na wenzake, wateja, na watumiaji.',
+            'skills.soft.2.desc': 'Uwasilishaji wa kujiamini wa mawazo, miradi, na dhana za kiufundi.',
+            'skills.soft.3.desc': 'Kugawanya matatizo magumu na kupata suluhisho za vitendo.',
+            'skills.soft.4.desc': 'Kushiriki maarifa na kusaidia wengine kuelewa mada za kiufundi.',
+            'skills.soft.5.desc': 'Kushirikiana kwa ufanisi katika mazingira ya timu na miradi ya kikundi.',
+            'skills.soft.6.desc': 'Kupanga kazi, kusimamia vipaumbele, na kusaidia juhudi za timu.',
+            'skills.soft.7.desc': 'Kuchukua hatua na kuongoza miradi kuelekea matokeo yenye mafanikio.',
+            'skills.soft.8.desc': 'Kuchunguza zana na mifumo mipya kila wakati ili kubaki wa kisasa.',
+
+            'skills.learning.label': '/ 04 — Ninachojifunza Sasa',
+            'skills.learning.titleA': 'Daima',
+            'skills.learning.titleB': 'Kukua',
+            'skills.learning.desc': 'Ujuzi na maeneo ninayosoma na kuboresha kwa bidii sasa hivi.',
+            'skills.learning.1.title': 'Misingi ya Usalama wa Mtandao',
+            'skills.learning.1.desc': 'Usalama wa Linux, usalama wa mtandao, maabara za usalama, na mbinu za OSINT.',
+            'skills.learning.2.title': 'Mitandao ya Juu',
+            'skills.learning.2.desc': 'Usanidi wa Cisco, kugawanya subneti, uelekezaji, na kubadilisha.',
+            'skills.learning.3.title': 'Usanifu wa Upande wa Nyuma',
+            'skills.learning.3.desc': 'Usanifu wa API unaoweza kupanuka, mifumo ya uthibitishaji, na muundo safi wa msimbo.',
+
+            'skills.cta.titleA': 'Unataka kuona ujuzi',
+            'skills.cta.titleB': 'huku ukitenda kazi?',
+            'skills.cta.desc': 'Chunguza miradi yangu au wasiliana nami kujadili fursa.',
+            'skills.cta.projects': 'Ona Miradi',
+            'skills.cta.contact': 'Wasiliana Nami',
+
+            /* ---------- EXPERIENCE PAGE ---------- */
+            'exp.hero.label': '/ Uzoefu & Elimu',
+            'exp.hero.titleA': 'Safari Yangu',
+            'exp.hero.titleB': 'ya Kitaaluma',
+            'exp.hero.titleC': ' & Ukuaji.',
+            'exp.hero.desc': 'Ratiba ya uzoefu wangu wa kitaaluma, nafasi za kazi za vitendo, na usuli wa kitaaluma — kutoka ofisi za Zanzibar hadi kumbi za mihadhara za Chuo Kikuu cha Zanzibar.',
+            'exp.hero.stat.exp': 'Uzoefu',
+            'exp.hero.stat.edu': 'Elimu',
+            'exp.hero.stat.years': 'Miaka ya Kujifunza',
+
+            'exp.pro.label': '/ 01 — Uzoefu wa Kitaaluma',
+            'exp.pro.titleA': 'Mahali',
+            'exp.pro.titleB': 'Nilipofanya Kazi',
+
+            'exp.badge.current': 'Hivi Sasa',
+            'exp.badge.role': 'Msaidizi wa Ofisi',
+            'exp.badge.diploma': 'Diploma',
+            'exp.badge.secondary': 'Sekondari',
+            'exp.badge.intern': 'Mwanafunzi wa Kazi',
+            'exp.nyota.title': 'Shirika la Nyota Tech Hub',
+            'exp.nyota.location': 'Kiembe Samaki, Zanzibar',
+            'exp.nyota.period': 'Miezi 2',
+            'exp.nyota.desc': 'Mafunzo ya vitendo katika Nyota Tech Hub — kituo cha uvumbuzi wa teknolojia Zanzibar — ambapo nilifanya kazi kwenye miradi inayohusiana na teknolojia na kupata uzoefu wa vitendo katika mazingira ya ushirikiano ya teknolojia.',
+            'exp.nyota.act1': 'Nilifanya kazi kwenye miradi ya teknolojia na uvumbuzi',
+            'exp.nyota.act2': 'Nilishirikiana na timu za teknolojia na wakufunzi',
+            'exp.nyota.act3': 'Nilitumia ujuzi wa programu na IT katika mazingira halisi ya kituo',
+            'exp.nyota.act4': 'Nilipata uzoefu wa vitendo katika mfumo wa teknolojia wa Zanzibar',
+            'exp.responsibilities': 'Shughuli Muhimu',
+            'exp.skillsGained': 'Ujuzi Uliopatikana',
+
+            'exp.ice.title': 'ICE — Mafunzo ya Vitendo',
+            'exp.ice.location': 'Zanzibar',
+            'exp.ice.desc': 'Mafunzo ya vitendo ya kufanya kazi kwenye ukuzaji wa programu na shughuli za jumla za msaada wa IT, ikiwa ni pamoja na ukuzaji wa mbele, nyuma, hifadhidata, na utawala wa IT.',
+            'exp.ice.act1': 'Nilifanya kazi kwenye mradi wa CleanSpark (mbele, nyuma, hifadhidata)',
+            'exp.ice.act2': 'Msaada wa utawala wa IT',
+            'exp.ice.act3': 'Msaada wa Windows 11 na Microsoft Office',
+            'exp.ice.act4': 'Kazi za mitandao na Cisco',
+            'exp.ice.act5': 'Nilitumia VS Code, XAMPP, na zana za mfumo/hifadhidata',
+
+            'exp.zan.title': 'Zan Drive Car Rental',
+            'exp.zan.location': 'Kilimani, Zanzibar',
+            'exp.zan.desc': 'Wajibu wa msaidizi wa ofisi na majukumu yanayohusiana na IT, kusaidia shughuli za kila siku za ofisi na kazi za teknolojia.',
+
+            'exp.wb.title': 'White Bird Cleaning Company',
+            'exp.wb.location': 'Mlandege, Zanzibar',
+            'exp.wb.desc': 'Wajibu wa msaada wa ofisi unaojumuisha kazi za kiutawala, nyaraka, mawasiliano, mwingiliano wa wateja, na kuangalia/kusaidia kazi zinazohusiana na teknolojia. Uzoefu huu uliongoza maendeleo ya mfumo wa CleanSpark.',
+            'exp.wb.skill1': 'Mawasiliano na mwingiliano wa wateja',
+            'exp.wb.skill2': 'Utawala wa ofisi',
+            'exp.wb.skill3': 'Nyaraka na utatuzi wa matatizo',
+            'exp.wb.skill4': 'Kufanya kazi kwa pamoja na msaada wa usimamizi',
+
+            'exp.edu.label': '/ 02 — Elimu',
+            'exp.edu.titleA': 'Usuli',
+            'exp.edu.titleB': 'wa Kitaaluma',
+
+            'exp.edu.bachelor.title': 'Shahada ya Teknolojia ya Habari (B.IT)',
+            'exp.edu.bachelor.school': 'Chuo Kikuu cha Zanzibar',
+            'exp.edu.bachelor.desc': 'Hivi sasa ninasoma Shahada ya Teknolojia ya Habari katika Chuo Kikuu cha Zanzibar, nikilenga ukuzaji kamili, usimamizi wa hifadhidata, mitandao, na mifumo ya habari.',
+
+            'exp.edu.diploma.title': 'Diploma ya Teknolojia ya Habari',
+            'exp.edu.diploma.school': 'Chuo Kikuu cha Zanzibar',
+            'exp.edu.diploma.desc': 'Masomo ya msingi ya IT yenye mfiduo wa vitendo kwa programu, hifadhidata, na mifumo ya habari.',
+
+            'exp.edu.hs.title': 'Elimu ya Sekondari ya Juu',
+            'exp.edu.hs.school': 'Zanzibar, Tanzania',
+            'exp.edu.hs.period': 'Imekamilika',
+            'exp.edu.hs.desc': 'Mkondo wa Sayansi ukilenga Hisabati, Fizikia, na Sayansi ya Kompyuta. Elimu hii ilikuza kufikiri kwa uchanganuzi na ujuzi wa kutatua matatizo na kutoa msingi wa masomo zaidi katika Teknolojia ya Habari.',
+
+            'exp.cta.titleA': 'Unataka picha',
+            'exp.cta.titleB': 'kamili?',
+            'exp.cta.desc': 'Pakua CV yangu au wasiliana nami kujadili fursa.',
+            'exp.cta.cv': 'Pakua CV',
+            'exp.cta.contact': 'Wasiliana Nami',
+
+            /* ---------- PROJECTS PAGE ---------- */
+            'proj.hero.label': '/ Kazi Zilizochaguliwa',
+            'proj.hero.titleA': 'Miradi Iliyojengwa',
+            'proj.hero.titleB': 'Kutatua Matatizo Halisi.',
+            'proj.hero.desc': 'Programu kamili za wavuti zilizoundwa na kutengenezwa kwa teknolojia za kisasa, zikilenga matatizo halisi katika muktadha wa Zanzibar.',
+            'proj.hero.stat.major': 'Miradi Mikubwa',
+            'proj.hero.stat.tech': 'Teknolojia',
+            'proj.hero.stat.domains': 'Nyanja',
+
+            'proj.filter.all': 'Miradi Yote',
+            'proj.filter.fullstack': 'Kamili',
+            'proj.filter.web': 'Mifumo ya Wavuti',
+            'proj.filter.local': 'Muktadha wa Ndani',
+
+            'proj.card.details': 'Ona Maelezo',
+            'proj.card.demo': 'Onyesho la Moja kwa Moja',
+            'proj.modal.close': 'Funga',
+
+            'proj.modal.about.label': 'Kuhusu mradi huu',
+            'proj.modal.features.label': 'Vipengele Vikuu',
+            'proj.modal.workflow.label': 'Mtiririko Mkuu',
+            'proj.modal.tech.label': 'Teknolojia Zilizotumika',
+            'proj.modal.role.label': 'Jukumu Langu',
+
+            'project.workflow.customer': 'Mteja',
+            'project.workflow.booking': 'Uhifadhi',
+            'project.workflow.admin': 'Msimamizi',
+            'project.workflow.staff': 'Wafanyakazi',
+            'project.workflow.service': 'Huduma',
+            'project.workflow.payment': 'Malipo',
+            'project.workflow.report': 'Ripoti',
+            'project.workflow.citizen': 'Mwananchi',
+            'project.workflow.application': 'Maombi',
+            'project.workflow.document': 'Nyaraka',
+
+            /* CleanSpark modal */
+            'proj.modal.cleanspark.about.title': 'Mfumo wa Usimamizi wa Huduma za Usafi',
+            'proj.modal.cleanspark.about.p1': 'CleanSpark imeundwa kusaidia biashara za usafi kusimamia wateja, uhifadhi, wafanyakazi, huduma za usafi, malipo, ratiba, na shughuli za utawala kwa njia ya kidijitali.',
+            'proj.modal.cleanspark.about.p2': 'Wazo lilitokana na matatizo halisi yaliyoonekana wakati wa kufanya kazi katika mazingira ya kampuni ya usafi Zanzibar.',
+            'proj.modal.cleanspark.problem.title': 'Matatizo Yaliyoshughulikiwa',
+            'proj.modal.cleanspark.problem.1': 'Rekodi za wateja za mkono',
+            'proj.modal.cleanspark.problem.2': 'Ugumu wa kupanga ratiba za huduma',
+            'proj.modal.cleanspark.problem.3': 'Ufuatiliaji duni wa wafanyakazi',
+            'proj.modal.cleanspark.problem.4': 'Usimamizi wa malipo wa mkono',
+            'proj.modal.cleanspark.problem.5': 'Mawasiliano duni na ugumu wa kufuatilia uhifadhi',
+            'proj.modal.cleanspark.solution.title': 'Suluhisho',
+            'proj.modal.cleanspark.solution.1': 'Usimamizi wa kidijitali wa wateja na uhifadhi',
+            'proj.modal.cleanspark.solution.2': 'Kupanga ratiba na kugawa wafanyakazi kiotomatiki',
+            'proj.modal.cleanspark.solution.3': 'Ufuatiliaji wa malipo ya kidijitali (M-Pesa, Airtel Money, HaloPesa, Azam Pay, Kadi)',
+            'proj.modal.cleanspark.solution.4': 'Ufuatiliaji wa hali ya huduma na uthibitisho wa msimamizi',
+            'proj.modal.cleanspark.solution.5': 'Ripoti na dashibodi za kiutawala',
+            'proj.modal.cleanspark.features.title': 'Kile Mfumo Unafanya',
+            'proj.modal.cleanspark.features.1': 'Usajili wa wateja, kuingia, na usimamizi wa akaunti',
+            'proj.modal.cleanspark.features.2': 'Kuvinjari na kuchagua huduma za usafi (Unguja, Pemba, Zote)',
+            'proj.modal.cleanspark.features.3': 'Kufanya na kufuatilia uhifadhi; kuona, kupakua, na kushiriki nukuu',
+            'proj.modal.cleanspark.features.4': 'Mtiririko wa maombi ya kazi ya wafanyakazi na upakiaji wa CV, kitambulisho, na nyaraka',
+            'proj.modal.cleanspark.features.5': 'Ugawaji wa kiotomatiki wa msafishaji na msimamizi baada ya malipo',
+            'proj.modal.cleanspark.features.6': 'Msimamizi anathibitisha kuwasili, kuanza huduma, na kukamilika',
+            'proj.modal.cleanspark.role.value': 'Nilibuni na kutengeneza mfumo kamili — mbele, nyuma, na hifadhidata — kama mradi kamili.',
+
+            /* LAMS modal */
+            'proj.modal.lams.about.title': 'Mfumo wa Usimamizi wa Utawala wa Mitaa',
+            'proj.modal.lams.about.p1': 'LAMS ni mfumo wa usimamizi wa utawala wa mitaa ulioundwa kwa usimamizi wa huduma za jamii Zanzibar. Unazingatia mwingiliano kati ya utawala wa mitaa na wananchi.',
+            'proj.modal.lams.about.p2': 'Mfumo unasimamia kidijitali huduma za utawala wa mitaa, wananchi, maombi, matangazo, malipo, nyaraka, na shughuli za kiutawala.',
+            'proj.modal.lams.problem.title': 'Matatizo Yaliyoshughulikiwa',
+            'proj.modal.lams.problem.1': 'Rekodi za wananchi za mkono',
+            'proj.modal.lams.problem.2': 'Ugumu wa kushughulikia maombi na nyaraka',
+            'proj.modal.lams.problem.3': 'Usindikaji wa malipo wa mkono',
+            'proj.modal.lams.problem.4': 'Mawasiliano duni kati ya wananchi na utawala',
+            'proj.modal.lams.problem.5': 'Hakuna mfumo wa kati kwa matangazo na usimamizi wa kata',
+            'proj.modal.lams.solution.title': 'Suluhisho',
+            'proj.modal.lams.solution.1': 'Usajili wa kidijitali na usimamizi wa wananchi',
+            'proj.modal.lams.solution.2': 'Mfumo wa kati wa maombi na malipo',
+            'proj.modal.lams.solution.3': 'Upakiaji na utoaji wa nyaraka baada ya uthibitisho wa malipo',
+            'proj.modal.lams.solution.4': 'Jukumu la Super Admin kwa uongozi wa muda wa kikomo',
+            'proj.modal.lams.solution.5': 'Uchujaji wa kata na usimamizi wa hali',
+            'proj.modal.lams.features.title': 'Kile Mfumo Unafanya',
+            'proj.modal.lams.features.1': 'Usajili wa wananchi, utafutaji, na usimamizi wa hali ya hai/kufa',
+            'proj.modal.lams.features.2': 'Dashibodi ya mwananchi: maombi, malipo, ujumbe, wasifu, nyaraka',
+            'proj.modal.lams.features.3': 'Mtiririko wa maombi na malipo na kitambulisho cha malipo kiotomatiki',
+            'proj.modal.lams.features.4': 'Kitufe cha Lipa Sasa kwa maombi yasiyolipwa; pakua PDF, shiriki, chapisha kwa yaliyolipwa',
+            'proj.modal.lams.features.5': 'Msimamizi anapakia nyaraka, picha, na PDF kuwatuma wananchi baada ya malipo',
+            'proj.modal.lams.features.6': 'Super Admin anasimamia wasimamizi wa kata na tarehe za kuanza/kumaliza na hali',
+            'proj.modal.lams.role.value': 'Nilibuni na kutengeneza mfumo kamili — mbele, nyuma, na hifadhidata — kama mradi kamili.',
+
+            'proj.cta.titleA': 'Una mradi',
+            'proj.cta.titleB': 'akilini?',
+            'proj.cta.desc': 'Tujadili jinsi tunaweza kujenga kitu chenye maana pamoja.',
+            'proj.cta.contact': 'Anza Mazungumzo',
+            'proj.cta.github': 'Ona kwenye GitHub',
+
+            /* ---------- CERTIFICATES PAGE ---------- */
+            'cert.hero.label': '/ Vyeti',
+            'cert.hero.titleA': 'Vyeti &',
+            'cert.hero.titleB': 'Mafanikio.',
+            'cert.hero.desc': 'Mkusanyiko wa vyeti vyangu vya kitaaluma, kiufundi, na mafunzo. Ukurasa huu utasasishwa kadri vyeti vipya vinapatikana.',
+            'cert.hero.stat.total': 'Jumla',
+            'cert.hero.stat.tech': 'Kiufundi',
+            'cert.hero.stat.academic': 'Kitaaluma',
+
+            'cert.filter.all': 'Zote',
+            'cert.filter.technical': 'Kiufundi',
+            'cert.filter.academic': 'Kitaaluma',
+            'cert.filter.training': 'Mafunzo',
+
+            'cert.empty.label': 'Inakuja Hivi Karibuni',
+            'cert.empty.title': 'Vyeti vinakuja.',
+            'cert.empty.desc': 'Hivi sasa ninafanya kazi ya kupata na kukusanya vyeti vya kitaalamu katika ukuzaji kamili, mitandao, usalama wa mtandao, na nyanja zinazohusiana. Ukurasa huu utasasishwa kadri vinapofika.',
+            'cert.empty.contact': 'Wasiliana Nami',
+            'cert.empty.projects': 'Ona Miradi',
+
+            'cert.modal.download': 'Pakua',
+            'cert.modal.close': 'Funga',
+
+            'cert.cta.titleA': 'Unatafuta mtu',
+            'cert.cta.titleB': 'aliyejitolea kukua?',
+            'cert.cta.desc': 'Ninaendelea kujifunza na kujenga. Tuzungumze kuhusu kile ninachoweza kuleta kwenye timu yako.',
+            'cert.cta.contact': 'Wasiliana',
+            'cert.cta.experience': 'Ona Uzoefu',
+
+            /* ---------- SERVICES PAGE ---------- */
+            'svc.hero.label': '/ Huduma',
+            'svc.hero.titleA': 'Ninachoweza',
+            'svc.hero.titleB': 'Kukujengea.',
+            'svc.hero.desc': 'Huduma za vitendo zinazotokana na ujuzi wangu halisi na uzoefu wa vitendo — kutoka ukuzaji wa wavuti hadi usanifu wa hifadhidata na msaada wa IT.',
+            'svc.hero.stat.services': 'Huduma',
+            'svc.hero.stat.categories': 'Makundi',
+            'svc.hero.stat.tech': 'Teknolojia',
+
+            'svc.filter.all': 'Huduma Zote',
+            'svc.filter.dev': 'Ukuzaji',
+            'svc.filter.data': 'Data na Hifadhidata',
+            'svc.filter.it': 'IT na Msaada',
+            'svc.filter.consult': 'Ushauri',
+
+            'svc.card.cta': 'Omba Huduma',
+
+            'svc.card.1.title': 'Ukuzaji wa Wavuti',
+            'svc.card.1.desc': 'Kujenga wavuti za kisasa zinazojibadilisha kwa kutumia HTML5, CSS3, JavaScript, na Bootstrap — zilizoundwa kuonekana vizuri kwenye kila kifaa.',
+
+            'svc.card.2.title': 'Ukuzaji Kamili',
+            'svc.card.2.desc': 'Ukuzaji wa programu za wavuti kutoka mwanzo hadi mwisho — kutoka UI ya mbele hadi API za nyuma na ujumuishaji wa hifadhidata.',
+
+            'svc.card.3.title': 'Ukuzaji wa Tovuti',
+            'svc.card.3.desc': 'Ujenzi kamili wa tovuti kwa matumizi ya kibinafsi, biashara, au shirika — kutoka dhana hadi utoaji.',
+
+            'svc.card.4.title': 'Ukuzaji wa Mfumo wa Habari',
+            'svc.card.4.desc': 'Mifumo maalum ya habari iliyoundwa kulingana na mtiririko wa biashara au shirika halisi.',
+
+            'svc.card.5.title': 'Ukuzaji wa Hifadhidata',
+            'svc.card.5.desc': 'Kubuni na kujenga miundo ya hifadhidata ya uhusiano kwa kutumia MySQL, MariaDB, na SQL — iliyoboreshwa kwa programu halisi.',
+
+            'svc.card.6.title': 'Usimamizi wa Hifadhidata',
+            'svc.card.6.desc': 'Kusimamia, kudumisha, na kuboresha hifadhidata — maswali, nakala rudufu, muundo, na utendaji.',
+
+            'svc.card.7.title': 'Msaada wa IT',
+            'svc.card.7.desc': 'Msaada wa Windows, Microsoft Office, utawala wa jumla wa IT, na utatuzi wa kiufundi wa kila siku.',
+
+            'svc.card.8.title': 'Msaada wa Mitandao',
+            'svc.card.8.desc': 'Usanidi wa msingi wa mtandao, kazi zinazohusiana na Cisco, na utatuzi wa matatizo ya mtandao.',
+
+            'svc.card.9.title': 'Ukuzaji wa Upande wa Nyuma na API',
+            'svc.card.9.desc': 'Ukuzaji wa API za REST kwa Node.js na Express — ikiwa ni pamoja na uthibitishaji, JWT, na ujumuishaji wa hifadhidata.',
+
+            'svc.card.10.title': 'Ushauri wa Kiufundi',
+            'svc.card.10.desc': 'Ushauri wa vitendo kuhusu miradi ya wavuti, hifadhidata, au mipangilio ya IT — kukusaidia kupanga mbinu sahihi.',
+
+            'svc.process.label': '/ 02 — Mchakato',
+            'svc.process.titleA': 'Jinsi',
+            'svc.process.titleB': 'Ninafanya Kazi',
+            'svc.process.desc': 'Mtiririko rahisi na wa uwazi kutoka mawasiliano ya kwanza hadi utoaji wa mwisho.',
+            'svc.process.1.title': 'Majadiliano',
+            'svc.process.1.desc': 'Tunazungumza kuhusu malengo yako, mahitaji, na jinsi mafanikio yanavyoonekana.',
+            'svc.process.2.title': 'Kupanga',
+            'svc.process.2.desc': 'Ninaandaa muundo, teknolojia, ratiba, na vitu vya kuwasilisha.',
+            'svc.process.3.title': 'Ukuzaji',
+            'svc.process.3.desc': 'Ninajenga suluhisho kwa msimbo safi, vipengele vilivyojaribiwa, na masasisho ya maendeleo ya wazi.',
+            'svc.process.4.title': 'Utoaji',
+            'svc.process.4.desc': 'Utoaji wa mwisho na nyaraka, msaada, na mwongozo wa baada ya kuzindua.',
+
+            'svc.why.label': '/ 03 — Kwa Nini Ufanye Nami Kazi',
+            'svc.why.titleA': 'Kile',
+            'svc.why.titleB': 'Unachopata',
+            'svc.why.1.title': 'Mwelekeo wa Vitendo',
+            'svc.why.1.desc': 'Suluhisho zilizojengwa kuzunguka matatizo halisi ya ulimwengu, sio nadharia.',
+            'svc.why.2.title': 'Mawasiliano Wazi',
+            'svc.why.2.desc': 'Masasisho ya mara kwa mara na mawasiliano ya wazi na ya uaminifu wakati wote.',
+            'svc.why.3.title': 'Kutatua Matatizo',
+            'svc.why.3.desc': 'Mtazamo wa vitendo wa kugawanya matatizo magumu.',
+            'svc.why.4.title': 'Kujifunza Daima',
+            'svc.why.4.desc': 'Kuboresha ujuzi wangu kila mara kuleta mbinu za kisasa.',
+
+            'svc.cta.titleA': 'Uko tayari kuanza',
+            'svc.cta.titleB': 'mradi?',
+            'svc.cta.desc': 'Niambie unahitaji nini — nitakujibu haraka iwezekanavyo.',
+            'svc.cta.contact': 'Wasiliana Nami',
+            'svc.cta.projects': 'Ona Miradi',
+
+            /* ---------- ACHIEVEMENTS PAGE ---------- */
+            'ach.hero.label': '/ Mafanikio',
+            'ach.hero.titleA': 'Hatua Muhimu &',
+            'ach.hero.titleB': 'Nyakati Muhimu.',
+            'ach.hero.desc': 'Rekodi inayokua ya mafanikio yangu ya kitaaluma, miradi, mafunzo, uongozi, na kiufundi — inasasishwa kadri ninaendelea kukua.',
+            'ach.hero.stat.projects': 'Miradi Iliyojengwa',
+            'ach.hero.stat.exp': 'Uzoefu',
+            'ach.hero.stat.categories': 'Makundi',
+
+            'ach.filter.all': 'Zote',
+            'ach.filter.academic': 'Kitaaluma',
+            'ach.filter.project': 'Mradi',
+            'ach.filter.training': 'Mafunzo',
+            'ach.filter.leadership': 'Uongozi',
+            'ach.filter.technical': 'Kiufundi',
+
+            'ach.card.featured': 'Hatua Muhimu',
+
+            'ach.card.1.title': 'Kukubaliwa katika Shahada ya Teknolojia ya Habari',
+            'ach.card.1.desc': 'Nilifanikiwa kuingia katika programu ya Shahada ya Teknolojia ya Habari (B.IT) katika Chuo Kikuu cha Zanzibar.',
+            'ach.card.1.place': 'Chuo Kikuu cha Zanzibar',
+
+            'ach.card.2.title': 'Kumaliza Diploma ya Teknolojia ya Habari',
+            'ach.card.2.desc': 'Nilikamilisha masomo ya msingi ya IT yenye mfiduo wa vitendo kwa programu, hifadhidata, na mifumo ya habari.',
+            'ach.card.2.place': 'Chuo Kikuu cha Zanzibar',
+
+            'ach.card.3.title': 'Kutengeneza CleanSpark — Mfumo wa Usimamizi wa Huduma za Usafi',
+            'ach.card.3.desc': 'Nilibuni na kutengeneza mfumo kamili wa usimamizi wa huduma za usafi kutokana na uchunguzi halisi wa changamoto katika kampuni ya usafi ya Zanzibar.',
+            'ach.card.3.tag': 'Kamili',
+
+            'ach.card.4.title': 'Kutengeneza LAMS — Mfumo wa Usimamizi wa Utawala wa Mitaa',
+            'ach.card.4.desc': 'Nilibuni na kutengeneza mfumo kamili wa usimamizi wa utawala wa mitaa unaounganisha wananchi na utawala wa kata kwa huduma, malipo, na nyaraka.',
+            'ach.card.4.tag': 'Kamili',
+
+            'ach.card.5.title': 'Kumaliza Mafunzo ya Vitendo katika ICE',
+            'ach.card.5.desc': 'Nilikamilisha wiki ~5 za mafunzo ya vitendo ya kufanya kazi kwenye ukuzaji wa programu na shughuli za jumla za msaada wa IT.',
+            'ach.card.5.place': 'Zanzibar',
+
+            'ach.card.6.title': 'Kumaliza Mafunzo ya Miezi 2 katika Nyota Tech Hub',
+            'ach.card.6.desc': 'Nilikamilisha mafunzo ya miezi 2 ya vitendo katika Nyota Tech Hub, kituo cha uvumbuzi wa teknolojia Zanzibar.',
+            'ach.card.6.period': 'Miezi 2',
+
+            'ach.card.7.title': 'Kuzungumza Hadharani na Kufundisha',
+            'ach.card.7.desc': 'Nilikuza uwezo mkubwa wa kuzungumza hadharani na kufundisha kupitia mawasilisho, kushiriki maarifa, na kusaidia wenzangu kujifunza mada za kiufundi.',
+            'ach.card.7.tag': 'Inaendelea',
+
+            'ach.card.8.title': 'Uzoefu wa Usimamizi na Kufanya Kazi kwa Pamoja',
+            'ach.card.8.desc': 'Nilijenga ujuzi wa vitendo wa usimamizi, kufanya kazi kwa pamoja, na huduma kwa wateja kupitia majukumu ya utawala wa ofisi Zanzibar.',
+            'ach.card.8.tag': 'Majukumu ya Ofisi',
+
+            'ach.card.9.title': 'Ustadi wa Ukuzaji Kamili',
+            'ach.card.9.desc': 'Nilijenga ujuzi wa kufanya kazi katika safu kamili — HTML, CSS, JavaScript, Node.js, Express, MySQL — kupitia kazi za vitendo za miradi.',
+            'ach.card.9.tag': 'Kamili',
+
+            'ach.card.10.title': 'Usanifu na Usimamizi wa Hifadhidata',
+            'ach.card.10.desc': 'Nilibuni na kusimamia hifadhidata za uhusiano kwa MySQL, MariaDB, na SQL kwa miradi halisi ya programu.',
+
+            'ach.card.11.title': 'Mitandao na Msaada wa IT',
+            'ach.card.11.desc': 'Nilipata uzoefu wa vitendo katika mitandao ya kompyuta, kazi zinazohusiana na Cisco, msaada wa Windows, na utawala wa jumla wa IT.',
+
+            'ach.highlights.label': '/ Mambo Muhimu',
+            'ach.highlights.titleA': 'Mambo',
+            'ach.highlights.titleB': 'Muhimu',
+            'ach.highlights.1': 'Miradi mikubwa ya kamili iliyojengwa',
+            'ach.highlights.2': 'Kazi na nafasi za vitendo zilizokamilika',
+            'ach.highlights.3': 'Viwango vya elimu vilivyokamilika',
+            'ach.highlights.4': 'Teknolojia zinazotumika kwa bidii',
+
+            'ach.note.title': 'Ukurasa huu unakua kila mara',
+            'ach.note.desc': 'Ninafanya kazi kwa bidii kwenye miradi mipya, mafunzo, na vyeti. Kadri hatua mpya zinapofikiwa, ukurasa huu utasasishwa ili kuonyesha kwa uaminifu.',
+
+            'ach.cta.titleA': 'Unataka kuwa sehemu',
+            'ach.cta.titleB': 'ya hatua inayofuata?',
+            'ach.cta.desc': 'Tuzungumze jinsi ninavyoweza kuchangia timu yako au mradi wako.',
+            'ach.cta.contact': 'Wasiliana Nami',
+            'ach.cta.projects': 'Ona Miradi',
+
+            /* ---------- CONTACT PAGE ---------- */
+            'contact.hero.label': '/ Wasiliana',
+            'contact.hero.titleA': 'Tujenge Kitu',
+            'contact.hero.titleB': 'Chenye Maana Pamoja.',
+            'contact.hero.desc': 'Una mradi, fursa, au unataka tu kusalimu? Niko tayari kila wakati kuunganisha. Wasiliana kupitia njia yoyote hapa chini.',
+            'contact.hero.status': 'Niko tayari kwa fursa hivi sasa',
+
+            'contact.info.email': 'Barua Pepe',
+            'contact.info.emailHint': 'Bofya kutuma barua pepe',
+            'contact.info.phone': 'Simu',
+            'contact.info.phoneHint': 'Bofya kupiga simu',
+            'contact.info.whatsapp': 'WhatsApp',
+            'contact.info.whatsappHint': 'Bofya kuzungumza kwenye WhatsApp',
+            'contact.info.location': 'Mahali',
+
+            'contact.form.label': '/ 01 — Tuma Ujumbe',
+            'contact.form.titleA': 'Tuanze',
+            'contact.form.titleB': 'mazungumzo.',
+            'contact.form.desc': 'Jaza fomu na nitakujibu haraka iwezekanavyo. Unaweza pia kunipigia barua pepe moja kwa moja kwa anwani iliyo kando.',
+            'contact.form.bullet1': 'Muda mfupi wa kujibu',
+            'contact.form.bullet2': 'Niko tayari kwa kazi huru na ya wakati wote',
+            'contact.form.bullet3': 'Napatikana Zanzibar — ninafanya kazi kwa mbali',
+            'contact.form.note': 'Fomu hii inafungua programu yako ya barua pepe na ujumbe umewekwa tayari — hakuna seva inayohusika, na hakuna kinachotumwa kiotomatiki.',
+
+            'contact.form.name': 'Jina Lako',
+            'contact.form.namePlaceholder': 'Jina lako kamili',
+            'contact.form.email': 'Barua Pepe Yako',
+            'contact.form.emailPlaceholder': 'wewe@mfano.com',
+            'contact.form.subject': 'Mada',
+            'contact.form.subjectPlaceholder': 'Swali kuhusu Mradi',
+            'contact.form.message': 'Ujumbe',
+            'contact.form.messagePlaceholder': 'Niambie kuhusu mradi wako au ujumbe…',
+            'contact.form.submit': 'Tuma Ujumbe',
+            'contact.form.reset': 'Safisha',
+
+            'contact.form.err.nameRequired': 'Tafadhali ingiza jina lako',
+            'contact.form.err.nameShort': 'Jina ni fupi mno',
+            'contact.form.err.emailRequired': 'Tafadhali ingiza barua pepe yako',
+            'contact.form.err.emailInvalid': 'Tafadhali ingiza barua pepe sahihi',
+            'contact.form.err.subjectRequired': 'Tafadhali ingiza mada',
+            'contact.form.err.subjectShort': 'Mada ni fupi mno',
+            'contact.form.err.messageRequired': 'Tafadhali ingiza ujumbe',
+            'contact.form.err.messageShort': 'Ujumbe ni mfupi mno (herufi 10 kwa chini)',
+            'contact.form.err.fixErrors': 'Tafadhali rekebisha makosa hapo juu kabla ya kutuma.',
+            'contact.form.success': 'Inafungua programu yako ya barua pepe — tafadhali kagua na utume ujumbe.',
+
+            'contact.social.label': '/ 02 — Mitandao',
+            'contact.social.titleA': 'Nikute',
+            'contact.social.titleB': 'Mtandaoni',
+            'contact.social.desc': 'Ungana nami kwenye majukwaa ninayotumia kweli.',
+
+            'contact.faq.label': '/ 03 — Maswali',
+            'contact.faq.titleA': 'Yanayoulizwa',
+            'contact.faq.titleB': 'Mara kwa Mara',
+            'contact.faq.1.q': 'Uko tayari kwa kazi huru?',
+            'contact.faq.1.a': 'Ndiyo — niko tayari kwa miradi ya kazi huru katika ukuzaji wa wavuti, hifadhidata, na msaada wa IT. Wasiliana na maelezo ya mradi wako.',
+            'contact.faq.2.q': 'Unafanya kazi kwa mbali?',
+            'contact.faq.2.a': 'Ndiyo. Niko Zanzibar lakini ninaweza kushirikiana kwa mbali na wateja na timu popote.',
+            'contact.faq.3.q': 'Ni aina gani ya miradi unayokubali?',
+            'contact.faq.3.a': 'Programu za wavuti, mifumo ya habari, usanifu wa hifadhidata, na msaada wa IT. Ninalenga suluhisho za vitendo zinazotatua matatizo halisi.',
+            'contact.faq.4.q': 'Mradi wa kawaida huchukua muda gani?',
+            'contact.faq.4.a': 'Inategemea ukubwa. Tovuti ndogo zinaweza kuchukua wiki 1–2; mifumo mikubwa huchukua muda mrefu. Tutakubaliana ratiba wazi kabla ya kuanza.',
+
+            'contact.cta.titleA': 'Unapendelea',
+            'contact.cta.titleB': 'ujumbe wa moja kwa moja?',
+            'contact.cta.desc': 'Ruka fomu — nipigie barua pepe au WhatsApp moja kwa moja.',
+            'contact.cta.whatsapp': 'Zungumza kwenye WhatsApp',
+
+            'contact.social.copy': 'Nakili',
+            'contact.social.copied': 'Imenakiliwa!',
+            'contact.social.copyId': 'Nakili Kitambulisho',
+            'contact.wechat.title': 'Skani ili kuniongeza kwenye WeChat',
+            'contact.wechat.subtitle': 'Fungua WeChat kwenye simu yako na skani msimbo huu wa QR.',
+            'contact.wechat.idLabel': 'Kitambulisho cha WeChat',
+            'contact.wechat.hint': 'Hauwezi kuskani? Ongeza kitambulisho changu cha WeChat kwa mkono.',
+
+            /* ---------- 404 PAGE ---------- */
+            'e404.label': '/ Kosa 404',
+            'e404.titleA': 'Ukurasa huu',
+            'e404.titleB': 'umepotea.',
+            'e404.desc': 'Ukurasa unaoutafuta haupo, umehamishwa, au haupatikani kwa muda. Turudi kwenye mstari.',
+            'e404.home': 'Rudi Nyumbani',
+            'e404.contact': 'Wasiliana Nami',
+            'e404.quickLabel': 'Viungo vya Haraka'
+        },
+
+        zh: {
+            /* ---------- GLOBAL ---------- */
+            'brand.sub': '全栈开发者',
+
+            /* ---------- MENU ---------- */
+            'menu.home': '首页',
+            'menu.about': '关于',
+            'menu.skills': '技能',
+            'menu.experience': '经验',
+            'menu.projects': '项目',
+            'menu.certificates': '证书',
+            'menu.services': '服务',
+            'menu.achievements': '成就',
+            'menu.contact': '联系',
+
+            /* ---------- MENU ASIDE ---------- */
+            'menu.aside.location': '位置',
+            'menu.aside.email': '邮箱',
+            'menu.aside.availability': '可用性',
+            'menu.aside.socials': '社交',
+            'menu.aside.open': '欢迎机会',
+
+            /* ---------- HERO ---------- */
+            'hero.tagline': '位于坦桑尼亚桑给巴尔',
+            'hero.roleStatic': '我是',
+            'hero.roles.0': '全栈开发者',
+            'hero.roles.1': 'IT 学生',
+            'hero.roles.2': '科技爱好者',
+            'hero.roles.3': '问题解决者',
+            'hero.desc': '通过技术、创意和问题解决，创造实用的数字解决方案——从桑给巴尔走向世界。',
+            'hero.cta.primary': '探索我的作品',
+            'hero.cta.secondary': '下载简历',
+            'hero.stats.projects': '主要项目',
+            'hero.stats.technologies': '技术',
+            'hero.stats.experiences': '工作经验',
+            'hero.profile': '简介',
+            'hero.badge': '可联系',
+            'hero.scroll': '滚动',
+
+            /* ---------- MARQUEE ---------- */
+            'marquee.1': '全栈开发',
+            'marquee.2': '数据库设计',
+            'marquee.3': 'REST API',
+            'marquee.4': 'IT 支持',
+            'marquee.5': '网络',
+            'marquee.6': '问题解决',
+
+            /* ---------- FEATURED ---------- */
+            'featured.label': '/ 01 — 精选作品',
+            'featured.titleA': '精选',
+            'featured.titleB': '项目',
+            'featured.desc': '为解决桑给巴尔本地实际问题而构建的实用系统。',
+            'featured.cta': '查看所有项目',
+            'project.view': '查看项目',
+            'project.meta.fullstack': '全栈',
+            'project.cleanspark.tag': '清洁服务管理',
+            'project.cleanspark.desc': '一个将客户、预约、员工、付款、排班和管理数字化的清洁服务管理系统。',
+            'project.lams.tag': '地方行政管理',
+            'project.lams.desc': '一个连接市民与区行政的地方行政管理系统，用于服务、付款和文件。',
+
+            /* ---------- QUICK ABOUT ---------- */
+            'quickabout.label': '/ 02 — 关于',
+            'quickabout.titleA': '从桑给巴尔构建',
+            'quickabout.titleB': '实用',
+            'quickabout.titleC': '数字解决方案。',
+            'quickabout.desc': '我是 Mudrik Mohamed Othman —— 一名 IT 学生和有抱负的全栈开发者，正在桑给巴尔大学攻读信息技术学士学位。我设计和开发现代网络系统、数据库和数字解决方案，解决现实世界的问题。',
+            'quickabout.link': '更多关于我',
+
+            /* ---------- CTA ---------- */
+            'cta.label': '/ 03 — 联系我',
+            'cta.titleA': '让我们一起打造',
+            'cta.titleB': '有意义的事物',
+            'cta.contact': '联系我',
+
+            /* ---------- FOOTER ---------- */
+            'footer.copy': '在桑给巴尔用心构建。',
+
+            /* ---------- ABOUT PAGE ---------- */
+            'about.hero.label': '/ 关于我',
+            'about.hero.titleA': '充满热情的 IT 学生',
+            'about.hero.titleB': '创造实用的',
+            'about.hero.titleC': '数字解决方案。',
+            'about.hero.desc': '你好！我是 Mudrik Mohamed Othman（又名 DAU）—— 一名 IT 学生和有抱负的全栈开发者，正在桑给巴尔大学攻读信息技术学士学位。',
+            'about.hero.location': '坦桑尼亚桑给巴尔 Maungani / Kombeni',
+            'about.hero.education': '信息技术学士 — 桑给巴尔大学',
+            'about.hero.status': '欢迎机会',
+            'about.hero.cta.cv': '下载简历',
+            'about.hero.cta.contact': '联系我',
+            'about.hero.profile': '简介',
+            'about.hero.badge1': '全栈',
+            'about.hero.badge2': 'B.IT 学生',
+
+            'about.bio.label': '/ 01 — 传记',
+            'about.bio.headingA': '我的',
+            'about.bio.headingB': '故事',
+            'about.bio.p1': '我的技术之旅通过学术研究、实践项目和 IT 与软件开发的实际经验不断成长。我喜欢设计和开发现代网络系统、数据库和数字解决方案，以解决现实世界的问题。',
+            'about.bio.p2': '我的兴趣包括全栈开发、数据库管理、网络、网络安全和信息系统。',
+            'about.bio.p3': '除了技术开发之外，我还具备出色的沟通、公开演讲、问题解决、教学、团队合作和管理能力。我喜欢学习新技术、与他人分享知识，并将想法转化为实用且用户友好的数字解决方案。',
+            'about.bio.p4': '在技术之外，我喜欢足球和电子游戏。',
+
+            'about.info.label': '/ 02 — 个人信息',
+            'about.info.titleA': '快速',
+            'about.info.titleB': '了解',
+            'about.info.birthday': '生日',
+            'about.info.location': '位置',
+            'about.info.education': '教育',
+            'about.info.email': '邮箱',
+            'about.info.phone': '电话',
+            'about.info.hobbies': '爱好',
+            'about.info.hobbiesValue': '足球、电子游戏',
+
+            'about.edu.label': '/ 03 — 教育',
+            'about.edu.titleA': '学术',
+            'about.edu.titleB': '背景',
+            'about.edu.badge.current': '目前',
+            'about.edu.bachelor.title': '信息技术学士',
+            'about.edu.bachelor.school': '桑给巴尔大学',
+            'about.edu.bachelor.desc': '信息技术学士（B.IT）—— 正在攻读。',
+            'about.edu.diploma.title': '信息技术文凭',
+            'about.edu.diploma.school': '桑给巴尔大学',
+            'about.edu.diploma.desc': '基础 IT 学习，实际接触编程、数据库和系统。',
+            'about.edu.highschool.title': '高中教育',
+            'about.edu.highschool.school': '坦桑尼亚桑给巴尔',
+            'about.edu.highschool.desc': '理科方向 —— 数学、物理和计算机科学。',
+
+            'about.interests.label': '/ 04 — 技术兴趣',
+            'about.interests.titleA': '我感兴趣的',
+            'about.interests.titleB': '领域',
+            'about.interests.desc': '我积极探索、学习和构建的技术领域。',
+            'about.interests.1.title': '全栈开发',
+            'about.interests.1.desc': '使用 HTML、CSS、JavaScript、Node.js、Express 和 MySQL 构建现代网络应用。',
+            'about.interests.2.title': '数据库管理',
+            'about.interests.2.desc': '使用 MySQL、SQL 和 MariaDB 设计和管理关系数据库。',
+            'about.interests.3.title': '网络',
+            'about.interests.3.desc': '计算机网络基础、Cisco、配置和故障排除。',
+            'about.interests.4.title': '网络安全',
+            'about.interests.4.desc': 'Linux 安全、网络安全、安全实验室和 OSINT —— 作为积极学习者。',
+            'about.interests.5.title': '信息系统',
+            'about.interests.5.desc': '为现实世界的本地和组织问题设计实用的信息系统。',
+            'about.interests.6.title': 'IT 支持',
+            'about.interests.6.desc': 'Windows 支持、Microsoft Office、一般 IT 管理和技术故障排除。',
+
+            'about.skills.label': '/ 05 — 专业技能',
+            'about.skills.titleA': '超越',
+            'about.skills.titleB': '代码',
+            'about.skills.1': '沟通',
+            'about.skills.2': '公开演讲',
+            'about.skills.3': '问题解决',
+            'about.skills.4': '教学',
+            'about.skills.5': '团队合作',
+            'about.skills.6': '管理技能',
+            'about.skills.7': '领导力',
+            'about.skills.8': '学习新技术',
+
+            'about.cta.titleA': '想看看',
+            'about.cta.titleB': '我构建了什么？',
+            'about.cta.desc': '探索我的项目和经验，或直接联系我。',
+            'about.cta.projects': '查看项目',
+            'about.cta.contact': '联系我',
+
+            /* ---------- SKILLS PAGE ---------- */
+            'skills.hero.label': '/ 我的技能',
+            'skills.hero.titleA': '工具、',
+            'skills.hero.titleB': '技术',
+            'skills.hero.titleC': '与我使用的技能。',
+            'skills.hero.desc': '我用来设计、构建和管理数字解决方案的技术、工具和专业能力的实用概述。',
+            'skills.hero.stat.tech': '技术',
+            'skills.hero.stat.categories': '分类',
+            'skills.hero.stat.soft': '软技能',
+            'skills.hero.coreLabel': '技术',
+
+            'skills.cats.label': '/ 01 — 分类',
+            'skills.cats.titleA': '技术',
+            'skills.cats.titleB': '熟练度',
+            'skills.cats.desc': '基于我实际实践经验的技能分类。等级为自我评估 —— 并非客观测量。',
+
+            'skills.cat1.title': '网络开发',
+            'skills.cat2.title': '后端',
+            'skills.cat3.title': '数据库',
+            'skills.cat4.title': '编程工具',
+            'skills.cat5.title': '操作系统',
+            'skills.cat6.title': '网络',
+            'skills.cat6.item1': '计算机网络',
+            'skills.cat6.item2': '网络配置',
+
+            'skills.level.advanced': '高级',
+            'skills.level.intermediate': '中级',
+            'skills.level.learning': '学习中',
+
+            'skills.stack.label': '/ 02 — 技术栈',
+            'skills.stack.titleA': '我的',
+            'skills.stack.titleB': '工具箱',
+            'skills.stack.desc': '我在项目中每天使用的技术。',
+
+            'skills.soft.label': '/ 03 — 专业技能',
+            'skills.soft.titleA': '超越',
+            'skills.soft.titleB': '代码',
+            'skills.soft.desc': '让我在现实环境中高效工作的非技术能力。',
+            'skills.soft.1.desc': '与队友、客户和用户进行清晰有效的沟通。',
+            'skills.soft.2.desc': '自信地展示想法、项目和技术概念。',
+            'skills.soft.3.desc': '分解复杂问题并寻找实用解决方案。',
+            'skills.soft.4.desc': '分享知识并帮助他人理解技术主题。',
+            'skills.soft.5.desc': '在团队环境和小组项目中有效协作。',
+            'skills.soft.6.desc': '组织任务、管理优先级并支持团队工作。',
+            'skills.soft.7.desc': '主动采取行动并引导项目走向成功成果。',
+            'skills.soft.8.desc': '不断探索新工具和框架以保持领先。',
+
+            'skills.learning.label': '/ 04 — 正在学习',
+            'skills.learning.titleA': '不断',
+            'skills.learning.titleB': '成长',
+            'skills.learning.desc': '我目前正在积极学习和提升的技能和领域。',
+            'skills.learning.1.title': '网络安全基础',
+            'skills.learning.1.desc': 'Linux 安全、网络安全、安全实验室和 OSINT 技术。',
+            'skills.learning.2.title': '高级网络',
+            'skills.learning.2.desc': 'Cisco 配置、子网划分、路由和交换实践。',
+            'skills.learning.3.title': '后端架构',
+            'skills.learning.3.desc': '可扩展的 API 设计、身份验证模式和清晰的代码结构。',
+
+            'skills.cta.titleA': '想看看这些',
+            'skills.cta.titleB': '技能的实际应用？',
+            'skills.cta.desc': '探索我的项目或联系我讨论机会。',
+            'skills.cta.projects': '查看项目',
+            'skills.cta.contact': '联系我',
+
+            /* ---------- EXPERIENCE PAGE ---------- */
+            'exp.hero.label': '/ 经验与教育',
+            'exp.hero.titleA': '我的职业',
+            'exp.hero.titleB': '旅程',
+            'exp.hero.titleC': '与成长。',
+            'exp.hero.desc': '我的职业经历、实地实习和学术背景的时间线 —— 从桑给巴尔的办公室到桑给巴尔大学的讲堂。',
+            'exp.hero.stat.exp': '经验',
+            'exp.hero.stat.edu': '教育',
+            'exp.hero.stat.years': '学习年数',
+
+            'exp.pro.label': '/ 01 — 职业经验',
+            'exp.pro.titleA': '我',
+            'exp.pro.titleB': '工作过的地方',
+
+            'exp.badge.current': '目前',
+            'exp.badge.role': '办公室助理',
+            'exp.badge.diploma': '文凭',
+            'exp.badge.secondary': '中学',
+            'exp.badge.intern': '实习生',
+            'exp.nyota.title': 'Nyota Tech Hub 组织',
+            'exp.nyota.location': 'Kiembe Samaki，桑给巴尔',
+            'exp.nyota.period': '2 个月',
+            'exp.nyota.desc': '在 Nyota Tech Hub —— 桑给巴尔的一个技术创新中心 —— 进行实地实习，参与技术相关项目并在协作的技术环境中获得实践经验。',
+            'exp.nyota.act1': '参与技术和创新项目',
+            'exp.nyota.act2': '与技术团队和导师合作',
+            'exp.nyota.act3': '在真实的中心环境中应用软件和 IT 技能',
+            'exp.nyota.act4': '在桑给巴尔技术生态系统中获得实践经验',
+            'exp.responsibilities': '主要活动',
+            'exp.skillsGained': '获得的技能',
+
+            'exp.ice.title': 'ICE — 实地实习',
+            'exp.ice.location': '桑给巴尔',
+            'exp.ice.desc': '实地实习，从事软件开发和一般 IT 支持活动，包括前端、后端、数据库开发和 IT 管理。',
+            'exp.ice.act1': '参与 CleanSpark 项目（前端、后端、数据库）',
+            'exp.ice.act2': 'IT 管理支持',
+            'exp.ice.act3': 'Windows 11 支持和 Microsoft Office',
+            'exp.ice.act4': '网络和 Cisco 相关工作',
+            'exp.ice.act5': '使用 VS Code、XAMPP 和系统/数据库工具',
+
+            'exp.zan.title': 'Zan Drive 汽车租赁',
+            'exp.zan.location': 'Kilimani，桑给巴尔',
+            'exp.zan.desc': '办公室助理职位，承担 IT 相关职责，支持日常办公室运营和技术任务。',
+
+            'exp.wb.title': 'White Bird 清洁公司',
+            'exp.wb.location': 'Mlandege，桑给巴尔',
+            'exp.wb.desc': '办公室支持职位，涵盖行政任务、文档、沟通、客户互动以及观察/协助技术相关工作。这一经历启发了 CleanSpark 系统的开发。',
+            'exp.wb.skill1': '沟通与客户互动',
+            'exp.wb.skill2': '办公室行政',
+            'exp.wb.skill3': '文档和问题解决',
+            'exp.wb.skill4': '团队合作和管理支持',
+
+            'exp.edu.label': '/ 02 — 教育',
+            'exp.edu.titleA': '学术',
+            'exp.edu.titleB': '背景',
+
+            'exp.edu.bachelor.title': '信息技术学士（B.IT）',
+            'exp.edu.bachelor.school': '桑给巴尔大学',
+            'exp.edu.bachelor.desc': '目前在桑给巴尔大学攻读信息技术学士学位，专注于全栈开发、数据库管理、网络和信息系统。',
+
+            'exp.edu.diploma.title': '信息技术文凭',
+            'exp.edu.diploma.school': '桑给巴尔大学',
+            'exp.edu.diploma.desc': '基础 IT 学习，实际接触编程、数据库和信息系统。',
+
+            'exp.edu.hs.title': '高中教育',
+            'exp.edu.hs.school': '坦桑尼亚桑给巴尔',
+            'exp.edu.hs.period': '已完成',
+            'exp.edu.hs.desc': '理科方向，专注于数学、物理和计算机科学。这一教育培养了分析思维和问题解决能力，为信息技术领域的进一步学习奠定了基础。',
+
+            'exp.cta.titleA': '想了解',
+            'exp.cta.titleB': '完整画面？',
+            'exp.cta.desc': '下载我的简历或联系我讨论机会。',
+            'exp.cta.cv': '下载简历',
+            'exp.cta.contact': '联系我',
+
+            /* ---------- PROJECTS PAGE ---------- */
+            'proj.hero.label': '/ 精选作品',
+            'proj.hero.titleA': '为解决',
+            'proj.hero.titleB': '实际问题而构建的项目。',
+            'proj.hero.desc': '使用现代技术设计和开发的全栈 Web 应用程序，专注于桑给巴尔当地环境中的现实问题。',
+            'proj.hero.stat.major': '主要项目',
+            'proj.hero.stat.tech': '技术',
+            'proj.hero.stat.domains': '领域',
+
+            'proj.filter.all': '所有项目',
+            'proj.filter.fullstack': '全栈',
+            'proj.filter.web': 'Web 系统',
+            'proj.filter.local': '本地环境',
+
+            'proj.card.details': '查看详情',
+            'proj.card.demo': '实时演示',
+            'proj.modal.close': '关闭',
+
+            'proj.modal.about.label': '关于此项目',
+            'proj.modal.features.label': '主要功能',
+            'proj.modal.workflow.label': '主要流程',
+            'proj.modal.tech.label': '使用的技术',
+            'proj.modal.role.label': '我的角色',
+
+            'project.workflow.customer': '客户',
+            'project.workflow.booking': '预约',
+            'project.workflow.admin': '管理员',
+            'project.workflow.staff': '员工',
+            'project.workflow.service': '服务',
+            'project.workflow.payment': '支付',
+            'project.workflow.report': '报告',
+            'project.workflow.citizen': '市民',
+            'project.workflow.application': '申请',
+            'project.workflow.document': '文件',
+
+            /* CleanSpark modal */
+            'proj.modal.cleanspark.about.title': '清洁服务管理系统',
+            'proj.modal.cleanspark.about.p1': 'CleanSpark 旨在帮助清洁企业以数字化方式管理客户、预约、员工、清洁服务、付款、排班和行政运营。',
+            'proj.modal.cleanspark.about.p2': '这个想法源于在桑给巴尔清洁公司环境中工作时观察到的实际问题。',
+            'proj.modal.cleanspark.problem.title': '解决的问题',
+            'proj.modal.cleanspark.problem.1': '手动客户记录',
+            'proj.modal.cleanspark.problem.2': '服务排班困难',
+            'proj.modal.cleanspark.problem.3': '工人跟踪不佳',
+            'proj.modal.cleanspark.problem.4': '手动付款管理',
+            'proj.modal.cleanspark.problem.5': '沟通不畅和预约跟踪困难',
+            'proj.modal.cleanspark.solution.title': '解决方案',
+            'proj.modal.cleanspark.solution.1': '数字化客户和预约管理',
+            'proj.modal.cleanspark.solution.2': '自动排班和员工分配',
+            'proj.modal.cleanspark.solution.3': '数字支付跟踪（M-Pesa、Airtel Money、HaloPesa、Azam Pay、银行卡）',
+            'proj.modal.cleanspark.solution.4': '服务状态跟踪和主管确认',
+            'proj.modal.cleanspark.solution.5': '报告和行政仪表板',
+            'proj.modal.cleanspark.features.title': '系统功能',
+            'proj.modal.cleanspark.features.1': '客户注册、登录和账户管理',
+            'proj.modal.cleanspark.features.2': '浏览和选择清洁服务（Unguja、Pemba、两地）',
+            'proj.modal.cleanspark.features.3': '进行和跟踪预约；查看、下载和分享报价',
+            'proj.modal.cleanspark.features.4': '员工/职位申请流程，包括 CV、身份证和文件上传',
+            'proj.modal.cleanspark.features.5': '付款后自动分配清洁工和主管',
+            'proj.modal.cleanspark.features.6': '主管确认到达、服务开始和完成',
+            'proj.modal.cleanspark.role.value': '作为全栈项目，设计并开发了整个系统 —— 前端、后端和数据库。',
+
+            /* LAMS modal */
+            'proj.modal.lams.about.title': '地方行政管理系统',
+            'proj.modal.lams.about.p1': 'LAMS 是专为桑给巴尔社区服务管理而设计的地方行政管理系统。它专注于地方行政与市民之间的互动。',
+            'proj.modal.lams.about.p2': '该系统以数字化方式管理地方行政服务、市民、申请、公告、付款、文件和行政活动。',
+            'proj.modal.lams.problem.title': '解决的问题',
+            'proj.modal.lams.problem.1': '手动市民记录',
+            'proj.modal.lams.problem.2': '申请和文件处理困难',
+            'proj.modal.lams.problem.3': '手动付款处理',
+            'proj.modal.lams.problem.4': '市民与行政之间的沟通不畅',
+            'proj.modal.lams.problem.5': '公告和区管理没有集中系统',
+            'proj.modal.lams.solution.title': '解决方案',
+            'proj.modal.lams.solution.1': '数字化市民注册和管理',
+            'proj.modal.lams.solution.2': '集中式申请和付款系统',
+            'proj.modal.lams.solution.3': '付款确认后文件上传和交付',
+            'proj.modal.lams.solution.4': '为任期有限的领导管理引入超级管理员角色',
+            'proj.modal.lams.solution.5': '基于区的筛选和状态管理',
+            'proj.modal.lams.features.title': '系统功能',
+            'proj.modal.lams.features.1': '市民注册、搜索和生死状态管理',
+            'proj.modal.lams.features.2': '市民仪表板：申请、付款、消息、个人资料、文件',
+            'proj.modal.lams.features.3': '申请和付款流程，自动生成付款 ID',
+            'proj.modal.lams.features.4': '未付款申请的立即支付按钮；已付款的 PDF 下载、分享、打印',
+            'proj.modal.lams.features.5': '管理员上传文件、图片和 PDF，付款后发送给市民',
+            'proj.modal.lams.features.6': '超级管理员管理区管理员，包含开始/结束日期和状态',
+            'proj.modal.lams.role.value': '作为全栈项目，设计并开发了整个系统 —— 前端、后端和数据库。',
+
+            'proj.cta.titleA': '有项目',
+            'proj.cta.titleB': '想法吗？',
+            'proj.cta.desc': '让我们讨论如何一起构建有意义的东西。',
+            'proj.cta.contact': '开始对话',
+            'proj.cta.github': '在 GitHub 上查看',
+
+            /* ---------- CERTIFICATES PAGE ---------- */
+            'cert.hero.label': '/ 证书',
+            'cert.hero.titleA': '证书与',
+            'cert.hero.titleB': '成就。',
+            'cert.hero.desc': '我的学术、技术和培训证书的集合。随着新证书的获得，此页面将持续更新。',
+            'cert.hero.stat.total': '总数',
+            'cert.hero.stat.tech': '技术',
+            'cert.hero.stat.academic': '学术',
+
+            'cert.filter.all': '全部',
+            'cert.filter.technical': '技术',
+            'cert.filter.academic': '学术',
+            'cert.filter.training': '培训',
+
+            'cert.empty.label': '即将推出',
+            'cert.empty.title': '证书即将上线。',
+            'cert.empty.desc': '我目前正在努力获得和收集全栈开发、网络、网络安全及相关领域的专业证书。随着它们的到来，此页面将得到更新。',
+            'cert.empty.contact': '联系我',
+            'cert.empty.projects': '查看项目',
+
+            'cert.modal.download': '下载',
+            'cert.modal.close': '关闭',
+
+            'cert.cta.titleA': '正在寻找',
+            'cert.cta.titleB': '致力于成长的人？',
+            'cert.cta.desc': '我不断学习和构建。让我们谈谈我能为你的团队带来什么。',
+            'cert.cta.contact': '联系我',
+            'cert.cta.experience': '查看经验',
+
+            /* ---------- SERVICES PAGE ---------- */
+            'svc.hero.label': '/ 服务',
+            'svc.hero.titleA': '我能为你',
+            'svc.hero.titleB': '构建什么。',
+            'svc.hero.desc': '基于我实际技能和实践经验的实用服务 —— 从网络开发到数据库设计和 IT 支持。',
+            'svc.hero.stat.services': '服务',
+            'svc.hero.stat.categories': '分类',
+            'svc.hero.stat.tech': '技术',
+
+            'svc.filter.all': '所有服务',
+            'svc.filter.dev': '开发',
+            'svc.filter.data': '数据与数据库',
+            'svc.filter.it': 'IT 与支持',
+            'svc.filter.consult': '咨询',
+
+            'svc.card.cta': '请求服务',
+
+            'svc.card.1.title': '网络开发',
+            'svc.card.1.desc': '使用 HTML5、CSS3、JavaScript 和 Bootstrap 构建响应式现代网站 —— 设计为在所有设备上都美观。',
+
+            'svc.card.2.title': '全栈开发',
+            'svc.card.2.desc': '端到端 Web 应用程序开发 —— 从前端 UI 到后端 API 和数据库集成。',
+
+            'svc.card.3.title': '网站开发',
+            'svc.card.3.desc': '为个人、企业或组织构建完整网站 —— 从概念到部署。',
+
+            'svc.card.4.title': '信息系统开发',
+            'svc.card.4.desc': '围绕现实业务或组织工作流设计的定制信息系统。',
+
+            'svc.card.5.title': '数据库开发',
+            'svc.card.5.desc': '使用 MySQL、MariaDB 和 SQL 设计和构建关系数据库架构 —— 针对实际应用进行优化。',
+
+            'svc.card.6.title': '数据库管理',
+            'svc.card.6.desc': '管理、维护和优化数据库 —— 查询、备份、结构和性能。',
+
+            'svc.card.7.title': 'IT 支持',
+            'svc.card.7.desc': 'Windows 支持、Microsoft Office、一般 IT 管理和日常技术故障排除。',
+
+            'svc.card.8.title': '网络支持',
+            'svc.card.8.desc': '基本网络配置、Cisco 相关任务和网络故障排除。',
+
+            'svc.card.9.title': '后端与 API 开发',
+            'svc.card.9.desc': '使用 Node.js 和 Express 开发 REST API —— 包括身份验证、JWT 和数据库集成。',
+
+            'svc.card.10.title': '技术咨询',
+            'svc.card.10.desc': '关于 Web 项目、数据库或 IT 设置的实用建议 —— 帮助您规划正确的方法。',
+
+            'svc.process.label': '/ 02 — 流程',
+            'svc.process.titleA': '我的',
+            'svc.process.titleB': '工作方式',
+            'svc.process.desc': '从首次联系到最终交付的简单透明工作流程。',
+            'svc.process.1.title': '讨论',
+            'svc.process.1.desc': '我们讨论您的目标、需求和成功的样子。',
+            'svc.process.2.title': '规划',
+            'svc.process.2.desc': '我制定结构、技术、时间表和交付物。',
+            'svc.process.3.title': '开发',
+            'svc.process.3.desc': '我用干净的代码、经过测试的功能和清晰的进度更新来构建解决方案。',
+            'svc.process.4.title': '交付',
+            'svc.process.4.desc': '最终交付包含文档、支持和发布后指导。',
+
+            'svc.why.label': '/ 03 — 为什么与我合作',
+            'svc.why.titleA': '你',
+            'svc.why.titleB': '得到什么',
+            'svc.why.1.title': '实用焦点',
+            'svc.why.1.desc': '围绕现实问题而非理论构建的解决方案。',
+            'svc.why.2.title': '清晰沟通',
+            'svc.why.2.desc': '定期更新和诚实的透明沟通。',
+            'svc.why.3.title': '问题解决',
+            'svc.why.3.desc': '分解复杂问题的实用心态。',
+            'svc.why.4.title': '持续学习',
+            'svc.why.4.desc': '不断提升技能以带来现代方法。',
+
+            'svc.cta.titleA': '准备好开始',
+            'svc.cta.titleB': '项目了吗？',
+            'svc.cta.desc': '告诉我你需要什么 —— 我会尽快回复你。',
+            'svc.cta.contact': '联系我',
+            'svc.cta.projects': '查看项目',
+
+            /* ---------- ACHIEVEMENTS PAGE ---------- */
+            'ach.hero.label': '/ 成就',
+            'ach.hero.titleA': '里程碑与',
+            'ach.hero.titleB': '重要时刻。',
+            'ach.hero.desc': '我的学术、项目、培训、领导力和技术成就的不断增长的记录 —— 随着我持续成长而更新。',
+            'ach.hero.stat.projects': '构建的项目',
+            'ach.hero.stat.exp': '经验',
+            'ach.hero.stat.categories': '分类',
+
+            'ach.filter.all': '全部',
+            'ach.filter.academic': '学术',
+            'ach.filter.project': '项目',
+            'ach.filter.training': '培训',
+            'ach.filter.leadership': '领导力',
+            'ach.filter.technical': '技术',
+
+            'ach.card.featured': '里程碑',
+
+            'ach.card.1.title': '被信息技术学士项目录取',
+            'ach.card.1.desc': '成功进入桑给巴尔大学信息技术学士（B.IT）项目。',
+            'ach.card.1.place': '桑给巴尔大学',
+
+            'ach.card.2.title': '完成信息技术文凭',
+            'ach.card.2.desc': '成功完成基础 IT 学习，实际接触编程、数据库和信息系统。',
+            'ach.card.2.place': '桑给巴尔大学',
+
+            'ach.card.3.title': '开发 CleanSpark — 清洁服务管理系统',
+            'ach.card.3.desc': '基于对桑给巴尔清洁公司挑战的实际观察，设计和构建了一个全栈清洁服务管理系统。',
+            'ach.card.3.tag': '全栈',
+
+            'ach.card.4.title': '开发 LAMS — 地方行政管理系统',
+            'ach.card.4.desc': '设计并开发了一个全栈地方行政管理系统，连接市民与区行政，用于服务、付款和文件。',
+            'ach.card.4.tag': '全栈',
+
+            'ach.card.5.title': '完成 ICE 实地实习',
+            'ach.card.5.desc': '成功完成约 5 周的实地实习，从事软件开发和一般 IT 支持活动。',
+            'ach.card.5.place': '桑给巴尔',
+
+            'ach.card.6.title': '完成 Nyota Tech Hub 的 2 个月实习',
+            'ach.card.6.desc': '在 Nyota Tech Hub —— 桑给巴尔的一个技术创新中心 —— 完成了为期 2 个月的实地实习。',
+            'ach.card.6.period': '2 个月',
+
+            'ach.card.7.title': '公开演讲与教学',
+            'ach.card.7.desc': '通过演示、知识分享和帮助同伴学习技术主题，培养了出色的公开演讲和教学能力。',
+            'ach.card.7.tag': '持续进行',
+
+            'ach.card.8.title': '管理与团队合作经验',
+            'ach.card.8.desc': '通过在桑给巴尔的办公室行政角色建立了实用的管理、团队合作和客户服务技能。',
+            'ach.card.8.tag': '办公室角色',
+
+            'ach.card.9.title': '全栈开发熟练度',
+            'ach.card.9.desc': '通过实际项目工作在整栈中建立了工作知识 —— HTML、CSS、JavaScript、Node.js、Express、MySQL。',
+            'ach.card.9.tag': '全栈',
+
+            'ach.card.10.title': '数据库设计与管理',
+            'ach.card.10.desc': '为实际应用项目设计并管理了使用 MySQL、MariaDB 和 SQL 的关系数据库。',
+
+            'ach.card.11.title': '网络与 IT 支持',
+            'ach.card.11.desc': '在计算机网络、Cisco 相关任务、Windows 支持和一般 IT 管理方面获得了实践经验。',
+
+            'ach.highlights.label': '/ 亮点',
+            'ach.highlights.titleA': '关键',
+            'ach.highlights.titleB': '亮点',
+            'ach.highlights.1': '构建的主要全栈项目',
+            'ach.highlights.2': '完成的工作和实地实习',
+            'ach.highlights.3': '完成的教育阶段',
+            'ach.highlights.4': '积极使用的技术',
+
+            'ach.note.title': '此页面不断增长',
+            'ach.note.desc': '我正在积极开展新项目、培训和认证。随着新里程碑的达成，此页面将得到诚实的更新。',
+
+            'ach.cta.titleA': '想成为',
+            'ach.cta.titleB': '下一个里程碑的一部分吗？',
+            'ach.cta.desc': '让我们谈谈我能如何为你的团队或项目做出贡献。',
+            'ach.cta.contact': '联系我',
+            'ach.cta.projects': '查看项目',
+
+            /* ---------- CONTACT PAGE ---------- */
+            'contact.hero.label': '/ 联系',
+            'contact.hero.titleA': '让我们一起构建',
+            'contact.hero.titleB': '有意义的事物。',
+            'contact.hero.desc': '有项目、机会，还是只想打个招呼？我随时乐意连接。通过下面的任何渠道联系我。',
+            'contact.hero.status': '目前欢迎机会',
+
+            'contact.info.email': '邮箱',
+            'contact.info.emailHint': '点击发送邮件',
+            'contact.info.phone': '电话',
+            'contact.info.phoneHint': '点击拨打',
+            'contact.info.whatsapp': 'WhatsApp',
+            'contact.info.whatsappHint': '点击通过 WhatsApp 聊天',
+            'contact.info.location': '位置',
+
+            'contact.form.label': '/ 01 — 发送消息',
+            'contact.form.titleA': '让我们开始',
+            'contact.form.titleB': '对话。',
+            'contact.form.desc': '填写表格，我会尽快回复你。你也可以直接发送邮件到旁边的邮箱地址。',
+            'contact.form.bullet1': '快速响应',
+            'contact.form.bullet2': '接受自由职业和全职',
+            'contact.form.bullet3': '位于桑给巴尔 — 支持远程',
+            'contact.form.note': '此表单打开你的邮件应用并预填信息 —— 没有服务器参与，不会有任何内容自动发送。',
+
+            'contact.form.name': '你的名字',
+            'contact.form.namePlaceholder': '张三',
+            'contact.form.email': '你的邮箱',
+            'contact.form.emailPlaceholder': 'you@example.com',
+            'contact.form.subject': '主题',
+            'contact.form.subjectPlaceholder': '项目咨询',
+            'contact.form.message': '消息',
+            'contact.form.messagePlaceholder': '告诉我你的项目或消息……',
+            'contact.form.submit': '发送消息',
+            'contact.form.reset': '重置',
+
+            'contact.form.err.nameRequired': '请输入你的名字',
+            'contact.form.err.nameShort': '名字太短',
+            'contact.form.err.emailRequired': '请输入你的邮箱',
+            'contact.form.err.emailInvalid': '请输入有效的邮箱',
+            'contact.form.err.subjectRequired': '请输入主题',
+            'contact.form.err.subjectShort': '主题太短',
+            'contact.form.err.messageRequired': '请输入消息',
+            'contact.form.err.messageShort': '消息太短（至少 10 个字符）',
+            'contact.form.err.fixErrors': '请在提交前修正上面的错误。',
+            'contact.form.success': '正在打开你的邮件应用 —— 请检查并发送消息。',
+
+            'contact.social.label': '/ 02 — 社交',
+            'contact.social.titleA': '在线',
+            'contact.social.titleB': '找到我',
+            'contact.social.desc': '在我实际使用的平台上与我联系。',
+
+            'contact.faq.label': '/ 03 — 常见问题',
+            'contact.faq.titleA': '常见',
+            'contact.faq.titleB': '问题',
+            'contact.faq.1.q': '你接受自由职业工作吗？',
+            'contact.faq.1.a': '是的 —— 我对网页开发、数据库工作和 IT 支持的自由职业项目开放。请提供你的项目详情。',
+            'contact.faq.2.q': '你远程工作吗？',
+            'contact.faq.2.a': '是的。我位于桑给巴尔，但可以与任何地方的客户和团队远程合作。',
+            'contact.faq.3.q': '你承接什么样的项目？',
+            'contact.faq.3.a': 'Web 应用程序、信息系统、数据库设计和 IT 支持。我专注于解决实际问题的实用解决方案。',
+            'contact.faq.4.q': '一个典型项目需要多长时间？',
+            'contact.faq.4.a': '取决于范围。小型网站可能需要 1–2 周；更大的系统需要更长时间。我们会在开始前商定明确的时间表。',
+
+            'contact.cta.titleA': '更喜欢直接',
+            'contact.cta.titleB': '发消息？',
+            'contact.cta.desc': '跳过表单 —— 直接给我发邮件或 WhatsApp。',
+            'contact.cta.whatsapp': '通过 WhatsApp 聊天',
+
+            'contact.social.copy': '复制',
+            'contact.social.copied': '已复制！',
+            'contact.social.copyId': '复制 ID',
+            'contact.wechat.title': '扫码添加我的微信',
+            'contact.wechat.subtitle': '在手机上打开微信并扫描此二维码。',
+            'contact.wechat.idLabel': '微信 ID',
+            'contact.wechat.hint': '无法扫描？请手动添加我的微信 ID。',
+
+            /* ---------- 404 PAGE ---------- */
+            'e404.label': '/ 错误 404',
+            'e404.titleA': '此页面已',
+            'e404.titleB': '消失。',
+            'e404.desc': '你正在寻找的页面不存在、已被移动或暂时不可用。让我们帮你回到正轨。',
+            'e404.home': '返回首页',
+            'e404.contact': '联系我',
+            'e404.quickLabel': '快速链接'
+        },
+
+        ar: {
+            /* ---------- GLOBAL ---------- */
+            'brand.sub': 'مطور متكامل',
+
+            /* ---------- MENU ---------- */
+            'menu.home': 'الرئيسية',
+            'menu.about': 'نبذة',
+            'menu.skills': 'المهارات',
+            'menu.experience': 'الخبرة',
+            'menu.projects': 'المشاريع',
+            'menu.certificates': 'الشهادات',
+            'menu.services': 'الخدمات',
+            'menu.achievements': 'الإنجازات',
+            'menu.contact': 'اتصل',
+
+            /* ---------- MENU ASIDE ---------- */
+            'menu.aside.location': 'الموقع',
+            'menu.aside.email': 'البريد',
+            'menu.aside.availability': 'التوفر',
+            'menu.aside.socials': 'التواصل',
+            'menu.aside.open': 'متاح للفرص',
+
+            /* ---------- HERO ---------- */
+            'hero.tagline': 'مقيم في زنجبار، تنزانيا',
+            'hero.roleStatic': 'أنا',
+            'hero.roles.0': 'مطور متكامل',
+            'hero.roles.1': 'طالب تقنية معلومات',
+            'hero.roles.2': 'شغوف بالتقنية',
+            'hero.roles.3': 'حلّال مشكلات',
+            'hero.desc': 'أصنع حلولاً رقمية عملية من خلال التقنية والإبداع وحل المشكلات — من زنجبار إلى العالم.',
+            'hero.cta.primary': 'استكشف أعمالي',
+            'hero.cta.secondary': 'تحميل السيرة',
+            'hero.stats.projects': 'مشاريع رئيسية',
+            'hero.stats.technologies': 'تقنيات',
+            'hero.stats.experiences': 'خبرات عمل',
+            'hero.profile': 'الملف',
+            'hero.badge': 'متاح',
+            'hero.scroll': 'مرر',
+
+            /* ---------- MARQUEE ---------- */
+            'marquee.1': 'تطوير متكامل',
+            'marquee.2': 'تصميم قواعد البيانات',
+            'marquee.3': 'واجهات REST',
+            'marquee.4': 'دعم تقني',
+            'marquee.5': 'الشبكات',
+            'marquee.6': 'حل المشكلات',
+
+            /* ---------- FEATURED ---------- */
+            'featured.label': '/ 01 — أعمال مختارة',
+            'featured.titleA': 'مشاريع',
+            'featured.titleB': 'مميزة',
+            'featured.desc': 'أنظمة عملية بُنيت لحل مشكلات حقيقية في السياق المحلي لزنجبار.',
+            'featured.cta': 'عرض كل المشاريع',
+            'project.view': 'عرض المشروع',
+            'project.meta.fullstack': 'متكامل',
+            'project.cleanspark.tag': 'إدارة خدمات التنظيف',
+            'project.cleanspark.desc': 'نظام لإدارة خدمات التنظيف يرقمن العملاء والحجوزات والموظفين والمدفوعات والجدولة والإدارة.',
+            'project.lams.tag': 'إدارة الحكم المحلي',
+            'project.lams.desc': 'نظام إدارة محلية يربط المواطنين بإدارة القسم للخدمات والمدفوعات والمستندات.',
+
+            /* ---------- QUICK ABOUT ---------- */
+            'quickabout.label': '/ 02 — نبذة',
+            'quickabout.titleA': 'بناء',
+            'quickabout.titleB': 'حلول',
+            'quickabout.titleC': 'رقمية عملية من زنجبار.',
+            'quickabout.desc': 'أنا مودريك محمد عثمان — طالب تقنية معلومات ومطور متكامل طموح يدرس بكالوريوس تقنية المعلومات في جامعة زنجبار. أصمم وأطور أنظمة ويب حديثة وقواعد بيانات وحلولاً رقمية تحل مشكلات العالم الحقيقي.',
+            'quickabout.link': 'المزيد عني',
+
+            /* ---------- CTA ---------- */
+            'cta.label': '/ 03 — تواصل معي',
+            'cta.titleA': 'لنبنِ شيئاً',
+            'cta.titleB': 'ذا معنى',
+            'cta.contact': 'اتصل بي',
+
+            /* ---------- FOOTER ---------- */
+            'footer.copy': 'بُني بعناية في زنجبار.',
+
+            /* ---------- ABOUT PAGE ---------- */
+            'about.hero.label': '/ عني',
+            'about.hero.titleA': 'طالب تقنية معلومات شغوف',
+            'about.hero.titleB': 'أصنع حلولاً رقمية',
+            'about.hero.titleC': 'عملية.',
+            'about.hero.desc': 'مرحباً! أنا مودريك محمد عثمان (المعروف بـ DAU) — طالب تقنية معلومات ومطور متكامل طموح يدرس بكالوريوس تقنية المعلومات في جامعة زنجبار.',
+            'about.hero.location': 'ماونغاني / كومبيني، زنجبار',
+            'about.hero.education': 'بكالوريوس تقنية المعلومات — جامعة زنجبار',
+            'about.hero.status': 'متاح للفرص',
+            'about.hero.cta.cv': 'تحميل السيرة',
+            'about.hero.cta.contact': 'تواصل معي',
+            'about.hero.profile': 'الملف',
+            'about.hero.badge1': 'متكامل',
+            'about.hero.badge2': 'طالب بكالوريوس',
+
+            'about.bio.label': '/ 01 — نبذة',
+            'about.bio.headingA': 'قصتي',
+            'about.bio.headingB': '',
+            'about.bio.p1': 'نمت رحلتي في التقنية من خلال الدراسات الأكاديمية والمشاريع العملية والخبرة العملية في تقنية المعلومات وتطوير البرمجيات. أستمتع بتصميم وتطوير أنظمة ويب حديثة وقواعد بيانات وحلول رقمية تحل مشكلات العالم الحقيقي.',
+            'about.bio.p2': 'تشمل اهتماماتي التطوير المتكامل وإدارة قواعد البيانات والشبكات والأمن السيبراني ونظم المعلومات.',
+            'about.bio.p3': 'إلى جانب التطوير التقني، أمتلك مهارات قوية في التواصل والخطابة العامة وحل المشكلات والتدريس والعمل الجماعي والإدارة. أستمتع بتعلم تقنيات جديدة ومشاركة المعرفة مع الآخرين وتحويل الأفكار إلى حلول رقمية عملية وسهلة الاستخدام.',
+            'about.bio.p4': 'خارج التقنية، أستمتع بكرة القدم وألعاب الفيديو.',
+
+            'about.info.label': '/ 02 — معلومات شخصية',
+            'about.info.titleA': 'حقائق',
+            'about.info.titleB': 'سريعة',
+            'about.info.birthday': 'عيد الميلاد',
+            'about.info.location': 'الموقع',
+            'about.info.education': 'التعليم',
+            'about.info.email': 'البريد',
+            'about.info.phone': 'الهاتف',
+            'about.info.hobbies': 'الهوايات',
+            'about.info.hobbiesValue': 'كرة القدم، ألعاب الفيديو',
+
+            'about.edu.label': '/ 03 — التعليم',
+            'about.edu.titleA': 'الخلفية',
+            'about.edu.titleB': 'الأكاديمية',
+            'about.edu.badge.current': 'حالياً',
+            'about.edu.bachelor.title': 'بكالوريوس تقنية المعلومات',
+            'about.edu.bachelor.school': 'جامعة زنجبار',
+            'about.edu.bachelor.desc': 'بكالوريوس تقنية المعلومات — قيد الدراسة حالياً.',
+            'about.edu.diploma.title': 'دبلوم تقنية المعلومات',
+            'about.edu.diploma.school': 'جامعة زنجبار',
+            'about.edu.diploma.desc': 'دراسات أساسية في تقنية المعلومات مع تعرض عملي للبرمجة وقواعد البيانات والأنظمة.',
+            'about.edu.highschool.title': 'التعليم الثانوي العالي',
+            'about.edu.highschool.school': 'زنجبار، تنزانيا',
+            'about.edu.highschool.desc': 'مسار علمي — الرياضيات والفيزياء وعلوم الكمبيوتر.',
+
+            'about.interests.label': '/ 04 — الاهتمامات التقنية',
+            'about.interests.titleA': 'ما',
+            'about.interests.titleB': 'أهتم به',
+            'about.interests.desc': 'مجالات التقنية التي أستكشفها وأدرسها وأبني بها بنشاط.',
+            'about.interests.1.title': 'التطوير المتكامل',
+            'about.interests.1.desc': 'بناء تطبيقات ويب حديثة بـ HTML و CSS و JavaScript و Node.js و Express و MySQL.',
+            'about.interests.2.title': 'إدارة قواعد البيانات',
+            'about.interests.2.desc': 'تصميم وإدارة قواعد البيانات العلائقية بـ MySQL و SQL و MariaDB.',
+            'about.interests.3.title': 'الشبكات',
+            'about.interests.3.desc': 'أساسيات شبكات الكمبيوتر و Cisco والتكوين واستكشاف الأخطاء.',
+            'about.interests.4.title': 'الأمن السيبراني',
+            'about.interests.4.desc': 'أمن Linux وأمن الشبكات ومختبرات الأمن و OSINT — كمتعلم نشط.',
+            'about.interests.5.title': 'نظم المعلومات',
+            'about.interests.5.desc': 'تصميم نظم معلومات عملية لمشكلات محلية ومؤسسية حقيقية.',
+            'about.interests.6.title': 'دعم تقنية المعلومات',
+            'about.interests.6.desc': 'دعم Windows و Microsoft Office وإدارة تقنية المعلومات العامة واستكشاف الأخطاء.',
+
+            'about.skills.label': '/ 05 — المهارات المهنية',
+            'about.skills.titleA': 'أبعد من',
+            'about.skills.titleB': 'البرمجة',
+            'about.skills.1': 'التواصل',
+            'about.skills.2': 'الخطابة العامة',
+            'about.skills.3': 'حل المشكلات',
+            'about.skills.4': 'التدريس',
+            'about.skills.5': 'العمل الجماعي',
+            'about.skills.6': 'مهارات إدارية',
+            'about.skills.7': 'القيادة',
+            'about.skills.8': 'تعلم تقنيات جديدة',
+
+            'about.cta.titleA': 'تريد أن ترى',
+            'about.cta.titleB': 'ما بنيته؟',
+            'about.cta.desc': 'استكشف مشاريعي وخبراتي، أو تواصل معي مباشرة.',
+            'about.cta.projects': 'عرض المشاريع',
+            'about.cta.contact': 'تواصل معي',
+
+            /* ---------- SKILLS PAGE ---------- */
+            'skills.hero.label': '/ مهاراتي',
+            'skills.hero.titleA': 'أدوات،',
+            'skills.hero.titleB': 'تقنيات',
+            'skills.hero.titleC': 'ومهارات أستخدمها.',
+            'skills.hero.desc': 'نظرة عملية على التقنيات والأدوات والقدرات المهنية التي أستخدمها لتصميم وبناء وإدارة الحلول الرقمية.',
+            'skills.hero.stat.tech': 'تقنيات',
+            'skills.hero.stat.categories': 'فئات',
+            'skills.hero.stat.soft': 'مهارات ناعمة',
+            'skills.hero.coreLabel': 'تقنيات',
+
+            'skills.cats.label': '/ 01 — الفئات',
+            'skills.cats.titleA': 'الكفاءة',
+            'skills.cats.titleB': 'التقنية',
+            'skills.cats.desc': 'فئات المهارات المنظمة بناءً على خبرتي العملية الفعلية. المستويات ذاتية التقييم — وليست قياسات موضوعية.',
+
+            'skills.cat1.title': 'تطوير الويب',
+            'skills.cat2.title': 'الواجهة الخلفية',
+            'skills.cat3.title': 'قواعد البيانات',
+            'skills.cat4.title': 'أدوات البرمجة',
+            'skills.cat5.title': 'أنظمة التشغيل',
+            'skills.cat6.title': 'الشبكات',
+            'skills.cat6.item1': 'شبكات الكمبيوتر',
+            'skills.cat6.item2': 'تكوين الشبكة',
+
+            'skills.level.advanced': 'متقدم',
+            'skills.level.intermediate': 'متوسط',
+            'skills.level.learning': 'قيد التعلم',
+
+            'skills.stack.label': '/ 02 — مجموعة التقنيات',
+            'skills.stack.titleA': 'صندوق',
+            'skills.stack.titleB': 'أدواتي',
+            'skills.stack.desc': 'التقنيات التي أعمل بها يومياً في مشاريعي.',
+
+            'skills.soft.label': '/ 03 — المهارات المهنية',
+            'skills.soft.titleA': 'أبعد من',
+            'skills.soft.titleB': 'البرمجة',
+            'skills.soft.desc': 'القدرات غير التقنية التي تجعلني فعالاً في البيئات الحقيقية.',
+            'skills.soft.1.desc': 'تواصل واضح وفعال مع الزملاء والعملاء والمستخدمين.',
+            'skills.soft.2.desc': 'عرض واثق للأفكار والمشاريع والمفاهيم التقنية.',
+            'skills.soft.3.desc': 'تفكيك المشكلات المعقدة وإيجاد حلول عملية.',
+            'skills.soft.4.desc': 'مشاركة المعرفة ومساعدة الآخرين على فهم الموضوعات التقنية.',
+            'skills.soft.5.desc': 'التعاون بفعالية في بيئات الفريق والمشاريع الجماعية.',
+            'skills.soft.6.desc': 'تنظيم المهام وإدارة الأولويات ودعم جهود الفريق.',
+            'skills.soft.7.desc': 'أخذ زمام المبادرة وتوجيه المشاريع نحو نتائج ناجحة.',
+            'skills.soft.8.desc': 'استكشاف أدوات وأطر جديدة باستمرار للبقاء على اطلاع.',
+
+            'skills.learning.label': '/ 04 — أتعلم حالياً',
+            'skills.learning.titleA': 'دائماً',
+            'skills.learning.titleB': 'أنمو',
+            'skills.learning.desc': 'المهارات والمجالات التي أدرسها وأحسّنها بنشاط الآن.',
+            'skills.learning.1.title': 'أساسيات الأمن السيبراني',
+            'skills.learning.1.desc': 'أمن Linux وأمن الشبكات ومختبرات الأمن وتقنيات OSINT.',
+            'skills.learning.2.title': 'الشبكات المتقدمة',
+            'skills.learning.2.desc': 'تكوين Cisco وتقسيم الشبكات الفرعية والتوجيه والتبديل.',
+            'skills.learning.3.title': 'بنية الواجهة الخلفية',
+            'skills.learning.3.desc': 'تصميم API قابل للتوسع وأنماط المصادقة وبنية كود نظيفة.',
+
+            'skills.cta.titleA': 'تريد أن ترى هذه',
+            'skills.cta.titleB': 'المهارات أثناء العمل؟',
+            'skills.cta.desc': 'استكشف مشاريعي أو تواصل معي لمناقشة الفرص.',
+            'skills.cta.projects': 'عرض المشاريع',
+            'skills.cta.contact': 'تواصل معي',
+
+            /* ---------- EXPERIENCE PAGE ---------- */
+            'exp.hero.label': '/ الخبرة والتعليم',
+            'exp.hero.titleA': 'رحلتي',
+            'exp.hero.titleB': 'المهنية',
+            'exp.hero.titleC': ' ونموي.',
+            'exp.hero.desc': 'خط زمني لخبرتي المهنية ووظائف التدريب العملي وخلفيتي الأكاديمية — من مكاتب زنجبار إلى قاعات محاضرات جامعة زنجبار.',
+            'exp.hero.stat.exp': 'خبرات',
+            'exp.hero.stat.edu': 'تعليم',
+            'exp.hero.stat.years': 'سنوات التعلم',
+
+            'exp.pro.label': '/ 01 — الخبرة المهنية',
+            'exp.pro.titleA': 'أين',
+            'exp.pro.titleB': 'عملت',
+
+            'exp.badge.current': 'حالياً',
+            'exp.badge.role': 'مساعد مكتب',
+            'exp.badge.diploma': 'دبلوم',
+            'exp.badge.secondary': 'ثانوي',
+            'exp.badge.intern': 'متدرب',
+            'exp.nyota.title': 'منظمة Nyota Tech Hub',
+            'exp.nyota.location': 'كيمبي ساماكي، زنجبار',
+            'exp.nyota.period': 'شهران',
+            'exp.nyota.desc': 'تدريب ميداني في Nyota Tech Hub — مركز ابتكار تقني في زنجبار — حيث عملت على مشاريع متعلقة بالتقنية واكتسبت خبرة عملية في بيئة تقنية تعاونية.',
+            'exp.nyota.act1': 'العمل على مشاريع التقنية والابتكار',
+            'exp.nyota.act2': 'التعاون مع الفرق التقنية والمرشدين',
+            'exp.nyota.act3': 'تطبيق مهارات البرمجيات وتقنية المعلومات في بيئة مركز حقيقية',
+            'exp.nyota.act4': 'اكتساب خبرة عملية في النظام البيئي التقني في زنجبار',
+            'exp.responsibilities': 'الأنشطة الرئيسية',
+            'exp.skillsGained': 'المهارات المكتسبة',
+
+            'exp.ice.title': 'ICE — تدريب ميداني',
+            'exp.ice.location': 'زنجبار',
+            'exp.ice.desc': 'تدريب ميداني عملي في تطوير البرمجيات وأنشطة دعم تقنية المعلومات العامة، بما في ذلك تطوير الواجهة الأمامية والخلفية وقواعد البيانات وإدارة تقنية المعلومات.',
+            'exp.ice.act1': 'العمل على مشروع CleanSpark (الواجهة الأمامية والخلفية وقاعدة البيانات)',
+            'exp.ice.act2': 'دعم إدارة تقنية المعلومات',
+            'exp.ice.act3': 'دعم Windows 11 و Microsoft Office',
+            'exp.ice.act4': 'أعمال الشبكات و Cisco',
+            'exp.ice.act5': 'استخدام VS Code و XAMPP وأدوات النظام/قاعدة البيانات',
+
+            'exp.zan.title': 'Zan Drive لتأجير السيارات',
+            'exp.zan.location': 'كليماني، زنجبار',
+            'exp.zan.desc': 'دور مساعد مكتب مع مسؤوليات متعلقة بتقنية المعلومات، ودعم العمليات اليومية للمكتب والمهام التقنية.',
+
+            'exp.wb.title': 'شركة White Bird للتنظيف',
+            'exp.wb.location': 'ملانديغي، زنجبار',
+            'exp.wb.desc': 'دور دعم مكتبي يشمل المهام الإدارية والتوثيق والتواصل والتفاعل مع العملاء ومراقبة/مساعدة الأعمال المتعلقة بالتقنية. ألهمت هذه التجربة تطوير نظام CleanSpark.',
+            'exp.wb.skill1': 'التواصل والتفاعل مع العملاء',
+            'exp.wb.skill2': 'الإدارة المكتبية',
+            'exp.wb.skill3': 'التوثيق وحل المشكلات',
+            'exp.wb.skill4': 'العمل الجماعي ودعم الإدارة',
+
+            'exp.edu.label': '/ 02 — التعليم',
+            'exp.edu.titleA': 'الخلفية',
+            'exp.edu.titleB': 'الأكاديمية',
+
+            'exp.edu.bachelor.title': 'بكالوريوس تقنية المعلومات (B.IT)',
+            'exp.edu.bachelor.school': 'جامعة زنجبار',
+            'exp.edu.bachelor.desc': 'أتابع حالياً بكالوريوس تقنية المعلومات في جامعة زنجبار، مع التركيز على التطوير المتكامل وإدارة قواعد البيانات والشبكات ونظم المعلومات.',
+
+            'exp.edu.diploma.title': 'دبلوم تقنية المعلومات',
+            'exp.edu.diploma.school': 'جامعة زنجبار',
+            'exp.edu.diploma.desc': 'دراسات أساسية في تقنية المعلومات مع تعرض عملي للبرمجة وقواعد البيانات ونظم المعلومات.',
+
+            'exp.edu.hs.title': 'التعليم الثانوي العالي',
+            'exp.edu.hs.school': 'زنجبار، تنزانيا',
+            'exp.edu.hs.period': 'مكتمل',
+            'exp.edu.hs.desc': 'مسار علمي مع التركيز على الرياضيات والفيزياء وعلوم الكمبيوتر. طوّر هذا التعليم التفكير التحليلي ومهارات حل المشكلات ووفر الأساس لمزيد من الدراسة في تقنية المعلومات.',
+
+            'exp.cta.titleA': 'تريد',
+            'exp.cta.titleB': 'الصورة الكاملة؟',
+            'exp.cta.desc': 'حمّل سيرتي الذاتية أو تواصل معي لمناقشة الفرص.',
+            'exp.cta.cv': 'تحميل السيرة',
+            'exp.cta.contact': 'تواصل معي',
+
+            /* ---------- PROJECTS PAGE ---------- */
+            'proj.hero.label': '/ أعمال مختارة',
+            'proj.hero.titleA': 'مشاريع بُنيت',
+            'proj.hero.titleB': 'لحل مشكلات حقيقية.',
+            'proj.hero.desc': 'تطبيقات ويب متكاملة صُممت وطُورت بتقنيات حديثة، مع التركيز على المشكلات الحقيقية في السياق المحلي لزنجبار.',
+            'proj.hero.stat.major': 'مشاريع رئيسية',
+            'proj.hero.stat.tech': 'تقنيات',
+            'proj.hero.stat.domains': 'مجالات',
+
+            'proj.filter.all': 'كل المشاريع',
+            'proj.filter.fullstack': 'متكامل',
+            'proj.filter.web': 'أنظمة ويب',
+            'proj.filter.local': 'سياق محلي',
+
+            'proj.card.details': 'عرض التفاصيل',
+            'proj.card.demo': 'عرض حي',
+            'proj.modal.close': 'إغلاق',
+
+            'proj.modal.about.label': 'حول هذا المشروع',
+            'proj.modal.features.label': 'الميزات الرئيسية',
+            'proj.modal.workflow.label': 'سير العمل الرئيسي',
+            'proj.modal.tech.label': 'التقنيات المستخدمة',
+            'proj.modal.role.label': 'دوري',
+
+            'project.workflow.customer': 'العميل',
+            'project.workflow.booking': 'الحجز',
+            'project.workflow.admin': 'المسؤول',
+            'project.workflow.staff': 'الموظفون',
+            'project.workflow.service': 'الخدمة',
+            'project.workflow.payment': 'الدفع',
+            'project.workflow.report': 'التقرير',
+            'project.workflow.citizen': 'المواطن',
+            'project.workflow.application': 'الطلب',
+            'project.workflow.document': 'المستند',
+
+            /* CleanSpark modal */
+            'proj.modal.cleanspark.about.title': 'نظام إدارة خدمات التنظيف',
+            'proj.modal.cleanspark.about.p1': 'تم تصميم CleanSpark لمساعدة شركات التنظيف على إدارة العملاء والحجوزات والموظفين وخدمات التنظيف والمدفوعات والجدولة والعمليات الإدارية رقمياً.',
+            'proj.modal.cleanspark.about.p2': 'جاءت الفكرة من مشكلات حقيقية لوحظت أثناء العمل في بيئة شركة تنظيف في زنجبار.',
+            'proj.modal.cleanspark.problem.title': 'المشكلات التي تمت معالجتها',
+            'proj.modal.cleanspark.problem.1': 'سجلات العملاء اليدوية',
+            'proj.modal.cleanspark.problem.2': 'صعوبة جدولة الخدمات',
+            'proj.modal.cleanspark.problem.3': 'ضعف تتبع العمال',
+            'proj.modal.cleanspark.problem.4': 'إدارة المدفوعات يدوياً',
+            'proj.modal.cleanspark.problem.5': 'ضعف التواصل وصعوبة تتبع الحجوزات',
+            'proj.modal.cleanspark.solution.title': 'الحل',
+            'proj.modal.cleanspark.solution.1': 'إدارة رقمية للعملاء والحجوزات',
+            'proj.modal.cleanspark.solution.2': 'جدولة آلية وتعيين الموظفين',
+            'proj.modal.cleanspark.solution.3': 'تتبع المدفوعات الرقمية (M-Pesa، Airtel Money، HaloPesa، Azam Pay، البطاقات)',
+            'proj.modal.cleanspark.solution.4': 'تتبع حالة الخدمة وتأكيد المشرف',
+            'proj.modal.cleanspark.solution.5': 'تقارير ولوحات تحكم إدارية',
+            'proj.modal.cleanspark.features.title': 'ما يفعله النظام',
+            'proj.modal.cleanspark.features.1': 'تسجيل العملاء وتسجيل الدخول وإدارة الحساب',
+            'proj.modal.cleanspark.features.2': 'تصفح واختيار خدمات التنظيف (أونغوجا، بمبا، كليهما)',
+            'proj.modal.cleanspark.features.3': 'إجراء وتتبع الحجوزات؛ عرض وتنزيل ومشاركة عروض الأسعار',
+            'proj.modal.cleanspark.features.4': 'سير عمل طلبات التوظيف مع رفع السيرة الذاتية والهوية والمستندات',
+            'proj.modal.cleanspark.features.5': 'تعيين آلي للعامل والمشرف بعد الدفع',
+            'proj.modal.cleanspark.features.6': 'يؤكد المشرف الوصول وبدء الخدمة والإكمال',
+            'proj.modal.cleanspark.role.value': 'صممت وطورت النظام الكامل — الواجهة الأمامية والخلفية وقاعدة البيانات — كمشروع متكامل.',
+
+            /* LAMS modal */
+            'proj.modal.lams.about.title': 'نظام إدارة الحكم المحلي',
+            'proj.modal.lams.about.p1': 'LAMS هو نظام إدارة حكم محلي مصمم لإدارة الخدمات المجتمعية في زنجبار. يركز على التفاعل بين الإدارة المحلية والمواطنين.',
+            'proj.modal.lams.about.p2': 'يدير النظام رقمياً خدمات الإدارة المحلية والمواطنين والطلبات والإعلانات والمدفوعات والمستندات والأنشطة الإدارية.',
+            'proj.modal.lams.problem.title': 'المشكلات التي تمت معالجتها',
+            'proj.modal.lams.problem.1': 'سجلات المواطنين اليدوية',
+            'proj.modal.lams.problem.2': 'صعوبة معالجة الطلبات والمستندات',
+            'proj.modal.lams.problem.3': 'معالجة المدفوعات يدوياً',
+            'proj.modal.lams.problem.4': 'ضعف التواصل بين المواطنين والإدارة',
+            'proj.modal.lams.problem.5': 'لا يوجد نظام مركزي للإعلانات وإدارة الأقسام',
+            'proj.modal.lams.solution.title': 'الحل',
+            'proj.modal.lams.solution.1': 'تسجيل وإدارة رقميين للمواطنين',
+            'proj.modal.lams.solution.2': 'نظام مركزي للطلبات والمدفوعات',
+            'proj.modal.lams.solution.3': 'رفع المستندات وتسليمها بعد تأكيد الدفع',
+            'proj.modal.lams.solution.4': 'دور المسؤول الأعلى لإدارة القيادة محدودة المدة',
+            'proj.modal.lams.solution.5': 'تصفية حسب القسم وإدارة الحالة',
+            'proj.modal.lams.features.title': 'ما يفعله النظام',
+            'proj.modal.lams.features.1': 'تسجيل المواطنين والبحث وإدارة حالة الحياة/الوفاة',
+            'proj.modal.lams.features.2': 'لوحة تحكم المواطن: الطلبات والمدفوعات والرسائل والملف الشخصي والمستندات',
+            'proj.modal.lams.features.3': 'سير عمل الطلب والدفع مع معرف دفع تلقائي',
+            'proj.modal.lams.features.4': 'زر الدفع الآن للطلبات غير المدفوعة؛ تنزيل PDF ومشاركة وطباعة للمدفوعة',
+            'proj.modal.lams.features.5': 'يرفع المسؤول المستندات والصور وملفات PDF لإرسالها للمواطنين بعد الدفع',
+            'proj.modal.lams.features.6': 'يدير المسؤول الأعلى مسؤولي الأقسام مع تواريخ البداية/النهاية والحالة',
+            'proj.modal.lams.role.value': 'صممت وطورت النظام الكامل — الواجهة الأمامية والخلفية وقاعدة البيانات — كمشروع متكامل.',
+
+            'proj.cta.titleA': 'لديك مشروع',
+            'proj.cta.titleB': 'في ذهنك؟',
+            'proj.cta.desc': 'لنناقش كيف يمكننا بناء شيء ذي معنى معاً.',
+            'proj.cta.contact': 'ابدأ محادثة',
+            'proj.cta.github': 'عرض على GitHub',
+
+            /* ---------- CERTIFICATES PAGE ---------- */
+            'cert.hero.label': '/ الشهادات',
+            'cert.hero.titleA': 'الشهادات',
+            'cert.hero.titleB': 'والإنجازات.',
+            'cert.hero.desc': 'مجموعة من شهاداتي الأكاديمية والتقنية والتدريبية. سيتم تحديث هذه الصفحة عند الحصول على شهادات جديدة.',
+            'cert.hero.stat.total': 'الإجمالي',
+            'cert.hero.stat.tech': 'تقنية',
+            'cert.hero.stat.academic': 'أكاديمية',
+
+            'cert.filter.all': 'الكل',
+            'cert.filter.technical': 'تقنية',
+            'cert.filter.academic': 'أكاديمية',
+            'cert.filter.training': 'تدريب',
+
+            'cert.empty.label': 'قريباً',
+            'cert.empty.title': 'الشهادات في الطريق.',
+            'cert.empty.desc': 'أعمل حالياً على كسب وجمع شهادات مهنية في التطوير المتكامل والشبكات والأمن السيبراني والمجالات ذات الصلة. سيتم تحديث هذه الصفحة عند وصولها.',
+            'cert.empty.contact': 'تواصل معي',
+            'cert.empty.projects': 'عرض المشاريع',
+
+            'cert.modal.download': 'تنزيل',
+            'cert.modal.close': 'إغلاق',
+
+            'cert.cta.titleA': 'تبحث عن شخص',
+            'cert.cta.titleB': 'ملتزم بالنمو؟',
+            'cert.cta.desc': 'أتعلم وأبني باستمرار. لنتحدث عما يمكنني تقديمه لفريقك.',
+            'cert.cta.contact': 'تواصل معي',
+            'cert.cta.experience': 'عرض الخبرة',
+
+            /* ---------- SERVICES PAGE ---------- */
+            'svc.hero.label': '/ الخدمات',
+            'svc.hero.titleA': 'ما يمكنني',
+            'svc.hero.titleB': 'بناؤه لك.',
+            'svc.hero.desc': 'خدمات عملية مبنية على مهاراتي الفعلية وخبرتي العملية — من تطوير الويب إلى تصميم قواعد البيانات ودعم تقنية المعلومات.',
+            'svc.hero.stat.services': 'خدمات',
+            'svc.hero.stat.categories': 'فئات',
+            'svc.hero.stat.tech': 'تقنيات',
+
+            'svc.filter.all': 'كل الخدمات',
+            'svc.filter.dev': 'التطوير',
+            'svc.filter.data': 'البيانات وقواعد البيانات',
+            'svc.filter.it': 'تقنية المعلومات والدعم',
+            'svc.filter.consult': 'استشارة',
+
+            'svc.card.cta': 'طلب الخدمة',
+
+            'svc.card.1.title': 'تطوير الويب',
+            'svc.card.1.desc': 'بناء مواقع ويب حديثة وسريعة الاستجابة باستخدام HTML5 و CSS3 و JavaScript و Bootstrap — مصممة لتبدو رائعة على كل جهاز.',
+
+            'svc.card.2.title': 'التطوير المتكامل',
+            'svc.card.2.desc': 'تطوير تطبيقات ويب من البداية إلى النهاية — من واجهة المستخدم الأمامية إلى واجهات API الخلفية وتكامل قواعد البيانات.',
+
+            'svc.card.3.title': 'تطوير المواقع',
+            'svc.card.3.desc': 'بناء مواقع كاملة للاستخدام الشخصي أو التجاري أو التنظيمي — من الفكرة إلى النشر.',
+
+            'svc.card.4.title': 'تطوير نظم المعلومات',
+            'svc.card.4.desc': 'أنظمة معلومات مخصصة مصممة حول سير العمل الفعلي للشركات أو المؤسسات.',
+
+            'svc.card.5.title': 'تطوير قواعد البيانات',
+            'svc.card.5.desc': 'تصميم وبناء مخططات قواعد بيانات علائقية باستخدام MySQL و MariaDB و SQL — مُحسَّنة للتطبيقات الحقيقية.',
+
+            'svc.card.6.title': 'إدارة قواعد البيانات',
+            'svc.card.6.desc': 'إدارة وصيانة وتحسين قواعد البيانات — الاستعلامات والنسخ الاحتياطية والبنية والأداء.',
+
+            'svc.card.7.title': 'دعم تقنية المعلومات',
+            'svc.card.7.desc': 'دعم Windows و Microsoft Office وإدارة تقنية المعلومات العامة واستكشاف الأخطاء اليومية.',
+
+            'svc.card.8.title': 'دعم الشبكات',
+            'svc.card.8.desc': 'تكوين الشبكة الأساسي والمهام المتعلقة بـ Cisco واستكشاف أخطاء الشبكة.',
+
+            'svc.card.9.title': 'تطوير الواجهة الخلفية و API',
+            'svc.card.9.desc': 'تطوير واجهات REST API مع Node.js و Express — بما في ذلك المصادقة و JWT وتكامل قواعد البيانات.',
+
+            'svc.card.10.title': 'الاستشارة التقنية',
+            'svc.card.10.desc': 'نصائح عملية حول مشاريع الويب أو قواعد البيانات أو إعدادات تقنية المعلومات — لمساعدتك في التخطيط للنهج الصحيح.',
+
+            'svc.process.label': '/ 02 — العملية',
+            'svc.process.titleA': 'كيف',
+            'svc.process.titleB': 'أعمل',
+            'svc.process.desc': 'سير عمل بسيط وشفاف من الاتصال الأول إلى التسليم النهائي.',
+            'svc.process.1.title': 'المناقشة',
+            'svc.process.1.desc': 'نتحدث عن أهدافك ومتطلباتك وكيف يبدو النجاح.',
+            'svc.process.2.title': 'التخطيط',
+            'svc.process.2.desc': 'أرسم الهيكل والتقنيات والجدول الزمني والمخرجات.',
+            'svc.process.3.title': 'التطوير',
+            'svc.process.3.desc': 'أبني الحل بكود نظيف وميزات مُختبرة وتحديثات تقدم واضحة.',
+            'svc.process.4.title': 'التسليم',
+            'svc.process.4.desc': 'تسليم نهائي مع التوثيق والدعم والتوجيه بعد الإطلاق.',
+
+            'svc.why.label': '/ 03 — لماذا تعمل معي',
+            'svc.why.titleA': 'ما',
+            'svc.why.titleB': 'تحصل عليه',
+            'svc.why.1.title': 'تركيز عملي',
+            'svc.why.1.desc': 'حلول مبنية حول مشكلات العالم الحقيقي وليس النظرية.',
+            'svc.why.2.title': 'تواصل واضح',
+            'svc.why.2.desc': 'تحديثات منتظمة وتواصل صادق وشفاف طوال الوقت.',
+            'svc.why.3.title': 'حل المشكلات',
+            'svc.why.3.desc': 'عقلية عملية لتفكيك المشكلات المعقدة.',
+            'svc.why.4.title': 'التعلم الدائم',
+            'svc.why.4.desc': 'تحسين مهاراتي باستمرار لتقديم أساليب حديثة.',
+
+            'svc.cta.titleA': 'مستعد لبدء',
+            'svc.cta.titleB': 'مشروع؟',
+            'svc.cta.desc': 'أخبرني بما تحتاجه — سأرد عليك في أقرب وقت ممكن.',
+            'svc.cta.contact': 'تواصل معي',
+            'svc.cta.projects': 'عرض المشاريع',
+
+            /* ---------- ACHIEVEMENTS PAGE ---------- */
+            'ach.hero.label': '/ الإنجازات',
+            'ach.hero.titleA': 'المعالم و',
+            'ach.hero.titleB': 'اللحظات المهمة.',
+            'ach.hero.desc': 'سجل متنامٍ لإنجازاتي الأكاديمية والمشاريع والتدريب والقيادة والتقنية — يتم تحديثه مع استمراري في النمو.',
+            'ach.hero.stat.projects': 'مشاريع مبنية',
+            'ach.hero.stat.exp': 'خبرات',
+            'ach.hero.stat.categories': 'فئات',
+
+            'ach.filter.all': 'الكل',
+            'ach.filter.academic': 'أكاديمي',
+            'ach.filter.project': 'مشروع',
+            'ach.filter.training': 'تدريب',
+            'ach.filter.leadership': 'قيادة',
+            'ach.filter.technical': 'تقني',
+
+            'ach.card.featured': 'معلم',
+
+            'ach.card.1.title': 'القبول في بكالوريوس تقنية المعلومات',
+            'ach.card.1.desc': 'تمكنت بنجاح من الانتقال إلى برنامج بكالوريوس تقنية المعلومات (B.IT) في جامعة زنجبار.',
+            'ach.card.1.place': 'جامعة زنجبار',
+
+            'ach.card.2.title': 'إكمال دبلوم تقنية المعلومات',
+            'ach.card.2.desc': 'أكملت بنجاح الدراسات الأساسية في تقنية المعلومات مع تعرض عملي للبرمجة وقواعد البيانات ونظم المعلومات.',
+            'ach.card.2.place': 'جامعة زنجبار',
+
+            'ach.card.3.title': 'تطوير CleanSpark — نظام إدارة خدمات التنظيف',
+            'ach.card.3.desc': 'صممت وبنيت نظام إدارة خدمات التنظيف المتكامل من الملاحظة الواقعية للتحديات في شركة تنظيف في زنجبار.',
+            'ach.card.3.tag': 'متكامل',
+
+            'ach.card.4.title': 'تطوير LAMS — نظام إدارة الحكم المحلي',
+            'ach.card.4.desc': 'صممت وطوّرت نظام إدارة الحكم المحلي المتكامل الذي يربط المواطنين بإدارة القسم للخدمات والمدفوعات والمستندات.',
+            'ach.card.4.tag': 'متكامل',
+
+            'ach.card.5.title': 'إكمال التدريب الميداني في ICE',
+            'ach.card.5.desc': 'أكملت بنجاح حوالي 5 أسابيع من التدريب الميداني العملي في تطوير البرمجيات وأنشطة دعم تقنية المعلومات العامة.',
+            'ach.card.5.place': 'زنجبار',
+
+            'ach.card.6.title': 'إكمال تدريب لمدة شهرين في Nyota Tech Hub',
+            'ach.card.6.desc': 'أكملت تدريباً ميدانياً لمدة شهرين في Nyota Tech Hub، مركز ابتكار تقني في زنجبار.',
+            'ach.card.6.period': 'شهران',
+
+            'ach.card.7.title': 'الخطابة العامة والتدريس',
+            'ach.card.7.desc': 'طوّرت قدرات قوية في الخطابة العامة والتدريس من خلال العروض التقديمية ومشاركة المعرفة ومساعدة الأقران على تعلم الموضوعات التقنية.',
+            'ach.card.7.tag': 'مستمر',
+
+            'ach.card.8.title': 'خبرة إدارية وعمل جماعي',
+            'ach.card.8.desc': 'بنيت مهارات عملية في الإدارة والعمل الجماعي وخدمة العملاء من خلال أدوار الإدارة المكتبية في زنجبار.',
+            'ach.card.8.tag': 'أدوار مكتبية',
+
+            'ach.card.9.title': 'إتقان التطوير المتكامل',
+            'ach.card.9.desc': 'بنيت معرفة عملية عبر المكدس الكامل — HTML و CSS و JavaScript و Node.js و Express و MySQL — من خلال العمل العملي على المشاريع.',
+            'ach.card.9.tag': 'متكامل',
+
+            'ach.card.10.title': 'تصميم وإدارة قواعد البيانات',
+            'ach.card.10.desc': 'صممت وأدرت قواعد بيانات علائقية باستخدام MySQL و MariaDB و SQL لمشاريع تطبيقية حقيقية.',
+
+            'ach.card.11.title': 'الشبكات ودعم تقنية المعلومات',
+            'ach.card.11.desc': 'اكتسبت خبرة عملية في شبكات الكمبيوتر والمهام المتعلقة بـ Cisco ودعم Windows وإدارة تقنية المعلومات العامة.',
+
+            'ach.highlights.label': '/ أبرز النقاط',
+            'ach.highlights.titleA': 'أبرز',
+            'ach.highlights.titleB': 'النقاط',
+            'ach.highlights.1': 'مشاريع متكاملة رئيسية تم بناؤها',
+            'ach.highlights.2': 'وظائف ووظائف ميدانية مكتملة',
+            'ach.highlights.3': 'مستويات تعليمية مكتملة',
+            'ach.highlights.4': 'تقنيات قيد الاستخدام النشط',
+
+            'ach.note.title': 'هذه الصفحة تنمو باستمرار',
+            'ach.note.desc': 'أعمل بنشاط على مشاريع وتدريبات وشهادات جديدة. عند تحقيق معالم جديدة، سيتم تحديث هذه الصفحة لتعكسها بصدق.',
+
+            'ach.cta.titleA': 'تريد أن تكون جزءاً',
+            'ach.cta.titleB': 'من المعلم التالي؟',
+            'ach.cta.desc': 'لنتحدث عن كيف يمكنني المساهمة في فريقك أو مشروعك.',
+            'ach.cta.contact': 'تواصل معي',
+            'ach.cta.projects': 'عرض المشاريع',
+
+            /* ---------- CONTACT PAGE ---------- */
+            'contact.hero.label': '/ تواصل',
+            'contact.hero.titleA': 'لنبنِ شيئاً',
+            'contact.hero.titleB': 'ذا معنى معاً.',
+            'contact.hero.desc': 'لديك مشروع أو فرصة أو تريد فقط إلقاء التحية؟ أنا سعيد دائماً بالتواصل. تواصل عبر أي قناة أدناه.',
+            'contact.hero.status': 'متاح حالياً للفرص',
+
+            'contact.info.email': 'البريد',
+            'contact.info.emailHint': 'انقر لإرسال بريد إلكتروني',
+            'contact.info.phone': 'الهاتف',
+            'contact.info.phoneHint': 'انقر للاتصال',
+            'contact.info.whatsapp': 'واتساب',
+            'contact.info.whatsappHint': 'انقر للدردشة على واتساب',
+            'contact.info.location': 'الموقع',
+
+            'contact.form.label': '/ 01 — إرسال رسالة',
+            'contact.form.titleA': 'لنبدأ',
+            'contact.form.titleB': 'محادثة.',
+            'contact.form.desc': 'املأ النموذج وسأرد عليك في أقرب وقت ممكن. يمكنك أيضاً مراسلتي مباشرة على البريد في الجانب.',
+            'contact.form.bullet1': 'وقت استجابة سريع',
+            'contact.form.bullet2': 'متاح للعمل الحر والبدوام الكامل',
+            'contact.form.bullet3': 'مقيم في زنجبار — أعمل عن بعد',
+            'contact.form.note': 'يفتح هذا النموذج تطبيق البريد الإلكتروني الخاص بك مع تعبئة الرسالة مسبقاً — لا يوجد خادم متضمن، ولا يتم إرسال أي شيء تلقائياً.',
+
+            'contact.form.name': 'اسمك',
+            'contact.form.namePlaceholder': 'اسمك الكامل',
+            'contact.form.email': 'بريدك الإلكتروني',
+            'contact.form.emailPlaceholder': 'you@example.com',
+            'contact.form.subject': 'الموضوع',
+            'contact.form.subjectPlaceholder': 'استفسار عن مشروع',
+            'contact.form.message': 'الرسالة',
+            'contact.form.messagePlaceholder': 'أخبرني عن مشروعك أو رسالتك…',
+            'contact.form.submit': 'إرسال الرسالة',
+            'contact.form.reset': 'إعادة تعيين',
+
+            'contact.form.err.nameRequired': 'الرجاء إدخال اسمك',
+            'contact.form.err.nameShort': 'الاسم قصير جداً',
+            'contact.form.err.emailRequired': 'الرجاء إدخال بريدك الإلكتروني',
+            'contact.form.err.emailInvalid': 'الرجاء إدخال بريد إلكتروني صالح',
+            'contact.form.err.subjectRequired': 'الرجاء إدخال الموضوع',
+            'contact.form.err.subjectShort': 'الموضوع قصير جداً',
+            'contact.form.err.messageRequired': 'الرجاء إدخال رسالة',
+            'contact.form.err.messageShort': 'الرسالة قصيرة جداً (10 أحرف على الأقل)',
+            'contact.form.err.fixErrors': 'الرجاء تصحيح الأخطاء أعلاه قبل الإرسال.',
+            'contact.form.success': 'يتم فتح تطبيق البريد الإلكتروني — يرجى المراجعة والإرسال.',
+
+            'contact.social.label': '/ 02 — التواصل',
+            'contact.social.titleA': 'جدني',
+            'contact.social.titleB': 'على الإنترنت',
+            'contact.social.desc': 'تواصل معي على المنصات التي أستخدمها فعلاً.',
+
+            'contact.faq.label': '/ 03 — الأسئلة الشائعة',
+            'contact.faq.titleA': 'الأسئلة',
+            'contact.faq.titleB': 'الشائعة',
+            'contact.faq.1.q': 'هل أنت متاح للعمل الحر؟',
+            'contact.faq.1.a': 'نعم — أنا متاح لمشاريع العمل الحر في تطوير الويب وقواعد البيانات ودعم تقنية المعلومات. تواصل معي بتفاصيل مشروعك.',
+            'contact.faq.2.q': 'هل تعمل عن بعد؟',
+            'contact.faq.2.a': 'نعم. أنا مقيم في زنجبار ولكن يمكنني التعاون عن بعد مع العملاء والفرق في أي مكان.',
+            'contact.faq.3.q': 'ما نوع المشاريع التي تقبلها؟',
+            'contact.faq.3.a': 'تطبيقات الويب ونظم المعلومات وتصميم قواعد البيانات ودعم تقنية المعلومات. أركز على الحلول العملية التي تحل مشكلات حقيقية.',
+            'contact.faq.4.q': 'كم يستغرق المشروع النموذجي؟',
+            'contact.faq.4.a': 'يعتمد على النطاق. المواقع الصغيرة قد تستغرق 1-2 أسابيع؛ الأنظمة الأكبر تستغرق وقتاً أطول. سنتفق على جدول زمني واضح قبل البدء.',
+
+            'contact.cta.titleA': 'تفضل',
+            'contact.cta.titleB': 'رسالة مباشرة؟',
+            'contact.cta.desc': 'تخطَّ النموذج — راسلني عبر البريد أو واتساب مباشرة.',
+            'contact.cta.whatsapp': 'الدردشة على واتساب',
+
+            'contact.social.copy': 'نسخ',
+            'contact.social.copied': 'تم النسخ!',
+            'contact.social.copyId': 'نسخ المعرّف',
+            'contact.wechat.title': 'امسح لإضافتي على WeChat',
+            'contact.wechat.subtitle': 'افتح WeChat على هاتفك وامسح رمز QR هذا.',
+            'contact.wechat.idLabel': 'معرّف WeChat',
+            'contact.wechat.hint': 'لا يمكنك المسح؟ أضف معرّف WeChat الخاص بي يدوياً.',
+
+            /* ---------- 404 PAGE ---------- */
+            'e404.label': '/ خطأ 404',
+            'e404.titleA': 'هذه الصفحة',
+            'e404.titleB': 'اختفت.',
+            'e404.desc': 'الصفحة التي تبحث عنها غير موجودة أو تم نقلها أو غير متاحة مؤقتاً. لنعدك إلى المسار الصحيح.',
+            'e404.home': 'العودة للرئيسية',
+            'e404.contact': 'تواصل معي',
+            'e404.quickLabel': 'روابط سريعة'
+        },
+
+        fr: {
+            /* ---------- GLOBAL ---------- */
+            'brand.sub': 'Développeur Full-Stack',
+
+            /* ---------- MENU ---------- */
+            'menu.home': 'Accueil',
+            'menu.about': 'À propos',
+            'menu.skills': 'Compétences',
+            'menu.experience': 'Expérience',
+            'menu.projects': 'Projets',
+            'menu.certificates': 'Certificats',
+            'menu.services': 'Services',
+            'menu.achievements': 'Réalisations',
+            'menu.contact': 'Contact',
+
+            /* ---------- MENU ASIDE ---------- */
+            'menu.aside.location': 'Localisation',
+            'menu.aside.email': 'Email',
+            'menu.aside.availability': 'Disponibilité',
+            'menu.aside.socials': 'Réseaux',
+            'menu.aside.open': 'Ouvert aux opportunités',
+
+            /* ---------- HERO ---------- */
+            'hero.tagline': 'Basé à Zanzibar, Tanzanie',
+            'hero.roleStatic': 'Je suis',
+            'hero.roles.0': 'Développeur Full-Stack',
+            'hero.roles.1': 'Étudiant en informatique',
+            'hero.roles.2': 'Passionné de technologie',
+            'hero.roles.3': 'Résolveur de problèmes',
+            'hero.desc': "Je crée des solutions numériques pratiques grâce à la technologie, la créativité et la résolution de problèmes — de Zanzibar au monde.",
+            'hero.cta.primary': 'Explorer mon travail',
+            'hero.cta.secondary': 'Télécharger le CV',
+            'hero.stats.projects': 'Projets majeurs',
+            'hero.stats.technologies': 'Technologies',
+            'hero.stats.experiences': 'Expériences pro',
+            'hero.profile': 'Profil',
+            'hero.badge': 'Disponible',
+            'hero.scroll': 'Défiler',
+
+            /* ---------- MARQUEE ---------- */
+            'marquee.1': 'DÉVELOPPEMENT FULL-STACK',
+            'marquee.2': 'CONCEPTION DE BASES DE DONNÉES',
+            'marquee.3': 'API REST',
+            'marquee.4': 'SUPPORT IT',
+            'marquee.5': 'RÉSEAUX',
+            'marquee.6': 'RÉSOLUTION DE PROBLÈMES',
+
+            /* ---------- FEATURED ---------- */
+            'featured.label': '/ 01 — Travaux sélectionnés',
+            'featured.titleA': 'Projets',
+            'featured.titleB': 'en vedette',
+            'featured.desc': "Des systèmes pratiques conçus pour résoudre de vrais problèmes dans le contexte local de Zanzibar.",
+            'featured.cta': 'Voir tous les projets',
+            'project.view': 'Voir le projet',
+            'project.meta.fullstack': 'Full-Stack',
+            'project.cleanspark.tag': 'Gestion de services de nettoyage',
+            'project.cleanspark.desc': 'Un système de gestion de services de nettoyage qui numérise clients, réservations, personnel, paiements, planification et administration.',
+            'project.lams.tag': 'Gestion administrative locale',
+            'project.lams.desc': "Un système de gestion administrative locale reliant les citoyens à l'administration de quartier pour les services, paiements et documents.",
+
+            /* ---------- QUICK ABOUT ---------- */
+            'quickabout.label': '/ 02 — À propos',
+            'quickabout.titleA': 'Construire',
+            'quickabout.titleB': 'des solutions',
+            'quickabout.titleC': 'numériques pratiques depuis Zanzibar.',
+            'quickabout.desc': "Je suis Mudrik Mohamed Othman — étudiant en informatique et développeur Full-Stack en devenir, poursuivant un Bachelor en Technologies de l'Information à l'Université de Zanzibar. Je conçois et développe des systèmes web modernes, des bases de données et des solutions numériques qui résolvent des problèmes concrets.",
+            'quickabout.link': 'Plus sur moi',
+
+            /* ---------- CTA ---------- */
+            'cta.label': '/ 03 — Me contacter',
+            'cta.titleA': 'Construisons quelque chose',
+            'cta.titleB': 'de significatif',
+            'cta.contact': 'Me contacter',
+
+            /* ---------- FOOTER ---------- */
+            'footer.copy': 'Construit avec soin à Zanzibar.',
+
+            /* ---------- ABOUT PAGE ---------- */
+            'about.hero.label': '/ À propos',
+            'about.hero.titleA': 'Étudiant en informatique passionné',
+            'about.hero.titleB': 'Créateur de solutions',
+            'about.hero.titleC': 'numériques pratiques.',
+            'about.hero.desc': "Bonjour ! Je suis Mudrik Mohamed Othman (alias DAU) — étudiant en informatique et développeur Full-Stack en devenir, actuellement en Bachelor de Technologies de l'Information à l'Université de Zanzibar.",
+            'about.hero.location': 'Maungani / Kombeni, Zanzibar',
+            'about.hero.education': "B.IT — Université de Zanzibar",
+            'about.hero.status': 'Ouvert aux opportunités',
+            'about.hero.cta.cv': 'Télécharger le CV',
+            'about.hero.cta.contact': 'Me contacter',
+            'about.hero.profile': 'Profil',
+            'about.hero.badge1': 'Full-Stack',
+            'about.hero.badge2': 'Étudiant B.IT',
+
+            'about.bio.label': '/ 01 — Biographie',
+            'about.bio.headingA': 'Mon',
+            'about.bio.headingB': 'Histoire',
+            'about.bio.p1': "Mon parcours technologique s'est développé à travers des études académiques, des projets pratiques et une expérience concrète en informatique et développement logiciel. J'aime concevoir et développer des systèmes web modernes, des bases de données et des solutions numériques qui résolvent des problèmes concrets.",
+            'about.bio.p2': "Mes intérêts incluent le développement full-stack, la gestion de bases de données, les réseaux, la cybersécurité et les systèmes d'information.",
+            'about.bio.p3': "Au-delà du développement technique, j'ai de solides compétences en communication, prise de parole en public, résolution de problèmes, enseignement, travail d'équipe et gestion. J'aime apprendre de nouvelles technologies, partager mes connaissances et transformer des idées en solutions numériques pratiques et conviviales.",
+            'about.bio.p4': "En dehors de la technologie, j'aime le football et les jeux vidéo.",
+
+            'about.info.label': '/ 02 — Informations personnelles',
+            'about.info.titleA': 'Faits',
+            'about.info.titleB': 'rapides',
+            'about.info.birthday': 'Anniversaire',
+            'about.info.location': 'Localisation',
+            'about.info.education': 'Éducation',
+            'about.info.email': 'Email',
+            'about.info.phone': 'Téléphone',
+            'about.info.hobbies': 'Loisirs',
+            'about.info.hobbiesValue': 'Football, Jeux vidéo',
+
+            'about.edu.label': '/ 03 — Éducation',
+            'about.edu.titleA': 'Parcours',
+            'about.edu.titleB': 'académique',
+            'about.edu.badge.current': 'Actuellement',
+            'about.edu.bachelor.title': "Bachelor en Technologies de l'Information",
+            'about.edu.bachelor.school': 'Université de Zanzibar',
+            'about.edu.bachelor.desc': "Bachelor en Technologies de l'Information (B.IT) — en cours.",
+            'about.edu.diploma.title': "Diplôme en Technologies de l'Information",
+            'about.edu.diploma.school': 'Université de Zanzibar',
+            'about.edu.diploma.desc': "Études informatiques fondamentales avec exposition pratique à la programmation, aux bases de données et aux systèmes.",
+            'about.edu.highschool.title': 'Enseignement secondaire supérieur',
+            'about.edu.highschool.school': 'Zanzibar, Tanzanie',
+            'about.edu.highschool.desc': 'Filière scientifique — Mathématiques, Physique et Informatique.',
+
+            'about.interests.label': '/ 04 — Intérêts techniques',
+            'about.interests.titleA': 'Ce qui',
+            'about.interests.titleB': "m'intéresse",
+            'about.interests.desc': "Domaines technologiques que j'explore, étudie et utilise activement.",
+            'about.interests.1.title': 'Développement Full-Stack',
+            'about.interests.1.desc': 'Créer des applications web modernes avec HTML, CSS, JavaScript, Node.js, Express et MySQL.',
+            'about.interests.2.title': 'Gestion de bases de données',
+            'about.interests.2.desc': 'Concevoir et gérer des bases de données relationnelles avec MySQL, SQL et MariaDB.',
+            'about.interests.3.title': 'Réseaux',
+            'about.interests.3.desc': 'Fondamentaux des réseaux informatiques, Cisco, configuration et dépannage.',
+            'about.interests.4.title': 'Cybersécurité',
+            'about.interests.4.desc': "Sécurité Linux, sécurité réseau, laboratoires de sécurité et OSINT — en tant qu'apprenant actif.",
+            'about.interests.5.title': "Systèmes d'information",
+            'about.interests.5.desc': "Concevoir des systèmes d'information pratiques pour des problèmes locaux et organisationnels réels.",
+            'about.interests.6.title': 'Support IT',
+            'about.interests.6.desc': 'Support Windows, Microsoft Office, administration informatique générale et dépannage technique.',
+
+            'about.skills.label': '/ 05 — Compétences professionnelles',
+            'about.skills.titleA': 'Au-delà',
+            'about.skills.titleB': 'du code',
+            'about.skills.1': 'Communication',
+            'about.skills.2': 'Prise de parole en public',
+            'about.skills.3': 'Résolution de problèmes',
+            'about.skills.4': 'Enseignement',
+            'about.skills.5': "Travail d'équipe",
+            'about.skills.6': 'Compétences managériales',
+            'about.skills.7': 'Leadership',
+            'about.skills.8': 'Apprentissage de nouvelles technologies',
+
+            'about.cta.titleA': 'Vous voulez voir',
+            'about.cta.titleB': "ce que j'ai construit ?",
+            'about.cta.desc': 'Explorez mes projets et mon expérience, ou contactez-moi directement.',
+            'about.cta.projects': 'Voir les projets',
+            'about.cta.contact': 'Me contacter',
+
+            /* ---------- SKILLS PAGE ---------- */
+            'skills.hero.label': '/ Mes compétences',
+            'skills.hero.titleA': 'Outils,',
+            'skills.hero.titleB': 'Technologies',
+            'skills.hero.titleC': '& Compétences que j\'utilise.',
+            'skills.hero.desc': 'Un aperçu pratique des technologies, outils et capacités professionnelles que j\'utilise pour concevoir, construire et gérer des solutions numériques.',
+            'skills.hero.stat.tech': 'Technologies',
+            'skills.hero.stat.categories': 'Catégories',
+            'skills.hero.stat.soft': 'Compétences douces',
+            'skills.hero.coreLabel': 'Technologies',
+
+            'skills.cats.label': '/ 01 — Catégories',
+            'skills.cats.titleA': 'Maîtrise',
+            'skills.cats.titleB': 'technique',
+            'skills.cats.desc': 'Catégories de compétences organisées selon mon expérience pratique réelle. Les niveaux sont auto-évalués — pas des mesures objectives.',
+
+            'skills.cat1.title': 'Développement Web',
+            'skills.cat2.title': 'Backend',
+            'skills.cat3.title': 'Bases de données',
+            'skills.cat4.title': 'Outils de programmation',
+            'skills.cat5.title': "Systèmes d'exploitation",
+            'skills.cat6.title': 'Réseaux',
+            'skills.cat6.item1': 'Réseaux informatiques',
+            'skills.cat6.item2': 'Configuration réseau',
+
+            'skills.level.advanced': 'Avancé',
+            'skills.level.intermediate': 'Intermédiaire',
+            'skills.level.learning': 'En apprentissage',
+
+            'skills.stack.label': '/ 02 — Stack technique',
+            'skills.stack.titleA': 'Ma',
+            'skills.stack.titleB': 'Boîte à outils',
+            'skills.stack.desc': 'Les technologies que j\'utilise quotidiennement dans mes projets.',
+
+            'skills.soft.label': '/ 03 — Compétences professionnelles',
+            'skills.soft.titleA': 'Au-delà',
+            'skills.soft.titleB': 'du code',
+            'skills.soft.desc': 'Capacités non techniques qui me rendent efficace dans des contextes réels.',
+            'skills.soft.1.desc': 'Communication claire et efficace avec coéquipiers, clients et utilisateurs.',
+            'skills.soft.2.desc': 'Présentation confiante d\'idées, de projets et de concepts techniques.',
+            'skills.soft.3.desc': 'Décomposer des problèmes complexes et trouver des solutions pratiques.',
+            'skills.soft.4.desc': 'Partager les connaissances et aider les autres à comprendre des sujets techniques.',
+            'skills.soft.5.desc': 'Collaborer efficacement en équipe et sur des projets de groupe.',
+            'skills.soft.6.desc': 'Organiser les tâches, gérer les priorités et soutenir les efforts de l\'équipe.',
+            'skills.soft.7.desc': 'Prendre l\'initiative et guider les projets vers des résultats réussis.',
+            'skills.soft.8.desc': 'Explorer continuellement de nouveaux outils et frameworks pour rester à jour.',
+
+            'skills.learning.label': '/ 04 — En apprentissage',
+            'skills.learning.titleA': 'Toujours',
+            'skills.learning.titleB': 'en progression',
+            'skills.learning.desc': 'Compétences et domaines que j\'étudie et améliore activement en ce moment.',
+            'skills.learning.1.title': 'Fondamentaux de la cybersécurité',
+            'skills.learning.1.desc': 'Sécurité Linux, sécurité réseau, laboratoires de sécurité et techniques OSINT.',
+            'skills.learning.2.title': 'Réseaux avancés',
+            'skills.learning.2.desc': 'Configuration Cisco, sous-réseaux, routage et commutation.',
+            'skills.learning.3.title': 'Architecture backend',
+            'skills.learning.3.desc': 'Conception d\'API évolutive, modèles d\'authentification et structure de code propre.',
+
+            'skills.cta.titleA': 'Vous voulez voir ces',
+            'skills.cta.titleB': 'compétences en action ?',
+            'skills.cta.desc': 'Explorez mes projets ou contactez-moi pour discuter des opportunités.',
+            'skills.cta.projects': 'Voir les projets',
+            'skills.cta.contact': 'Me contacter',
+
+            /* ---------- EXPERIENCE PAGE ---------- */
+            'exp.hero.label': '/ Expérience et Éducation',
+            'exp.hero.titleA': 'Mon parcours',
+            'exp.hero.titleB': 'professionnel',
+            'exp.hero.titleC': ' et ma croissance.',
+            'exp.hero.desc': "Une chronologie de mon expérience professionnelle, de mes stages pratiques et de mon parcours académique — des bureaux de Zanzibar aux amphithéâtres de l'Université de Zanzibar.",
+            'exp.hero.stat.exp': 'Expériences',
+            'exp.hero.stat.edu': 'Éducation',
+            'exp.hero.stat.years': "Années d'apprentissage",
+
+            'exp.pro.label': '/ 01 — Expérience professionnelle',
+            'exp.pro.titleA': 'Où',
+            'exp.pro.titleB': "j'ai travaillé",
+
+            'exp.badge.current': 'Actuellement',
+            'exp.badge.role': 'Assistant de bureau',
+            'exp.badge.diploma': 'Diplôme',
+            'exp.badge.secondary': 'Secondaire',
+            'exp.badge.intern': 'Stagiaire',
+            'exp.nyota.title': 'Organisation Nyota Tech Hub',
+            'exp.nyota.location': 'Kiembe Samaki, Zanzibar',
+            'exp.nyota.period': '2 mois',
+            'exp.nyota.desc': "Stage pratique chez Nyota Tech Hub — un hub d'innovation technologique à Zanzibar — où j'ai travaillé sur des projets liés à la technologie et acquis une expérience pratique dans un environnement technologique collaboratif.",
+            'exp.nyota.act1': 'Travail sur des projets technologiques et innovants',
+            'exp.nyota.act2': 'Collaboration avec des équipes techniques et des mentors',
+            'exp.nyota.act3': "Application des compétences logicielles et informatiques dans un environnement de hub réel",
+            'exp.nyota.act4': "Acquisition d'une expérience pratique dans l'écosystème technologique de Zanzibar",
+            'exp.responsibilities': 'Activités clés',
+            'exp.skillsGained': 'Compétences acquises',
+
+            'exp.ice.title': 'ICE — Stage pratique',
+            'exp.ice.location': 'Zanzibar',
+            'exp.ice.desc': "Stage pratique portant sur le développement logiciel et les activités générales de support informatique, y compris le développement frontend, backend, bases de données et l'administration informatique.",
+            'exp.ice.act1': 'Travail sur le projet CleanSpark (frontend, backend, base de données)',
+            'exp.ice.act2': "Support d'administration informatique",
+            'exp.ice.act3': 'Support Windows 11 et Microsoft Office',
+            'exp.ice.act4': 'Travaux de réseaux et Cisco',
+            'exp.ice.act5': 'Utilisation de VS Code, XAMPP et outils système/base de données',
+
+            'exp.zan.title': 'Zan Drive Location de voitures',
+            'exp.zan.location': 'Kilimani, Zanzibar',
+            'exp.zan.desc': "Rôle d'assistant de bureau avec des responsabilités liées à l'informatique, soutenant les opérations quotidiennes du bureau et les tâches technologiques.",
+
+            'exp.wb.title': 'White Bird Cleaning Company',
+            'exp.wb.location': 'Mlandege, Zanzibar',
+            'exp.wb.desc': "Rôle de support bureautique couvrant les tâches administratives, la documentation, la communication, l'interaction avec les clients et l'observation/assistance aux travaux technologiques. Cette expérience a inspiré le développement du système CleanSpark.",
+            'exp.wb.skill1': 'Communication et interaction client',
+            'exp.wb.skill2': 'Administration de bureau',
+            'exp.wb.skill3': 'Documentation et résolution de problèmes',
+            'exp.wb.skill4': "Travail d'équipe et support de gestion",
+
+            'exp.edu.label': '/ 02 — Éducation',
+            'exp.edu.titleA': 'Parcours',
+            'exp.edu.titleB': 'académique',
+
+            'exp.edu.bachelor.title': "Bachelor en Technologies de l'Information (B.IT)",
+            'exp.edu.bachelor.school': 'Université de Zanzibar',
+            'exp.edu.bachelor.desc': "Je poursuis actuellement un Bachelor en Technologies de l'Information à l'Université de Zanzibar, en me concentrant sur le développement full-stack, la gestion de bases de données, les réseaux et les systèmes d'information.",
+
+            'exp.edu.diploma.title': "Diplôme en Technologies de l'Information",
+            'exp.edu.diploma.school': 'Université de Zanzibar',
+            'exp.edu.diploma.desc': "Études informatiques fondamentales avec exposition pratique à la programmation, aux bases de données et aux systèmes d'information.",
+
+            'exp.edu.hs.title': 'Enseignement secondaire supérieur',
+            'exp.edu.hs.school': 'Zanzibar, Tanzanie',
+            'exp.edu.hs.period': 'Terminé',
+            'exp.edu.hs.desc': "Filière scientifique avec un accent sur les mathématiques, la physique et l'informatique. Cette éducation a développé la pensée analytique et les compétences en résolution de problèmes et a fourni la base pour des études ultérieures en Technologies de l'Information.",
+
+            'exp.cta.titleA': 'Vous voulez',
+            'exp.cta.titleB': 'le tableau complet ?',
+            'exp.cta.desc': 'Téléchargez mon CV ou contactez-moi pour discuter des opportunités.',
+            'exp.cta.cv': 'Télécharger le CV',
+            'exp.cta.contact': 'Me contacter',
+
+            /* ---------- PROJECTS PAGE ---------- */
+            'proj.hero.label': '/ Travaux sélectionnés',
+            'proj.hero.titleA': 'Des projets conçus pour',
+            'proj.hero.titleB': 'résoudre de vrais problèmes.',
+            'proj.hero.desc': "Des applications web full-stack conçues et développées avec des technologies modernes, axées sur des problèmes réels dans le contexte local de Zanzibar.",
+            'proj.hero.stat.major': 'Projets majeurs',
+            'proj.hero.stat.tech': 'Technologies',
+            'proj.hero.stat.domains': 'Domaines',
+
+            'proj.filter.all': 'Tous les projets',
+            'proj.filter.fullstack': 'Full-Stack',
+            'proj.filter.web': 'Systèmes Web',
+            'proj.filter.local': 'Contexte local',
+
+            'proj.card.details': 'Voir les détails',
+            'proj.card.demo': 'Démo en direct',
+            'proj.modal.close': 'Fermer',
+
+            'proj.modal.about.label': 'À propos de ce projet',
+            'proj.modal.features.label': 'Fonctionnalités principales',
+            'proj.modal.workflow.label': 'Flux principal',
+            'proj.modal.tech.label': 'Technologies utilisées',
+            'proj.modal.role.label': 'Mon rôle',
+
+            'project.workflow.customer': 'Client',
+            'project.workflow.booking': 'Réservation',
+            'project.workflow.admin': 'Admin',
+            'project.workflow.staff': 'Personnel',
+            'project.workflow.service': 'Service',
+            'project.workflow.payment': 'Paiement',
+            'project.workflow.report': 'Rapport',
+            'project.workflow.citizen': 'Citoyen',
+            'project.workflow.application': 'Demande',
+            'project.workflow.document': 'Document',
+
+            /* CleanSpark modal */
+            'proj.modal.cleanspark.about.title': 'Système de gestion des services de nettoyage',
+            'proj.modal.cleanspark.about.p1': "CleanSpark est conçu pour aider les entreprises de nettoyage à gérer numériquement les clients, les réservations, le personnel, les services de nettoyage, les paiements, la planification et les opérations administratives.",
+            'proj.modal.cleanspark.about.p2': "L'idée est venue de problèmes réels observés en travaillant dans l'environnement d'une entreprise de nettoyage à Zanzibar.",
+            'proj.modal.cleanspark.problem.title': 'Problèmes traités',
+            'proj.modal.cleanspark.problem.1': 'Fiches clients manuelles',
+            'proj.modal.cleanspark.problem.2': 'Planification des services difficile',
+            'proj.modal.cleanspark.problem.3': 'Suivi médiocre des travailleurs',
+            'proj.modal.cleanspark.problem.4': 'Gestion manuelle des paiements',
+            'proj.modal.cleanspark.problem.5': 'Mauvaise communication et suivi difficile des réservations',
+            'proj.modal.cleanspark.solution.title': 'Solution',
+            'proj.modal.cleanspark.solution.1': 'Gestion numérique des clients et réservations',
+            'proj.modal.cleanspark.solution.2': 'Planification et affectation automatiques du personnel',
+            'proj.modal.cleanspark.solution.3': 'Suivi numérique des paiements (M-Pesa, Airtel Money, HaloPesa, Azam Pay, cartes)',
+            'proj.modal.cleanspark.solution.4': 'Suivi du statut du service et confirmation du superviseur',
+            'proj.modal.cleanspark.solution.5': 'Rapports et tableaux de bord administratifs',
+            'proj.modal.cleanspark.features.title': 'Ce que fait le système',
+            'proj.modal.cleanspark.features.1': 'Inscription des clients, connexion et gestion du compte',
+            'proj.modal.cleanspark.features.2': 'Parcourir et sélectionner les services de nettoyage (Unguja, Pemba, Les deux)',
+            'proj.modal.cleanspark.features.3': 'Effectuer et suivre les réservations ; voir, télécharger et partager les devis',
+            'proj.modal.cleanspark.features.4': "Processus de candidature d'emploi avec téléversement de CV, pièce d'identité et documents",
+            'proj.modal.cleanspark.features.5': 'Affectation automatique du nettoyeur et du superviseur après paiement',
+            'proj.modal.cleanspark.features.6': "Le superviseur confirme l'arrivée, le début du service et l'achèvement",
+            'proj.modal.cleanspark.role.value': "J'ai conçu et développé l'ensemble du système — frontend, backend et base de données — en tant que projet full-stack.",
+
+            /* LAMS modal */
+            'proj.modal.lams.about.title': "Système de gestion de l'administration locale",
+            'proj.modal.lams.about.p1': "LAMS est un système de gestion de l'administration locale conçu pour la gestion des services communautaires à Zanzibar. Il se concentre sur l'interaction entre l'administration locale et les citoyens.",
+            'proj.modal.lams.about.p2': "Le système gère numériquement les services de l'administration locale, les citoyens, les demandes, les annonces, les paiements, les documents et les activités administratives.",
+            'proj.modal.lams.problem.title': 'Problèmes traités',
+            'proj.modal.lams.problem.1': 'Dossiers citoyens manuels',
+            'proj.modal.lams.problem.2': 'Traitement difficile des demandes et des documents',
+            'proj.modal.lams.problem.3': 'Traitement manuel des paiements',
+            'proj.modal.lams.problem.4': "Mauvaise communication entre les citoyens et l'administration",
+            'proj.modal.lams.problem.5': "Aucun système centralisé pour les annonces et la gestion des quartiers",
+            'proj.modal.lams.solution.title': 'Solution',
+            'proj.modal.lams.solution.1': 'Enregistrement et gestion numériques des citoyens',
+            'proj.modal.lams.solution.2': 'Système centralisé de demandes et de paiements',
+            'proj.modal.lams.solution.3': 'Téléversement et livraison de documents après confirmation du paiement',
+            'proj.modal.lams.solution.4': "Rôle de Super Admin pour l'administration des dirigeants à mandat limité",
+            'proj.modal.lams.solution.5': 'Filtrage par quartier et gestion du statut',
+            'proj.modal.lams.features.title': 'Ce que fait le système',
+            'proj.modal.lams.features.1': 'Inscription des citoyens, recherche et gestion du statut vivant/décédé',
+            'proj.modal.lams.features.2': 'Tableau de bord citoyen : demandes, paiements, messages, profil, documents',
+            'proj.modal.lams.features.3': 'Processus de demande et de paiement avec identifiant de paiement automatique',
+            'proj.modal.lams.features.4': "Bouton Payer maintenant pour les demandes non payées ; téléchargement PDF, partage, impression pour celles payées",
+            'proj.modal.lams.features.5': "L'admin téléverse des documents, images et PDF à envoyer aux citoyens après paiement",
+            'proj.modal.lams.features.6': "Le Super Admin gère les administrateurs de quartier avec dates de début/fin et statut",
+            'proj.modal.lams.role.value': "J'ai conçu et développé l'ensemble du système — frontend, backend et base de données — en tant que projet full-stack.",
+
+            'proj.cta.titleA': 'Vous avez un projet',
+            'proj.cta.titleB': 'en tête ?',
+            'proj.cta.desc': 'Discutons de la façon dont nous pouvons construire quelque chose de significatif ensemble.',
+            'proj.cta.contact': 'Démarrer une conversation',
+            'proj.cta.github': 'Voir sur GitHub',
+
+            /* ---------- CERTIFICATES PAGE ---------- */
+            'cert.hero.label': '/ Certificats',
+            'cert.hero.titleA': 'Certificats &',
+            'cert.hero.titleB': 'Réalisations.',
+            'cert.hero.desc': "Une collection de mes certificats académiques, techniques et de formation. Cette page sera mise à jour au fur et à mesure de l'obtention de nouveaux certificats.",
+            'cert.hero.stat.total': 'Total',
+            'cert.hero.stat.tech': 'Technique',
+            'cert.hero.stat.academic': 'Académique',
+
+            'cert.filter.all': 'Tous',
+            'cert.filter.technical': 'Technique',
+            'cert.filter.academic': 'Académique',
+            'cert.filter.training': 'Formation',
+
+            'cert.empty.label': 'Bientôt disponible',
+            'cert.empty.title': 'Les certificats arrivent.',
+            'cert.empty.desc': "Je travaille actuellement à obtenir et à collectionner des certificats professionnels en développement full-stack, réseaux, cybersécurité et domaines connexes. Cette page sera mise à jour à leur arrivée.",
+            'cert.empty.contact': 'Me contacter',
+            'cert.empty.projects': 'Voir les projets',
+
+            'cert.modal.download': 'Télécharger',
+            'cert.modal.close': 'Fermer',
+
+            'cert.cta.titleA': 'Vous cherchez quelqu\'un',
+            'cert.cta.titleB': 'engagé dans la croissance ?',
+            'cert.cta.desc': "J'apprends et je construis continuellement. Parlons de ce que je peux apporter à votre équipe.",
+            'cert.cta.contact': 'Me contacter',
+            'cert.cta.experience': "Voir l'expérience",
+
+            /* ---------- SERVICES PAGE ---------- */
+            'svc.hero.label': '/ Services',
+            'svc.hero.titleA': 'Ce que je peux',
+            'svc.hero.titleB': 'construire pour vous.',
+            'svc.hero.desc': "Des services pratiques fondés sur mes compétences réelles et mon expérience pratique — du développement web à la conception de bases de données et au support informatique.",
+            'svc.hero.stat.services': 'Services',
+            'svc.hero.stat.categories': 'Catégories',
+            'svc.hero.stat.tech': 'Technologies',
+
+            'svc.filter.all': 'Tous les services',
+            'svc.filter.dev': 'Développement',
+            'svc.filter.data': 'Données et bases de données',
+            'svc.filter.it': 'IT et support',
+            'svc.filter.consult': 'Consultation',
+
+            'svc.card.cta': 'Demander le service',
+
+            'svc.card.1.title': 'Développement Web',
+            'svc.card.1.desc': "Création de sites web modernes et responsives avec HTML5, CSS3, JavaScript et Bootstrap — conçus pour être beaux sur tous les appareils.",
+
+            'svc.card.2.title': 'Développement Full-Stack',
+            'svc.card.2.desc': "Développement d'applications web de bout en bout — de l'interface frontend aux API backend et à l'intégration de bases de données.",
+
+            'svc.card.3.title': 'Développement de sites web',
+            'svc.card.3.desc': "Création de sites web complets pour un usage personnel, professionnel ou organisationnel — du concept au déploiement.",
+
+            'svc.card.4.title': "Développement de systèmes d'information",
+            'svc.card.4.desc': "Systèmes d'information personnalisés conçus autour de flux de travail réels d'entreprise ou d'organisation.",
+
+            'svc.card.5.title': 'Développement de bases de données',
+            'svc.card.5.desc': "Conception et construction de schémas de bases de données relationnelles avec MySQL, MariaDB et SQL — optimisés pour des applications réelles.",
+
+            'svc.card.6.title': 'Gestion de bases de données',
+            'svc.card.6.desc': "Gestion, maintenance et optimisation de bases de données — requêtes, sauvegardes, structure et performance.",
+
+            'svc.card.7.title': 'Support informatique',
+            'svc.card.7.desc': "Support Windows, Microsoft Office, administration informatique générale et dépannage technique quotidien.",
+
+            'svc.card.8.title': 'Support réseau',
+            'svc.card.8.desc': "Configuration réseau de base, tâches liées à Cisco et dépannage réseau.",
+
+            'svc.card.9.title': 'Développement Backend et API',
+            'svc.card.9.desc': "Développement d'API REST avec Node.js et Express — y compris l'authentification, JWT et l'intégration de bases de données.",
+
+            'svc.card.10.title': 'Consultation technique',
+            'svc.card.10.desc': "Conseils pratiques sur les projets web, les bases de données ou les configurations informatiques — pour vous aider à planifier la bonne approche.",
+
+            'svc.process.label': '/ 02 — Processus',
+            'svc.process.titleA': 'Comment je',
+            'svc.process.titleB': 'travaille',
+            'svc.process.desc': 'Un flux de travail simple et transparent du premier contact à la livraison finale.',
+            'svc.process.1.title': 'Discussion',
+            'svc.process.1.desc': 'Nous parlons de vos objectifs, exigences et de ce à quoi ressemble le succès.',
+            'svc.process.2.title': 'Planification',
+            'svc.process.2.desc': 'Je définis la structure, les technologies, le calendrier et les livrables.',
+            'svc.process.3.title': 'Développement',
+            'svc.process.3.desc': "Je construis la solution avec un code propre, des fonctionnalités testées et des mises à jour claires.",
+            'svc.process.4.title': 'Livraison',
+            'svc.process.4.desc': 'Remise finale avec documentation, support et conseils après lancement.',
+
+            'svc.why.label': '/ 03 — Pourquoi travailler avec moi',
+            'svc.why.titleA': 'Ce que vous',
+            'svc.why.titleB': 'obtenez',
+            'svc.why.1.title': 'Focus pratique',
+            'svc.why.1.desc': 'Des solutions construites autour de problèmes réels, pas de théorie.',
+            'svc.why.2.title': 'Communication claire',
+            'svc.why.2.desc': 'Mises à jour régulières et communication honnête et transparente tout au long.',
+            'svc.why.3.title': 'Résolution de problèmes',
+            'svc.why.3.desc': 'Un état d\'esprit pratique pour décomposer des problèmes complexes.',
+            'svc.why.4.title': 'Toujours en apprentissage',
+            'svc.why.4.desc': "J'améliore continuellement mes compétences pour apporter des approches modernes.",
+
+            'svc.cta.titleA': 'Prêt à démarrer',
+            'svc.cta.titleB': 'un projet ?',
+            'svc.cta.desc': "Dites-moi ce dont vous avez besoin — je vous répondrai dès que possible.",
+            'svc.cta.contact': 'Me contacter',
+            'svc.cta.projects': 'Voir les projets',
+
+            /* ---------- ACHIEVEMENTS PAGE ---------- */
+            'ach.hero.label': '/ Réalisations',
+            'ach.hero.titleA': 'Jalons et',
+            'ach.hero.titleB': 'moments importants.',
+            'ach.hero.desc': "Un dossier croissant de mes réalisations académiques, de projet, de formation, de leadership et techniques — mis à jour au fur et à mesure de ma croissance.",
+            'ach.hero.stat.projects': 'Projets réalisés',
+            'ach.hero.stat.exp': 'Expériences',
+            'ach.hero.stat.categories': 'Catégories',
+
+            'ach.filter.all': 'Tous',
+            'ach.filter.academic': 'Académique',
+            'ach.filter.project': 'Projet',
+            'ach.filter.training': 'Formation',
+            'ach.filter.leadership': 'Leadership',
+            'ach.filter.technical': 'Technique',
+
+            'ach.card.featured': 'Jalon',
+
+            'ach.card.1.title': "Admission au Bachelor en Technologies de l'Information",
+            'ach.card.1.desc': "J'ai réussi à passer dans le programme de Bachelor en Technologies de l'Information (B.IT) à l'Université de Zanzibar.",
+            'ach.card.1.place': 'Université de Zanzibar',
+
+            'ach.card.2.title': "Obtention du Diplôme en Technologies de l'Information",
+            'ach.card.2.desc': "J'ai terminé avec succès les études informatiques fondamentales avec une exposition pratique à la programmation, aux bases de données et aux systèmes d'information.",
+            'ach.card.2.place': 'Université de Zanzibar',
+
+            'ach.card.3.title': 'Développement de CleanSpark — Système de gestion de services de nettoyage',
+            'ach.card.3.desc': "J'ai conçu et construit un système full-stack de gestion de services de nettoyage à partir de l'observation réelle des défis dans une entreprise de nettoyage à Zanzibar.",
+            'ach.card.3.tag': 'Full-Stack',
+
+            'ach.card.4.title': "Développement de LAMS — Système de gestion de l'administration locale",
+            'ach.card.4.desc': "J'ai conçu et développé un système full-stack de gestion de l'administration locale reliant les citoyens à l'administration de quartier pour les services, paiements et documents.",
+            'ach.card.4.tag': 'Full-Stack',
+
+            'ach.card.5.title': 'Stage pratique terminé chez ICE',
+            'ach.card.5.desc': "J'ai terminé avec succès environ 5 semaines de stage pratique en développement logiciel et activités générales de support informatique.",
+            'ach.card.5.place': 'Zanzibar',
+
+            'ach.card.6.title': 'Stage de 2 mois terminé chez Nyota Tech Hub',
+            'ach.card.6.desc': "J'ai terminé un stage pratique de 2 mois chez Nyota Tech Hub, un hub d'innovation technologique à Zanzibar.",
+            'ach.card.6.period': '2 mois',
+
+            'ach.card.7.title': 'Prise de parole en public et enseignement',
+            'ach.card.7.desc': "J'ai développé de solides compétences en prise de parole en public et en enseignement à travers des présentations, le partage de connaissances et l'aide aux pairs pour apprendre des sujets techniques.",
+            'ach.card.7.tag': 'En cours',
+
+            'ach.card.8.title': "Expérience en gestion et travail d'équipe",
+            'ach.card.8.desc': "J'ai construit des compétences pratiques en gestion, travail d'équipe et service client grâce à des rôles d'administration de bureau à Zanzibar.",
+            'ach.card.8.tag': 'Rôles de bureau',
+
+            'ach.card.9.title': 'Maîtrise du développement Full-Stack',
+            'ach.card.9.desc': "J'ai acquis une connaissance pratique sur toute la stack — HTML, CSS, JavaScript, Node.js, Express, MySQL — grâce au travail pratique sur les projets.",
+            'ach.card.9.tag': 'Full-Stack',
+
+            'ach.card.10.title': 'Conception et gestion de bases de données',
+            'ach.card.10.desc': "J'ai conçu et géré des bases de données relationnelles avec MySQL, MariaDB et SQL pour de vrais projets d'application.",
+
+            'ach.card.11.title': 'Réseaux et support informatique',
+            'ach.card.11.desc': "J'ai acquis une expérience pratique dans les réseaux informatiques, les tâches liées à Cisco, le support Windows et l'administration informatique générale.",
+
+            'ach.highlights.label': '/ Points forts',
+            'ach.highlights.titleA': 'Points',
+            'ach.highlights.titleB': 'forts',
+            'ach.highlights.1': 'Grands projets full-stack réalisés',
+            'ach.highlights.2': 'Emplois et stages terminés',
+            'ach.highlights.3': "Niveaux d'éducation terminés",
+            'ach.highlights.4': 'Technologies en usage actif',
+
+            'ach.note.title': 'Cette page grandit continuellement',
+            'ach.note.desc': "Je travaille activement sur de nouveaux projets, formations et certifications. Au fur et à mesure que de nouveaux jalons sont atteints, cette page sera mise à jour pour les refléter honnêtement.",
+
+            'ach.cta.titleA': 'Vous voulez faire partie',
+            'ach.cta.titleB': 'du prochain jalon ?',
+            'ach.cta.desc': 'Parlons de la façon dont je peux contribuer à votre équipe ou projet.',
+            'ach.cta.contact': 'Me contacter',
+            'ach.cta.projects': 'Voir les projets',
+
+            /* ---------- CONTACT PAGE ---------- */
+            'contact.hero.label': '/ Contact',
+            'contact.hero.titleA': 'Construisons quelque chose',
+            'contact.hero.titleB': 'de significatif ensemble.',
+            'contact.hero.desc': "Vous avez un projet, une opportunité, ou vous voulez juste dire bonjour ? Je suis toujours ravi de me connecter. Contactez-moi via n'importe quel canal ci-dessous.",
+            'contact.hero.status': 'Actuellement ouvert aux opportunités',
+
+            'contact.info.email': 'Email',
+            'contact.info.emailHint': 'Cliquez pour envoyer un email',
+            'contact.info.phone': 'Téléphone',
+            'contact.info.phoneHint': 'Cliquez pour appeler',
+            'contact.info.whatsapp': 'WhatsApp',
+            'contact.info.whatsappHint': 'Cliquez pour discuter sur WhatsApp',
+            'contact.info.location': 'Localisation',
+
+            'contact.form.label': '/ 01 — Envoyer un message',
+            'contact.form.titleA': 'Commençons une',
+            'contact.form.titleB': 'conversation.',
+            'contact.form.desc': "Remplissez le formulaire et je vous répondrai dès que possible. Vous pouvez aussi m'envoyer un email directement à l'adresse sur le côté.",
+            'contact.form.bullet1': 'Temps de réponse rapide',
+            'contact.form.bullet2': 'Ouvert au freelance et au temps plein',
+            'contact.form.bullet3': 'Basé à Zanzibar — favorable au télétravail',
+            'contact.form.note': "Ce formulaire ouvre votre application de messagerie avec le message pré-rempli — aucun serveur n'est impliqué, et rien n'est envoyé automatiquement.",
+
+            'contact.form.name': 'Votre nom',
+            'contact.form.namePlaceholder': 'Jean Dupont',
+            'contact.form.email': 'Votre email',
+            'contact.form.emailPlaceholder': 'vous@exemple.com',
+            'contact.form.subject': 'Sujet',
+            'contact.form.subjectPlaceholder': 'Demande de projet',
+            'contact.form.message': 'Message',
+            'contact.form.messagePlaceholder': 'Parlez-moi de votre projet ou de votre message…',
+            'contact.form.submit': 'Envoyer le message',
+            'contact.form.reset': 'Réinitialiser',
+
+            'contact.form.err.nameRequired': 'Veuillez entrer votre nom',
+            'contact.form.err.nameShort': 'Le nom est trop court',
+            'contact.form.err.emailRequired': 'Veuillez entrer votre email',
+            'contact.form.err.emailInvalid': 'Veuillez entrer un email valide',
+            'contact.form.err.subjectRequired': 'Veuillez entrer un sujet',
+            'contact.form.err.subjectShort': 'Le sujet est trop court',
+            'contact.form.err.messageRequired': 'Veuillez entrer un message',
+            'contact.form.err.messageShort': 'Le message est trop court (min 10 caractères)',
+            'contact.form.err.fixErrors': 'Veuillez corriger les erreurs ci-dessus avant de soumettre.',
+            'contact.form.success': 'Ouverture de votre application de messagerie — veuillez vérifier et envoyer le message.',
+
+            'contact.social.label': '/ 02 — Réseaux',
+            'contact.social.titleA': 'Trouvez-moi',
+            'contact.social.titleB': 'en ligne',
+            'contact.social.desc': "Connectez-vous avec moi sur les plateformes que j'utilise réellement.",
+
+            'contact.faq.label': '/ 03 — FAQ',
+            'contact.faq.titleA': 'Questions',
+            'contact.faq.titleB': 'fréquentes',
+            'contact.faq.1.q': 'Êtes-vous disponible pour du freelance ?',
+            'contact.faq.1.a': "Oui — je suis ouvert aux projets freelance en développement web, travail de bases de données et support informatique. Contactez-moi avec les détails de votre projet.",
+            'contact.faq.2.q': 'Travaillez-vous à distance ?',
+            'contact.faq.2.a': "Oui. Je suis basé à Zanzibar mais je peux collaborer à distance avec des clients et des équipes partout.",
+            'contact.faq.3.q': 'Quel type de projets acceptez-vous ?',
+            'contact.faq.3.a': "Applications web, systèmes d'information, conception de bases de données et support informatique. Je me concentre sur des solutions pratiques qui résolvent de vrais problèmes.",
+            'contact.faq.4.q': 'Combien de temps prend un projet typique ?',
+            'contact.faq.4.a': "Cela dépend de l'ampleur. Les petits sites peuvent prendre 1 à 2 semaines ; les systèmes plus grands prennent plus de temps. Nous conviendrons d'un calendrier clair avant de commencer.",
+
+            'contact.cta.titleA': 'Vous préférez un',
+            'contact.cta.titleB': 'message direct ?',
+            'contact.cta.desc': 'Sautez le formulaire — envoyez-moi un email ou un WhatsApp directement.',
+            'contact.cta.whatsapp': 'Discuter sur WhatsApp',
+
+            'contact.social.copy': 'Copier',
+            'contact.social.copied': 'Copié !',
+            'contact.social.copyId': "Copier l'ID",
+            'contact.wechat.title': "Scannez pour m'ajouter sur WeChat",
+            'contact.wechat.subtitle': 'Ouvrez WeChat sur votre téléphone et scannez ce QR code.',
+            'contact.wechat.idLabel': 'ID WeChat',
+            'contact.wechat.hint': 'Vous ne pouvez pas scanner ? Ajoutez simplement mon ID WeChat manuellement.',
+
+            /* ---------- 404 PAGE ---------- */
+            'e404.label': '/ Erreur 404',
+            'e404.titleA': 'Cette page a',
+            'e404.titleB': 'disparu.',
+            'e404.desc': "La page que vous recherchez n'existe pas, a été déplacée ou est temporairement indisponible. Remettons-nous sur les rails.",
+            'e404.home': "Retour à l'accueil",
+            'e404.contact': 'Me contacter',
+            'e404.quickLabel': 'Liens rapides'
+        }
+    };
+
+    /* =========================================================
+       ENGINE
+       ========================================================= */
+    function getStoredLang() {
+        try {
+            const stored = localStorage.getItem(STORAGE_KEY);
+            if (stored && SUPPORTED.includes(stored)) return stored;
+        } catch (e) {}
+        // Try browser lang
+        const browser = (navigator.language || 'en').slice(0, 2).toLowerCase();
+        if (SUPPORTED.includes(browser)) return browser;
+        return DEFAULT_LANG;
+    }
+
+    function t(key, lang) {
+        const l = lang || currentLang;
+        const dict = TRANSLATIONS[l] || TRANSLATIONS[DEFAULT_LANG];
+        return dict[key] || TRANSLATIONS[DEFAULT_LANG][key] || key;
+    }
+
+    function applyTranslations(lang) {
+        document.documentElement.setAttribute('lang', lang);
+        document.documentElement.setAttribute('dir', RTL_LANGS.includes(lang) ? 'rtl' : 'ltr');
+
+        document.querySelectorAll('[data-i18n]').forEach(el => {
+            const key = el.getAttribute('data-i18n');
+            const value = t(key, lang);
+            if (value !== undefined) {
+                el.textContent = value;
+            }
+        });
+
+        // Update any translatable placeholder / aria-labels if needed
+        document.querySelectorAll('[data-i18n-attr]').forEach(el => {
+            const spec = el.getAttribute('data-i18n-attr'); // e.g. "placeholder:contact.name,aria-label:contact.name"
+            spec.split(',').forEach(pair => {
+                const [attr, key] = pair.split(':');
+                if (attr && key) el.setAttribute(attr.trim(), t(key.trim(), lang));
+            });
+        });
+
+        // Update lang button label
+        const langCurrent = document.getElementById('langCurrent');
+        if (langCurrent) langCurrent.textContent = lang.toUpperCase();
+
+        // Active state in dropdown
+        document.querySelectorAll('.lang__item').forEach(item => {
+            item.classList.toggle('is-active', item.dataset.lang === lang);
+        });
+    }
+
+    let currentLang = getStoredLang();
+
+    function setLang(lang, animate) {
+        if (!SUPPORTED.includes(lang)) return;
+        currentLang = lang;
+        try { localStorage.setItem(STORAGE_KEY, lang); } catch (e) {}
+        applyTranslations(lang);
+
+        // Emit event so other scripts can react
+        document.dispatchEvent(new CustomEvent('dau:langChanged', { detail: { lang } }));
+    }
+
+    /* =========================================================
+       UI BINDING
+       ========================================================= */
+    function initUI() {
+        const toggle = document.getElementById('langToggle');
+        const dropdown = document.getElementById('langDropdown');
+        const switcher = document.getElementById('langSwitcher');
+
+        if (toggle && dropdown && switcher) {
+            toggle.addEventListener('click', (e) => {
+                e.stopPropagation();
+                const willOpen = !switcher.classList.contains('is-open');
+
+                // If opening the dropdown, close the fullscreen menu if it's open
+                if (willOpen) {
+                    const menu = document.getElementById('menu');
+                    const menuToggle = document.getElementById('navbarToggle');
+                    if (menu && menu.classList.contains('is-open')) {
+                        menu.classList.remove('is-open');
+                        menu.setAttribute('aria-hidden', 'true');
+                        if (menuToggle) {
+                            menuToggle.classList.remove('is-active');
+                            menuToggle.setAttribute('aria-expanded', 'false');
+                            menuToggle.setAttribute('aria-label', 'Open menu');
+                        }
+                        document.body.classList.remove('no-scroll');
+                    }
+                }
+
+                switcher.classList.toggle('is-open', willOpen);
+                toggle.setAttribute('aria-expanded', String(willOpen));
+                dropdown.setAttribute('aria-hidden', String(!willOpen));
+            });
+
+            document.addEventListener('click', (e) => {
+                if (!switcher.contains(e.target)) {
+                    switcher.classList.remove('is-open');
+                    toggle.setAttribute('aria-expanded', 'false');
+                    dropdown.setAttribute('aria-hidden', 'true');
+                }
+            });
+
+            document.addEventListener('keydown', (e) => {
+                if (e.key === 'Escape') {
+                    switcher.classList.remove('is-open');
+                    toggle.setAttribute('aria-expanded', 'false');
+                    dropdown.setAttribute('aria-hidden', 'true');
+                }
+            });
+
+            dropdown.querySelectorAll('.lang__item').forEach(item => {
+                item.addEventListener('click', () => {
+                    setLang(item.dataset.lang);
+                    switcher.classList.remove('is-open');
+                    toggle.setAttribute('aria-expanded', 'false');
+                    dropdown.setAttribute('aria-hidden', 'true');
+                });
+            });
+        }
+
+        applyTranslations(currentLang);
+    }
+
+    /* =========================================================
+       PUBLIC API
+       ========================================================= */
+    window.DAU_i18n = {
+        t: (key) => t(key, currentLang),
+        setLang,
+        getLang: () => currentLang,
+        supported: SUPPORTED
+    };
+
+    /* =========================================================
+       BOOT
+       ========================================================= */
+    if (document.readyState === 'loading') {
+        document.addEventListener('DOMContentLoaded', initUI);
+    } else {
+        initUI();
+    }
+
+})();

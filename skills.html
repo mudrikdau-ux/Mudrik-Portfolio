@@ -1,0 +1,847 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description" content="Skills of Mudrik Dau — Full-Stack Development, Database Management, Networking, IT Support, and professional skills from Zanzibar." />
+    <meta name="author" content="Mudrik Mohamed Othman (DAU)" />
+    <meta name="theme-color" content="#05060a" />
+
+    <title>Skills — MUDRIK DAU</title>
+
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Sora:wght@300;400;500;600;700;800&family=Space+Grotesk:wght@300;400;500;600;700&family=JetBrains+Mono:wght@300;400;500&display=swap" rel="stylesheet" />
+
+    <!-- Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" />
+
+    <!-- Styles -->
+    <link rel="stylesheet" href="css/global.css" />
+    <link rel="stylesheet" href="css/navbar.css" />
+    <link rel="stylesheet" href="css/controls.css" />
+    <link rel="stylesheet" href="css/animations.css" />
+    <link rel="stylesheet" href="css/skills.css" />
+
+    <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Crect width='100' height='100' rx='20' fill='%2305060a'/%3E%3Ctext x='50' y='68' font-size='52' font-family='Arial' font-weight='bold' fill='%2300e5ff' text-anchor='middle'%3ED%3C/text%3E%3C/svg%3E" />
+
+    <!-- FOUC Guard -->
+    <script>
+        (function () {
+            try {
+                var t = localStorage.getItem('dau:theme');
+                if (t === 'light' || t === 'dark') {
+                    document.documentElement.setAttribute('data-theme', t);
+                } else if (window.matchMedia && window.matchMedia('(prefers-color-scheme: light)').matches) {
+                    document.documentElement.setAttribute('data-theme', 'light');
+                } else {
+                    document.documentElement.setAttribute('data-theme', 'dark');
+                }
+                var l = localStorage.getItem('dau:lang');
+                if (l && ['en','sw','zh','ar','fr'].indexOf(l) !== -1) {
+                    document.documentElement.setAttribute('lang', l);
+                    document.documentElement.setAttribute('dir', l === 'ar' ? 'rtl' : 'ltr');
+                }
+            } catch (e) {}
+        })();
+    </script>
+</head>
+<body>
+
+    <!-- ==================== LOADING SCREEN ==================== -->
+    <div class="loader" id="loader">
+        <div class="loader__content">
+            <div class="loader__logo">
+                <span class="loader__letter">D</span>
+                <span class="loader__letter">A</span>
+                <span class="loader__letter">U</span>
+            </div>
+            <div class="loader__bar">
+                <div class="loader__bar-fill" id="loaderBar"></div>
+            </div>
+            <p class="loader__text">INITIALIZING <span class="loader__dots">...</span></p>
+        </div>
+    </div>
+
+    <!-- ==================== CUSTOM CURSOR ==================== -->
+    <div class="cursor" id="cursor">
+        <div class="cursor__dot"></div>
+        <div class="cursor__ring"></div>
+    </div>
+
+    <!-- ==================== BACKGROUND LAYERS ==================== -->
+    <div class="bg-layers">
+        <div class="bg-grid"></div>
+        <div class="bg-glow bg-glow--1"></div>
+        <div class="bg-glow bg-glow--2"></div>
+        <div class="bg-glow bg-glow--3"></div>
+        <canvas id="particles"></canvas>
+    </div>
+
+    <!-- ==================== NAVBAR ==================== -->
+    <header class="navbar" id="navbar">
+        <div class="navbar__inner">
+            <a href="index.html" class="navbar__brand" aria-label="DAU Home">
+                <span class="navbar__brand-mark">
+                    <span>D</span>
+                </span>
+                <span class="navbar__brand-text">
+                    <span class="navbar__brand-name">MUDRIK <em>DAU</em></span>
+                    <span class="navbar__brand-sub" data-i18n="brand.sub">Full-Stack Developer</span>
+                </span>
+            </a>
+
+            <div class="navbar__actions">
+                <button class="ctrl-btn ctrl-btn--theme" id="themeToggle" aria-label="Toggle theme" title="Toggle theme">
+                    <span class="ctrl-btn__icon">
+                        <i class="fa-solid fa-moon icon-moon"></i>
+                        <i class="fa-solid fa-sun icon-sun"></i>
+                    </span>
+                </button>
+
+                <div class="lang" id="langSwitcher">
+                    <button class="ctrl-btn ctrl-btn--lang" id="langToggle" aria-label="Change language" aria-expanded="false">
+                        <span class="ctrl-btn__icon"><i class="fa-solid fa-globe"></i></span>
+                        <span class="ctrl-btn__label" id="langCurrent">EN</span>
+                        <span class="ctrl-btn__caret"><i class="fa-solid fa-chevron-down"></i></span>
+                    </button>
+
+                    <div class="lang__dropdown" id="langDropdown" role="menu" aria-hidden="true">
+                        <button class="lang__item" data-lang="en" role="menuitem">
+                            <span class="lang__flag">🇬🇧</span>
+                            <span class="lang__name">English</span>
+                            <span class="lang__code">EN</span>
+                        </button>
+                        <button class="lang__item" data-lang="sw" role="menuitem">
+                            <span class="lang__flag">🇹🇿</span>
+                            <span class="lang__name">Kiswahili</span>
+                            <span class="lang__code">SW</span>
+                        </button>
+                        <button class="lang__item" data-lang="zh" role="menuitem">
+                            <span class="lang__flag">🇨🇳</span>
+                            <span class="lang__name">中文</span>
+                            <span class="lang__code">ZH</span>
+                        </button>
+                        <button class="lang__item" data-lang="ar" role="menuitem">
+                            <span class="lang__flag">🇸🇦</span>
+                            <span class="lang__name">العربية</span>
+                            <span class="lang__code">AR</span>
+                        </button>
+                        <button class="lang__item" data-lang="fr" role="menuitem">
+                            <span class="lang__flag">🇫🇷</span>
+                            <span class="lang__name">Français</span>
+                            <span class="lang__code">FR</span>
+                        </button>
+                    </div>
+                </div>
+
+                <button class="navbar__toggle" id="navbarToggle" aria-label="Open menu" aria-expanded="false">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </button>
+            </div>
+        </div>
+    </header>
+
+    <!-- ==================== FULLSCREEN MENU ==================== -->
+    <nav class="menu" id="menu" aria-hidden="true">
+        <div class="menu__bg"></div>
+        <div class="menu__inner">
+            <div class="menu__aside">
+                <div class="menu__aside-block">
+                    <span class="menu__aside-label" data-i18n="menu.aside.location">Location</span>
+                    <span class="menu__aside-value">Maungani / Kombeni, Zanzibar</span>
+                </div>
+                <div class="menu__aside-block">
+                    <span class="menu__aside-label" data-i18n="menu.aside.email">Email</span>
+                    <a href="mailto:mudrikdau@gmail.com" class="menu__aside-value">mudrikdau@gmail.com</a>
+                </div>
+                <div class="menu__aside-block">
+                    <span class="menu__aside-label" data-i18n="menu.aside.availability">Availability</span>
+                    <span class="menu__aside-value menu__aside-value--status">
+                        <span class="dot dot--live"></span>
+                        <span data-i18n="menu.aside.open">Open to opportunities</span>
+                    </span>
+                </div>
+                <div class="menu__aside-block">
+                    <span class="menu__aside-label" data-i18n="menu.aside.socials">Socials</span>
+                    <div class="menu__socials">
+                        <a href="https://github.com/mudrikdau-ux" target="_blank" rel="noopener" aria-label="GitHub"><i class="fa-brands fa-github"></i></a>
+                        <a href="https://www.linkedin.com/in/mudrik-dau" target="_blank" rel="noopener" aria-label="LinkedIn"><i class="fa-brands fa-linkedin-in"></i></a>
+                        <a href="https://www.instagram.com/youngw_04" target="_blank" rel="noopener" aria-label="Instagram"><i class="fa-brands fa-instagram"></i></a>
+                        <a href="https://x.com/" target="_blank" rel="noopener" aria-label="X"><i class="fa-brands fa-x-twitter"></i></a>
+                    </div>
+                </div>
+            </div>
+
+            <ul class="menu__list">
+                <li class="menu__item">
+                    <a href="index.html" class="menu__link" data-page="home">
+                        <span class="menu__num">01</span>
+                        <span class="menu__text" data-i18n="menu.home">Home</span>
+                    </a>
+                </li>
+                <li class="menu__item">
+                    <a href="about.html" class="menu__link" data-page="about">
+                        <span class="menu__num">02</span>
+                        <span class="menu__text" data-i18n="menu.about">About</span>
+                    </a>
+                </li>
+                <li class="menu__item">
+                    <a href="skills.html" class="menu__link" data-page="skills">
+                        <span class="menu__num">03</span>
+                        <span class="menu__text" data-i18n="menu.skills">Skills</span>
+                    </a>
+                </li>
+                <li class="menu__item">
+                    <a href="experience.html" class="menu__link" data-page="experience">
+                        <span class="menu__num">04</span>
+                        <span class="menu__text" data-i18n="menu.experience">Experience</span>
+                    </a>
+                </li>
+                <li class="menu__item">
+                    <a href="projects.html" class="menu__link" data-page="projects">
+                        <span class="menu__num">05</span>
+                        <span class="menu__text" data-i18n="menu.projects">Projects</span>
+                    </a>
+                </li>
+                <li class="menu__item">
+                    <a href="certificates.html" class="menu__link" data-page="certificates">
+                        <span class="menu__num">06</span>
+                        <span class="menu__text" data-i18n="menu.certificates">Certificates</span>
+                    </a>
+                </li>
+                <li class="menu__item">
+                    <a href="services.html" class="menu__link" data-page="services">
+                        <span class="menu__num">07</span>
+                        <span class="menu__text" data-i18n="menu.services">Services</span>
+                    </a>
+                </li>
+                <li class="menu__item">
+                    <a href="achievements.html" class="menu__link" data-page="achievements">
+                        <span class="menu__num">08</span>
+                        <span class="menu__text" data-i18n="menu.achievements">Achievements</span>
+                    </a>
+                </li>
+                <li class="menu__item">
+                    <a href="contact.html" class="menu__link" data-page="contact">
+                        <span class="menu__num">09</span>
+                        <span class="menu__text" data-i18n="menu.contact">Contact</span>
+                    </a>
+                </li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- ==================== SKILLS PAGE ==================== -->
+    <main class="skills-page" id="skills">
+
+        <!-- ===================================================
+             HERO
+             =================================================== -->
+        <section class="skills-hero">
+            <div class="container">
+                <div class="skills-hero__grid">
+
+                    <div class="skills-hero__left">
+                        <span class="section-head__label" data-i18n="skills.hero.label">/ My Skills</span>
+                        <h1 class="skills-hero__title">
+                            <span data-i18n="skills.hero.titleA">Tools,</span>
+                            <em data-i18n="skills.hero.titleB">Technologies</em><br />
+                            <span data-i18n="skills.hero.titleC">&amp; Skills I Use.</span>
+                        </h1>
+                        <p class="skills-hero__desc" data-i18n="skills.hero.desc">
+                            A practical overview of the technologies, tools, and professional
+                            abilities I use to design, build, and manage digital solutions.
+                        </p>
+
+                        <div class="skills-hero__stats">
+                            <div class="skills-hero__stat">
+                                <span class="skills-hero__stat-num" data-count="15">0</span>
+                                <span class="skills-hero__stat-label" data-i18n="skills.hero.stat.tech">Technologies</span>
+                            </div>
+                            <div class="skills-hero__stat-divider"></div>
+                            <div class="skills-hero__stat">
+                                <span class="skills-hero__stat-num" data-count="6">0</span>
+                                <span class="skills-hero__stat-label" data-i18n="skills.hero.stat.categories">Categories</span>
+                            </div>
+                            <div class="skills-hero__stat-divider"></div>
+                            <div class="skills-hero__stat">
+                                <span class="skills-hero__stat-num" data-count="8">0</span>
+                                <span class="skills-hero__stat-label" data-i18n="skills.hero.stat.soft">Soft Skills</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="skills-hero__right">
+                        <div class="skills-hero__visual">
+                            <div class="skills-orbit">
+                                <div class="skills-orbit__ring skills-orbit__ring--1"></div>
+                                <div class="skills-orbit__ring skills-orbit__ring--2"></div>
+                                <div class="skills-orbit__ring skills-orbit__ring--3"></div>
+
+                                <div class="skills-orbit__core">
+                                    <span class="skills-orbit__core-num" data-count="15">0</span>
+                                    <span class="skills-orbit__core-label" data-i18n="skills.hero.coreLabel">Technologies</span>
+                                </div>
+
+                                <div class="skills-orbit__chip skills-orbit__chip--1"><i class="fa-brands fa-html5"></i></div>
+                                <div class="skills-orbit__chip skills-orbit__chip--2"><i class="fa-brands fa-css3-alt"></i></div>
+                                <div class="skills-orbit__chip skills-orbit__chip--3"><i class="fa-brands fa-js"></i></div>
+                                <div class="skills-orbit__chip skills-orbit__chip--4"><i class="fa-brands fa-node-js"></i></div>
+                                <div class="skills-orbit__chip skills-orbit__chip--5"><i class="fa-solid fa-database"></i></div>
+                                <div class="skills-orbit__chip skills-orbit__chip--6"><i class="fa-brands fa-git-alt"></i></div>
+                                <div class="skills-orbit__chip skills-orbit__chip--7"><i class="fa-brands fa-linux"></i></div>
+                                <div class="skills-orbit__chip skills-orbit__chip--8"><i class="fa-solid fa-network-wired"></i></div>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </section>
+
+        <!-- ===================================================
+             SKILL CATEGORIES
+             =================================================== -->
+        <section class="skills-cats">
+            <div class="container">
+
+                <div class="section-head">
+                    <span class="section-head__label" data-i18n="skills.cats.label">/ 01 — Categories</span>
+                    <h2 class="section-head__title">
+                        <span data-i18n="skills.cats.titleA">Technical</span>
+                        <em data-i18n="skills.cats.titleB">Proficiency</em>
+                    </h2>
+                    <p class="section-head__desc" data-i18n="skills.cats.desc">
+                        Organized skill categories based on my actual hands-on experience.
+                        Levels are self-assessed — not objective measurements.
+                    </p>
+                </div>
+
+                <div class="skills-cats__grid">
+
+                    <!-- Web Development -->
+                    <article class="skill-cat" data-reveal="up">
+                        <div class="skill-cat__header">
+                            <div class="skill-cat__icon"><i class="fa-solid fa-code"></i></div>
+                            <h3 class="skill-cat__title" data-i18n="skills.cat1.title">Web Development</h3>
+                            <span class="skill-cat__count">08</span>
+                        </div>
+                        <div class="skill-cat__list">
+                            <div class="skill-bar" data-level="85">
+                                <div class="skill-bar__head">
+                                    <span class="skill-bar__name">HTML5</span>
+                                    <span class="skill-bar__level" data-i18n="skills.level.advanced">Advanced</span>
+                                </div>
+                                <div class="skill-bar__track"><div class="skill-bar__fill"></div></div>
+                            </div>
+                            <div class="skill-bar" data-level="82">
+                                <div class="skill-bar__head">
+                                    <span class="skill-bar__name">CSS3</span>
+                                    <span class="skill-bar__level" data-i18n="skills.level.advanced">Advanced</span>
+                                </div>
+                                <div class="skill-bar__track"><div class="skill-bar__fill"></div></div>
+                            </div>
+                            <div class="skill-bar" data-level="75">
+                                <div class="skill-bar__head">
+                                    <span class="skill-bar__name">JavaScript</span>
+                                    <span class="skill-bar__level" data-i18n="skills.level.intermediate">Intermediate</span>
+                                </div>
+                                <div class="skill-bar__track"><div class="skill-bar__fill"></div></div>
+                            </div>
+                            <div class="skill-bar" data-level="78">
+                                <div class="skill-bar__head">
+                                    <span class="skill-bar__name">Bootstrap 5</span>
+                                    <span class="skill-bar__level" data-i18n="skills.level.intermediate">Intermediate</span>
+                                </div>
+                                <div class="skill-bar__track"><div class="skill-bar__fill"></div></div>
+                            </div>
+                            <div class="skill-bar" data-level="72">
+                                <div class="skill-bar__head">
+                                    <span class="skill-bar__name">Responsive Design</span>
+                                    <span class="skill-bar__level" data-i18n="skills.level.intermediate">Intermediate</span>
+                                </div>
+                                <div class="skill-bar__track"><div class="skill-bar__fill"></div></div>
+                            </div>
+                            <div class="skill-bar" data-level="70">
+                                <div class="skill-bar__head">
+                                    <span class="skill-bar__name">Frontend Development</span>
+                                    <span class="skill-bar__level" data-i18n="skills.level.intermediate">Intermediate</span>
+                                </div>
+                                <div class="skill-bar__track"><div class="skill-bar__fill"></div></div>
+                            </div>
+                            <div class="skill-bar" data-level="68">
+                                <div class="skill-bar__head">
+                                    <span class="skill-bar__name">Backend Development</span>
+                                    <span class="skill-bar__level" data-i18n="skills.level.intermediate">Intermediate</span>
+                                </div>
+                                <div class="skill-bar__track"><div class="skill-bar__fill"></div></div>
+                            </div>
+                            <div class="skill-bar" data-level="70">
+                                <div class="skill-bar__head">
+                                    <span class="skill-bar__name">Full-Stack Development</span>
+                                    <span class="skill-bar__level" data-i18n="skills.level.intermediate">Intermediate</span>
+                                </div>
+                                <div class="skill-bar__track"><div class="skill-bar__fill"></div></div>
+                            </div>
+                        </div>
+                    </article>
+
+                    <!-- Backend -->
+                    <article class="skill-cat" data-reveal="up" data-delay="1">
+                        <div class="skill-cat__header">
+                            <div class="skill-cat__icon"><i class="fa-solid fa-server"></i></div>
+                            <h3 class="skill-cat__title" data-i18n="skills.cat2.title">Backend</h3>
+                            <span class="skill-cat__count">07</span>
+                        </div>
+                        <div class="skill-cat__list">
+                            <div class="skill-bar" data-level="75">
+                                <div class="skill-bar__head">
+                                    <span class="skill-bar__name">Node.js</span>
+                                    <span class="skill-bar__level" data-i18n="skills.level.intermediate">Intermediate</span>
+                                </div>
+                                <div class="skill-bar__track"><div class="skill-bar__fill"></div></div>
+                            </div>
+                            <div class="skill-bar" data-level="75">
+                                <div class="skill-bar__head">
+                                    <span class="skill-bar__name">Express.js</span>
+                                    <span class="skill-bar__level" data-i18n="skills.level.intermediate">Intermediate</span>
+                                </div>
+                                <div class="skill-bar__track"><div class="skill-bar__fill"></div></div>
+                            </div>
+                            <div class="skill-bar" data-level="70">
+                                <div class="skill-bar__head">
+                                    <span class="skill-bar__name">REST APIs</span>
+                                    <span class="skill-bar__level" data-i18n="skills.level.intermediate">Intermediate</span>
+                                </div>
+                                <div class="skill-bar__track"><div class="skill-bar__fill"></div></div>
+                            </div>
+                            <div class="skill-bar" data-level="68">
+                                <div class="skill-bar__head">
+                                    <span class="skill-bar__name">Authentication</span>
+                                    <span class="skill-bar__level" data-i18n="skills.level.intermediate">Intermediate</span>
+                                </div>
+                                <div class="skill-bar__track"><div class="skill-bar__fill"></div></div>
+                            </div>
+                            <div class="skill-bar" data-level="68">
+                                <div class="skill-bar__head">
+                                    <span class="skill-bar__name">JWT</span>
+                                    <span class="skill-bar__level" data-i18n="skills.level.intermediate">Intermediate</span>
+                                </div>
+                                <div class="skill-bar__track"><div class="skill-bar__fill"></div></div>
+                            </div>
+                            <div class="skill-bar" data-level="62">
+                                <div class="skill-bar__head">
+                                    <span class="skill-bar__name">OTP Verification</span>
+                                    <span class="skill-bar__level" data-i18n="skills.level.learning">Learning</span>
+                                </div>
+                                <div class="skill-bar__track"><div class="skill-bar__fill"></div></div>
+                            </div>
+                            <div class="skill-bar" data-level="70">
+                                <div class="skill-bar__head">
+                                    <span class="skill-bar__name">API Development</span>
+                                    <span class="skill-bar__level" data-i18n="skills.level.intermediate">Intermediate</span>
+                                </div>
+                                <div class="skill-bar__track"><div class="skill-bar__fill"></div></div>
+                            </div>
+                        </div>
+                    </article>
+
+                    <!-- Database -->
+                    <article class="skill-cat" data-reveal="up" data-delay="2">
+                        <div class="skill-cat__header">
+                            <div class="skill-cat__icon"><i class="fa-solid fa-database"></i></div>
+                            <h3 class="skill-cat__title" data-i18n="skills.cat3.title">Database</h3>
+                            <span class="skill-cat__count">06</span>
+                        </div>
+                        <div class="skill-cat__list">
+                            <div class="skill-bar" data-level="80">
+                                <div class="skill-bar__head">
+                                    <span class="skill-bar__name">MySQL</span>
+                                    <span class="skill-bar__level" data-i18n="skills.level.advanced">Advanced</span>
+                                </div>
+                                <div class="skill-bar__track"><div class="skill-bar__fill"></div></div>
+                            </div>
+                            <div class="skill-bar" data-level="78">
+                                <div class="skill-bar__head">
+                                    <span class="skill-bar__name">SQL</span>
+                                    <span class="skill-bar__level" data-i18n="skills.level.advanced">Advanced</span>
+                                </div>
+                                <div class="skill-bar__track"><div class="skill-bar__fill"></div></div>
+                            </div>
+                            <div class="skill-bar" data-level="75">
+                                <div class="skill-bar__head">
+                                    <span class="skill-bar__name">MySQL Workbench</span>
+                                    <span class="skill-bar__level" data-i18n="skills.level.intermediate">Intermediate</span>
+                                </div>
+                                <div class="skill-bar__track"><div class="skill-bar__fill"></div></div>
+                            </div>
+                            <div class="skill-bar" data-level="72">
+                                <div class="skill-bar__head">
+                                    <span class="skill-bar__name">MariaDB</span>
+                                    <span class="skill-bar__level" data-i18n="skills.level.intermediate">Intermediate</span>
+                                </div>
+                                <div class="skill-bar__track"><div class="skill-bar__fill"></div></div>
+                            </div>
+                            <div class="skill-bar" data-level="75">
+                                <div class="skill-bar__head">
+                                    <span class="skill-bar__name">Database Design</span>
+                                    <span class="skill-bar__level" data-i18n="skills.level.intermediate">Intermediate</span>
+                                </div>
+                                <div class="skill-bar__track"><div class="skill-bar__fill"></div></div>
+                            </div>
+                            <div class="skill-bar" data-level="75">
+                                <div class="skill-bar__head">
+                                    <span class="skill-bar__name">Database Management</span>
+                                    <span class="skill-bar__level" data-i18n="skills.level.intermediate">Intermediate</span>
+                                </div>
+                                <div class="skill-bar__track"><div class="skill-bar__fill"></div></div>
+                            </div>
+                        </div>
+                    </article>
+
+                    <!-- Programming Tools -->
+                    <article class="skill-cat" data-reveal="up" data-delay="3">
+                        <div class="skill-cat__header">
+                            <div class="skill-cat__icon"><i class="fa-solid fa-toolbox"></i></div>
+                            <h3 class="skill-cat__title" data-i18n="skills.cat4.title">Programming Tools</h3>
+                            <span class="skill-cat__count">07</span>
+                        </div>
+                        <div class="skill-cat__list">
+                            <div class="skill-bar" data-level="85">
+                                <div class="skill-bar__head">
+                                    <span class="skill-bar__name">VS Code</span>
+                                    <span class="skill-bar__level" data-i18n="skills.level.advanced">Advanced</span>
+                                </div>
+                                <div class="skill-bar__track"><div class="skill-bar__fill"></div></div>
+                            </div>
+                            <div class="skill-bar" data-level="78">
+                                <div class="skill-bar__head">
+                                    <span class="skill-bar__name">Git</span>
+                                    <span class="skill-bar__level" data-i18n="skills.level.intermediate">Intermediate</span>
+                                </div>
+                                <div class="skill-bar__track"><div class="skill-bar__fill"></div></div>
+                            </div>
+                            <div class="skill-bar" data-level="80">
+                                <div class="skill-bar__head">
+                                    <span class="skill-bar__name">GitHub</span>
+                                    <span class="skill-bar__level" data-i18n="skills.level.advanced">Advanced</span>
+                                </div>
+                                <div class="skill-bar__track"><div class="skill-bar__fill"></div></div>
+                            </div>
+                            <div class="skill-bar" data-level="75">
+                                <div class="skill-bar__head">
+                                    <span class="skill-bar__name">Postman</span>
+                                    <span class="skill-bar__level" data-i18n="skills.level.intermediate">Intermediate</span>
+                                </div>
+                                <div class="skill-bar__track"><div class="skill-bar__fill"></div></div>
+                            </div>
+                            <div class="skill-bar" data-level="78">
+                                <div class="skill-bar__head">
+                                    <span class="skill-bar__name">XAMPP</span>
+                                    <span class="skill-bar__level" data-i18n="skills.level.intermediate">Intermediate</span>
+                                </div>
+                                <div class="skill-bar__track"><div class="skill-bar__fill"></div></div>
+                            </div>
+                            <div class="skill-bar" data-level="72">
+                                <div class="skill-bar__head">
+                                    <span class="skill-bar__name">DBeaver</span>
+                                    <span class="skill-bar__level" data-i18n="skills.level.intermediate">Intermediate</span>
+                                </div>
+                                <div class="skill-bar__track"><div class="skill-bar__fill"></div></div>
+                            </div>
+                            <div class="skill-bar" data-level="75">
+                                <div class="skill-bar__head">
+                                    <span class="skill-bar__name">npm</span>
+                                    <span class="skill-bar__level" data-i18n="skills.level.intermediate">Intermediate</span>
+                                </div>
+                                <div class="skill-bar__track"><div class="skill-bar__fill"></div></div>
+                            </div>
+                        </div>
+                    </article>
+
+                    <!-- Operating Systems -->
+                    <article class="skill-cat" data-reveal="up" data-delay="4">
+                        <div class="skill-cat__header">
+                            <div class="skill-cat__icon"><i class="fa-brands fa-linux"></i></div>
+                            <h3 class="skill-cat__title" data-i18n="skills.cat5.title">Operating Systems</h3>
+                            <span class="skill-cat__count">04</span>
+                        </div>
+                        <div class="skill-cat__list">
+                            <div class="skill-bar" data-level="85">
+                                <div class="skill-bar__head">
+                                    <span class="skill-bar__name">Windows</span>
+                                    <span class="skill-bar__level" data-i18n="skills.level.advanced">Advanced</span>
+                                </div>
+                                <div class="skill-bar__track"><div class="skill-bar__fill"></div></div>
+                            </div>
+                            <div class="skill-bar" data-level="70">
+                                <div class="skill-bar__head">
+                                    <span class="skill-bar__name">Linux</span>
+                                    <span class="skill-bar__level" data-i18n="skills.level.intermediate">Intermediate</span>
+                                </div>
+                                <div class="skill-bar__track"><div class="skill-bar__fill"></div></div>
+                            </div>
+                            <div class="skill-bar" data-level="65">
+                                <div class="skill-bar__head">
+                                    <span class="skill-bar__name">Kali Linux</span>
+                                    <span class="skill-bar__level" data-i18n="skills.level.learning">Learning</span>
+                                </div>
+                                <div class="skill-bar__track"><div class="skill-bar__fill"></div></div>
+                            </div>
+                            <div class="skill-bar" data-level="68">
+                                <div class="skill-bar__head">
+                                    <span class="skill-bar__name">Ubuntu Server</span>
+                                    <span class="skill-bar__level" data-i18n="skills.level.learning">Learning</span>
+                                </div>
+                                <div class="skill-bar__track"><div class="skill-bar__fill"></div></div>
+                            </div>
+                        </div>
+                    </article>
+
+                    <!-- Networking -->
+                    <article class="skill-cat" data-reveal="up" data-delay="5">
+                        <div class="skill-cat__header">
+                            <div class="skill-cat__icon"><i class="fa-solid fa-network-wired"></i></div>
+                            <h3 class="skill-cat__title" data-i18n="skills.cat6.title">Networking</h3>
+                            <span class="skill-cat__count">03</span>
+                        </div>
+                        <div class="skill-cat__list">
+                            <div class="skill-bar" data-level="75">
+                                <div class="skill-bar__head">
+                                    <span class="skill-bar__name" data-i18n="skills.cat6.item1">Computer Networking</span>
+                                    <span class="skill-bar__level" data-i18n="skills.level.intermediate">Intermediate</span>
+                                </div>
+                                <div class="skill-bar__track"><div class="skill-bar__fill"></div></div>
+                            </div>
+                            <div class="skill-bar" data-level="70">
+                                <div class="skill-bar__head">
+                                    <span class="skill-bar__name">Cisco</span>
+                                    <span class="skill-bar__level" data-i18n="skills.level.intermediate">Intermediate</span>
+                                </div>
+                                <div class="skill-bar__track"><div class="skill-bar__fill"></div></div>
+                            </div>
+                            <div class="skill-bar" data-level="68">
+                                <div class="skill-bar__head">
+                                    <span class="skill-bar__name" data-i18n="skills.cat6.item2">Network Configuration</span>
+                                    <span class="skill-bar__level" data-i18n="skills.level.learning">Learning</span>
+                                </div>
+                                <div class="skill-bar__track"><div class="skill-bar__fill"></div></div>
+                            </div>
+                        </div>
+                    </article>
+
+                </div>
+            </div>
+        </section>
+
+        <!-- ===================================================
+             TECH STACK SHOWCASE
+             =================================================== -->
+        <section class="skills-stack">
+            <div class="container">
+                <div class="section-head">
+                    <span class="section-head__label" data-i18n="skills.stack.label">/ 02 — Tech Stack</span>
+                    <h2 class="section-head__title">
+                        <span data-i18n="skills.stack.titleA">My</span>
+                        <em data-i18n="skills.stack.titleB">Toolbox</em>
+                    </h2>
+                    <p class="section-head__desc" data-i18n="skills.stack.desc">
+                        The technologies I work with daily across my projects.
+                    </p>
+                </div>
+
+                <div class="tech-grid">
+                    <div class="tech-card" data-reveal="up"><i class="fa-brands fa-html5" style="color:#e34f26;"></i><span>HTML5</span></div>
+                    <div class="tech-card" data-reveal="up" data-delay="1"><i class="fa-brands fa-css3-alt" style="color:#2965f1;"></i><span>CSS3</span></div>
+                    <div class="tech-card" data-reveal="up" data-delay="2"><i class="fa-brands fa-js" style="color:#f7df1e;"></i><span>JavaScript</span></div>
+                    <div class="tech-card" data-reveal="up" data-delay="3"><i class="fa-brands fa-bootstrap" style="color:#7952b3;"></i><span>Bootstrap</span></div>
+                    <div class="tech-card" data-reveal="up" data-delay="4"><i class="fa-brands fa-node-js" style="color:#68a063;"></i><span>Node.js</span></div>
+                    <div class="tech-card" data-reveal="up" data-delay="5"><i class="fa-solid fa-bolt" style="color:#ffffff;"></i><span>Express.js</span></div>
+                    <div class="tech-card" data-reveal="up" data-delay="6"><i class="fa-solid fa-database" style="color:#00758f;"></i><span>MySQL</span></div>
+                    <div class="tech-card" data-reveal="up" data-delay="7"><i class="fa-solid fa-database" style="color:#003545;"></i><span>MariaDB</span></div>
+                    <div class="tech-card" data-reveal="up" data-delay="8"><i class="fa-brands fa-git-alt" style="color:#f05032;"></i><span>Git</span></div>
+                    <div class="tech-card" data-reveal="up" data-delay="9"><i class="fa-brands fa-github" style="color:#ffffff;"></i><span>GitHub</span></div>
+                    <div class="tech-card" data-reveal="up" data-delay="10"><i class="fa-solid fa-paper-plane" style="color:#ff6c37;"></i><span>Postman</span></div>
+                    <div class="tech-card" data-reveal="up" data-delay="11"><i class="fa-brands fa-linux" style="color:#ffffff;"></i><span>Linux</span></div>
+                    <div class="tech-card" data-reveal="up" data-delay="12"><i class="fa-solid fa-network-wired" style="color:#00e5ff;"></i><span>Cisco</span></div>
+                    <div class="tech-card" data-reveal="up" data-delay="13"><i class="fa-brands fa-windows" style="color:#00a4ef;"></i><span>Windows</span></div>
+                    <div class="tech-card" data-reveal="up" data-delay="14"><i class="fa-solid fa-terminal" style="color:#a855f7;"></i><span>npm</span></div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ===================================================
+             PROFESSIONAL SKILLS
+             =================================================== -->
+        <section class="skills-soft">
+            <div class="container">
+                <div class="section-head">
+                    <span class="section-head__label" data-i18n="skills.soft.label">/ 03 — Professional Skills</span>
+                    <h2 class="section-head__title">
+                        <span data-i18n="skills.soft.titleA">Beyond</span>
+                        <em data-i18n="skills.soft.titleB">Code</em>
+                    </h2>
+                    <p class="section-head__desc" data-i18n="skills.soft.desc">
+                        Non-technical abilities that make me effective in real-world settings.
+                    </p>
+                </div>
+
+                <div class="soft-grid">
+                    <div class="soft-card" data-reveal="up">
+                        <div class="soft-card__icon"><i class="fa-solid fa-comments"></i></div>
+                        <h3 class="soft-card__title" data-i18n="about.skills.1">Communication</h3>
+                        <p class="soft-card__desc" data-i18n="skills.soft.1.desc">Clear, effective communication with teammates, clients, and users.</p>
+                    </div>
+                    <div class="soft-card" data-reveal="up" data-delay="1">
+                        <div class="soft-card__icon"><i class="fa-solid fa-microphone"></i></div>
+                        <h3 class="soft-card__title" data-i18n="about.skills.2">Public Speaking</h3>
+                        <p class="soft-card__desc" data-i18n="skills.soft.2.desc">Confident presentation of ideas, projects, and technical concepts.</p>
+                    </div>
+                    <div class="soft-card" data-reveal="up" data-delay="2">
+                        <div class="soft-card__icon"><i class="fa-solid fa-lightbulb"></i></div>
+                        <h3 class="soft-card__title" data-i18n="about.skills.3">Problem Solving</h3>
+                        <p class="soft-card__desc" data-i18n="skills.soft.3.desc">Breaking down complex problems and finding practical solutions.</p>
+                    </div>
+                    <div class="soft-card" data-reveal="up" data-delay="3">
+                        <div class="soft-card__icon"><i class="fa-solid fa-chalkboard-user"></i></div>
+                        <h3 class="soft-card__title" data-i18n="about.skills.4">Teaching</h3>
+                        <p class="soft-card__desc" data-i18n="skills.soft.4.desc">Sharing knowledge and helping others understand technical topics.</p>
+                    </div>
+                    <div class="soft-card" data-reveal="up" data-delay="4">
+                        <div class="soft-card__icon"><i class="fa-solid fa-users"></i></div>
+                        <h3 class="soft-card__title" data-i18n="about.skills.5">Teamwork</h3>
+                        <p class="soft-card__desc" data-i18n="skills.soft.5.desc">Collaborating effectively in team environments and group projects.</p>
+                    </div>
+                    <div class="soft-card" data-reveal="up" data-delay="5">
+                        <div class="soft-card__icon"><i class="fa-solid fa-briefcase"></i></div>
+                        <h3 class="soft-card__title" data-i18n="about.skills.6">Managerial Skills</h3>
+                        <p class="soft-card__desc" data-i18n="skills.soft.6.desc">Organizing tasks, managing priorities, and supporting team efforts.</p>
+                    </div>
+                    <div class="soft-card" data-reveal="up" data-delay="6">
+                        <div class="soft-card__icon"><i class="fa-solid fa-rocket"></i></div>
+                        <h3 class="soft-card__title" data-i18n="about.skills.7">Leadership</h3>
+                        <p class="soft-card__desc" data-i18n="skills.soft.7.desc">Taking initiative and guiding projects toward successful outcomes.</p>
+                    </div>
+                    <div class="soft-card" data-reveal="up" data-delay="7">
+                        <div class="soft-card__icon"><i class="fa-solid fa-graduation-cap"></i></div>
+                        <h3 class="soft-card__title" data-i18n="about.skills.8">Learning New Technologies</h3>
+                        <p class="soft-card__desc" data-i18n="skills.soft.8.desc">Continuously exploring new tools and frameworks to stay current.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ===================================================
+             CURRENTLY LEARNING
+             =================================================== -->
+        <section class="skills-learning">
+            <div class="container">
+                <div class="section-head">
+                    <span class="section-head__label" data-i18n="skills.learning.label">/ 04 — Currently Learning</span>
+                    <h2 class="section-head__title">
+                        <span data-i18n="skills.learning.titleA">Always</span>
+                        <em data-i18n="skills.learning.titleB">Growing</em>
+                    </h2>
+                    <p class="section-head__desc" data-i18n="skills.learning.desc">
+                        Skills and areas I'm actively studying and improving right now.
+                    </p>
+                </div>
+
+                <div class="learning-list">
+                    <div class="learning-item" data-reveal="left">
+                        <div class="learning-item__num">01</div>
+                        <div class="learning-item__body">
+                            <h3 class="learning-item__title" data-i18n="skills.learning.1.title">Cybersecurity Fundamentals</h3>
+                            <p class="learning-item__desc" data-i18n="skills.learning.1.desc">
+                                Linux security, network security, security labs, and OSINT techniques.
+                            </p>
+                        </div>
+                        <div class="learning-item__icon"><i class="fa-solid fa-shield-halved"></i></div>
+                    </div>
+
+                    <div class="learning-item" data-reveal="left" data-delay="1">
+                        <div class="learning-item__num">02</div>
+                        <div class="learning-item__body">
+                            <h3 class="learning-item__title" data-i18n="skills.learning.2.title">Advanced Networking</h3>
+                            <p class="learning-item__desc" data-i18n="skills.learning.2.desc">
+                                Cisco configuration, subnetting, routing, and switching practice.
+                            </p>
+                        </div>
+                        <div class="learning-item__icon"><i class="fa-solid fa-network-wired"></i></div>
+                    </div>
+
+                    <div class="learning-item" data-reveal="left" data-delay="2">
+                        <div class="learning-item__num">03</div>
+                        <div class="learning-item__body">
+                            <h3 class="learning-item__title" data-i18n="skills.learning.3.title">Backend Architecture</h3>
+                            <p class="learning-item__desc" data-i18n="skills.learning.3.desc">
+                                Scalable API design, authentication patterns, and clean code structure.
+                            </p>
+                        </div>
+                        <div class="learning-item__icon"><i class="fa-solid fa-server"></i></div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ===================================================
+             CTA
+             =================================================== -->
+        <section class="skills-cta">
+            <div class="container">
+                <div class="skills-cta__inner" data-reveal="scale">
+                    <h2 class="skills-cta__title">
+                        <span data-i18n="skills.cta.titleA">Want to see these</span>
+                        <em data-i18n="skills.cta.titleB">skills in action?</em>
+                    </h2>
+                    <p class="skills-cta__desc" data-i18n="skills.cta.desc">
+                        Explore my projects or get in touch to discuss opportunities.
+                    </p>
+                    <div class="skills-cta__actions">
+                        <a href="projects.html" class="btn btn--primary" data-cursor="hover">
+                            <span class="btn__text" data-i18n="skills.cta.projects">View Projects</span>
+                            <span class="btn__icon"><i class="fa-solid fa-arrow-right"></i></span>
+                        </a>
+                        <a href="contact.html" class="btn btn--ghost" data-cursor="hover">
+                            <span class="btn__text" data-i18n="skills.cta.contact">Contact Me</span>
+                            <span class="btn__icon"><i class="fa-solid fa-envelope"></i></span>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+    <!-- ==================== FOOTER ==================== -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer__inner">
+                <div class="footer__brand">
+                    <span class="footer__brand-mark">D</span>
+                    <div>
+                        <span class="footer__brand-name">MUDRIK DAU</span>
+                        <span class="footer__brand-sub" data-i18n="brand.sub">Full-Stack Developer | IT Student</span>
+                    </div>
+                </div>
+                <p class="footer__copy">
+                    © <span id="year"></span> Mudrik Mohamed Othman. <span data-i18n="footer.copy">Built with care in Zanzibar.</span>
+                </p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Scripts -->
+    <script src="js/i18n.js"></script>
+    <script src="js/theme.js"></script>
+    <script src="js/global.js"></script>
+    <script src="js/navbar.js"></script>
+    <script src="js/particles.js"></script>
+    <script src="js/animations.js"></script>
+    <script src="js/skills.js"></script>
+</body>
+</html>

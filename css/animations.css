@@ -1,0 +1,178 @@
+/* =========================================================
+   ANIMATION UTILITIES
+   ========================================================= */
+
+/* ---------- FADE IN ---------- */
+@keyframes fadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
+}
+
+/* ---------- FADE UP ---------- */
+@keyframes fadeUp {
+    from {
+        opacity: 0;
+        transform: translateY(40px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* ---------- FADE DOWN ---------- */
+@keyframes fadeDown {
+    from {
+        opacity: 0;
+        transform: translateY(-40px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* ---------- FADE LEFT ---------- */
+@keyframes fadeLeft {
+    from {
+        opacity: 0;
+        transform: translateX(-60px);
+    }
+    to {
+        opacity: 1;
+        transform: translateX(0);
+    }
+}
+
+/* ---------- FADE RIGHT ---------- */
+@keyframes fadeRight {
+    from {
+        opacity: 0;
+        transform: translateX(60px);
+    }
+    to {
+        opacity: 1;
+        transform: translateX(0);
+    }
+}
+
+/* ---------- SCALE IN ---------- */
+@keyframes scaleIn {
+    from {
+        opacity: 0;
+        transform: scale(0.85);
+    }
+    to {
+        opacity: 1;
+        transform: scale(1);
+    }
+}
+
+/* ---------- BLUR IN ---------- */
+@keyframes blurIn {
+    from {
+        opacity: 0;
+        filter: blur(12px);
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        filter: blur(0);
+        transform: translateY(0);
+    }
+}
+
+/* ---------- ROTATE ---------- */
+@keyframes rotate {
+    to { transform: rotate(360deg); }
+}
+
+/* ---------- PULSE ---------- */
+@keyframes pulse {
+    0%, 100% { opacity: 1; transform: scale(1); }
+    50% { opacity: 0.6; transform: scale(1.05); }
+}
+
+/* ---------- FLOAT ---------- */
+@keyframes floatY {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-14px); }
+}
+
+/* ---------- SHIMMER ---------- */
+@keyframes shimmer {
+    0% { background-position: -200% center; }
+    100% { background-position: 200% center; }
+}
+
+/* ---------- GLOW PULSE ---------- */
+@keyframes glowPulse {
+    0%, 100% { box-shadow: 0 0 20px rgba(0, 229, 255, 0.3); }
+    50% { box-shadow: 0 0 40px rgba(0, 229, 255, 0.6); }
+}
+
+/* ---------- TEXT SHINE ---------- */
+@keyframes textShine {
+    0% { background-position: 0% 50%; }
+    50% { background-position: 100% 50%; }
+    100% { background-position: 0% 50%; }
+}
+
+/* =========================================================
+   SCROLL REVEAL CLASSES
+   ========================================================= */
+[data-reveal] {
+    opacity: 0;
+    transition: opacity 1s var(--ease), transform 1s var(--ease);
+    will-change: opacity, transform;
+}
+
+[data-reveal="up"] { transform: translateY(60px); }
+[data-reveal="down"] { transform: translateY(-60px); }
+[data-reveal="left"] { transform: translateX(-60px); }
+[data-reveal="right"] { transform: translateX(60px); }
+[data-reveal="scale"] { transform: scale(0.88); }
+[data-reveal="blur"] { filter: blur(10px); transform: translateY(30px); }
+
+[data-reveal].is-revealed {
+    opacity: 1;
+    transform: none;
+    filter: blur(0);
+}
+
+/* Stagger delays */
+[data-delay="1"] { transition-delay: 0.1s; }
+[data-delay="2"] { transition-delay: 0.2s; }
+[data-delay="3"] { transition-delay: 0.3s; }
+[data-delay="4"] { transition-delay: 0.4s; }
+[data-delay="5"] { transition-delay: 0.5s; }
+[data-delay="6"] { transition-delay: 0.6s; }
+
+/* =========================================================
+   UTILITY ANIMATIONS
+   ========================================================= */
+.anim-float { animation: floatY 4s ease-in-out infinite; }
+.anim-pulse { animation: pulse 2s ease-in-out infinite; }
+.anim-rotate { animation: rotate 12s linear infinite; }
+
+.anim-glow { animation: glowPulse 3s ease-in-out infinite; }
+
+.anim-text-shine {
+    background: linear-gradient(90deg, var(--text-1) 0%, #fff 50%, var(--text-1) 100%);
+    background-size: 200% auto;
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+    animation: textShine 3s linear infinite;
+}
+
+/* =========================================================
+   REDUCED MOTION
+   ========================================================= */
+@media (prefers-reduced-motion: reduce) {
+    [data-reveal] {
+        opacity: 1;
+        transform: none;
+        filter: none;
+    }
+}

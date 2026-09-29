@@ -1,0 +1,462 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description" content="Projects by Mudrik Dau — CleanSpark cleaning service management system and LAMS local administration management system. Full-stack web projects built in Zanzibar." />
+    <meta name="author" content="Mudrik Mohamed Othman (DAU)" />
+    <meta name="theme-color" content="#05060a" />
+
+    <title>Projects — MUDRIK DAU</title>
+
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Sora:wght@300;400;500;600;700;800&family=Space+Grotesk:wght@300;400;500;600;700&family=JetBrains+Mono:wght@300;400;500&display=swap" rel="stylesheet" />
+
+    <!-- Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" />
+
+    <!-- Styles -->
+    <link rel="stylesheet" href="css/global.css" />
+    <link rel="stylesheet" href="css/navbar.css" />
+    <link rel="stylesheet" href="css/controls.css" />
+    <link rel="stylesheet" href="css/animations.css" />
+    <link rel="stylesheet" href="css/projects.css" />
+
+    <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Crect width='100' height='100' rx='20' fill='%2305060a'/%3E%3Ctext x='50' y='68' font-size='52' font-family='Arial' font-weight='bold' fill='%2300e5ff' text-anchor='middle'%3ED%3C/text%3E%3C/svg%3E" />
+
+    <!-- FOUC Guard -->
+    <script>
+        (function () {
+            try {
+                var t = localStorage.getItem('dau:theme');
+                if (t === 'light' || t === 'dark') {
+                    document.documentElement.setAttribute('data-theme', t);
+                } else if (window.matchMedia && window.matchMedia('(prefers-color-scheme: light)').matches) {
+                    document.documentElement.setAttribute('data-theme', 'light');
+                } else {
+                    document.documentElement.setAttribute('data-theme', 'dark');
+                }
+                var l = localStorage.getItem('dau:lang');
+                if (l && ['en','sw','zh','ar','fr'].indexOf(l) !== -1) {
+                    document.documentElement.setAttribute('lang', l);
+                    document.documentElement.setAttribute('dir', l === 'ar' ? 'rtl' : 'ltr');
+                }
+            } catch (e) {}
+        })();
+    </script>
+</head>
+<body>
+
+    <!-- ==================== LOADING SCREEN ==================== -->
+    <div class="loader" id="loader">
+        <div class="loader__content">
+            <div class="loader__logo">
+                <span class="loader__letter">D</span>
+                <span class="loader__letter">A</span>
+                <span class="loader__letter">U</span>
+            </div>
+            <div class="loader__bar">
+                <div class="loader__bar-fill" id="loaderBar"></div>
+            </div>
+            <p class="loader__text">INITIALIZING <span class="loader__dots">...</span></p>
+        </div>
+    </div>
+
+    <!-- ==================== CUSTOM CURSOR ==================== -->
+    <div class="cursor" id="cursor">
+        <div class="cursor__dot"></div>
+        <div class="cursor__ring"></div>
+    </div>
+
+    <!-- ==================== BACKGROUND LAYERS ==================== -->
+    <div class="bg-layers">
+        <div class="bg-grid"></div>
+        <div class="bg-glow bg-glow--1"></div>
+        <div class="bg-glow bg-glow--2"></div>
+        <div class="bg-glow bg-glow--3"></div>
+        <canvas id="particles"></canvas>
+    </div>
+
+    <!-- ==================== NAVBAR ==================== -->
+    <header class="navbar" id="navbar">
+        <div class="navbar__inner">
+            <a href="index.html" class="navbar__brand" aria-label="DAU Home">
+                <span class="navbar__brand-mark">
+                    <span>D</span>
+                </span>
+                <span class="navbar__brand-text">
+                    <span class="navbar__brand-name">MUDRIK <em>DAU</em></span>
+                    <span class="navbar__brand-sub" data-i18n="brand.sub">Full-Stack Developer</span>
+                </span>
+            </a>
+
+            <div class="navbar__actions">
+                <button class="ctrl-btn ctrl-btn--theme" id="themeToggle" aria-label="Toggle theme" title="Toggle theme">
+                    <span class="ctrl-btn__icon">
+                        <i class="fa-solid fa-moon icon-moon"></i>
+                        <i class="fa-solid fa-sun icon-sun"></i>
+                    </span>
+                </button>
+
+                <div class="lang" id="langSwitcher">
+                    <button class="ctrl-btn ctrl-btn--lang" id="langToggle" aria-label="Change language" aria-expanded="false">
+                        <span class="ctrl-btn__icon"><i class="fa-solid fa-globe"></i></span>
+                        <span class="ctrl-btn__label" id="langCurrent">EN</span>
+                        <span class="ctrl-btn__caret"><i class="fa-solid fa-chevron-down"></i></span>
+                    </button>
+
+                    <div class="lang__dropdown" id="langDropdown" role="menu" aria-hidden="true">
+                        <button class="lang__item" data-lang="en" role="menuitem">
+                            <span class="lang__flag">🇬🇧</span>
+                            <span class="lang__name">English</span>
+                            <span class="lang__code">EN</span>
+                        </button>
+                        <button class="lang__item" data-lang="sw" role="menuitem">
+                            <span class="lang__flag">🇹🇿</span>
+                            <span class="lang__name">Kiswahili</span>
+                            <span class="lang__code">SW</span>
+                        </button>
+                        <button class="lang__item" data-lang="zh" role="menuitem">
+                            <span class="lang__flag">🇨🇳</span>
+                            <span class="lang__name">中文</span>
+                            <span class="lang__code">ZH</span>
+                        </button>
+                        <button class="lang__item" data-lang="ar" role="menuitem">
+                            <span class="lang__flag">🇸🇦</span>
+                            <span class="lang__name">العربية</span>
+                            <span class="lang__code">AR</span>
+                        </button>
+                        <button class="lang__item" data-lang="fr" role="menuitem">
+                            <span class="lang__flag">🇫🇷</span>
+                            <span class="lang__name">Français</span>
+                            <span class="lang__code">FR</span>
+                        </button>
+                    </div>
+                </div>
+
+                <button class="navbar__toggle" id="navbarToggle" aria-label="Open menu" aria-expanded="false">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </button>
+            </div>
+        </div>
+    </header>
+
+    <!-- ==================== FULLSCREEN MENU ==================== -->
+    <nav class="menu" id="menu" aria-hidden="true">
+        <div class="menu__bg"></div>
+        <div class="menu__inner">
+            <div class="menu__aside">
+                <div class="menu__aside-block">
+                    <span class="menu__aside-label" data-i18n="menu.aside.location">Location</span>
+                    <span class="menu__aside-value">Maungani / Kombeni, Zanzibar</span>
+                </div>
+                <div class="menu__aside-block">
+                    <span class="menu__aside-label" data-i18n="menu.aside.email">Email</span>
+                    <a href="mailto:mudrikdau@gmail.com" class="menu__aside-value">mudrikdau@gmail.com</a>
+                </div>
+                <div class="menu__aside-block">
+                    <span class="menu__aside-label" data-i18n="menu.aside.availability">Availability</span>
+                    <span class="menu__aside-value menu__aside-value--status">
+                        <span class="dot dot--live"></span>
+                        <span data-i18n="menu.aside.open">Open to opportunities</span>
+                    </span>
+                </div>
+                <div class="menu__aside-block">
+                    <span class="menu__aside-label" data-i18n="menu.aside.socials">Socials</span>
+                    <div class="menu__socials">
+                        <a href="https://github.com/mudrikdau-ux" target="_blank" rel="noopener" aria-label="GitHub"><i class="fa-brands fa-github"></i></a>
+                        <a href="https://www.linkedin.com/in/mudrik-dau" target="_blank" rel="noopener" aria-label="LinkedIn"><i class="fa-brands fa-linkedin-in"></i></a>
+                        <a href="https://www.instagram.com/youngw_04" target="_blank" rel="noopener" aria-label="Instagram"><i class="fa-brands fa-instagram"></i></a>
+                        <a href="https://x.com/" target="_blank" rel="noopener" aria-label="X"><i class="fa-brands fa-x-twitter"></i></a>
+                    </div>
+                </div>
+            </div>
+
+            <ul class="menu__list">
+                <li class="menu__item">
+                    <a href="index.html" class="menu__link" data-page="home">
+                        <span class="menu__num">01</span>
+                        <span class="menu__text" data-i18n="menu.home">Home</span>
+                    </a>
+                </li>
+                <li class="menu__item">
+                    <a href="about.html" class="menu__link" data-page="about">
+                        <span class="menu__num">02</span>
+                        <span class="menu__text" data-i18n="menu.about">About</span>
+                    </a>
+                </li>
+                <li class="menu__item">
+                    <a href="skills.html" class="menu__link" data-page="skills">
+                        <span class="menu__num">03</span>
+                        <span class="menu__text" data-i18n="menu.skills">Skills</span>
+                    </a>
+                </li>
+                <li class="menu__item">
+                    <a href="experience.html" class="menu__link" data-page="experience">
+                        <span class="menu__num">04</span>
+                        <span class="menu__text" data-i18n="menu.experience">Experience</span>
+                    </a>
+                </li>
+                <li class="menu__item">
+                    <a href="projects.html" class="menu__link" data-page="projects">
+                        <span class="menu__num">05</span>
+                        <span class="menu__text" data-i18n="menu.projects">Projects</span>
+                    </a>
+                </li>
+                <li class="menu__item">
+                    <a href="certificates.html" class="menu__link" data-page="certificates">
+                        <span class="menu__num">06</span>
+                        <span class="menu__text" data-i18n="menu.certificates">Certificates</span>
+                    </a>
+                </li>
+                <li class="menu__item">
+                    <a href="services.html" class="menu__link" data-page="services">
+                        <span class="menu__num">07</span>
+                        <span class="menu__text" data-i18n="menu.services">Services</span>
+                    </a>
+                </li>
+                <li class="menu__item">
+                    <a href="achievements.html" class="menu__link" data-page="achievements">
+                        <span class="menu__num">08</span>
+                        <span class="menu__text" data-i18n="menu.achievements">Achievements</span>
+                    </a>
+                </li>
+                <li class="menu__item">
+                    <a href="contact.html" class="menu__link" data-page="contact">
+                        <span class="menu__num">09</span>
+                        <span class="menu__text" data-i18n="menu.contact">Contact</span>
+                    </a>
+                </li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- ==================== PROJECTS PAGE ==================== -->
+    <main class="proj-page" id="projects">
+
+        <!-- ===================================================
+             HERO
+             =================================================== -->
+        <section class="proj-hero">
+            <div class="container">
+                <div class="proj-hero__inner">
+                    <span class="section-head__label" data-i18n="proj.hero.label">/ Selected Work</span>
+                    <h1 class="proj-hero__title">
+                        <span data-i18n="proj.hero.titleA">Projects Built to</span><br />
+                        <em data-i18n="proj.hero.titleB">Solve Real Problems.</em>
+                    </h1>
+                    <p class="proj-hero__desc" data-i18n="proj.hero.desc">
+                        Full-stack web applications designed and developed with modern
+                        technologies, focused on real-world problems in Zanzibar's local context.
+                    </p>
+
+                    <div class="proj-hero__stats">
+                        <div class="proj-hero__stat">
+                            <span class="proj-hero__stat-num" data-count="2">0</span>
+                            <span class="proj-hero__stat-label" data-i18n="proj.hero.stat.major">Major Projects</span>
+                        </div>
+                        <div class="proj-hero__stat-divider"></div>
+                        <div class="proj-hero__stat">
+                            <span class="proj-hero__stat-num" data-count="15">0</span>
+                            <span class="proj-hero__stat-label" data-i18n="proj.hero.stat.tech">Technologies</span>
+                        </div>
+                        <div class="proj-hero__stat-divider"></div>
+                        <div class="proj-hero__stat">
+                            <span class="proj-hero__stat-num" data-count="3">0</span>
+                            <span class="proj-hero__stat-label" data-i18n="proj.hero.stat.domains">Domains</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ===================================================
+             FILTER TABS
+             =================================================== -->
+        <section class="proj-filter">
+            <div class="container">
+                <div class="proj-filter__inner" id="projFilter">
+                    <button class="proj-filter__btn is-active" data-filter="all">
+                        <span data-i18n="proj.filter.all">All Projects</span>
+                        <span class="proj-filter__count">2</span>
+                    </button>
+                    <button class="proj-filter__btn" data-filter="fullstack">
+                        <span data-i18n="proj.filter.fullstack">Full-Stack</span>
+                        <span class="proj-filter__count">2</span>
+                    </button>
+                    <button class="proj-filter__btn" data-filter="web">
+                        <span data-i18n="proj.filter.web">Web Systems</span>
+                        <span class="proj-filter__count">2</span>
+                    </button>
+                    <button class="proj-filter__btn" data-filter="local">
+                        <span data-i18n="proj.filter.local">Local Context</span>
+                        <span class="proj-filter__count">2</span>
+                    </button>
+                </div>
+            </div>
+        </section>
+
+        <!-- ===================================================
+             PROJECTS GRID
+             =================================================== -->
+        <section class="proj-grid-section">
+            <div class="container">
+                <div class="proj-grid" id="projGrid">
+
+                    <!-- CLEANSPARK -->
+                    <article class="proj-card" data-tags="fullstack,web,local" data-project="cleanspark" data-reveal="up">
+                        <div class="proj-card__visual">
+                            <div class="proj-card__visual-bg" style="background: linear-gradient(135deg, #00e5ff 0%, #0077ff 100%);"></div>
+                            <div class="proj-card__visual-grid"></div>
+                            <div class="proj-card__visual-num">01</div>
+                            <div class="proj-card__visual-tag" data-i18n="project.cleanspark.tag">Cleaning Service Management</div>
+                            <div class="proj-card__visual-overlay"></div>
+                        </div>
+                        <div class="proj-card__body">
+                            <div class="proj-card__meta">
+                                <span class="proj-card__meta-item"><i class="fa-solid fa-code"></i> <span data-i18n="project.meta.fullstack">Full-Stack</span></span>
+                                <span class="proj-card__meta-item"><i class="fa-solid fa-calendar"></i> 2026</span>
+                            </div>
+                            <h3 class="proj-card__title">CleanSpark</h3>
+                            <p class="proj-card__desc" data-i18n="project.cleanspark.desc">
+                                A cleaning service management system that digitizes customers,
+                                bookings, staff, payments, scheduling, and administration.
+                            </p>
+                            <div class="proj-card__tags">
+                                <span>Node.js</span>
+                                <span>Express</span>
+                                <span>MySQL</span>
+                                <span>Bootstrap 5</span>
+                            </div>
+                            <div class="proj-card__actions">
+                                <button class="proj-card__btn proj-card__btn--primary" data-open-project="cleanspark">
+                                    <span data-i18n="proj.card.details">View Details</span>
+                                    <i class="fa-solid fa-arrow-right"></i>
+                                </button>
+                                <a href="https://mudrikdau-ux.github.io/CLEANING-SERVICE-MANAGEMENT-SYSTEM/index.html" target="_blank" rel="noopener" class="proj-card__btn proj-card__btn--ghost">
+                                    <span data-i18n="proj.card.demo">Live Demo</span>
+                                    <i class="fa-solid fa-arrow-up-right-from-square"></i>
+                                </a>
+                            </div>
+                        </div>
+                    </article>
+
+                    <!-- LAMS -->
+                    <article class="proj-card" data-tags="fullstack,web,local" data-project="lams" data-reveal="up" data-delay="1">
+                        <div class="proj-card__visual">
+                            <div class="proj-card__visual-bg" style="background: linear-gradient(135deg, #a855f7 0%, #ec4899 100%);"></div>
+                            <div class="proj-card__visual-grid"></div>
+                            <div class="proj-card__visual-num">02</div>
+                            <div class="proj-card__visual-tag" data-i18n="project.lams.tag">Local Administration Management</div>
+                            <div class="proj-card__visual-overlay"></div>
+                        </div>
+                        <div class="proj-card__body">
+                            <div class="proj-card__meta">
+                                <span class="proj-card__meta-item"><i class="fa-solid fa-code"></i> <span data-i18n="project.meta.fullstack">Full-Stack</span></span>
+                                <span class="proj-card__meta-item"><i class="fa-solid fa-calendar"></i> 2026</span>
+                            </div>
+                            <h3 class="proj-card__title">LAMS</h3>
+                            <p class="proj-card__desc" data-i18n="project.lams.desc">
+                                A local administration management system connecting citizens
+                                with ward administration for services, payments, and documents.
+                            </p>
+                            <div class="proj-card__tags">
+                                <span>Node.js</span>
+                                <span>Express</span>
+                                <span>MySQL</span>
+                                <span>JWT</span>
+                            </div>
+                            <div class="proj-card__actions">
+                                <button class="proj-card__btn proj-card__btn--primary" data-open-project="lams">
+                                    <span data-i18n="proj.card.details">View Details</span>
+                                    <i class="fa-solid fa-arrow-right"></i>
+                                </button>
+                                <a href="https://mudrikdau-ux.github.io/Local-administrative-management-system/login.html" target="_blank" rel="noopener" class="proj-card__btn proj-card__btn--ghost">
+                                    <span data-i18n="proj.card.demo">Live Demo</span>
+                                    <i class="fa-solid fa-arrow-up-right-from-square"></i>
+                                </a>
+                            </div>
+                        </div>
+                    </article>
+
+                </div>
+            </div>
+        </section>
+
+        <!-- ===================================================
+             CTA
+             =================================================== -->
+        <section class="proj-cta">
+            <div class="container">
+                <div class="proj-cta__inner" data-reveal="scale">
+                    <h2 class="proj-cta__title">
+                        <span data-i18n="proj.cta.titleA">Have a project</span>
+                        <em data-i18n="proj.cta.titleB">in mind?</em>
+                    </h2>
+                    <p class="proj-cta__desc" data-i18n="proj.cta.desc">
+                        Let's discuss how we can build something meaningful together.
+                    </p>
+                    <div class="proj-cta__actions">
+                        <a href="contact.html" class="btn btn--primary" data-cursor="hover">
+                            <span class="btn__text" data-i18n="proj.cta.contact">Start a Conversation</span>
+                            <span class="btn__icon"><i class="fa-solid fa-arrow-right"></i></span>
+                        </a>
+                        <a href="https://github.com/mudrikdau-ux" target="_blank" rel="noopener" class="btn btn--ghost" data-cursor="hover">
+                            <span class="btn__text" data-i18n="proj.cta.github">View on GitHub</span>
+                            <span class="btn__icon"><i class="fa-brands fa-github"></i></span>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+    <!-- ===================================================
+         PROJECT MODAL
+         =================================================== -->
+    <div class="proj-modal" id="projModal" aria-hidden="true">
+        <div class="proj-modal__bg" data-close-modal></div>
+        <div class="proj-modal__dialog" role="dialog" aria-modal="true">
+            <button class="proj-modal__close" data-close-modal aria-label="Close">
+                <i class="fa-solid fa-xmark"></i>
+            </button>
+
+            <div class="proj-modal__content" id="projModalContent">
+                <!-- Filled by JS -->
+            </div>
+        </div>
+    </div>
+
+    <!-- ==================== FOOTER ==================== -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer__inner">
+                <div class="footer__brand">
+                    <span class="footer__brand-mark">D</span>
+                    <div>
+                        <span class="footer__brand-name">MUDRIK DAU</span>
+                        <span class="footer__brand-sub" data-i18n="brand.sub">Full-Stack Developer | IT Student</span>
+                    </div>
+                </div>
+                <p class="footer__copy">
+                    © <span id="year"></span> Mudrik Mohamed Othman. <span data-i18n="footer.copy">Built with care in Zanzibar.</span>
+                </p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Scripts -->
+    <script src="js/i18n.js"></script>
+    <script src="js/theme.js"></script>
+    <script src="js/global.js"></script>
+    <script src="js/navbar.js"></script>
+    <script src="js/particles.js"></script>
+    <script src="js/animations.js"></script>
+    <script src="js/projects.js"></script>
+</body>
+</html>

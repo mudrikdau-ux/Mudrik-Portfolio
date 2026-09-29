@@ -1,0 +1,550 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description" content="Mudrik Dau — Full-Stack Developer, IT Student & Technology Enthusiast from Zanzibar. Creating practical digital solutions." />
+    <meta name="author" content="Mudrik Mohamed Othman (DAU)" />
+    <meta name="theme-color" content="#05060a" />
+
+    <title>MUDRIK DAU — Full-Stack Developer & IT Student</title>
+
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Sora:wght@300;400;500;600;700;800&family=Space+Grotesk:wght@300;400;500;600;700&family=JetBrains+Mono:wght@300;400;500&display=swap" rel="stylesheet" />
+
+    <!-- Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" />
+
+    <!-- Styles -->
+    <link rel="stylesheet" href="css/global.css" />
+    <link rel="stylesheet" href="css/navbar.css" />
+    <link rel="stylesheet" href="css/controls.css" />
+    <link rel="stylesheet" href="css/home.css" />
+    <link rel="stylesheet" href="css/animations.css" />
+
+    <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Crect width='100' height='100' rx='20' fill='%2305060a'/%3E%3Ctext x='50' y='68' font-size='52' font-family='Arial' font-weight='bold' fill='%2300e5ff' text-anchor='middle'%3ED%3C/text%3E%3C/svg%3E" />
+
+    <!-- FOUC Guard: Apply saved theme before first paint -->
+    <script>
+        (function () {
+            try {
+                var t = localStorage.getItem('dau:theme');
+                if (t === 'light' || t === 'dark') {
+                    document.documentElement.setAttribute('data-theme', t);
+                } else if (window.matchMedia && window.matchMedia('(prefers-color-scheme: light)').matches) {
+                    document.documentElement.setAttribute('data-theme', 'light');
+                } else {
+                    document.documentElement.setAttribute('data-theme', 'dark');
+                }
+                var l = localStorage.getItem('dau:lang');
+                if (l && ['en','sw','zh','ar','fr'].indexOf(l) !== -1) {
+                    document.documentElement.setAttribute('lang', l);
+                    document.documentElement.setAttribute('dir', l === 'ar' ? 'rtl' : 'ltr');
+                }
+            } catch (e) {}
+        })();
+    </script>
+</head>
+<body>
+
+    <!-- ==================== LOADING SCREEN ==================== -->
+    <div class="loader" id="loader">
+        <div class="loader__content">
+            <div class="loader__logo">
+                <span class="loader__letter">D</span>
+                <span class="loader__letter">A</span>
+                <span class="loader__letter">U</span>
+            </div>
+            <div class="loader__bar">
+                <div class="loader__bar-fill" id="loaderBar"></div>
+            </div>
+            <p class="loader__text">INITIALIZING <span class="loader__dots">...</span></p>
+        </div>
+    </div>
+
+    <!-- ==================== CUSTOM CURSOR ==================== -->
+    <div class="cursor" id="cursor">
+        <div class="cursor__dot"></div>
+        <div class="cursor__ring"></div>
+    </div>
+
+    <!-- ==================== BACKGROUND LAYERS ==================== -->
+    <div class="bg-layers">
+        <div class="bg-grid"></div>
+        <div class="bg-glow bg-glow--1"></div>
+        <div class="bg-glow bg-glow--2"></div>
+        <div class="bg-glow bg-glow--3"></div>
+        <canvas id="particles"></canvas>
+    </div>
+
+    <!-- ==================== NAVBAR ==================== -->
+    <header class="navbar" id="navbar">
+        <div class="navbar__inner">
+            <a href="index.html" class="navbar__brand" aria-label="DAU Home">
+                <span class="navbar__brand-mark">
+                    <span>D</span>
+                </span>
+                <span class="navbar__brand-text">
+                    <span class="navbar__brand-name">MUDRIK <em>DAU</em></span>
+                    <span class="navbar__brand-sub" data-i18n="brand.sub">Full-Stack Developer</span>
+                </span>
+            </a>
+
+            <div class="navbar__actions">
+
+                <!-- Theme Toggle -->
+                <button class="ctrl-btn ctrl-btn--theme" id="themeToggle" aria-label="Toggle theme" title="Toggle theme">
+                    <span class="ctrl-btn__icon">
+                        <i class="fa-solid fa-moon icon-moon"></i>
+                        <i class="fa-solid fa-sun icon-sun"></i>
+                    </span>
+                </button>
+
+                <!-- Language Switcher -->
+                <div class="lang" id="langSwitcher">
+                    <button class="ctrl-btn ctrl-btn--lang" id="langToggle" aria-label="Change language" aria-expanded="false">
+                        <span class="ctrl-btn__icon"><i class="fa-solid fa-globe"></i></span>
+                        <span class="ctrl-btn__label" id="langCurrent">EN</span>
+                        <span class="ctrl-btn__caret"><i class="fa-solid fa-chevron-down"></i></span>
+                    </button>
+
+                    <div class="lang__dropdown" id="langDropdown" role="menu" aria-hidden="true">
+                        <button class="lang__item" data-lang="en" role="menuitem">
+                            <span class="lang__flag">🇬🇧</span>
+                            <span class="lang__name">English</span>
+                            <span class="lang__code">EN</span>
+                        </button>
+                        <button class="lang__item" data-lang="sw" role="menuitem">
+                            <span class="lang__flag">🇹🇿</span>
+                            <span class="lang__name">Kiswahili</span>
+                            <span class="lang__code">SW</span>
+                        </button>
+                        <button class="lang__item" data-lang="zh" role="menuitem">
+                            <span class="lang__flag">🇨🇳</span>
+                            <span class="lang__name">中文</span>
+                            <span class="lang__code">ZH</span>
+                        </button>
+                        <button class="lang__item" data-lang="ar" role="menuitem">
+                            <span class="lang__flag">🇸🇦</span>
+                            <span class="lang__name">العربية</span>
+                            <span class="lang__code">AR</span>
+                        </button>
+                        <button class="lang__item" data-lang="fr" role="menuitem">
+                            <span class="lang__flag">🇫🇷</span>
+                            <span class="lang__name">Français</span>
+                            <span class="lang__code">FR</span>
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Hamburger -->
+                <button class="navbar__toggle" id="navbarToggle" aria-label="Open menu" aria-expanded="false">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </button>
+            </div>
+        </div>
+    </header>
+
+    <!-- ==================== FULLSCREEN MENU ==================== -->
+    <nav class="menu" id="menu" aria-hidden="true">
+        <div class="menu__bg"></div>
+        <div class="menu__inner">
+            <div class="menu__aside">
+                <div class="menu__aside-block">
+                    <span class="menu__aside-label" data-i18n="menu.aside.location">Location</span>
+                    <span class="menu__aside-value">Maungani / Kombeni, Zanzibar</span>
+                </div>
+                <div class="menu__aside-block">
+                    <span class="menu__aside-label" data-i18n="menu.aside.email">Email</span>
+                    <a href="mailto:mudrikdau@gmail.com" class="menu__aside-value">mudrikdau@gmail.com</a>
+                </div>
+                <div class="menu__aside-block">
+                    <span class="menu__aside-label" data-i18n="menu.aside.availability">Availability</span>
+                    <span class="menu__aside-value menu__aside-value--status">
+                        <span class="dot dot--live"></span>
+                        <span data-i18n="menu.aside.open">Open to opportunities</span>
+                    </span>
+                </div>
+                <div class="menu__aside-block">
+                    <span class="menu__aside-label" data-i18n="menu.aside.socials">Socials</span>
+                    <div class="menu__socials">
+                        <a href="https://github.com/mudrikdau-ux" target="_blank" rel="noopener" aria-label="GitHub"><i class="fa-brands fa-github"></i></a>
+                        <a href="https://www.linkedin.com/in/mudrik-dau" target="_blank" rel="noopener" aria-label="LinkedIn"><i class="fa-brands fa-linkedin-in"></i></a>
+                        <a href="https://www.instagram.com/youngw_04" target="_blank" rel="noopener" aria-label="Instagram"><i class="fa-brands fa-instagram"></i></a>
+                        <a href="https://x.com/" target="_blank" rel="noopener" aria-label="X"><i class="fa-brands fa-x-twitter"></i></a>
+                    </div>
+                </div>
+            </div>
+
+            <ul class="menu__list">
+                <li class="menu__item">
+                    <a href="index.html" class="menu__link" data-page="home">
+                        <span class="menu__num">01</span>
+                        <span class="menu__text" data-text="Home" data-i18n="menu.home">Home</span>
+                    </a>
+                </li>
+                <li class="menu__item">
+                    <a href="about.html" class="menu__link" data-page="about">
+                        <span class="menu__num">02</span>
+                        <span class="menu__text" data-text="About" data-i18n="menu.about">About</span>
+                    </a>
+                </li>
+                <li class="menu__item">
+                    <a href="skills.html" class="menu__link" data-page="skills">
+                        <span class="menu__num">03</span>
+                        <span class="menu__text" data-text="Skills" data-i18n="menu.skills">Skills</span>
+                    </a>
+                </li>
+                <li class="menu__item">
+                    <a href="experience.html" class="menu__link" data-page="experience">
+                        <span class="menu__num">04</span>
+                        <span class="menu__text" data-text="Experience" data-i18n="menu.experience">Experience</span>
+                    </a>
+                </li>
+                <li class="menu__item">
+                    <a href="projects.html" class="menu__link" data-page="projects">
+                        <span class="menu__num">05</span>
+                        <span class="menu__text" data-text="Projects" data-i18n="menu.projects">Projects</span>
+                    </a>
+                </li>
+                <li class="menu__item">
+                    <a href="certificates.html" class="menu__link" data-page="certificates">
+                        <span class="menu__num">06</span>
+                        <span class="menu__text" data-text="Certificates" data-i18n="menu.certificates">Certificates</span>
+                    </a>
+                </li>
+                <li class="menu__item">
+                    <a href="services.html" class="menu__link" data-page="services">
+                        <span class="menu__num">07</span>
+                        <span class="menu__text" data-text="Services" data-i18n="menu.services">Services</span>
+                    </a>
+                </li>
+                <li class="menu__item">
+                    <a href="achievements.html" class="menu__link" data-page="achievements">
+                        <span class="menu__num">08</span>
+                        <span class="menu__text" data-text="Achievements" data-i18n="menu.achievements">Achievements</span>
+                    </a>
+                </li>
+                <li class="menu__item">
+                    <a href="contact.html" class="menu__link" data-page="contact">
+                        <span class="menu__num">09</span>
+                        <span class="menu__text" data-text="Contact" data-i18n="menu.contact">Contact</span>
+                    </a>
+                </li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- ==================== HOME ==================== -->
+    <main class="home" id="home">
+
+        <!-- HERO -->
+        <section class="hero">
+            <div class="hero__container">
+
+                <div class="hero__left">
+                    <div class="hero__tagline">
+                        <span class="hero__tagline-dot"></span>
+                        <span data-i18n="hero.tagline">Based in Zanzibar, Tanzania</span>
+                    </div>
+
+                    <h1 class="hero__title">
+                        <span class="hero__title-line" data-line="1">
+                            <span class="hero__title-word">MUDRIK</span>
+                        </span>
+                        <span class="hero__title-line hero__title-line--accent" data-line="2">
+                            <span class="hero__title-word">DAU</span>
+                            <span class="hero__title-mark">.</span>
+                        </span>
+                    </h1>
+
+                    <div class="hero__role">
+                        <span class="hero__role-static" data-i18n="hero.roleStatic">I am a</span>
+                        <span class="hero__role-rotate" id="roleRotate">
+                            <span class="hero__role-word" data-i18n="hero.roles.0">Full-Stack Developer</span>
+                            <span class="hero__role-word" data-i18n="hero.roles.1">IT Student</span>
+                            <span class="hero__role-word" data-i18n="hero.roles.2">Technology Enthusiast</span>
+                            <span class="hero__role-word" data-i18n="hero.roles.3">Problem Solver</span>
+                        </span>
+                    </div>
+
+                    <p class="hero__desc" data-i18n="hero.desc">
+                        Creating practical digital solutions through technology,
+                        creativity, and problem solving — from Zanzibar to the world.
+                    </p>
+
+                    <div class="hero__actions">
+                        <a href="projects.html" class="btn btn--primary" data-cursor="hover">
+                            <span class="btn__text" data-i18n="hero.cta.primary">Explore My Work</span>
+                            <span class="btn__icon"><i class="fa-solid fa-arrow-right"></i></span>
+                        </a>
+                        <a href="assets/cv/Mudrik-Dau-CV.pdf" class="btn btn--ghost" data-cursor="hover" download>
+                            <span class="btn__text" data-i18n="hero.cta.secondary">Download CV</span>
+                            <span class="btn__icon"><i class="fa-solid fa-download"></i></span>
+                        </a>
+                    </div>
+
+                    <div class="hero__stats">
+                        <div class="hero__stat">
+                            <span class="hero__stat-num" data-count="2">0</span>
+                            <span class="hero__stat-label" data-i18n="hero.stats.projects">Major Projects</span>
+                        </div>
+                        <div class="hero__stat-divider"></div>
+                        <div class="hero__stat">
+                            <span class="hero__stat-num" data-count="15">0</span>
+                            <span class="hero__stat-label" data-i18n="hero.stats.technologies">Technologies</span>
+                        </div>
+                        <div class="hero__stat-divider"></div>
+                        <div class="hero__stat">
+                            <span class="hero__stat-num" data-count="4">0</span>
+                            <span class="hero__stat-label" data-i18n="hero.stats.experiences">Work Experiences</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="hero__right">
+                    <div class="hero__visual">
+                        <div class="hero__visual-ring hero__visual-ring--outer"></div>
+                        <div class="hero__visual-ring hero__visual-ring--mid"></div>
+                        <div class="hero__visual-ring hero__visual-ring--inner"></div>
+
+                        <div class="hero__visual-orbit">
+                            <span class="hero__chip hero__chip--1"><i class="fa-brands fa-html5"></i></span>
+                            <span class="hero__chip hero__chip--2"><i class="fa-brands fa-js"></i></span>
+                            <span class="hero__chip hero__chip--3"><i class="fa-brands fa-node-js"></i></span>
+                            <span class="hero__chip hero__chip--4"><i class="fa-solid fa-database"></i></span>
+                            <span class="hero__chip hero__chip--5"><i class="fa-brands fa-git-alt"></i></span>
+                            <span class="hero__chip hero__chip--6"><i class="fa-brands fa-css3-alt"></i></span>
+                        </div>
+
+                        <div class="hero__visual-card" data-tilt>
+                            <div class="hero__visual-card-inner">
+                                <img src="assets/images/profile/profile.png" alt="Mudrik Dau" class="hero__photo" onerror="this.style.display='none'; this.parentElement.classList.add('hero__visual-card-inner--placeholder');" />
+                                <div class="hero__visual-card-placeholder">
+                                    <span>DAU</span>
+                                    <small data-i18n="hero.profile">Profile</small>
+                                </div>
+                                <div class="hero__visual-card-shine"></div>
+                            </div>
+                            <div class="hero__visual-badge">
+                                <span class="dot dot--live"></span>
+                                <span data-i18n="hero.badge">Available</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+
+            <div class="hero__scroll">
+                <span data-i18n="hero.scroll">Scroll</span>
+                <div class="hero__scroll-line"></div>
+            </div>
+        </section>
+
+        <!-- MARQUEE STRIP -->
+        <section class="marquee" aria-hidden="true">
+            <div class="marquee__track">
+                <div class="marquee__group">
+                    <span data-i18n="marquee.1">FULL-STACK DEVELOPMENT</span>
+                    <span class="marquee__dot">◆</span>
+                    <span data-i18n="marquee.2">DATABASE DESIGN</span>
+                    <span class="marquee__dot">◆</span>
+                    <span data-i18n="marquee.3">REST APIS</span>
+                    <span class="marquee__dot">◆</span>
+                    <span data-i18n="marquee.4">IT SUPPORT</span>
+                    <span class="marquee__dot">◆</span>
+                    <span data-i18n="marquee.5">NETWORKING</span>
+                    <span class="marquee__dot">◆</span>
+                    <span data-i18n="marquee.6">PROBLEM SOLVING</span>
+                    <span class="marquee__dot">◆</span>
+                </div>
+                <div class="marquee__group" aria-hidden="true">
+                    <span data-i18n="marquee.1">FULL-STACK DEVELOPMENT</span>
+                    <span class="marquee__dot">◆</span>
+                    <span data-i18n="marquee.2">DATABASE DESIGN</span>
+                    <span class="marquee__dot">◆</span>
+                    <span data-i18n="marquee.3">REST APIS</span>
+                    <span class="marquee__dot">◆</span>
+                    <span data-i18n="marquee.4">IT SUPPORT</span>
+                    <span class="marquee__dot">◆</span>
+                    <span data-i18n="marquee.5">NETWORKING</span>
+                    <span class="marquee__dot">◆</span>
+                    <span data-i18n="marquee.6">PROBLEM SOLVING</span>
+                    <span class="marquee__dot">◆</span>
+                </div>
+            </div>
+        </section>
+
+        <!-- FEATURED PROJECTS -->
+        <section class="featured" id="featured">
+            <div class="container">
+                <div class="section-head">
+                    <span class="section-head__label" data-i18n="featured.label">/ 01 — Selected Work</span>
+                    <h2 class="section-head__title">
+                        <span data-i18n="featured.titleA">Featured</span>
+                        <em data-i18n="featured.titleB">Projects</em>
+                    </h2>
+                    <p class="section-head__desc" data-i18n="featured.desc">
+                        Practical systems built to solve real problems in Zanzibar's local context.
+                    </p>
+                </div>
+
+                <div class="featured__grid">
+                    <!-- CleanSpark -->
+                    <article class="project-card" data-cursor="hover">
+                        <div class="project-card__visual">
+                            <div class="project-card__visual-bg" style="background: linear-gradient(135deg, #00e5ff 0%, #0077ff 100%);"></div>
+                            <div class="project-card__visual-grid"></div>
+                            <div class="project-card__visual-num">01</div>
+                            <div class="project-card__visual-tag" data-i18n="project.cleanspark.tag">Cleaning Service Management</div>
+                        </div>
+                        <div class="project-card__body">
+                            <div class="project-card__meta">
+                                <span class="project-card__meta-item"><i class="fa-solid fa-code"></i> <span data-i18n="project.meta.fullstack">Full-Stack</span></span>
+                                <span class="project-card__meta-item"><i class="fa-solid fa-calendar"></i> 2026</span>
+                            </div>
+                            <h3 class="project-card__title">CleanSpark</h3>
+                            <p class="project-card__desc" data-i18n="project.cleanspark.desc">
+                                A cleaning service management system that digitizes customers,
+                                bookings, staff, payments, scheduling, and administration.
+                            </p>
+                            <div class="project-card__tags">
+                                <span>Node.js</span>
+                                <span>Express</span>
+                                <span>MySQL</span>
+                                <span>Bootstrap</span>
+                            </div>
+                            <a href="projects.html" class="project-card__link">
+                                <span data-i18n="project.view">View Project</span>
+                                <i class="fa-solid fa-arrow-right"></i>
+                            </a>
+                        </div>
+                    </article>
+
+                    <!-- LAMS -->
+                    <article class="project-card" data-cursor="hover">
+                        <div class="project-card__visual">
+                            <div class="project-card__visual-bg" style="background: linear-gradient(135deg, #a855f7 0%, #ec4899 100%);"></div>
+                            <div class="project-card__visual-grid"></div>
+                            <div class="project-card__visual-num">02</div>
+                            <div class="project-card__visual-tag" data-i18n="project.lams.tag">Local Administration Management</div>
+                        </div>
+                        <div class="project-card__body">
+                            <div class="project-card__meta">
+                                <span class="project-card__meta-item"><i class="fa-solid fa-code"></i> <span data-i18n="project.meta.fullstack">Full-Stack</span></span>
+                                <span class="project-card__meta-item"><i class="fa-solid fa-calendar"></i> 2026</span>
+                            </div>
+                            <h3 class="project-card__title">LAMS</h3>
+                            <p class="project-card__desc" data-i18n="project.lams.desc">
+                                A local administration management system connecting citizens
+                                with ward administration for services, payments, and documents.
+                            </p>
+                            <div class="project-card__tags">
+                                <span>Node.js</span>
+                                <span>Express</span>
+                                <span>MySQL</span>
+                                <span>JWT</span>
+                            </div>
+                            <a href="projects.html" class="project-card__link">
+                                <span data-i18n="project.view">View Project</span>
+                                <i class="fa-solid fa-arrow-right"></i>
+                            </a>
+                        </div>
+                    </article>
+                </div>
+
+                <div class="featured__cta">
+                    <a href="projects.html" class="btn btn--outline" data-cursor="hover">
+                        <span class="btn__text" data-i18n="featured.cta">See All Projects</span>
+                        <span class="btn__icon"><i class="fa-solid fa-arrow-up-right-from-square"></i></span>
+                    </a>
+                </div>
+            </div>
+        </section>
+
+        <!-- QUICK ABOUT STRIP -->
+        <section class="quick-about">
+            <div class="container">
+                <div class="quick-about__grid">
+                    <div class="quick-about__left">
+                        <span class="section-head__label" data-i18n="quickabout.label">/ 02 — About</span>
+                        <h2 class="quick-about__title">
+                            <span data-i18n="quickabout.titleA">Building</span>
+                            <em data-i18n="quickabout.titleB">practical</em>
+                            <span data-i18n="quickabout.titleC">digital solutions from Zanzibar.</span>
+                        </h2>
+                    </div>
+                    <div class="quick-about__right">
+                        <p data-i18n="quickabout.desc">
+                            I'm Mudrik Mohamed Othman — an IT student and aspiring Full-Stack Developer
+                            pursuing a Bachelor of Information Technology at Zanzibar University.
+                            I design and develop modern web systems, databases, and digital
+                            solutions that solve real-world problems.
+                        </p>
+                        <a href="about.html" class="link-arrow" data-cursor="hover">
+                            <span data-i18n="quickabout.link">More About Me</span>
+                            <i class="fa-solid fa-arrow-right"></i>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- CTA CONTACT -->
+        <section class="cta-band">
+            <div class="container">
+                <div class="cta-band__inner">
+                    <span class="section-head__label" data-i18n="cta.label">/ 03 — Get in Touch</span>
+                    <h2 class="cta-band__title">
+                        <span data-i18n="cta.titleA">Let's build something</span>
+                        <em data-i18n="cta.titleB">meaningful</em><span>.</span>
+                    </h2>
+                    <div class="cta-band__actions">
+                        <a href="contact.html" class="btn btn--primary" data-cursor="hover">
+                            <span class="btn__text" data-i18n="cta.contact">Contact Me</span>
+                            <span class="btn__icon"><i class="fa-solid fa-arrow-right"></i></span>
+                        </a>
+                        <a href="mailto:mudrikdau@gmail.com" class="btn btn--ghost" data-cursor="hover">
+                            <span class="btn__text">mudrikdau@gmail.com</span>
+                            <span class="btn__icon"><i class="fa-solid fa-envelope"></i></span>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+    <!-- ==================== FOOTER ==================== -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer__inner">
+                <div class="footer__brand">
+                    <span class="footer__brand-mark">D</span>
+                    <div>
+                        <span class="footer__brand-name">MUDRIK DAU</span>
+                        <span class="footer__brand-sub" data-i18n="brand.sub">Full-Stack Developer | IT Student</span>
+                    </div>
+                </div>
+                <p class="footer__copy">
+                    © <span id="year"></span> Mudrik Mohamed Othman. <span data-i18n="footer.copy">Built with care in Zanzibar.</span>
+                </p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Scripts -->
+    <script src="js/i18n.js"></script>
+    <script src="js/theme.js"></script>
+    <script src="js/global.js"></script>
+    <script src="js/navbar.js"></script>
+    <script src="js/particles.js"></script>
+    <script src="js/animations.js"></script>
+    <script src="js/home.js"></script>
+</body>
+</html>

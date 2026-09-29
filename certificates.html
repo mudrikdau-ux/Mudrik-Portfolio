@@ -1,0 +1,452 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description" content="Certificates and achievements of Mudrik Dau — academic, technical, and training certificates from Zanzibar and beyond." />
+    <meta name="author" content="Mudrik Mohamed Othman (DAU)" />
+    <meta name="theme-color" content="#05060a" />
+
+    <title>Certificates — MUDRIK DAU</title>
+
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Sora:wght@300;400;500;600;700;800&family=Space+Grotesk:wght@300;400;500;600;700&family=JetBrains+Mono:wght@300;400;500&display=swap" rel="stylesheet" />
+
+    <!-- Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" />
+
+    <!-- Styles -->
+    <link rel="stylesheet" href="css/global.css" />
+    <link rel="stylesheet" href="css/navbar.css" />
+    <link rel="stylesheet" href="css/controls.css" />
+    <link rel="stylesheet" href="css/animations.css" />
+    <link rel="stylesheet" href="css/certificates.css" />
+
+    <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Crect width='100' height='100' rx='20' fill='%2305060a'/%3E%3Ctext x='50' y='68' font-size='52' font-family='Arial' font-weight='bold' fill='%2300e5ff' text-anchor='middle'%3ED%3C/text%3E%3C/svg%3E" />
+
+    <!-- FOUC Guard -->
+    <script>
+        (function () {
+            try {
+                var t = localStorage.getItem('dau:theme');
+                if (t === 'light' || t === 'dark') {
+                    document.documentElement.setAttribute('data-theme', t);
+                } else if (window.matchMedia && window.matchMedia('(prefers-color-scheme: light)').matches) {
+                    document.documentElement.setAttribute('data-theme', 'light');
+                } else {
+                    document.documentElement.setAttribute('data-theme', 'dark');
+                }
+                var l = localStorage.getItem('dau:lang');
+                if (l && ['en','sw','zh','ar','fr'].indexOf(l) !== -1) {
+                    document.documentElement.setAttribute('lang', l);
+                    document.documentElement.setAttribute('dir', l === 'ar' ? 'rtl' : 'ltr');
+                }
+            } catch (e) {}
+        })();
+    </script>
+</head>
+<body>
+
+    <!-- ==================== LOADING SCREEN ==================== -->
+    <div class="loader" id="loader">
+        <div class="loader__content">
+            <div class="loader__logo">
+                <span class="loader__letter">D</span>
+                <span class="loader__letter">A</span>
+                <span class="loader__letter">U</span>
+            </div>
+            <div class="loader__bar">
+                <div class="loader__bar-fill" id="loaderBar"></div>
+            </div>
+            <p class="loader__text">INITIALIZING <span class="loader__dots">...</span></p>
+        </div>
+    </div>
+
+    <!-- ==================== CUSTOM CURSOR ==================== -->
+    <div class="cursor" id="cursor">
+        <div class="cursor__dot"></div>
+        <div class="cursor__ring"></div>
+    </div>
+
+    <!-- ==================== BACKGROUND LAYERS ==================== -->
+    <div class="bg-layers">
+        <div class="bg-grid"></div>
+        <div class="bg-glow bg-glow--1"></div>
+        <div class="bg-glow bg-glow--2"></div>
+        <div class="bg-glow bg-glow--3"></div>
+        <canvas id="particles"></canvas>
+    </div>
+
+    <!-- ==================== NAVBAR ==================== -->
+    <header class="navbar" id="navbar">
+        <div class="navbar__inner">
+            <a href="index.html" class="navbar__brand" aria-label="DAU Home">
+                <span class="navbar__brand-mark">
+                    <span>D</span>
+                </span>
+                <span class="navbar__brand-text">
+                    <span class="navbar__brand-name">MUDRIK <em>DAU</em></span>
+                    <span class="navbar__brand-sub" data-i18n="brand.sub">Full-Stack Developer</span>
+                </span>
+            </a>
+
+            <div class="navbar__actions">
+                <button class="ctrl-btn ctrl-btn--theme" id="themeToggle" aria-label="Toggle theme" title="Toggle theme">
+                    <span class="ctrl-btn__icon">
+                        <i class="fa-solid fa-moon icon-moon"></i>
+                        <i class="fa-solid fa-sun icon-sun"></i>
+                    </span>
+                </button>
+
+                <div class="lang" id="langSwitcher">
+                    <button class="ctrl-btn ctrl-btn--lang" id="langToggle" aria-label="Change language" aria-expanded="false">
+                        <span class="ctrl-btn__icon"><i class="fa-solid fa-globe"></i></span>
+                        <span class="ctrl-btn__label" id="langCurrent">EN</span>
+                        <span class="ctrl-btn__caret"><i class="fa-solid fa-chevron-down"></i></span>
+                    </button>
+
+                    <div class="lang__dropdown" id="langDropdown" role="menu" aria-hidden="true">
+                        <button class="lang__item" data-lang="en" role="menuitem">
+                            <span class="lang__flag">🇬🇧</span>
+                            <span class="lang__name">English</span>
+                            <span class="lang__code">EN</span>
+                        </button>
+                        <button class="lang__item" data-lang="sw" role="menuitem">
+                            <span class="lang__flag">🇹🇿</span>
+                            <span class="lang__name">Kiswahili</span>
+                            <span class="lang__code">SW</span>
+                        </button>
+                        <button class="lang__item" data-lang="zh" role="menuitem">
+                            <span class="lang__flag">🇨🇳</span>
+                            <span class="lang__name">中文</span>
+                            <span class="lang__code">ZH</span>
+                        </button>
+                        <button class="lang__item" data-lang="ar" role="menuitem">
+                            <span class="lang__flag">🇸🇦</span>
+                            <span class="lang__name">العربية</span>
+                            <span class="lang__code">AR</span>
+                        </button>
+                        <button class="lang__item" data-lang="fr" role="menuitem">
+                            <span class="lang__flag">🇫🇷</span>
+                            <span class="lang__name">Français</span>
+                            <span class="lang__code">FR</span>
+                        </button>
+                    </div>
+                </div>
+
+                <button class="navbar__toggle" id="navbarToggle" aria-label="Open menu" aria-expanded="false">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </button>
+            </div>
+        </div>
+    </header>
+
+    <!-- ==================== FULLSCREEN MENU ==================== -->
+    <nav class="menu" id="menu" aria-hidden="true">
+        <div class="menu__bg"></div>
+        <div class="menu__inner">
+            <div class="menu__aside">
+                <div class="menu__aside-block">
+                    <span class="menu__aside-label" data-i18n="menu.aside.location">Location</span>
+                    <span class="menu__aside-value">Maungani / Kombeni, Zanzibar</span>
+                </div>
+                <div class="menu__aside-block">
+                    <span class="menu__aside-label" data-i18n="menu.aside.email">Email</span>
+                    <a href="mailto:mudrikdau@gmail.com" class="menu__aside-value">mudrikdau@gmail.com</a>
+                </div>
+                <div class="menu__aside-block">
+                    <span class="menu__aside-label" data-i18n="menu.aside.availability">Availability</span>
+                    <span class="menu__aside-value menu__aside-value--status">
+                        <span class="dot dot--live"></span>
+                        <span data-i18n="menu.aside.open">Open to opportunities</span>
+                    </span>
+                </div>
+                <div class="menu__aside-block">
+                    <span class="menu__aside-label" data-i18n="menu.aside.socials">Socials</span>
+                    <div class="menu__socials">
+                        <a href="https://github.com/mudrikdau-ux" target="_blank" rel="noopener" aria-label="GitHub"><i class="fa-brands fa-github"></i></a>
+                        <a href="https://www.linkedin.com/in/mudrik-dau" target="_blank" rel="noopener" aria-label="LinkedIn"><i class="fa-brands fa-linkedin-in"></i></a>
+                        <a href="https://www.instagram.com/youngw_04" target="_blank" rel="noopener" aria-label="Instagram"><i class="fa-brands fa-instagram"></i></a>
+                        <a href="https://x.com/" target="_blank" rel="noopener" aria-label="X"><i class="fa-brands fa-x-twitter"></i></a>
+                    </div>
+                </div>
+            </div>
+
+            <ul class="menu__list">
+                <li class="menu__item">
+                    <a href="index.html" class="menu__link" data-page="home">
+                        <span class="menu__num">01</span>
+                        <span class="menu__text" data-i18n="menu.home">Home</span>
+                    </a>
+                </li>
+                <li class="menu__item">
+                    <a href="about.html" class="menu__link" data-page="about">
+                        <span class="menu__num">02</span>
+                        <span class="menu__text" data-i18n="menu.about">About</span>
+                    </a>
+                </li>
+                <li class="menu__item">
+                    <a href="skills.html" class="menu__link" data-page="skills">
+                        <span class="menu__num">03</span>
+                        <span class="menu__text" data-i18n="menu.skills">Skills</span>
+                    </a>
+                </li>
+                <li class="menu__item">
+                    <a href="experience.html" class="menu__link" data-page="experience">
+                        <span class="menu__num">04</span>
+                        <span class="menu__text" data-i18n="menu.experience">Experience</span>
+                    </a>
+                </li>
+                <li class="menu__item">
+                    <a href="projects.html" class="menu__link" data-page="projects">
+                        <span class="menu__num">05</span>
+                        <span class="menu__text" data-i18n="menu.projects">Projects</span>
+                    </a>
+                </li>
+                <li class="menu__item">
+                    <a href="certificates.html" class="menu__link" data-page="certificates">
+                        <span class="menu__num">06</span>
+                        <span class="menu__text" data-i18n="menu.certificates">Certificates</span>
+                    </a>
+                </li>
+                <li class="menu__item">
+                    <a href="services.html" class="menu__link" data-page="services">
+                        <span class="menu__num">07</span>
+                        <span class="menu__text" data-i18n="menu.services">Services</span>
+                    </a>
+                </li>
+                <li class="menu__item">
+                    <a href="achievements.html" class="menu__link" data-page="achievements">
+                        <span class="menu__num">08</span>
+                        <span class="menu__text" data-i18n="menu.achievements">Achievements</span>
+                    </a>
+                </li>
+                <li class="menu__item">
+                    <a href="contact.html" class="menu__link" data-page="contact">
+                        <span class="menu__num">09</span>
+                        <span class="menu__text" data-i18n="menu.contact">Contact</span>
+                    </a>
+                </li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- ==================== CERTIFICATES PAGE ==================== -->
+    <main class="cert-page" id="certificates">
+
+        <!-- ===================================================
+             HERO
+             =================================================== -->
+        <section class="cert-hero">
+            <div class="container">
+                <div class="cert-hero__inner">
+                    <span class="section-head__label" data-i18n="cert.hero.label">/ Certificates</span>
+                    <h1 class="cert-hero__title">
+                        <span data-i18n="cert.hero.titleA">Certificates &</span><br />
+                        <em data-i18n="cert.hero.titleB">Achievements.</em>
+                    </h1>
+                    <p class="cert-hero__desc" data-i18n="cert.hero.desc">
+                        A collection of my academic, technical, and training certificates.
+                        This page will be updated as new certificates are earned.
+                    </p>
+
+                    <div class="cert-hero__stats">
+                        <div class="cert-hero__stat">
+                            <span class="cert-hero__stat-num" data-count="0">0</span>
+                            <span class="cert-hero__stat-label" data-i18n="cert.hero.stat.total">Total</span>
+                        </div>
+                        <div class="cert-hero__stat-divider"></div>
+                        <div class="cert-hero__stat">
+                            <span class="cert-hero__stat-num" data-count="0">0</span>
+                            <span class="cert-hero__stat-label" data-i18n="cert.hero.stat.tech">Technical</span>
+                        </div>
+                        <div class="cert-hero__stat-divider"></div>
+                        <div class="cert-hero__stat">
+                            <span class="cert-hero__stat-num" data-count="0">0</span>
+                            <span class="cert-hero__stat-label" data-i18n="cert.hero.stat.academic">Academic</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ===================================================
+             FILTER TABS
+             =================================================== -->
+        <section class="cert-filter">
+            <div class="container">
+                <div class="cert-filter__inner" id="certFilter">
+                    <button class="cert-filter__btn is-active" data-filter="all">
+                        <span data-i18n="cert.filter.all">All</span>
+                        <span class="cert-filter__count">0</span>
+                    </button>
+                    <button class="cert-filter__btn" data-filter="technical">
+                        <span data-i18n="cert.filter.technical">Technical</span>
+                        <span class="cert-filter__count">0</span>
+                    </button>
+                    <button class="cert-filter__btn" data-filter="academic">
+                        <span data-i18n="cert.filter.academic">Academic</span>
+                        <span class="cert-filter__count">0</span>
+                    </button>
+                    <button class="cert-filter__btn" data-filter="training">
+                        <span data-i18n="cert.filter.training">Training</span>
+                        <span class="cert-filter__count">0</span>
+                    </button>
+                </div>
+            </div>
+        </section>
+
+        <!-- ===================================================
+             CERTIFICATES GRID / EMPTY STATE
+             =================================================== -->
+        <section class="cert-grid-section">
+            <div class="container">
+
+                <!-- CERTIFICATES GRID — hidden until user adds certificates -->
+                <div class="cert-grid" id="certGrid" hidden>
+                    <!--
+                        HOW TO ADD A CERTIFICATE:
+
+                        <article class="cert-card" data-tags="technical" data-cert="cert-id-1" data-reveal="up">
+                            <div class="cert-card__visual">
+                                <img src="assets/images/certificates/cert-1.jpg" alt="Certificate title" loading="lazy" />
+                                <div class="cert-card__visual-overlay"></div>
+                                <div class="cert-card__badge">
+                                    <i class="fa-solid fa-certificate"></i>
+                                    <span>Technical</span>
+                                </div>
+                            </div>
+                            <div class="cert-card__body">
+                                <span class="cert-card__date">2026</span>
+                                <h3 class="cert-card__title">Certificate Title</h3>
+                                <p class="cert-card__issuer">Issuing Organization</p>
+                                <div class="cert-card__actions">
+                                    <button class="cert-card__btn cert-card__btn--primary" data-open-cert="cert-id-1">
+                                        <span>View Certificate</span>
+                                        <i class="fa-solid fa-arrow-right"></i>
+                                    </button>
+                                </div>
+                            </div>
+                        </article>
+                    -->
+                </div>
+
+                <!-- EMPTY STATE -->
+                <div class="cert-empty" id="certEmpty" data-reveal="up">
+                    <div class="cert-empty__visual">
+                        <div class="cert-empty__ring cert-empty__ring--outer"></div>
+                        <div class="cert-empty__ring cert-empty__ring--mid"></div>
+                        <div class="cert-empty__ring cert-empty__ring--inner"></div>
+
+                        <div class="cert-empty__icon">
+                            <i class="fa-solid fa-certificate"></i>
+                        </div>
+
+                        <span class="cert-empty__chip cert-empty__chip--1"><i class="fa-solid fa-graduation-cap"></i></span>
+                        <span class="cert-empty__chip cert-empty__chip--2"><i class="fa-solid fa-award"></i></span>
+                        <span class="cert-empty__chip cert-empty__chip--3"><i class="fa-solid fa-star"></i></span>
+                        <span class="cert-empty__chip cert-empty__chip--4"><i class="fa-solid fa-medal"></i></span>
+                    </div>
+
+                    <div class="cert-empty__content">
+                        <span class="cert-empty__label" data-i18n="cert.empty.label">Coming Soon</span>
+                        <h2 class="cert-empty__title" data-i18n="cert.empty.title">Certificates are on the way.</h2>
+                        <p class="cert-empty__desc" data-i18n="cert.empty.desc">
+                            I'm currently working on earning and collecting professional certificates
+                            in full-stack development, networking, cybersecurity, and related fields.
+                            This page will be updated as they arrive.
+                        </p>
+
+                        <div class="cert-empty__actions">
+                            <a href="contact.html" class="btn btn--primary" data-cursor="hover">
+                                <span class="btn__text" data-i18n="cert.empty.contact">Contact Me</span>
+                                <span class="btn__icon"><i class="fa-solid fa-envelope"></i></span>
+                            </a>
+                            <a href="projects.html" class="btn btn--ghost" data-cursor="hover">
+                                <span class="btn__text" data-i18n="cert.empty.projects">View Projects</span>
+                                <span class="btn__icon"><i class="fa-solid fa-arrow-right"></i></span>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </section>
+
+        <!-- ===================================================
+             CTA
+             =================================================== -->
+        <section class="cert-cta">
+            <div class="container">
+                <div class="cert-cta__inner" data-reveal="scale">
+                    <h2 class="cert-cta__title">
+                        <span data-i18n="cert.cta.titleA">Looking for someone</span>
+                        <em data-i18n="cert.cta.titleB">committed to growth?</em>
+                    </h2>
+                    <p class="cert-cta__desc" data-i18n="cert.cta.desc">
+                        I'm continuously learning and building. Let's talk about what I can bring to your team.
+                    </p>
+                    <div class="cert-cta__actions">
+                        <a href="contact.html" class="btn btn--primary" data-cursor="hover">
+                            <span class="btn__text" data-i18n="cert.cta.contact">Get in Touch</span>
+                            <span class="btn__icon"><i class="fa-solid fa-arrow-right"></i></span>
+                        </a>
+                        <a href="experience.html" class="btn btn--ghost" data-cursor="hover">
+                            <span class="btn__text" data-i18n="cert.cta.experience">View Experience</span>
+                            <span class="btn__icon"><i class="fa-solid fa-briefcase"></i></span>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+    <!-- ===================================================
+         CERTIFICATE MODAL (Fullscreen preview)
+         =================================================== -->
+    <div class="cert-modal" id="certModal" aria-hidden="true">
+        <div class="cert-modal__bg" data-close-cert></div>
+        <div class="cert-modal__dialog" role="dialog" aria-modal="true">
+            <button class="cert-modal__close" data-close-cert aria-label="Close">
+                <i class="fa-solid fa-xmark"></i>
+            </button>
+
+            <div class="cert-modal__content" id="certModalContent">
+                <!-- Filled by JS -->
+            </div>
+        </div>
+    </div>
+
+    <!-- ==================== FOOTER ==================== -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer__inner">
+                <div class="footer__brand">
+                    <span class="footer__brand-mark">D</span>
+                    <div>
+                        <span class="footer__brand-name">MUDRIK DAU</span>
+                        <span class="footer__brand-sub" data-i18n="brand.sub">Full-Stack Developer | IT Student</span>
+                    </div>
+                </div>
+                <p class="footer__copy">
+                    © <span id="year"></span> Mudrik Mohamed Othman. <span data-i18n="footer.copy">Built with care in Zanzibar.</span>
+                </p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Scripts -->
+    <script src="js/i18n.js"></script>
+    <script src="js/theme.js"></script>
+    <script src="js/global.js"></script>
+    <script src="js/navbar.js"></script>
+    <script src="js/particles.js"></script>
+    <script src="js/animations.js"></script>
+    <script src="js/certificates.js"></script>
+</body>
+</html>
