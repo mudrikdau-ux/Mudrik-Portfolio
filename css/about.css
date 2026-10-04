@@ -313,6 +313,14 @@
     transition: transform var(--dur-2) var(--ease),
                 border-color var(--dur-2) var(--ease),
                 box-shadow var(--dur-2) var(--ease);
+    position: relative;
+    overflow: hidden;
+    text-decoration: none;
+    color: inherit;
+    font: inherit;
+    text-align: left;
+    width: 100%;
+    cursor: default;
 }
 
 .info-card:hover {
@@ -339,6 +347,7 @@
     flex-direction: column;
     gap: 4px;
     min-width: 0;
+    flex: 1;
 }
 
 .info-card__label {
@@ -362,6 +371,222 @@
 
 .info-card__value--link:hover {
     color: var(--accent);
+}
+
+/* =========================================================
+   INTERACTIVE INFO CARDS (Phase 2.5)
+   ========================================================= */
+
+.info-card--interactive {
+    cursor: pointer;
+}
+
+.info-card--interactive::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    border-radius: inherit;
+    pointer-events: none;
+    background: radial-gradient(400px circle at var(--mx, 50%) var(--my, 50%),
+                rgba(0, 229, 255, 0.10),
+                transparent 45%);
+    opacity: 0;
+    transition: opacity var(--dur-2) var(--ease);
+}
+
+.info-card--interactive:hover::after,
+.info-card--interactive:focus-visible::after {
+    opacity: 1;
+}
+
+.info-card--interactive:active {
+    transform: translateY(-3px) scale(0.99);
+}
+
+.info-card--interactive:focus-visible {
+    outline: 2px solid var(--accent);
+    outline-offset: 3px;
+}
+
+/* Hint line */
+.info-card__hint {
+    display: block;
+    margin-top: 4px;
+    font-size: 0.7rem;
+    letter-spacing: 0.04em;
+    color: var(--text-3);
+    transition: color var(--dur-2) var(--ease);
+}
+
+.info-card--interactive:hover .info-card__hint {
+    color: var(--accent);
+}
+
+/* Spark badge */
+.info-card__spark {
+    position: absolute;
+    top: 14px;
+    right: 14px;
+    display: grid;
+    place-items: center;
+    width: 26px;
+    height: 26px;
+    border-radius: 50%;
+    background: var(--accent-soft);
+    color: var(--accent);
+    font-size: 0.72rem;
+    opacity: 0;
+    transform: scale(0.6) rotate(-30deg);
+    transition: opacity var(--dur-2) var(--ease),
+                transform var(--dur-2) var(--ease);
+}
+
+.info-card--interactive:hover .info-card__spark,
+.info-card--interactive:focus-visible .info-card__spark {
+    opacity: 1;
+    transform: scale(1) rotate(0);
+}
+
+/* Accent tints */
+.info-card__icon--cake {
+    background: rgba(236, 72, 153, 0.12);
+    border-color: rgba(236, 72, 153, 0.4);
+    color: #ec4899;
+}
+
+.info-card__icon--pin {
+    background: rgba(34, 224, 122, 0.12);
+    border-color: rgba(34, 224, 122, 0.4);
+    color: var(--green);
+}
+
+.info-card__icon--book {
+    background: rgba(168, 85, 247, 0.12);
+    border-color: rgba(168, 85, 247, 0.4);
+    color: var(--accent-3);
+}
+
+.info-card__icon--play {
+    background: rgba(0, 229, 255, 0.12);
+    border-color: rgba(0, 229, 255, 0.4);
+    color: var(--accent);
+}
+
+/* =========================================================
+   FULLSCREEN ANIMATION OVERLAY
+   ========================================================= */
+.info-anim {
+    position: fixed;
+    inset: 0;
+    z-index: 2500;
+    visibility: hidden;
+    opacity: 0;
+    transition: opacity 0.4s var(--ease), visibility 0.4s var(--ease);
+    overflow: hidden;
+}
+
+.info-anim.is-open {
+    visibility: visible;
+    opacity: 1;
+}
+
+.info-anim__bg {
+    position: absolute;
+    inset: 0;
+    background: rgba(5, 6, 10, 0.92);
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+    cursor: pointer;
+}
+
+.info-anim__canvas-wrap {
+    position: absolute;
+    inset: 0;
+    display: grid;
+    place-items: center;
+    pointer-events: none;
+}
+
+.info-anim__canvas {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+}
+
+.info-anim__close {
+    position: absolute;
+    top: 24px;
+    right: 24px;
+    z-index: 5;
+    display: grid;
+    place-items: center;
+    width: 48px;
+    height: 48px;
+    border-radius: 50%;
+    background: rgba(255, 255, 255, 0.08);
+    border: 1px solid rgba(255, 255, 255, 0.18);
+    color: #fff;
+    font-size: 1.1rem;
+    cursor: pointer;
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    transition: transform var(--dur-2) var(--ease),
+                background var(--dur-2) var(--ease);
+}
+
+.info-anim__close:hover {
+    transform: rotate(90deg);
+    background: rgba(255, 255, 255, 0.16);
+}
+
+.info-anim__caption {
+    position: absolute;
+    bottom: 40px;
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: 4;
+    padding: 12px 24px;
+    background: rgba(0, 0, 0, 0.4);
+    border: 1px solid rgba(255, 255, 255, 0.18);
+    border-radius: var(--r-full);
+    color: #fff;
+    font-size: 0.9rem;
+    font-weight: 600;
+    letter-spacing: 0.02em;
+    backdrop-filter: blur(14px);
+    -webkit-backdrop-filter: blur(14px);
+    white-space: nowrap;
+    max-width: 90vw;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    opacity: 0;
+    transform: translateX(-50%) translateY(12px);
+    transition: opacity 0.5s var(--ease) 0.2s,
+                transform 0.5s var(--ease) 0.2s;
+}
+
+.info-anim.is-open .info-anim__caption {
+    opacity: 1;
+    transform: translateX(-50%) translateY(0);
+}
+
+@media (max-width: 640px) {
+    .info-anim__close {
+        top: 16px;
+        right: 16px;
+        width: 42px;
+        height: 42px;
+    }
+
+    .info-anim__caption {
+        bottom: 26px;
+        font-size: 0.82rem;
+        padding: 10px 18px;
+        white-space: normal;
+        text-align: center;
+    }
 }
 
 /* =========================================================

@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <meta name="description" content="Projects by Mudrik Dau — CleanSpark cleaning service management system and LAMS local administration management system. Full-stack web projects built in Zanzibar." />
+    <meta name="description" content="Projects by Mudrik Dau — CleanSpark, LAMS, School Staff Management System, and Portfolio Website. Full-stack web projects built in Zanzibar." />
     <meta name="author" content="Mudrik Mohamed Othman (DAU)" />
     <meta name="theme-color" content="#05060a" />
 
@@ -256,7 +256,7 @@
 
                     <div class="proj-hero__stats">
                         <div class="proj-hero__stat">
-                            <span class="proj-hero__stat-num" data-count="2">0</span>
+                            <span class="proj-hero__stat-num" data-count="4">0</span>
                             <span class="proj-hero__stat-label" data-i18n="proj.hero.stat.major">Major Projects</span>
                         </div>
                         <div class="proj-hero__stat-divider"></div>
@@ -266,7 +266,7 @@
                         </div>
                         <div class="proj-hero__stat-divider"></div>
                         <div class="proj-hero__stat">
-                            <span class="proj-hero__stat-num" data-count="3">0</span>
+                            <span class="proj-hero__stat-num" data-count="4">0</span>
                             <span class="proj-hero__stat-label" data-i18n="proj.hero.stat.domains">Domains</span>
                         </div>
                     </div>
@@ -282,19 +282,23 @@
                 <div class="proj-filter__inner" id="projFilter">
                     <button class="proj-filter__btn is-active" data-filter="all">
                         <span data-i18n="proj.filter.all">All Projects</span>
-                        <span class="proj-filter__count">2</span>
+                        <span class="proj-filter__count">4</span>
                     </button>
                     <button class="proj-filter__btn" data-filter="fullstack">
                         <span data-i18n="proj.filter.fullstack">Full-Stack</span>
-                        <span class="proj-filter__count">2</span>
+                        <span class="proj-filter__count">3</span>
+                    </button>
+                    <button class="proj-filter__btn" data-filter="frontend">
+                        <span data-i18n="proj.filter.frontend">Frontend</span>
+                        <span class="proj-filter__count">1</span>
                     </button>
                     <button class="proj-filter__btn" data-filter="web">
                         <span data-i18n="proj.filter.web">Web Systems</span>
-                        <span class="proj-filter__count">2</span>
+                        <span class="proj-filter__count">4</span>
                     </button>
                     <button class="proj-filter__btn" data-filter="local">
                         <span data-i18n="proj.filter.local">Local Context</span>
-                        <span class="proj-filter__count">2</span>
+                        <span class="proj-filter__count">3</span>
                     </button>
                 </div>
             </div>
@@ -307,10 +311,19 @@
             <div class="container">
                 <div class="proj-grid" id="projGrid">
 
-                    <!-- CLEANSPARK -->
+                    <!-- ============================================
+                         01 — CLEANSPARK
+                         ============================================ -->
                     <article class="proj-card" data-tags="fullstack,web,local" data-project="cleanspark" data-reveal="up">
                         <div class="proj-card__visual">
                             <div class="proj-card__visual-bg" style="background: linear-gradient(135deg, #00e5ff 0%, #0077ff 100%);"></div>
+                            <img
+                                src="assets/images/projects/csms.png"
+                                alt="CleanSpark — Cleaning Service Management System preview"
+                                class="proj-card__visual-img"
+                                loading="lazy"
+                                onerror="this.setAttribute('data-fallback','true');"
+                            />
                             <div class="proj-card__visual-grid"></div>
                             <div class="proj-card__visual-num">01</div>
                             <div class="proj-card__visual-tag" data-i18n="project.cleanspark.tag">Cleaning Service Management</div>
@@ -345,10 +358,19 @@
                         </div>
                     </article>
 
-                    <!-- LAMS -->
+                    <!-- ============================================
+                         02 — LAMS
+                         ============================================ -->
                     <article class="proj-card" data-tags="fullstack,web,local" data-project="lams" data-reveal="up" data-delay="1">
                         <div class="proj-card__visual">
                             <div class="proj-card__visual-bg" style="background: linear-gradient(135deg, #a855f7 0%, #ec4899 100%);"></div>
+                            <img
+                                src="assets/images/projects/lams.png"
+                                alt="LAMS — Local Administration Management System preview"
+                                class="proj-card__visual-img"
+                                loading="lazy"
+                                onerror="this.setAttribute('data-fallback','true');"
+                            />
                             <div class="proj-card__visual-grid"></div>
                             <div class="proj-card__visual-num">02</div>
                             <div class="proj-card__visual-tag" data-i18n="project.lams.tag">Local Administration Management</div>
@@ -376,6 +398,99 @@
                                     <i class="fa-solid fa-arrow-right"></i>
                                 </button>
                                 <a href="https://mudrikdau-ux.github.io/Local-administrative-management-system/login.html" target="_blank" rel="noopener" class="proj-card__btn proj-card__btn--ghost">
+                                    <span data-i18n="proj.card.demo">Live Demo</span>
+                                    <i class="fa-solid fa-arrow-up-right-from-square"></i>
+                                </a>
+                            </div>
+                        </div>
+                    </article>
+
+                    <!-- ============================================
+                         03 — SCHOOL STAFF MANAGEMENT SYSTEM
+                         ============================================ -->
+                    <article class="proj-card" data-tags="fullstack,web,local" data-project="ssms" data-reveal="up" data-delay="2">
+                        <div class="proj-card__visual">
+                            <div class="proj-card__visual-bg" style="background: linear-gradient(135deg, #22e07a 0%, #00e5ff 100%);"></div>
+                            <img
+                                src="assets/images/projects/ssms.png"
+                                alt="School Staff Management System preview"
+                                class="proj-card__visual-img"
+                                loading="lazy"
+                                onerror="this.setAttribute('data-fallback','true');"
+                            />
+                            <div class="proj-card__visual-grid"></div>
+                            <div class="proj-card__visual-num">03</div>
+                            <div class="proj-card__visual-tag" data-i18n="project.ssms.tag">School Staff Management</div>
+                            <div class="proj-card__visual-overlay"></div>
+                        </div>
+                        <div class="proj-card__body">
+                            <div class="proj-card__meta">
+                                <span class="proj-card__meta-item"><i class="fa-solid fa-code"></i> <span data-i18n="project.meta.fullstack">Full-Stack</span></span>
+                                <span class="proj-card__meta-item"><i class="fa-solid fa-calendar"></i> 2026</span>
+                            </div>
+                            <h3 class="proj-card__title">School Staff Management System</h3>
+                            <p class="proj-card__desc" data-i18n="project.ssms.desc">
+                                A system for managing school staff — profiles, roles,
+                                attendance, and staff-related administrative operations.
+                            </p>
+                            <div class="proj-card__tags">
+                                <span>Web App</span>
+                                <span>Admin Panel</span>
+                                <span>GitHub Pages</span>
+                            </div>
+                            <div class="proj-card__actions">
+                                <button class="proj-card__btn proj-card__btn--primary" data-open-project="ssms">
+                                    <span data-i18n="proj.card.details">View Details</span>
+                                    <i class="fa-solid fa-arrow-right"></i>
+                                </button>
+                                <a href="https://mudrikdau-ux.github.io/rassaly-school/" target="_blank" rel="noopener" class="proj-card__btn proj-card__btn--ghost">
+                                    <span data-i18n="proj.card.demo">Live Demo</span>
+                                    <i class="fa-solid fa-arrow-up-right-from-square"></i>
+                                </a>
+                            </div>
+                        </div>
+                    </article>
+
+                    <!-- ============================================
+                         04 — PORTFOLIO WEBSITE
+                         ============================================ -->
+                    <article class="proj-card" data-tags="frontend,web" data-project="portfolio" data-reveal="up" data-delay="3">
+                        <div class="proj-card__visual">
+                            <div class="proj-card__visual-bg" style="background: linear-gradient(135deg, #f59e0b 0%, #a855f7 100%);"></div>
+                            <img
+                                src="assets/images/projects/portfolio.png"
+                                alt="Mudrik Dau Portfolio Website preview"
+                                class="proj-card__visual-img"
+                                loading="lazy"
+                                onerror="this.setAttribute('data-fallback','true');"
+                            />
+                            <div class="proj-card__visual-grid"></div>
+                            <div class="proj-card__visual-num">04</div>
+                            <div class="proj-card__visual-tag" data-i18n="project.portfolio.tag">Portfolio Website</div>
+                            <div class="proj-card__visual-overlay"></div>
+                        </div>
+                        <div class="proj-card__body">
+                            <div class="proj-card__meta">
+                                <span class="proj-card__meta-item"><i class="fa-solid fa-code"></i> <span data-i18n="project.meta.frontend">Frontend</span></span>
+                                <span class="proj-card__meta-item"><i class="fa-solid fa-calendar"></i> 2025</span>
+                            </div>
+                            <h3 class="proj-card__title">Portfolio Website</h3>
+                            <p class="proj-card__desc" data-i18n="project.portfolio.desc">
+                                A premium, fully animated, multi-language portfolio website
+                                built from scratch with HTML, CSS, and vanilla JavaScript.
+                            </p>
+                            <div class="proj-card__tags">
+                                <span>HTML5</span>
+                                <span>CSS3</span>
+                                <span>JavaScript</span>
+                                <span>i18n</span>
+                            </div>
+                            <div class="proj-card__actions">
+                                <button class="proj-card__btn proj-card__btn--primary" data-open-project="portfolio">
+                                    <span data-i18n="proj.card.details">View Details</span>
+                                    <i class="fa-solid fa-arrow-right"></i>
+                                </button>
+                                <a href="https://mudrikdau-ux.github.io/Mudrik-Portfolio/" target="_blank" rel="noopener" class="proj-card__btn proj-card__btn--ghost">
                                     <span data-i18n="proj.card.demo">Live Demo</span>
                                     <i class="fa-solid fa-arrow-up-right-from-square"></i>
                                 </a>

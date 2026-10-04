@@ -69,10 +69,15 @@
             'featured.cta': 'See All Projects',
             'project.view': 'View Project',
             'project.meta.fullstack': 'Full-Stack',
+            'project.meta.frontend': 'Frontend',
             'project.cleanspark.tag': 'Cleaning Service Management',
             'project.cleanspark.desc': 'A cleaning service management system that digitizes customers, bookings, staff, payments, scheduling, and administration.',
             'project.lams.tag': 'Local Administration Management',
             'project.lams.desc': 'A local administration management system connecting citizens with ward administration for services, payments, and documents.',
+            'project.ssms.tag': 'School Staff Management',
+            'project.ssms.desc': 'A system for managing school staff — profiles, roles, attendance, and staff-related administrative operations.',
+            'project.portfolio.tag': 'Portfolio Website',
+            'project.portfolio.desc': 'A premium, fully animated, multi-language portfolio website built from scratch with HTML, CSS, and vanilla JavaScript.',
 
             /* ---------- QUICK ABOUT ---------- */
             'quickabout.label': '/ 02 — About',
@@ -174,6 +179,14 @@
             'about.cta.projects': 'View Projects',
             'about.cta.contact': 'Contact Me',
 
+            'about.info.hint.tap': 'Tap to celebrate 🎉',
+            'about.info.hint.map': 'Open in Google Maps ↗',
+            'about.info.hint.learn': 'Tap to explore 📚',
+            'about.info.hint.play': 'Tap to play ⚽',
+            'about.anim.birthday': '🎉 Happy Birthday, DAU!',
+            'about.anim.education': '📚 Always learning, always growing',
+            'about.anim.hobbies': '⚽ Game on!',
+
             /* ---------- SKILLS PAGE ---------- */
             'skills.hero.label': '/ My Skills',
             'skills.hero.titleA': 'Tools,',
@@ -252,7 +265,6 @@
             'exp.pro.titleA': "Where I've",
             'exp.pro.titleB': 'Worked',
 
-            /* Badges */
             'exp.badge.current': 'Currently',
             'exp.badge.role': 'Office Assistant',
             'exp.badge.diploma': 'Diploma',
@@ -260,11 +272,9 @@
             'exp.badge.placement': 'Field Placement',
             'exp.badge.intern': 'Intern',
 
-            /* Common labels */
             'exp.responsibilities': 'Key Activities',
             'exp.skillsGained': 'Skills Gained',
 
-            /* ---------- ZAN DRIVE (CURRENT) ---------- */
             'exp.zan.title': 'Zan Drive Car Rental',
             'exp.zan.location': 'Kilimani, Zanzibar',
             'exp.zan.period': '2026 — Present',
@@ -274,7 +284,6 @@
             'exp.zan.act3': 'Provided IT and computer-related support for office activities',
             'exp.zan.act4': 'Maintained records and supported smooth day-to-day operations',
 
-            /* ---------- ICE ---------- */
             'exp.ice.title': 'ICE — Field Placement',
             'exp.ice.location': 'Zanzibar',
             'exp.ice.period': '16 March 2026 — ~8 weeks',
@@ -285,7 +294,6 @@
             'exp.ice.act4': 'Networking and Cisco-related work',
             'exp.ice.act5': 'Used VS Code, XAMPP, and system/database tools',
 
-            /* ---------- NYOTA TECH HUB ---------- */
             'exp.nyota.title': 'Nyota Tech Hub Organization',
             'exp.nyota.location': 'Kiembe Samaki, Zanzibar',
             'exp.nyota.period': '8 Weeks',
@@ -295,7 +303,6 @@
             'exp.nyota.act3': 'Applied software and IT skills in a real-world hub environment',
             'exp.nyota.act4': 'Gained practical experience in the Zanzibar tech ecosystem',
 
-            /* ---------- WHITE BIRD ---------- */
             'exp.wb.title': 'White Bird Cleaning Company',
             'exp.wb.location': 'Mlandege, Zanzibar',
             'exp.wb.period': '6 Months',
@@ -305,7 +312,6 @@
             'exp.wb.skill3': 'Documentation and problem solving',
             'exp.wb.skill4': 'Teamwork and management support',
 
-            /* ---------- EDUCATION ---------- */
             'exp.edu.label': '/ 02 — Education',
             'exp.edu.titleA': 'Academic',
             'exp.edu.titleB': 'Background',
@@ -340,6 +346,7 @@
 
             'proj.filter.all': 'All Projects',
             'proj.filter.fullstack': 'Full-Stack',
+            'proj.filter.frontend': 'Frontend',
             'proj.filter.web': 'Web Systems',
             'proj.filter.local': 'Local Context',
 
@@ -364,7 +371,6 @@
             'project.workflow.application': 'Application',
             'project.workflow.document': 'Document',
 
-            /* CleanSpark modal */
             'proj.modal.cleanspark.about.title': 'Cleaning Service Management System',
             'proj.modal.cleanspark.about.p1': 'CleanSpark is designed to help cleaning businesses manage customers, bookings, staff, cleaning services, payments, scheduling, and administrative operations digitally.',
             'proj.modal.cleanspark.about.p2': 'The idea came from real problems observed while working in a cleaning company environment in Zanzibar.',
@@ -389,7 +395,6 @@
             'proj.modal.cleanspark.features.6': 'Supervisor confirms arrival, service start, and completion',
             'proj.modal.cleanspark.role.value': 'Designed and developed the full system — frontend, backend, and database — as a full-stack project.',
 
-            /* LAMS modal */
             'proj.modal.lams.about.title': 'Local Administration Management System',
             'proj.modal.lams.about.p1': 'LAMS is a local administration management system designed for community service management in Zanzibar. It focuses on the interaction between local administration and citizens.',
             'proj.modal.lams.about.p2': 'The system digitally manages local administration services, citizens, applications, announcements, payments, documents, and administrative activities.',
@@ -420,6 +425,48 @@
             'proj.cta.contact': 'Start a Conversation',
             'proj.cta.github': 'View on GitHub',
 
+            'proj.modal.ssms.about.title': 'School Staff Management System',
+            'proj.modal.ssms.about.p1': 'The School Staff Management System is a web-based administrative system designed to organize and manage school staff information, roles, and daily staff-related operations.',
+            'proj.modal.ssms.about.p2': 'It provides a clean, structured digital interface for administrators to handle staff records without relying on paper or scattered spreadsheets.',
+            'proj.modal.ssms.problem.title': 'Problems Addressed',
+            'proj.modal.ssms.problem.1': 'Manual staff record keeping',
+            'proj.modal.ssms.problem.2': 'Difficulty tracking staff roles and responsibilities',
+            'proj.modal.ssms.problem.3': 'Slow administrative workflows',
+            'proj.modal.ssms.problem.4': 'No centralized digital staff information',
+            'proj.modal.ssms.solution.title': 'Solution',
+            'proj.modal.ssms.solution.1': 'Centralized staff records in a digital system',
+            'proj.modal.ssms.solution.2': 'Structured staff profiles with roles and details',
+            'proj.modal.ssms.solution.3': 'Simple administrative dashboard for daily use',
+            'proj.modal.ssms.solution.4': 'Organized, printable staff information',
+            'proj.modal.ssms.features.title': 'What the System Does',
+            'proj.modal.ssms.features.1': 'Staff registration and profile management',
+            'proj.modal.ssms.features.2': 'Role and responsibility assignment',
+            'proj.modal.ssms.features.3': 'Searchable staff directory',
+            'proj.modal.ssms.features.4': 'Administrative overview dashboard',
+            'proj.modal.ssms.features.5': 'Clean, responsive web interface',
+            'proj.modal.ssms.role.value': 'Designed and developed the frontend and structure of the system as a practical school management project.',
+
+            'proj.modal.portfolio.about.title': 'Portfolio Website',
+            'proj.modal.portfolio.about.p1': 'A premium, fully animated personal portfolio website designed and built from scratch using only HTML, CSS, and vanilla JavaScript — no frameworks, no build tools.',
+            'proj.modal.portfolio.about.p2': 'It serves as the central hub to present my projects, skills, experience, and services to recruiters, clients, and collaborators.',
+            'proj.modal.portfolio.problem.title': 'Problems Addressed',
+            'proj.modal.portfolio.problem.1': 'No single place to showcase projects and skills',
+            'proj.modal.portfolio.problem.2': 'Difficulty reaching international audiences',
+            'proj.modal.portfolio.problem.3': 'Need for a professional online presence',
+            'proj.modal.portfolio.solution.title': 'Solution',
+            'proj.modal.portfolio.solution.1': 'A single, premium portfolio hub for all work',
+            'proj.modal.portfolio.solution.2': 'Multi-language support (EN, SW, ZH, AR, FR)',
+            'proj.modal.portfolio.solution.3': 'Dark / light theme toggle',
+            'proj.modal.portfolio.solution.4': 'Custom cursor, particles, and cinematic animations',
+            'proj.modal.portfolio.features.title': 'What the Site Includes',
+            'proj.modal.portfolio.features.1': '9 fully designed pages (Home, About, Skills, Experience, Projects, Certificates, Services, Achievements, Contact)',
+            'proj.modal.portfolio.features.2': 'Full 5-language translation system with Arabic RTL support',
+            'proj.modal.portfolio.features.3': 'Dark / light theme with persistent preference',
+            'proj.modal.portfolio.features.4': 'Custom animated cursor + particle canvas background',
+            'proj.modal.portfolio.features.5': 'Scroll reveal, animated counters, and interactive project modals',
+            'proj.modal.portfolio.features.6': 'Fully responsive design + accessible markup',
+            'proj.modal.portfolio.role.value': 'Sole designer and developer — built everything from scratch including the design system, animations, i18n engine, and theme switcher.',
+
             /* ---------- CERTIFICATES PAGE ---------- */
             'cert.hero.label': '/ Certificates',
             'cert.hero.titleA': 'Certificates &',
@@ -428,11 +475,13 @@
             'cert.hero.stat.total': 'Total',
             'cert.hero.stat.tech': 'Technical',
             'cert.hero.stat.academic': 'Academic',
+            'cert.hero.stat.lang': 'Language',
 
             'cert.filter.all': 'All',
             'cert.filter.technical': 'Technical',
             'cert.filter.academic': 'Academic',
             'cert.filter.training': 'Training',
+            'cert.filter.language': 'Language',
 
             'cert.empty.label': 'Coming Soon',
             'cert.empty.title': 'Certificates are on the way.',
@@ -448,6 +497,42 @@
             'cert.cta.desc': "I'm continuously learning and building. Let's talk about what I can bring to your team.",
             'cert.cta.contact': 'Get in Touch',
             'cert.cta.experience': 'View Experience',
+
+            'cert.badge.firstClass': 'First Class',
+            'cert.badge.supervisor': 'Supervisor Signed',
+            'cert.card.view': 'View Certificate',
+
+            'cert.item.cbit.title': 'Business of Information Technology',
+            'cert.item.cbit.issuer': 'Zanzibar University',
+            'cert.item.cbit.grade': 'Grade: First Class · High GPA',
+            'cert.item.cbit.desc': 'Completed the Business of Information Technology (B.IT) course with a First Class grade and a high GPA.',
+
+            'cert.item.webprojects.title': 'Web Projects Completion',
+            'cert.item.webprojects.issuer': 'Field Supervisor · ICE',
+            'cert.item.webprojects.grade': 'Completed with distinction',
+            'cert.item.webprojects.desc': 'Certificate of completion for web development projects, signed by my field supervisor.',
+
+            'cert.item.hsk2.title': 'HSK Level 2 — Chinese',
+            'cert.item.hsk2.issuer': 'Chinese Language Proficiency Test',
+            'cert.item.hsk2.desc': 'Passed the HSK Level 2 exam, demonstrating proficiency in basic Chinese language skills.',
+
+            'cert.item.hsk1.title': 'HSK Level 1 — Chinese',
+            'cert.item.hsk1.issuer': 'Chinese Language Proficiency Test',
+            'cert.item.hsk1.desc': 'Passed the HSK Level 1 exam, demonstrating foundational Chinese language skills.',
+
+            'cert.item.engHigh.title': 'High Level English — Completed',
+            'cert.item.engHigh.issuer': 'English Proficiency Program',
+            'cert.item.engHigh.grade': 'Passed with high grades',
+            'cert.item.engHigh.desc': 'Successfully completed the High Level English exam and passed with high grades.',
+
+            'cert.item.engStage5.title': 'English Stage 5 — Completed',
+            'cert.item.engStage5.issuer': 'English Proficiency Program',
+            'cert.item.engStage5.desc': 'Completed English Stage 5, advancing through the English proficiency program.',
+
+            'cert.item.chemy.title': 'Chemistry Club Participation',
+            'cert.item.chemy.issuer': 'O-Level Science Club',
+            'cert.item.chemy.period': 'O-Level',
+            'cert.item.chemy.desc': 'Certificate of participation in the Chemistry Club during O-Level studies.',
 
             /* ---------- SERVICES PAGE ---------- */
             'svc.hero.label': '/ Services',
@@ -604,6 +689,54 @@
             'ach.cta.contact': 'Contact Me',
             'ach.cta.projects': 'View Projects',
 
+            /* ---------- ACHIEVEMENTS PAGE — PHASE 8.5 ---------- */
+            'ach.hero.stat.certs': 'Certificates',
+            'ach.filter.certificate': 'Certificate',
+            'ach.filter.language': 'Language',
+            'ach.cta.certificates': 'View Certificates',
+
+            'ach.timeline.label': '/ Timeline',
+            'ach.timeline.titleA': 'Milestone',
+            'ach.timeline.titleB': 'Journey',
+            'ach.timeline.desc': 'A chronological view of my growth across the years.',
+            'ach.timeline.2023': 'English Stage 5 Completed',
+            'ach.timeline.2024': 'HSK 1 & 2 · High Level English',
+            'ach.timeline.2025': 'B.IT — First Class',
+            'ach.timeline.2026': '4 Projects · Bachelor Admission · ICE & Nyota',
+
+            'ach.card.cbit.title': 'Business of Information Technology — First Class',
+            'ach.card.cbit.desc': 'Awarded a First Class grade with a high GPA in the Business of Information Technology course at Zanzibar University.',
+            'ach.card.cbit.tag': 'First Class',
+
+            'ach.card.webprojects.title': 'Web Projects Completion — Supervisor Certified',
+            'ach.card.webprojects.desc': 'Received a formal certificate of completion for web development projects, signed by my field supervisor at ICE.',
+            'ach.card.webprojects.tag': 'Signed',
+
+            'ach.card.hsk1.title': 'Chinese HSK Level 1',
+            'ach.card.hsk1.desc': 'Passed HSK Level 1 — foundational Chinese language proficiency test.',
+
+            'ach.card.hsk2.title': 'Chinese HSK Level 2',
+            'ach.card.hsk2.desc': 'Passed HSK Level 2 — intermediate foundational Chinese language proficiency test.',
+
+            'ach.card.engHigh.title': 'High Level English — Completed',
+            'ach.card.engHigh.desc': 'Successfully completed the High Level English exam and passed with high grades.',
+            'ach.card.engHigh.tag': 'High Grades',
+
+            'ach.card.engStage5.title': 'English Stage 5 — Completed',
+            'ach.card.engStage5.desc': 'Completed English Stage 5, advancing through the English proficiency program.',
+
+            'ach.card.chemy.title': 'Chemistry Club Participation',
+            'ach.card.chemy.desc': 'Participated actively in the Chemistry Club during O-Level studies, building a foundation for analytical thinking.',
+            'ach.card.chemy.period': 'O-Level',
+
+            'ach.card.ssms.title': 'Developed School Staff Management System',
+            'ach.card.ssms.desc': 'Built a web-based school staff management system for organizing staff records, roles, and administrative operations.',
+            'ach.card.ssms.tag': 'Full-Stack',
+
+            'ach.card.portfolio.title': 'Built Personal Portfolio Website',
+            'ach.card.portfolio.desc': 'Designed and developed a premium, multi-language, fully animated portfolio website from scratch.',
+            'ach.card.portfolio.tag': 'Frontend',
+
             /* ---------- CONTACT PAGE ---------- */
             'contact.hero.label': '/ Contact',
             'contact.hero.titleA': "Let's Build Something",
@@ -687,7 +820,77 @@
             'e404.desc': "The page you're looking for doesn't exist, was moved, or is temporarily unavailable. Let's get you back on track.",
             'e404.home': 'Back to Home',
             'e404.contact': 'Contact Me',
-            'e404.quickLabel': 'Quick Links'
+            'e404.quickLabel': 'Quick Links',
+
+            /* ---------- SERVICE MODAL DETAILS (PHASE NEW) ---------- */
+            'svc.card.details': 'View Details',
+            'svc.fab': 'Hire Me',
+            'svc.modal.about': 'About this service',
+            'svc.modal.includes': "What's included",
+            'svc.modal.tech': 'Technologies used',
+            'svc.modal.close': 'Close',
+
+            'svc.modal.web-dev.long': 'I build fast, responsive websites that work beautifully on phones, tablets, and desktops — using clean, modern HTML, CSS, and JavaScript.',
+            'svc.modal.web-dev.inc1': 'Custom, modern web design',
+            'svc.modal.web-dev.inc2': 'Fully responsive layout (mobile, tablet, desktop)',
+            'svc.modal.web-dev.inc3': 'Cross-browser tested',
+            'svc.modal.web-dev.inc4': 'SEO-friendly structure',
+            'svc.modal.web-dev.inc5': 'Deployment and launch support',
+
+            'svc.modal.fullstack.long': 'From the frontend interface to the backend API and database, I design and build complete web applications that solve real problems.',
+            'svc.modal.fullstack.inc1': 'Frontend UI development',
+            'svc.modal.fullstack.inc2': 'Backend API development',
+            'svc.modal.fullstack.inc3': 'Database design and integration',
+            'svc.modal.fullstack.inc4': 'Authentication and user management',
+            'svc.modal.fullstack.inc5': 'Deployment and post-launch support',
+
+            'svc.modal.website.long': 'Complete website builds — from concept and design to final deployment — for personal, business, or organizational use.',
+            'svc.modal.website.inc1': 'Custom website from concept to launch',
+            'svc.modal.website.inc2': 'Multi-page or single-page builds',
+            'svc.modal.website.inc3': 'Business, portfolio, or organization sites',
+            'svc.modal.website.inc4': 'Deployment to GitHub Pages or hosting',
+
+            'svc.modal.infosys.long': 'Custom information systems designed around how your business or organization actually works — not generic templates.',
+            'svc.modal.infosys.inc1': 'Requirement analysis and system design',
+            'svc.modal.infosys.inc2': 'Workflow modeling',
+            'svc.modal.infosys.inc3': 'Database and reporting structure',
+            'svc.modal.infosys.inc4': 'User roles and permissions',
+
+            'svc.modal.dbdev.long': 'Clean, normalized, and efficient database schemas designed to power real applications without slowing down.',
+            'svc.modal.dbdev.inc1': 'ER diagram and schema design',
+            'svc.modal.dbdev.inc2': 'Normalized table structures',
+            'svc.modal.dbdev.inc3': 'Primary and foreign key design',
+            'svc.modal.dbdev.inc4': 'SQL scripts and migration files',
+
+            'svc.modal.dbmgmt.long': 'Ongoing database management, maintenance, and optimization so your data stays healthy, fast, and safe.',
+            'svc.modal.dbmgmt.inc1': 'Query writing and optimization',
+            'svc.modal.dbmgmt.inc2': 'Backups and restore procedures',
+            'svc.modal.dbmgmt.inc3': 'Index and performance tuning',
+            'svc.modal.dbmgmt.inc4': 'Data cleanup and structuring',
+
+            'svc.modal.itsupport.long': 'Reliable IT support for individuals, small businesses, and organizations — from troubleshooting to full IT administration.',
+            'svc.modal.itsupport.inc1': 'Windows 10/11 setup and troubleshooting',
+            'svc.modal.itsupport.inc2': 'Microsoft Office installation and support',
+            'svc.modal.itsupport.inc3': 'General IT administration',
+            'svc.modal.itsupport.inc4': 'Hardware and software troubleshooting',
+
+            'svc.modal.networking.long': 'Basic network setup, configuration, and troubleshooting — with Cisco-related tasks when needed.',
+            'svc.modal.networking.inc1': 'Basic network configuration',
+            'svc.modal.networking.inc2': 'Router and switch setup (basic)',
+            'svc.modal.networking.inc3': 'Network troubleshooting',
+            'svc.modal.networking.inc4': 'Cisco-related tasks',
+
+            'svc.modal.backend.long': 'Secure, scalable REST APIs built with Node.js and Express — with proper authentication, validation, and clean structure.',
+            'svc.modal.backend.inc1': 'REST API design and development',
+            'svc.modal.backend.inc2': 'JWT authentication and authorization',
+            'svc.modal.backend.inc3': 'Request validation and error handling',
+            'svc.modal.backend.inc4': 'API documentation and Postman testing',
+
+            'svc.modal.consult.long': 'Practical, honest advice on your web project, database, or IT setup — helping you choose the right approach before you invest time and money.',
+            'svc.modal.consult.inc1': 'Project scoping and planning',
+            'svc.modal.consult.inc2': 'Technology stack recommendations',
+            'svc.modal.consult.inc3': 'Code review and feedback',
+            'svc.modal.consult.inc4': 'Best-practice guidance'
         },
 
         sw: {
@@ -745,10 +948,15 @@
             'featured.cta': 'Ona Miradi Yote',
             'project.view': 'Ona Mradi',
             'project.meta.fullstack': 'Kamili',
+            'project.meta.frontend': 'Frontend',
             'project.cleanspark.tag': 'Usimamizi wa Huduma za Usafi',
             'project.cleanspark.desc': 'Mfumo wa usimamizi wa huduma za usafi unaobadilisha wateja, uhifadhi, wafanyakazi, malipo, ratiba, na utawala kuwa wa kidijitali.',
             'project.lams.tag': 'Usimamizi wa Utawala wa Mitaa',
             'project.lams.desc': 'Mfumo wa usimamizi wa utawala wa mitaa unaounganisha wananchi na utawala wa kata kwa huduma, malipo, na nyaraka.',
+            'project.ssms.tag': 'Usimamizi wa Wafanyakazi wa Shule',
+            'project.ssms.desc': 'Mfumo wa kusimamia wafanyakazi wa shule — wasifu, majukumu, mahudhurio, na shughuli za kiutawala zinazohusiana na wafanyakazi.',
+            'project.portfolio.tag': 'Tovuti ya Portfolio',
+            'project.portfolio.desc': 'Tovuti ya portfolio ya kibinafsi ya hali ya juu, yenye uhuishaji kamili, na lugha nyingi — iliyojengwa kutoka mwanzo kwa HTML, CSS, na JavaScript.',
 
             /* ---------- QUICK ABOUT ---------- */
             'quickabout.label': '/ 02 — Kuhusu',
@@ -849,6 +1057,14 @@
             'about.cta.desc': 'Chunguza miradi yangu na uzoefu, au wasiliana nami moja kwa moja.',
             'about.cta.projects': 'Ona Miradi',
             'about.cta.contact': 'Wasiliana Nami',
+
+            'about.info.hint.tap': 'Gusa kusherehekea 🎉',
+            'about.info.hint.map': 'Fungua kwenye Google Maps ↗',
+            'about.info.hint.learn': 'Gusa kuchunguza 📚',
+            'about.info.hint.play': 'Gusa kucheza ⚽',
+            'about.anim.birthday': '🎉 Heri ya Kuzaliwa, DAU!',
+            'about.anim.education': '📚 Kujifunza daima, kukua daima',
+            'about.anim.hobbies': '⚽ Mchezo unaendelea!',
 
             /* ---------- SKILLS PAGE ---------- */
             'skills.hero.label': '/ Ujuzi Wangu',
@@ -1009,6 +1225,7 @@
 
             'proj.filter.all': 'Miradi Yote',
             'proj.filter.fullstack': 'Kamili',
+            'proj.filter.frontend': 'Frontend',
             'proj.filter.web': 'Mifumo ya Wavuti',
             'proj.filter.local': 'Muktadha wa Ndani',
 
@@ -1033,7 +1250,6 @@
             'project.workflow.application': 'Maombi',
             'project.workflow.document': 'Nyaraka',
 
-            /* CleanSpark modal */
             'proj.modal.cleanspark.about.title': 'Mfumo wa Usimamizi wa Huduma za Usafi',
             'proj.modal.cleanspark.about.p1': 'CleanSpark imeundwa kusaidia biashara za usafi kusimamia wateja, uhifadhi, wafanyakazi, huduma za usafi, malipo, ratiba, na shughuli za utawala kwa njia ya kidijitali.',
             'proj.modal.cleanspark.about.p2': 'Wazo lilitokana na matatizo halisi yaliyoonekana wakati wa kufanya kazi katika mazingira ya kampuni ya usafi Zanzibar.',
@@ -1058,7 +1274,6 @@
             'proj.modal.cleanspark.features.6': 'Msimamizi anathibitisha kuwasili, kuanza huduma, na kukamilika',
             'proj.modal.cleanspark.role.value': 'Nilibuni na kutengeneza mfumo kamili — mbele, nyuma, na hifadhidata — kama mradi kamili.',
 
-            /* LAMS modal */
             'proj.modal.lams.about.title': 'Mfumo wa Usimamizi wa Utawala wa Mitaa',
             'proj.modal.lams.about.p1': 'LAMS ni mfumo wa usimamizi wa utawala wa mitaa ulioundwa kwa usimamizi wa huduma za jamii Zanzibar. Unazingatia mwingiliano kati ya utawala wa mitaa na wananchi.',
             'proj.modal.lams.about.p2': 'Mfumo unasimamia kidijitali huduma za utawala wa mitaa, wananchi, maombi, matangazo, malipo, nyaraka, na shughuli za kiutawala.',
@@ -1089,6 +1304,48 @@
             'proj.cta.contact': 'Anza Mazungumzo',
             'proj.cta.github': 'Ona kwenye GitHub',
 
+            'proj.modal.ssms.about.title': 'Mfumo wa Usimamizi wa Wafanyakazi wa Shule',
+            'proj.modal.ssms.about.p1': 'Mfumo wa Usimamizi wa Wafanyakazi wa Shule ni mfumo wa kiutawala wa wavuti ulioundwa kupanga na kusimamia taarifa za wafanyakazi wa shule, majukumu, na shughuli za kila siku zinazohusiana na wafanyakazi.',
+            'proj.modal.ssms.about.p2': 'Unatoa kiolesura safi cha kidijitali kwa wasimamizi kushughulikia rekodi za wafanyakazi bila kutegemea karatasi au lahajedwali zilizotawanyika.',
+            'proj.modal.ssms.problem.title': 'Matatizo Yaliyoshughulikiwa',
+            'proj.modal.ssms.problem.1': 'Utunzaji wa rekodi za wafanyakazi kwa mkono',
+            'proj.modal.ssms.problem.2': 'Ugumu wa kufuatilia majukumu ya wafanyakazi',
+            'proj.modal.ssms.problem.3': 'Mtiririko wa kiutawala wa polepole',
+            'proj.modal.ssms.problem.4': 'Hakuna taarifa za kati za kidijitali za wafanyakazi',
+            'proj.modal.ssms.solution.title': 'Suluhisho',
+            'proj.modal.ssms.solution.1': 'Rekodi za wafanyakazi zilizowekwa kati katika mfumo wa kidijitali',
+            'proj.modal.ssms.solution.2': 'Wasifu wa wafanyakazi uliopangwa na majukumu na maelezo',
+            'proj.modal.ssms.solution.3': 'Dashibodi rahisi ya kiutawala kwa matumizi ya kila siku',
+            'proj.modal.ssms.solution.4': 'Taarifa za wafanyakazi zilizopangwa na zinazoweza kuchapishwa',
+            'proj.modal.ssms.features.title': 'Kile Mfumo Unafanya',
+            'proj.modal.ssms.features.1': 'Usajili wa wafanyakazi na usimamizi wa wasifu',
+            'proj.modal.ssms.features.2': 'Kugawa majukumu na wajibu',
+            'proj.modal.ssms.features.3': 'Orodha ya wafanyakazi inayotafutwa',
+            'proj.modal.ssms.features.4': 'Dashibodi ya muhtasari wa kiutawala',
+            'proj.modal.ssms.features.5': 'Kiolesura safi cha wavuti kinachojibadilisha',
+            'proj.modal.ssms.role.value': 'Nilibuni na kutengeneza sehemu ya mbele na muundo wa mfumo kama mradi wa vitendo wa usimamizi wa shule.',
+
+            'proj.modal.portfolio.about.title': 'Tovuti ya Portfolio',
+            'proj.modal.portfolio.about.p1': 'Tovuti ya portfolio ya kibinafsi ya hali ya juu, yenye uhuishaji kamili, iliyoundwa na kujengwa kutoka mwanzo kwa kutumia HTML, CSS, na JavaScript pekee — hakuna mifumo, hakuna zana za kujenga.',
+            'proj.modal.portfolio.about.p2': 'Inatumika kama kitovu cha kati kuwasilisha miradi yangu, ujuzi, uzoefu, na huduma kwa waajiri, wateja, na washirika.',
+            'proj.modal.portfolio.problem.title': 'Matatizo Yaliyoshughulikiwa',
+            'proj.modal.portfolio.problem.1': 'Hakuna mahali kimoja pa kuonyesha miradi na ujuzi',
+            'proj.modal.portfolio.problem.2': 'Ugumu wa kufikia hadhira ya kimataifa',
+            'proj.modal.portfolio.problem.3': 'Uhitaji wa uwepo wa kitaalamu mtandaoni',
+            'proj.modal.portfolio.solution.title': 'Suluhisho',
+            'proj.modal.portfolio.solution.1': 'Kitovu kimoja cha portfolio cha hali ya juu kwa kazi zote',
+            'proj.modal.portfolio.solution.2': 'Msaada wa lugha nyingi (EN, SW, ZH, AR, FR)',
+            'proj.modal.portfolio.solution.3': 'Kubadilisha mandhari ya giza / mwanga',
+            'proj.modal.portfolio.solution.4': 'Kielekezi maalum, chembe, na uhuishaji wa kifahari',
+            'proj.modal.portfolio.features.title': 'Kile Tovuti Inajumuisha',
+            'proj.modal.portfolio.features.1': 'Kurasa 9 zilizoundwa kikamilifu (Nyumbani, Kuhusu, Ujuzi, Uzoefu, Miradi, Vyeti, Huduma, Mafanikio, Wasiliana)',
+            'proj.modal.portfolio.features.2': 'Mfumo kamili wa tafsiri wa lugha 5 na msaada wa RTL wa Kiarabu',
+            'proj.modal.portfolio.features.3': 'Mandhari ya giza / mwanga na upendeleo wa kudumu',
+            'proj.modal.portfolio.features.4': 'Kielekezi cha uhuishaji maalum + mandhari ya chembe',
+            'proj.modal.portfolio.features.5': 'Ufunuo wa kusogeza, vihesabu vilivyohuishwa, na modali za miradi shirikishi',
+            'proj.modal.portfolio.features.6': 'Muundo unaojibadilisha kikamilifu + markup inayopatikana',
+            'proj.modal.portfolio.role.value': 'Mbunifu na msanidi pekee — nilijenga kila kitu kutoka mwanzo ikiwa ni pamoja na mfumo wa kubuni, uhuishaji, injini ya i18n, na kibadilisha mandhari.',
+
             /* ---------- CERTIFICATES PAGE ---------- */
             'cert.hero.label': '/ Vyeti',
             'cert.hero.titleA': 'Vyeti &',
@@ -1097,11 +1354,13 @@
             'cert.hero.stat.total': 'Jumla',
             'cert.hero.stat.tech': 'Kiufundi',
             'cert.hero.stat.academic': 'Kitaaluma',
+            'cert.hero.stat.lang': 'Lugha',
 
             'cert.filter.all': 'Zote',
             'cert.filter.technical': 'Kiufundi',
             'cert.filter.academic': 'Kitaaluma',
             'cert.filter.training': 'Mafunzo',
+            'cert.filter.language': 'Lugha',
 
             'cert.empty.label': 'Inakuja Hivi Karibuni',
             'cert.empty.title': 'Vyeti vinakuja.',
@@ -1117,6 +1376,42 @@
             'cert.cta.desc': 'Ninaendelea kujifunza na kujenga. Tuzungumze kuhusu kile ninachoweza kuleta kwenye timu yako.',
             'cert.cta.contact': 'Wasiliana',
             'cert.cta.experience': 'Ona Uzoefu',
+
+            'cert.badge.firstClass': 'Daraja la Kwanza',
+            'cert.badge.supervisor': 'Imesainiwa na Msimamizi',
+            'cert.card.view': 'Ona Cheti',
+
+            'cert.item.cbit.title': 'Biashara ya Teknolojia ya Habari',
+            'cert.item.cbit.issuer': 'Chuo Kikuu cha Zanzibar',
+            'cert.item.cbit.grade': 'Daraja: Daraja la Kwanza · GPA ya Juu',
+            'cert.item.cbit.desc': 'Nilikamilisha kozi ya Biashara ya Teknolojia ya Habari (B.IT) kwa daraja la kwanza na GPA ya juu.',
+
+            'cert.item.webprojects.title': 'Kukamilisha Miradi ya Wavuti',
+            'cert.item.webprojects.issuer': 'Msimamizi wa Mafunzo · ICE',
+            'cert.item.webprojects.grade': 'Imekamilika kwa ubora wa juu',
+            'cert.item.webprojects.desc': 'Cheti cha kumaliza miradi ya ukuzaji wa wavuti, kilichosainiwa na msimamizi wangu.',
+
+            'cert.item.hsk2.title': 'HSK Ngazi ya 2 — Kichina',
+            'cert.item.hsk2.issuer': 'Mtihani wa Ustadi wa Lugha ya Kichina',
+            'cert.item.hsk2.desc': 'Nilifanikiwa mtihani wa HSK Ngazi ya 2, nikionyesha ujuzi wa kimsingi wa lugha ya Kichina.',
+
+            'cert.item.hsk1.title': 'HSK Ngazi ya 1 — Kichina',
+            'cert.item.hsk1.issuer': 'Mtihani wa Ustadi wa Lugha ya Kichina',
+            'cert.item.hsk1.desc': 'Nilifanikiwa mtihani wa HSK Ngazi ya 1, nikionyesha ujuzi wa msingi wa lugha ya Kichina.',
+
+            'cert.item.engHigh.title': 'Kiingereza cha Ngazi ya Juu — Imekamilika',
+            'cert.item.engHigh.issuer': 'Programu ya Ustadi wa Kiingereza',
+            'cert.item.engHigh.grade': 'Imepita kwa alama za juu',
+            'cert.item.engHigh.desc': 'Nilikamilisha kwa mafanikio mtihani wa Kiingereza cha Ngazi ya Juu na kupita kwa alama za juu.',
+
+            'cert.item.engStage5.title': 'Kiingereza Hatua ya 5 — Imekamilika',
+            'cert.item.engStage5.issuer': 'Programu ya Ustadi wa Kiingereza',
+            'cert.item.engStage5.desc': 'Nilikamilisha Kiingereza Hatua ya 5, nikisonga mbele katika programu ya ustadi wa Kiingereza.',
+
+            'cert.item.chemy.title': 'Kushiriki Klabu ya Kemia',
+            'cert.item.chemy.issuer': 'Klabu ya Sayansi ya O-Level',
+            'cert.item.chemy.period': 'O-Level',
+            'cert.item.chemy.desc': 'Cheti cha kushiriki katika Klabu ya Kemia wakati wa masomo ya O-Level.',
 
             /* ---------- SERVICES PAGE ---------- */
             'svc.hero.label': '/ Huduma',
@@ -1273,6 +1568,54 @@
             'ach.cta.contact': 'Wasiliana Nami',
             'ach.cta.projects': 'Ona Miradi',
 
+            /* ---------- ACHIEVEMENTS PAGE — PHASE 8.5 ---------- */
+            'ach.hero.stat.certs': 'Vyeti',
+            'ach.filter.certificate': 'Cheti',
+            'ach.filter.language': 'Lugha',
+            'ach.cta.certificates': 'Ona Vyeti',
+
+            'ach.timeline.label': '/ Ratiba',
+            'ach.timeline.titleA': 'Safari ya',
+            'ach.timeline.titleB': 'Hatua Muhimu',
+            'ach.timeline.desc': 'Mtazamo wa mpangilio wa ukuaji wangu kwa miaka.',
+            'ach.timeline.2023': 'Kiingereza Hatua ya 5 Imekamilika',
+            'ach.timeline.2024': 'HSK 1 na 2 · Kiingereza cha Ngazi ya Juu',
+            'ach.timeline.2025': 'B.IT — Daraja la Kwanza',
+            'ach.timeline.2026': 'Miradi 4 · Kukubaliwa Shahada · ICE na Nyota',
+
+            'ach.card.cbit.title': 'Biashara ya Teknolojia ya Habari — Daraja la Kwanza',
+            'ach.card.cbit.desc': 'Nilipewa daraja la Kwanza na GPA ya juu katika kozi ya Biashara ya Teknolojia ya Habari katika Chuo Kikuu cha Zanzibar.',
+            'ach.card.cbit.tag': 'Daraja la Kwanza',
+
+            'ach.card.webprojects.title': 'Kukamilisha Miradi ya Wavuti — Imethibitishwa na Msimamizi',
+            'ach.card.webprojects.desc': 'Nilipokea cheti rasmi cha kukamilisha miradi ya ukuzaji wa wavuti, kilichosainiwa na msimamizi wangu wa mafunzo katika ICE.',
+            'ach.card.webprojects.tag': 'Imesainiwa',
+
+            'ach.card.hsk1.title': 'Kichina HSK Ngazi ya 1',
+            'ach.card.hsk1.desc': 'Nilifanikiwa mtihani wa HSK Ngazi ya 1 — mtihani wa kimsingi wa ustadi wa lugha ya Kichina.',
+
+            'ach.card.hsk2.title': 'Kichina HSK Ngazi ya 2',
+            'ach.card.hsk2.desc': 'Nilifanikiwa mtihani wa HSK Ngazi ya 2 — mtihani wa kati wa ustadi wa lugha ya Kichina.',
+
+            'ach.card.engHigh.title': 'Kiingereza cha Ngazi ya Juu — Imekamilika',
+            'ach.card.engHigh.desc': 'Nilikamilisha kwa mafanikio mtihani wa Kiingereza cha Ngazi ya Juu na kupita kwa alama za juu.',
+            'ach.card.engHigh.tag': 'Alama za Juu',
+
+            'ach.card.engStage5.title': 'Kiingereza Hatua ya 5 — Imekamilika',
+            'ach.card.engStage5.desc': 'Nilikamilisha Kiingereza Hatua ya 5, nikisonga mbele katika programu ya ustadi wa Kiingereza.',
+
+            'ach.card.chemy.title': 'Kushiriki Klabu ya Kemia',
+            'ach.card.chemy.desc': 'Nilishiriki kwa bidii katika Klabu ya Kemia wakati wa masomo ya O-Level, nikijenga msingi wa kufikiri kwa uchanganuzi.',
+            'ach.card.chemy.period': 'O-Level',
+
+            'ach.card.ssms.title': 'Kutengeneza Mfumo wa Usimamizi wa Wafanyakazi wa Shule',
+            'ach.card.ssms.desc': 'Nilijenga mfumo wa wavuti wa usimamizi wa wafanyakazi wa shule kwa kupanga rekodi, majukumu, na shughuli za kiutawala za wafanyakazi.',
+            'ach.card.ssms.tag': 'Kamili',
+
+            'ach.card.portfolio.title': 'Kujenga Tovuti Yangu ya Portfolio',
+            'ach.card.portfolio.desc': 'Nilibuni na kutengeneza tovuti ya portfolio ya hali ya juu, ya lugha nyingi, na yenye uhuishaji kamili kutoka mwanzo.',
+            'ach.card.portfolio.tag': 'Frontend',
+
             /* ---------- CONTACT PAGE ---------- */
             'contact.hero.label': '/ Wasiliana',
             'contact.hero.titleA': 'Tujenge Kitu',
@@ -1356,7 +1699,77 @@
             'e404.desc': 'Ukurasa unaoutafuta haupo, umehamishwa, au haupatikani kwa muda. Turudi kwenye mstari.',
             'e404.home': 'Rudi Nyumbani',
             'e404.contact': 'Wasiliana Nami',
-            'e404.quickLabel': 'Viungo vya Haraka'
+            'e404.quickLabel': 'Viungo vya Haraka',
+
+            /* ---------- SERVICE MODAL DETAILS (PHASE NEW) ---------- */
+            'svc.card.details': 'Ona Maelezo',
+            'svc.fab': 'Niajiri',
+            'svc.modal.about': 'Kuhusu huduma hii',
+            'svc.modal.includes': 'Kinachojumuishwa',
+            'svc.modal.tech': 'Teknolojia zinazotumika',
+            'svc.modal.close': 'Funga',
+
+            'svc.modal.web-dev.long': 'Ninajenga tovuti za haraka, zinazojibadilisha vizuri kwenye simu, kompyuta za mkononi, na kompyuta — kwa kutumia HTML, CSS, na JavaScript safi za kisasa.',
+            'svc.modal.web-dev.inc1': 'Muundo wa wavuti wa kisasa uliobinafsishwa',
+            'svc.modal.web-dev.inc2': 'Mpangilio unaojibadilisha kikamilifu',
+            'svc.modal.web-dev.inc3': 'Imejaribiwa kwenye vivinjari mbalimbali',
+            'svc.modal.web-dev.inc4': 'Muundo unaofaa SEO',
+            'svc.modal.web-dev.inc5': 'Msaada wa utoaji na uzinduzi',
+
+            'svc.modal.fullstack.long': 'Kutoka kiolesura cha mbele hadi API ya nyuma na hifadhidata, ninabuni na kujenga programu kamili za wavuti zinazotatua matatizo halisi.',
+            'svc.modal.fullstack.inc1': 'Ukuzaji wa UI ya mbele',
+            'svc.modal.fullstack.inc2': 'Ukuzaji wa API ya nyuma',
+            'svc.modal.fullstack.inc3': 'Usanifu na ujumuishaji wa hifadhidata',
+            'svc.modal.fullstack.inc4': 'Uthibitishaji na usimamizi wa watumiaji',
+            'svc.modal.fullstack.inc5': 'Utoaji na msaada wa baada ya kuzindua',
+
+            'svc.modal.website.long': 'Ujenzi kamili wa tovuti — kutoka dhana na muundo hadi utoaji wa mwisho — kwa matumizi ya kibinafsi, biashara, au shirika.',
+            'svc.modal.website.inc1': 'Tovuti maalum kutoka dhana hadi uzinduzi',
+            'svc.modal.website.inc2': 'Tovuti za kurasa nyingi au ukurasa mmoja',
+            'svc.modal.website.inc3': 'Tovuti za biashara, portfolio, au shirika',
+            'svc.modal.website.inc4': 'Utoaji kwa GitHub Pages au hosting',
+
+            'svc.modal.infosys.long': 'Mifumo maalum ya habari iliyoundwa kulingana na jinsi biashara au shirika lako linavyofanya kazi kweli — sio violezo vya kawaida.',
+            'svc.modal.infosys.inc1': 'Uchambuzi wa mahitaji na muundo wa mfumo',
+            'svc.modal.infosys.inc2': 'Uundaji wa mtiririko wa kazi',
+            'svc.modal.infosys.inc3': 'Muundo wa hifadhidata na ripoti',
+            'svc.modal.infosys.inc4': 'Majukumu na ruhusa za watumiaji',
+
+            'svc.modal.dbdev.long': 'Miundo safi, iliyosanifishwa, na yenye ufanisi ya hifadhidata iliyoundwa kuimarisha programu halisi bila kupunguza kasi.',
+            'svc.modal.dbdev.inc1': 'Muundo wa ER na schema',
+            'svc.modal.dbdev.inc2': 'Muundo wa meza uliosanifishwa',
+            'svc.modal.dbdev.inc3': 'Muundo wa funguo za msingi na za nje',
+            'svc.modal.dbdev.inc4': 'Nakala za SQL na faili za uhamishaji',
+
+            'svc.modal.dbmgmt.long': 'Usimamizi wa hifadhidata unaoendelea, matengenezo, na uboreshaji ili data yako ibaki na afya, haraka, na salama.',
+            'svc.modal.dbmgmt.inc1': 'Uandishi na uboreshaji wa maswali',
+            'svc.modal.dbmgmt.inc2': 'Nakala rudufu na taratibu za kurejesha',
+            'svc.modal.dbmgmt.inc3': 'Upangaji wa index na utendaji',
+            'svc.modal.dbmgmt.inc4': 'Usafishaji na upangaji wa data',
+
+            'svc.modal.itsupport.long': 'Msaada wa kuaminika wa IT kwa watu binafsi, biashara ndogo, na mashirika — kutoka utatuzi hadi utawala kamili wa IT.',
+            'svc.modal.itsupport.inc1': 'Usanidi na utatuzi wa Windows 10/11',
+            'svc.modal.itsupport.inc2': 'Usanidi na msaada wa Microsoft Office',
+            'svc.modal.itsupport.inc3': 'Utawala wa jumla wa IT',
+            'svc.modal.itsupport.inc4': 'Utatuzi wa vifaa na programu',
+
+            'svc.modal.networking.long': 'Usanidi wa msingi wa mtandao, usanidi, na utatuzi — pamoja na kazi zinazohusiana na Cisco inapohitajika.',
+            'svc.modal.networking.inc1': 'Usanidi wa msingi wa mtandao',
+            'svc.modal.networking.inc2': 'Usanidi wa router na switch (msingi)',
+            'svc.modal.networking.inc3': 'Utatuzi wa matatizo ya mtandao',
+            'svc.modal.networking.inc4': 'Kazi zinazohusiana na Cisco',
+
+            'svc.modal.backend.long': 'API za REST salama, zinazoweza kupanuka zilizojengwa kwa Node.js na Express — na uthibitishaji sahihi, uthibitishaji, na muundo safi.',
+            'svc.modal.backend.inc1': 'Muundo na ukuzaji wa API ya REST',
+            'svc.modal.backend.inc2': 'Uthibitishaji na uidhinishaji wa JWT',
+            'svc.modal.backend.inc3': 'Uthibitishaji wa maombi na utunzaji wa makosa',
+            'svc.modal.backend.inc4': 'Nyaraka za API na upimaji wa Postman',
+
+            'svc.modal.consult.long': 'Ushauri wa vitendo na wa uaminifu kuhusu mradi wako wa wavuti, hifadhidata, au usanidi wa IT — kukusaidia kuchagua mbinu sahihi kabla ya kuwekeza muda na pesa.',
+            'svc.modal.consult.inc1': 'Upeo wa mradi na mipango',
+            'svc.modal.consult.inc2': 'Mapendekezo ya teknolojia',
+            'svc.modal.consult.inc3': 'Ukaguzi wa msimbo na maoni',
+            'svc.modal.consult.inc4': 'Mwongozo wa mbinu bora'
         },
 
         zh: {
@@ -1414,10 +1827,15 @@
             'featured.cta': '查看所有项目',
             'project.view': '查看项目',
             'project.meta.fullstack': '全栈',
+            'project.meta.frontend': '前端',
             'project.cleanspark.tag': '清洁服务管理',
             'project.cleanspark.desc': '一个将客户、预约、员工、付款、排班和管理数字化的清洁服务管理系统。',
             'project.lams.tag': '地方行政管理',
             'project.lams.desc': '一个连接市民与区行政的地方行政管理系统，用于服务、付款和文件。',
+            'project.ssms.tag': '学校员工管理',
+            'project.ssms.desc': '用于管理学校员工的系统 —— 档案、角色、出勤和与员工相关的行政操作。',
+            'project.portfolio.tag': '作品集网站',
+            'project.portfolio.desc': '一个高级、完全动画化、多语言的作品集网站，使用 HTML、CSS 和原生 JavaScript 从头构建。',
 
             /* ---------- QUICK ABOUT ---------- */
             'quickabout.label': '/ 02 — 关于',
@@ -1518,6 +1936,14 @@
             'about.cta.desc': '探索我的项目和经验，或直接联系我。',
             'about.cta.projects': '查看项目',
             'about.cta.contact': '联系我',
+
+            'about.info.hint.tap': '点击庆祝 🎉',
+            'about.info.hint.map': '在 Google 地图中打开 ↗',
+            'about.info.hint.learn': '点击探索 📚',
+            'about.info.hint.play': '点击开始 ⚽',
+            'about.anim.birthday': '🎉 DAU，生日快乐！',
+            'about.anim.education': '📚 永远学习，永远成长',
+            'about.anim.hobbies': '⚽ 游戏开始！',
 
             /* ---------- SKILLS PAGE ---------- */
             'skills.hero.label': '/ 我的技能',
@@ -1678,6 +2104,7 @@
 
             'proj.filter.all': '所有项目',
             'proj.filter.fullstack': '全栈',
+            'proj.filter.frontend': '前端',
             'proj.filter.web': 'Web 系统',
             'proj.filter.local': '本地环境',
 
@@ -1702,7 +2129,6 @@
             'project.workflow.application': '申请',
             'project.workflow.document': '文件',
 
-            /* CleanSpark modal */
             'proj.modal.cleanspark.about.title': '清洁服务管理系统',
             'proj.modal.cleanspark.about.p1': 'CleanSpark 旨在帮助清洁企业以数字化方式管理客户、预约、员工、清洁服务、付款、排班和行政运营。',
             'proj.modal.cleanspark.about.p2': '这个想法源于在桑给巴尔清洁公司环境中工作时观察到的实际问题。',
@@ -1727,7 +2153,6 @@
             'proj.modal.cleanspark.features.6': '主管确认到达、服务开始和完成',
             'proj.modal.cleanspark.role.value': '作为全栈项目，设计并开发了整个系统 —— 前端、后端和数据库。',
 
-            /* LAMS modal */
             'proj.modal.lams.about.title': '地方行政管理系统',
             'proj.modal.lams.about.p1': 'LAMS 是专为桑给巴尔社区服务管理而设计的地方行政管理系统。它专注于地方行政与市民之间的互动。',
             'proj.modal.lams.about.p2': '该系统以数字化方式管理地方行政服务、市民、申请、公告、付款、文件和行政活动。',
@@ -1758,6 +2183,48 @@
             'proj.cta.contact': '开始对话',
             'proj.cta.github': '在 GitHub 上查看',
 
+            'proj.modal.ssms.about.title': '学校员工管理系统',
+            'proj.modal.ssms.about.p1': '学校员工管理系统是一个基于 Web 的行政系统，旨在组织和管理学校员工信息、角色和日常员工相关操作。',
+            'proj.modal.ssms.about.p2': '它为管理员提供了一个干净、结构化的数字界面，无需依赖纸质或分散的电子表格即可处理员工记录。',
+            'proj.modal.ssms.problem.title': '解决的问题',
+            'proj.modal.ssms.problem.1': '手动保存员工记录',
+            'proj.modal.ssms.problem.2': '难以跟踪员工角色和职责',
+            'proj.modal.ssms.problem.3': '行政工作流程缓慢',
+            'proj.modal.ssms.problem.4': '没有集中的数字员工信息',
+            'proj.modal.ssms.solution.title': '解决方案',
+            'proj.modal.ssms.solution.1': '在数字系统中集中管理员工记录',
+            'proj.modal.ssms.solution.2': '具有角色和详细信息的结构化员工档案',
+            'proj.modal.ssms.solution.3': '适合日常使用的简单管理仪表板',
+            'proj.modal.ssms.solution.4': '组织有序、可打印的员工信息',
+            'proj.modal.ssms.features.title': '系统功能',
+            'proj.modal.ssms.features.1': '员工注册和档案管理',
+            'proj.modal.ssms.features.2': '角色和职责分配',
+            'proj.modal.ssms.features.3': '可搜索的员工目录',
+            'proj.modal.ssms.features.4': '管理概览仪表板',
+            'proj.modal.ssms.features.5': '干净的响应式 Web 界面',
+            'proj.modal.ssms.role.value': '作为实际的学校管理项目，设计并开发了系统的前端和结构。',
+
+            'proj.modal.portfolio.about.title': '作品集网站',
+            'proj.modal.portfolio.about.p1': '一个高级、完全动画化的个人作品集网站，仅使用 HTML、CSS 和原生 JavaScript 从头设计和构建 —— 没有框架，没有构建工具。',
+            'proj.modal.portfolio.about.p2': '它作为核心枢纽，向招聘人员、客户和合作者展示我的项目、技能、经验和服务。',
+            'proj.modal.portfolio.problem.title': '解决的问题',
+            'proj.modal.portfolio.problem.1': '没有单一的地方展示项目和技能',
+            'proj.modal.portfolio.problem.2': '难以触达国际受众',
+            'proj.modal.portfolio.problem.3': '需要专业的在线形象',
+            'proj.modal.portfolio.solution.title': '解决方案',
+            'proj.modal.portfolio.solution.1': '所有作品的单一高级作品集枢纽',
+            'proj.modal.portfolio.solution.2': '多语言支持（EN、SW、ZH、AR、FR）',
+            'proj.modal.portfolio.solution.3': '深色/浅色主题切换',
+            'proj.modal.portfolio.solution.4': '自定义光标、粒子和电影级动画',
+            'proj.modal.portfolio.features.title': '网站包含的内容',
+            'proj.modal.portfolio.features.1': '9 个完整设计的页面（首页、关于、技能、经验、项目、证书、服务、成就、联系）',
+            'proj.modal.portfolio.features.2': '完整的 5 语言翻译系统，支持阿拉伯语 RTL',
+            'proj.modal.portfolio.features.3': '具有持久偏好的深色/浅色主题',
+            'proj.modal.portfolio.features.4': '自定义动画光标 + 粒子画布背景',
+            'proj.modal.portfolio.features.5': '滚动显示、动画计数器和交互式项目模态',
+            'proj.modal.portfolio.features.6': '完全响应式设计 + 无障碍标记',
+            'proj.modal.portfolio.role.value': '唯一的设计师和开发者 —— 从头构建了一切，包括设计系统、动画、i18n 引擎和主题切换器。',
+
             /* ---------- CERTIFICATES PAGE ---------- */
             'cert.hero.label': '/ 证书',
             'cert.hero.titleA': '证书与',
@@ -1766,11 +2233,13 @@
             'cert.hero.stat.total': '总数',
             'cert.hero.stat.tech': '技术',
             'cert.hero.stat.academic': '学术',
+            'cert.hero.stat.lang': '语言',
 
             'cert.filter.all': '全部',
             'cert.filter.technical': '技术',
             'cert.filter.academic': '学术',
             'cert.filter.training': '培训',
+            'cert.filter.language': '语言',
 
             'cert.empty.label': '即将推出',
             'cert.empty.title': '证书即将上线。',
@@ -1786,6 +2255,42 @@
             'cert.cta.desc': '我不断学习和构建。让我们谈谈我能为你的团队带来什么。',
             'cert.cta.contact': '联系我',
             'cert.cta.experience': '查看经验',
+
+            'cert.badge.firstClass': '一等荣誉',
+            'cert.badge.supervisor': '导师签字',
+            'cert.card.view': '查看证书',
+
+            'cert.item.cbit.title': '信息技术商业',
+            'cert.item.cbit.issuer': '桑给巴尔大学',
+            'cert.item.cbit.grade': '等级：一等荣誉 · 高 GPA',
+            'cert.item.cbit.desc': '以一等荣誉和高 GPA 完成信息技术商业（B.IT）课程。',
+
+            'cert.item.webprojects.title': 'Web 项目完成证书',
+            'cert.item.webprojects.issuer': '实地导师 · ICE',
+            'cert.item.webprojects.grade': '以优异成绩完成',
+            'cert.item.webprojects.desc': '由我的实地导师签署的 Web 开发项目完成证书。',
+
+            'cert.item.hsk2.title': 'HSK 2 级 — 中文',
+            'cert.item.hsk2.issuer': '中文水平考试',
+            'cert.item.hsk2.desc': '通过 HSK 2 级考试，展示基本中文语言技能。',
+
+            'cert.item.hsk1.title': 'HSK 1 级 — 中文',
+            'cert.item.hsk1.issuer': '中文水平考试',
+            'cert.item.hsk1.desc': '通过 HSK 1 级考试，展示基础中文语言技能。',
+
+            'cert.item.engHigh.title': '高级英语 — 已完成',
+            'cert.item.engHigh.issuer': '英语水平课程',
+            'cert.item.engHigh.grade': '以高分通过',
+            'cert.item.engHigh.desc': '成功完成高级英语考试并以高分通过。',
+
+            'cert.item.engStage5.title': '英语第 5 阶段 — 已完成',
+            'cert.item.engStage5.issuer': '英语水平课程',
+            'cert.item.engStage5.desc': '完成英语第 5 阶段，在英语水平课程中不断进步。',
+
+            'cert.item.chemy.title': '化学俱乐部参与证书',
+            'cert.item.chemy.issuer': 'O-Level 科学俱乐部',
+            'cert.item.chemy.period': 'O-Level',
+            'cert.item.chemy.desc': '在 O-Level 学习期间参与化学俱乐部的证书。',
 
             /* ---------- SERVICES PAGE ---------- */
             'svc.hero.label': '/ 服务',
@@ -1942,6 +2447,54 @@
             'ach.cta.contact': '联系我',
             'ach.cta.projects': '查看项目',
 
+            /* ---------- ACHIEVEMENTS PAGE — PHASE 8.5 ---------- */
+            'ach.hero.stat.certs': '证书',
+            'ach.filter.certificate': '证书',
+            'ach.filter.language': '语言',
+            'ach.cta.certificates': '查看证书',
+
+            'ach.timeline.label': '/ 时间线',
+            'ach.timeline.titleA': '里程碑',
+            'ach.timeline.titleB': '旅程',
+            'ach.timeline.desc': '多年成长的时间顺序视图。',
+            'ach.timeline.2023': '英语第 5 阶段完成',
+            'ach.timeline.2024': 'HSK 1 和 2 · 高级英语',
+            'ach.timeline.2025': '信息技术商业 — 一等荣誉',
+            'ach.timeline.2026': '4 个项目 · 学士录取 · ICE 与 Nyota',
+
+            'ach.card.cbit.title': '信息技术商业 — 一等荣誉',
+            'ach.card.cbit.desc': '在桑给巴尔大学的信息技术商业课程中获得一等荣誉等级和高 GPA。',
+            'ach.card.cbit.tag': '一等荣誉',
+
+            'ach.card.webprojects.title': 'Web 项目完成 — 导师认证',
+            'ach.card.webprojects.desc': '获得由我在 ICE 的实地导师签署的 Web 开发项目完成证书。',
+            'ach.card.webprojects.tag': '已签字',
+
+            'ach.card.hsk1.title': '中文 HSK 1 级',
+            'ach.card.hsk1.desc': '通过 HSK 1 级考试 —— 基础中文语言能力测试。',
+
+            'ach.card.hsk2.title': '中文 HSK 2 级',
+            'ach.card.hsk2.desc': '通过 HSK 2 级考试 —— 中级基础中文语言能力测试。',
+
+            'ach.card.engHigh.title': '高级英语 — 已完成',
+            'ach.card.engHigh.desc': '成功完成高级英语考试并以高分通过。',
+            'ach.card.engHigh.tag': '高分',
+
+            'ach.card.engStage5.title': '英语第 5 阶段 — 已完成',
+            'ach.card.engStage5.desc': '完成英语第 5 阶段，在英语水平课程中不断进步。',
+
+            'ach.card.chemy.title': '化学俱乐部参与证书',
+            'ach.card.chemy.desc': '在 O-Level 学习期间积极参与化学俱乐部，为分析性思维奠定了基础。',
+            'ach.card.chemy.period': 'O-Level',
+
+            'ach.card.ssms.title': '开发学校员工管理系统',
+            'ach.card.ssms.desc': '构建了一个基于 Web 的学校员工管理系统，用于组织员工记录、角色和行政操作。',
+            'ach.card.ssms.tag': '全栈',
+
+            'ach.card.portfolio.title': '构建个人作品集网站',
+            'ach.card.portfolio.desc': '从头设计和开发了一个高级、多语言、完全动画化的作品集网站。',
+            'ach.card.portfolio.tag': '前端',
+
             /* ---------- CONTACT PAGE ---------- */
             'contact.hero.label': '/ 联系',
             'contact.hero.titleA': '让我们一起构建',
@@ -2025,7 +2578,77 @@
             'e404.desc': '你正在寻找的页面不存在、已被移动或暂时不可用。让我们帮你回到正轨。',
             'e404.home': '返回首页',
             'e404.contact': '联系我',
-            'e404.quickLabel': '快速链接'
+            'e404.quickLabel': '快速链接',
+
+            /* ---------- SERVICE MODAL DETAILS (PHASE NEW) ---------- */
+            'svc.card.details': '查看详情',
+            'svc.fab': '雇佣我',
+            'svc.modal.about': '关于此服务',
+            'svc.modal.includes': '包含内容',
+            'svc.modal.tech': '使用的技术',
+            'svc.modal.close': '关闭',
+
+            'svc.modal.web-dev.long': '我使用干净的现代 HTML、CSS 和 JavaScript 构建快速、响应式的网站，在手机、平板和台式机上都能完美运行。',
+            'svc.modal.web-dev.inc1': '自定义现代网页设计',
+            'svc.modal.web-dev.inc2': '完全响应式布局（手机、平板、台式机）',
+            'svc.modal.web-dev.inc3': '跨浏览器测试',
+            'svc.modal.web-dev.inc4': 'SEO 友好结构',
+            'svc.modal.web-dev.inc5': '部署和上线支持',
+
+            'svc.modal.fullstack.long': '从前端界面到后端 API 和数据库，我设计和构建完整的 Web 应用程序来解决现实问题。',
+            'svc.modal.fullstack.inc1': '前端 UI 开发',
+            'svc.modal.fullstack.inc2': '后端 API 开发',
+            'svc.modal.fullstack.inc3': '数据库设计和集成',
+            'svc.modal.fullstack.inc4': '身份验证和用户管理',
+            'svc.modal.fullstack.inc5': '部署和发布后支持',
+
+            'svc.modal.website.long': '完整的网站构建 —— 从概念和设计到最终部署 —— 用于个人、企业或组织。',
+            'svc.modal.website.inc1': '从概念到上线的自定义网站',
+            'svc.modal.website.inc2': '多页面或单页面构建',
+            'svc.modal.website.inc3': '企业、作品集或组织网站',
+            'svc.modal.website.inc4': '部署到 GitHub Pages 或主机',
+
+            'svc.modal.infosys.long': '围绕您的企业或组织实际运作方式设计的定制信息系统 —— 而不是通用模板。',
+            'svc.modal.infosys.inc1': '需求分析和系统设计',
+            'svc.modal.infosys.inc2': '工作流建模',
+            'svc.modal.infosys.inc3': '数据库和报告结构',
+            'svc.modal.infosys.inc4': '用户角色和权限',
+
+            'svc.modal.dbdev.long': '干净、规范化且高效的数据库架构，旨在为真实应用程序提供动力而不影响性能。',
+            'svc.modal.dbdev.inc1': 'ER 图和架构设计',
+            'svc.modal.dbdev.inc2': '规范化的表结构',
+            'svc.modal.dbdev.inc3': '主键和外键设计',
+            'svc.modal.dbdev.inc4': 'SQL 脚本和迁移文件',
+
+            'svc.modal.dbmgmt.long': '持续的数据库管理、维护和优化，让您的数据保持健康、快速和安全。',
+            'svc.modal.dbmgmt.inc1': '查询编写和优化',
+            'svc.modal.dbmgmt.inc2': '备份和恢复程序',
+            'svc.modal.dbmgmt.inc3': '索引和性能调优',
+            'svc.modal.dbmgmt.inc4': '数据清理和结构化',
+
+            'svc.modal.itsupport.long': '为个人、小型企业和组织提供可靠的 IT 支持 —— 从故障排除到完整的 IT 管理。',
+            'svc.modal.itsupport.inc1': 'Windows 10/11 设置和故障排除',
+            'svc.modal.itsupport.inc2': 'Microsoft Office 安装和支持',
+            'svc.modal.itsupport.inc3': '一般 IT 管理',
+            'svc.modal.itsupport.inc4': '硬件和软件故障排除',
+
+            'svc.modal.networking.long': '基本网络设置、配置和故障排除 —— 需要时提供 Cisco 相关任务。',
+            'svc.modal.networking.inc1': '基本网络配置',
+            'svc.modal.networking.inc2': '路由器和交换机设置（基础）',
+            'svc.modal.networking.inc3': '网络故障排除',
+            'svc.modal.networking.inc4': 'Cisco 相关任务',
+
+            'svc.modal.backend.long': '使用 Node.js 和 Express 构建的安全、可扩展的 REST API —— 具有适当的身份验证、验证和清晰的结构。',
+            'svc.modal.backend.inc1': 'REST API 设计和开发',
+            'svc.modal.backend.inc2': 'JWT 身份验证和授权',
+            'svc.modal.backend.inc3': '请求验证和错误处理',
+            'svc.modal.backend.inc4': 'API 文档和 Postman 测试',
+
+            'svc.modal.consult.long': '就您的 Web 项目、数据库或 IT 设置提供实用、诚实的建议 —— 帮助您在投入时间和金钱之前选择正确的方法。',
+            'svc.modal.consult.inc1': '项目范围界定和规划',
+            'svc.modal.consult.inc2': '技术栈建议',
+            'svc.modal.consult.inc3': '代码审查和反馈',
+            'svc.modal.consult.inc4': '最佳实践指导'
         },
 
         ar: {
@@ -2083,10 +2706,15 @@
             'featured.cta': 'عرض كل المشاريع',
             'project.view': 'عرض المشروع',
             'project.meta.fullstack': 'متكامل',
+            'project.meta.frontend': 'الواجهة الأمامية',
             'project.cleanspark.tag': 'إدارة خدمات التنظيف',
             'project.cleanspark.desc': 'نظام لإدارة خدمات التنظيف يرقمن العملاء والحجوزات والموظفين والمدفوعات والجدولة والإدارة.',
             'project.lams.tag': 'إدارة الحكم المحلي',
             'project.lams.desc': 'نظام إدارة محلية يربط المواطنين بإدارة القسم للخدمات والمدفوعات والمستندات.',
+            'project.ssms.tag': 'إدارة موظفي المدرسة',
+            'project.ssms.desc': 'نظام لإدارة موظفي المدرسة — الملفات والأدوار والحضور والعمليات الإدارية المتعلقة بالموظفين.',
+            'project.portfolio.tag': 'موقع السيرة الذاتية',
+            'project.portfolio.desc': 'موقع سيرة ذاتية شخصي متقدم وحيوي بالكامل ومتعدد اللغات، تم بناؤه من الصفر باستخدام HTML و CSS و JavaScript.',
 
             /* ---------- QUICK ABOUT ---------- */
             'quickabout.label': '/ 02 — نبذة',
@@ -2187,6 +2815,14 @@
             'about.cta.desc': 'استكشف مشاريعي وخبراتي، أو تواصل معي مباشرة.',
             'about.cta.projects': 'عرض المشاريع',
             'about.cta.contact': 'تواصل معي',
+
+            'about.info.hint.tap': 'اضغط للاحتفال 🎉',
+            'about.info.hint.map': 'افتح في خرائط Google ↗',
+            'about.info.hint.learn': 'اضغط للاستكشاف 📚',
+            'about.info.hint.play': 'اضغط للعب ⚽',
+            'about.anim.birthday': '🎉 عيد ميلاد سعيد يا DAU!',
+            'about.anim.education': '📚 دائماً نتعلم، دائماً ننمو',
+            'about.anim.hobbies': '⚽ اللعب يبدأ!',
 
             /* ---------- SKILLS PAGE ---------- */
             'skills.hero.label': '/ مهاراتي',
@@ -2347,6 +2983,7 @@
 
             'proj.filter.all': 'كل المشاريع',
             'proj.filter.fullstack': 'متكامل',
+            'proj.filter.frontend': 'الواجهة الأمامية',
             'proj.filter.web': 'أنظمة ويب',
             'proj.filter.local': 'سياق محلي',
 
@@ -2371,7 +3008,6 @@
             'project.workflow.application': 'الطلب',
             'project.workflow.document': 'المستند',
 
-            /* CleanSpark modal */
             'proj.modal.cleanspark.about.title': 'نظام إدارة خدمات التنظيف',
             'proj.modal.cleanspark.about.p1': 'تم تصميم CleanSpark لمساعدة شركات التنظيف على إدارة العملاء والحجوزات والموظفين وخدمات التنظيف والمدفوعات والجدولة والعمليات الإدارية رقمياً.',
             'proj.modal.cleanspark.about.p2': 'جاءت الفكرة من مشكلات حقيقية لوحظت أثناء العمل في بيئة شركة تنظيف في زنجبار.',
@@ -2396,7 +3032,6 @@
             'proj.modal.cleanspark.features.6': 'يؤكد المشرف الوصول وبدء الخدمة والإكمال',
             'proj.modal.cleanspark.role.value': 'صممت وطورت النظام الكامل — الواجهة الأمامية والخلفية وقاعدة البيانات — كمشروع متكامل.',
 
-            /* LAMS modal */
             'proj.modal.lams.about.title': 'نظام إدارة الحكم المحلي',
             'proj.modal.lams.about.p1': 'LAMS هو نظام إدارة حكم محلي مصمم لإدارة الخدمات المجتمعية في زنجبار. يركز على التفاعل بين الإدارة المحلية والمواطنين.',
             'proj.modal.lams.about.p2': 'يدير النظام رقمياً خدمات الإدارة المحلية والمواطنين والطلبات والإعلانات والمدفوعات والمستندات والأنشطة الإدارية.',
@@ -2427,6 +3062,48 @@
             'proj.cta.contact': 'ابدأ محادثة',
             'proj.cta.github': 'عرض على GitHub',
 
+            'proj.modal.ssms.about.title': 'نظام إدارة موظفي المدرسة',
+            'proj.modal.ssms.about.p1': 'نظام إدارة موظفي المدرسة هو نظام إداري قائم على الويب مصمم لتنظيم وإدارة معلومات موظفي المدرسة والأدوار والعمليات اليومية المتعلقة بالموظفين.',
+            'proj.modal.ssms.about.p2': 'يوفر واجهة رقمية نظيفة ومنظمة للمسؤولين للتعامل مع سجلات الموظفين دون الاعتماد على الورق أو الجداول المبعثرة.',
+            'proj.modal.ssms.problem.title': 'المشكلات التي تمت معالجتها',
+            'proj.modal.ssms.problem.1': 'الاحتفاظ اليدوي بسجلات الموظفين',
+            'proj.modal.ssms.problem.2': 'صعوبة تتبع أدوار ومسؤوليات الموظفين',
+            'proj.modal.ssms.problem.3': 'سير عمل إداري بطيء',
+            'proj.modal.ssms.problem.4': 'لا توجد معلومات رقمية مركزية عن الموظفين',
+            'proj.modal.ssms.solution.title': 'الحل',
+            'proj.modal.ssms.solution.1': 'سجلات الموظفين المركزية في نظام رقمي',
+            'proj.modal.ssms.solution.2': 'ملفات موظفين منظمة بالأدوار والتفاصيل',
+            'proj.modal.ssms.solution.3': 'لوحة تحكم إدارية بسيطة للاستخدام اليومي',
+            'proj.modal.ssms.solution.4': 'معلومات موظفين منظمة وقابلة للطباعة',
+            'proj.modal.ssms.features.title': 'ما يفعله النظام',
+            'proj.modal.ssms.features.1': 'تسجيل الموظفين وإدارة الملفات',
+            'proj.modal.ssms.features.2': 'تعيين الأدوار والمسؤوليات',
+            'proj.modal.ssms.features.3': 'دليل موظفين قابل للبحث',
+            'proj.modal.ssms.features.4': 'لوحة تحكم للإدارة العامة',
+            'proj.modal.ssms.features.5': 'واجهة ويب نظيفة ومتجاوبة',
+            'proj.modal.ssms.role.value': 'صممت وطورت الواجهة الأمامية وهيكل النظام كمشروع عملي لإدارة المدرسة.',
+
+            'proj.modal.portfolio.about.title': 'موقع السيرة الذاتية',
+            'proj.modal.portfolio.about.p1': 'موقع سيرة ذاتية شخصي متقدم وحيوي بالكامل، صُمم وبُني من الصفر باستخدام HTML و CSS و JavaScript فقط — بدون أطر عمل، بدون أدوات بناء.',
+            'proj.modal.portfolio.about.p2': 'يعمل كمركز رئيسي لعرض مشاريعي ومهاراتي وخبراتي وخدماتي للمسؤولين عن التوظيف والعملاء والمتعاونين.',
+            'proj.modal.portfolio.problem.title': 'المشكلات التي تمت معالجتها',
+            'proj.modal.portfolio.problem.1': 'لا يوجد مكان واحد لعرض المشاريع والمهارات',
+            'proj.modal.portfolio.problem.2': 'صعوبة الوصول إلى الجماهير الدولية',
+            'proj.modal.portfolio.problem.3': 'الحاجة إلى حضور احترافي على الإنترنت',
+            'proj.modal.portfolio.solution.title': 'الحل',
+            'proj.modal.portfolio.solution.1': 'مركز سيرة ذاتية واحد متقدم لجميع الأعمال',
+            'proj.modal.portfolio.solution.2': 'دعم متعدد اللغات (EN، SW، ZH، AR، FR)',
+            'proj.modal.portfolio.solution.3': 'تبديل الوضع الداكن / الفاتح',
+            'proj.modal.portfolio.solution.4': 'مؤشر مخصص وجزيئات ورسوم متحركة سينمائية',
+            'proj.modal.portfolio.features.title': 'ما يحتويه الموقع',
+            'proj.modal.portfolio.features.1': '9 صفحات مصممة بالكامل (الرئيسية، نبذة، المهارات، الخبرة، المشاريع، الشهادات، الخدمات، الإنجازات، اتصل)',
+            'proj.modal.portfolio.features.2': 'نظام ترجمة كامل بخمس لغات مع دعم RTL للعربية',
+            'proj.modal.portfolio.features.3': 'وضع داكن / فاتح بتفضيل محفوظ',
+            'proj.modal.portfolio.features.4': 'مؤشر متحرك مخصص + خلفية جزيئات',
+            'proj.modal.portfolio.features.5': 'كشف التمرير والعدادات المتحركة ونوافذ المشاريع التفاعلية',
+            'proj.modal.portfolio.features.6': 'تصميم متجاوب بالكامل + بنية يسهل الوصول إليها',
+            'proj.modal.portfolio.role.value': 'المصمم والمطور الوحيد — بنيت كل شيء من الصفر بما في ذلك نظام التصميم والرسوم المتحركة ومحرك i18n ومبدل الموضوع.',
+
             /* ---------- CERTIFICATES PAGE ---------- */
             'cert.hero.label': '/ الشهادات',
             'cert.hero.titleA': 'الشهادات',
@@ -2435,11 +3112,13 @@
             'cert.hero.stat.total': 'الإجمالي',
             'cert.hero.stat.tech': 'تقنية',
             'cert.hero.stat.academic': 'أكاديمية',
+            'cert.hero.stat.lang': 'لغة',
 
             'cert.filter.all': 'الكل',
             'cert.filter.technical': 'تقنية',
             'cert.filter.academic': 'أكاديمية',
             'cert.filter.training': 'تدريب',
+            'cert.filter.language': 'اللغة',
 
             'cert.empty.label': 'قريباً',
             'cert.empty.title': 'الشهادات في الطريق.',
@@ -2455,6 +3134,42 @@
             'cert.cta.desc': 'أتعلم وأبني باستمرار. لنتحدث عما يمكنني تقديمه لفريقك.',
             'cert.cta.contact': 'تواصل معي',
             'cert.cta.experience': 'عرض الخبرة',
+
+            'cert.badge.firstClass': 'الدرجة الأولى',
+            'cert.badge.supervisor': 'موقّع من المشرف',
+            'cert.card.view': 'عرض الشهادة',
+
+            'cert.item.cbit.title': 'أعمال تقنية المعلومات',
+            'cert.item.cbit.issuer': 'جامعة زنجبار',
+            'cert.item.cbit.grade': 'الدرجة: الأولى · معدل عالٍ',
+            'cert.item.cbit.desc': 'أكملت دورة أعمال تقنية المعلومات (B.IT) بدرجة الشرف الأولى ومعدل تراكمي عالٍ.',
+
+            'cert.item.webprojects.title': 'إكمال مشاريع الويب',
+            'cert.item.webprojects.issuer': 'المشرف الميداني · ICE',
+            'cert.item.webprojects.grade': 'أُكمل بامتياز',
+            'cert.item.webprojects.desc': 'شهادة إكمال مشاريع تطوير الويب، موقّعة من المشرف الميداني.',
+
+            'cert.item.hsk2.title': 'HSK المستوى 2 — الصينية',
+            'cert.item.hsk2.issuer': 'اختبار إتقان اللغة الصينية',
+            'cert.item.hsk2.desc': 'اجتزت اختبار HSK المستوى 2، مُظهراً إتقاناً للمهارات الأساسية في اللغة الصينية.',
+
+            'cert.item.hsk1.title': 'HSK المستوى 1 — الصينية',
+            'cert.item.hsk1.issuer': 'اختبار إتقان اللغة الصينية',
+            'cert.item.hsk1.desc': 'اجتزت اختبار HSK المستوى 1، مُظهراً المهارات التأسيسية في اللغة الصينية.',
+
+            'cert.item.engHigh.title': 'الإنجليزية المتقدمة — مكتمل',
+            'cert.item.engHigh.issuer': 'برنامج إتقان الإنجليزية',
+            'cert.item.engHigh.grade': 'نجحت بدرجات عالية',
+            'cert.item.engHigh.desc': 'أكملت بنجاح اختبار اللغة الإنجليزية المتقدم ونجحت بدرجات عالية.',
+
+            'cert.item.engStage5.title': 'الإنجليزية المرحلة 5 — مكتملة',
+            'cert.item.engStage5.issuer': 'برنامج إتقان الإنجليزية',
+            'cert.item.engStage5.desc': 'أكملت المرحلة 5 من اللغة الإنجليزية، متقدماً في برنامج إتقان اللغة.',
+
+            'cert.item.chemy.title': 'المشاركة في نادي الكيمياء',
+            'cert.item.chemy.issuer': 'نادي العلوم للمستوى العادي',
+            'cert.item.chemy.period': 'المستوى العادي',
+            'cert.item.chemy.desc': 'شهادة مشاركة في نادي الكيمياء خلال دراسة المستوى العادي.',
 
             /* ---------- SERVICES PAGE ---------- */
             'svc.hero.label': '/ الخدمات',
@@ -2611,6 +3326,54 @@
             'ach.cta.contact': 'تواصل معي',
             'ach.cta.projects': 'عرض المشاريع',
 
+            /* ---------- ACHIEVEMENTS PAGE — PHASE 8.5 ---------- */
+            'ach.hero.stat.certs': 'شهادات',
+            'ach.filter.certificate': 'شهادة',
+            'ach.filter.language': 'اللغة',
+            'ach.cta.certificates': 'عرض الشهادات',
+
+            'ach.timeline.label': '/ الجدول الزمني',
+            'ach.timeline.titleA': 'رحلة',
+            'ach.timeline.titleB': 'المعالم',
+            'ach.timeline.desc': 'عرض زمني لنموي على مر السنين.',
+            'ach.timeline.2023': 'إكمال المرحلة 5 من اللغة الإنجليزية',
+            'ach.timeline.2024': 'HSK 1 و 2 · الإنجليزية المتقدمة',
+            'ach.timeline.2025': 'أعمال تقنية المعلومات — الدرجة الأولى',
+            'ach.timeline.2026': '4 مشاريع · القبول في البكالوريوس · ICE و Nyota',
+
+            'ach.card.cbit.title': 'أعمال تقنية المعلومات — الدرجة الأولى',
+            'ach.card.cbit.desc': 'حصلت على درجة الشرف الأولى بمعدل تراكمي عالٍ في دورة أعمال تقنية المعلومات في جامعة زنجبار.',
+            'ach.card.cbit.tag': 'الدرجة الأولى',
+
+            'ach.card.webprojects.title': 'إكمال مشاريع الويب — معتمد من المشرف',
+            'ach.card.webprojects.desc': 'حصلت على شهادة إكمال رسمية لمشاريع تطوير الويب، موقّعة من مشرفي الميداني في ICE.',
+            'ach.card.webprojects.tag': 'موقّع',
+
+            'ach.card.hsk1.title': 'اللغة الصينية HSK المستوى 1',
+            'ach.card.hsk1.desc': 'اجتزت اختبار HSK المستوى 1 — اختبار الكفاءة الأساسي في اللغة الصينية.',
+
+            'ach.card.hsk2.title': 'اللغة الصينية HSK المستوى 2',
+            'ach.card.hsk2.desc': 'اجتزت اختبار HSK المستوى 2 — اختبار الكفاءة المتوسط في اللغة الصينية.',
+
+            'ach.card.engHigh.title': 'الإنجليزية المتقدمة — مكتملة',
+            'ach.card.engHigh.desc': 'أكملت بنجاح اختبار اللغة الإنجليزية المتقدم ونجحت بدرجات عالية.',
+            'ach.card.engHigh.tag': 'درجات عالية',
+
+            'ach.card.engStage5.title': 'الإنجليزية المرحلة 5 — مكتملة',
+            'ach.card.engStage5.desc': 'أكملت المرحلة 5 من اللغة الإنجليزية، متقدماً في برنامج إتقان اللغة.',
+
+            'ach.card.chemy.title': 'المشاركة في نادي الكيمياء',
+            'ach.card.chemy.desc': 'شاركت بنشاط في نادي الكيمياء خلال دراستي للمستوى العادي، مما بنى أساساً للتفكير التحليلي.',
+            'ach.card.chemy.period': 'المستوى العادي',
+
+            'ach.card.ssms.title': 'تطوير نظام إدارة موظفي المدرسة',
+            'ach.card.ssms.desc': 'بنيت نظام إدارة موظفي مدرسة قائم على الويب لتنظيم سجلات الموظفين والأدوار والعمليات الإدارية.',
+            'ach.card.ssms.tag': 'متكامل',
+
+            'ach.card.portfolio.title': 'بناء موقع سيرتي الذاتية',
+            'ach.card.portfolio.desc': 'صممت وطوّرت موقع سيرة ذاتية متقدم، متعدد اللغات، وحيوي بالكامل من الصفر.',
+            'ach.card.portfolio.tag': 'الواجهة الأمامية',
+
             /* ---------- CONTACT PAGE ---------- */
             'contact.hero.label': '/ تواصل',
             'contact.hero.titleA': 'لنبنِ شيئاً',
@@ -2694,7 +3457,77 @@
             'e404.desc': 'الصفحة التي تبحث عنها غير موجودة أو تم نقلها أو غير متاحة مؤقتاً. لنعدك إلى المسار الصحيح.',
             'e404.home': 'العودة للرئيسية',
             'e404.contact': 'تواصل معي',
-            'e404.quickLabel': 'روابط سريعة'
+            'e404.quickLabel': 'روابط سريعة',
+
+            /* ---------- SERVICE MODAL DETAILS (PHASE NEW) ---------- */
+            'svc.card.details': 'عرض التفاصيل',
+            'svc.fab': 'وظفني',
+            'svc.modal.about': 'حول هذه الخدمة',
+            'svc.modal.includes': 'ما يتم تضمينه',
+            'svc.modal.tech': 'التقنيات المستخدمة',
+            'svc.modal.close': 'إغلاق',
+
+            'svc.modal.web-dev.long': 'أبني مواقع سريعة ومتجاوبة تعمل بشكل جميل على الهواتف والأجهزة اللوحية وأجهزة الكمبيوتر — باستخدام HTML و CSS و JavaScript نظيفة وحديثة.',
+            'svc.modal.web-dev.inc1': 'تصميم ويب حديث مخصص',
+            'svc.modal.web-dev.inc2': 'تخطيط متجاوب بالكامل (جوال، تابلت، سطح المكتب)',
+            'svc.modal.web-dev.inc3': 'مُختبر عبر المتصفحات',
+            'svc.modal.web-dev.inc4': 'بنية صديقة لمحركات البحث',
+            'svc.modal.web-dev.inc5': 'دعم النشر والإطلاق',
+
+            'svc.modal.fullstack.long': 'من واجهة المستخدم الأمامية إلى API الخلفية وقاعدة البيانات، أصمم وأبني تطبيقات ويب كاملة تحل مشكلات حقيقية.',
+            'svc.modal.fullstack.inc1': 'تطوير واجهة المستخدم الأمامية',
+            'svc.modal.fullstack.inc2': 'تطوير API الخلفية',
+            'svc.modal.fullstack.inc3': 'تصميم قواعد البيانات والتكامل',
+            'svc.modal.fullstack.inc4': 'المصادقة وإدارة المستخدمين',
+            'svc.modal.fullstack.inc5': 'النشر والدعم بعد الإطلاق',
+
+            'svc.modal.website.long': 'بناء مواقع كاملة — من الفكرة والتصميم إلى النشر النهائي — للاستخدام الشخصي أو التجاري أو التنظيمي.',
+            'svc.modal.website.inc1': 'موقع مخصص من الفكرة إلى الإطلاق',
+            'svc.modal.website.inc2': 'مواقع متعددة الصفحات أو صفحة واحدة',
+            'svc.modal.website.inc3': 'مواقع الأعمال أو ملف الأعمال أو المؤسسات',
+            'svc.modal.website.inc4': 'النشر على GitHub Pages أو الاستضافة',
+
+            'svc.modal.infosys.long': 'أنظمة معلومات مخصصة مصممة حول الطريقة الفعلية لعمل شركتك أو مؤسستك — وليس قوالب عامة.',
+            'svc.modal.infosys.inc1': 'تحليل المتطلبات وتصميم النظام',
+            'svc.modal.infosys.inc2': 'نمذجة سير العمل',
+            'svc.modal.infosys.inc3': 'بنية قاعدة البيانات والتقارير',
+            'svc.modal.infosys.inc4': 'أدوار المستخدمين والصلاحيات',
+
+            'svc.modal.dbdev.long': 'مخططات قواعد بيانات نظيفة وموحدة وفعالة مصممة لتشغيل التطبيقات الحقيقية دون إبطاء.',
+            'svc.modal.dbdev.inc1': 'مخطط ER وتصميم المخطط',
+            'svc.modal.dbdev.inc2': 'هياكل جداول موحدة',
+            'svc.modal.dbdev.inc3': 'تصميم المفاتيح الأساسية والأجنبية',
+            'svc.modal.dbdev.inc4': 'نصوص SQL وملفات الترحيل',
+
+            'svc.modal.dbmgmt.long': 'إدارة قواعد البيانات المستمرة والصيانة والتحسين حتى تبقى بياناتك صحية وسريعة وآمنة.',
+            'svc.modal.dbmgmt.inc1': 'كتابة الاستعلامات وتحسينها',
+            'svc.modal.dbmgmt.inc2': 'النسخ الاحتياطي وإجراءات الاستعادة',
+            'svc.modal.dbmgmt.inc3': 'ضبط الفهارس والأداء',
+            'svc.modal.dbmgmt.inc4': 'تنظيف البيانات وهيكلتها',
+
+            'svc.modal.itsupport.long': 'دعم تقنية معلومات موثوق للأفراد والشركات الصغيرة والمؤسسات — من استكشاف الأخطاء إلى إدارة تقنية المعلومات الكاملة.',
+            'svc.modal.itsupport.inc1': 'إعداد واستكشاف أخطاء Windows 10/11',
+            'svc.modal.itsupport.inc2': 'تثبيت ودعم Microsoft Office',
+            'svc.modal.itsupport.inc3': 'إدارة تقنية المعلومات العامة',
+            'svc.modal.itsupport.inc4': 'استكشاف أخطاء الأجهزة والبرامج',
+
+            'svc.modal.networking.long': 'إعداد الشبكة الأساسي والتكوين واستكشاف الأخطاء — مع مهام متعلقة بـ Cisco عند الحاجة.',
+            'svc.modal.networking.inc1': 'تكوين الشبكة الأساسي',
+            'svc.modal.networking.inc2': 'إعداد الراوتر والسويتش (أساسي)',
+            'svc.modal.networking.inc3': 'استكشاف أخطاء الشبكة',
+            'svc.modal.networking.inc4': 'مهام متعلقة بـ Cisco',
+
+            'svc.modal.backend.long': 'واجهات REST API آمنة وقابلة للتوسع مبنية بـ Node.js و Express — مع مصادقة مناسبة وتحقق وهيكل نظيف.',
+            'svc.modal.backend.inc1': 'تصميم وتطوير REST API',
+            'svc.modal.backend.inc2': 'مصادقة وتفويض JWT',
+            'svc.modal.backend.inc3': 'التحقق من الطلبات ومعالجة الأخطاء',
+            'svc.modal.backend.inc4': 'توثيق API واختبار Postman',
+
+            'svc.modal.consult.long': 'نصائح عملية وصادقة حول مشروع الويب أو قاعدة البيانات أو إعداد تقنية المعلومات — لمساعدتك في اختيار النهج الصحيح قبل الاستثمار في الوقت والمال.',
+            'svc.modal.consult.inc1': 'تحديد نطاق المشروع والتخطيط',
+            'svc.modal.consult.inc2': 'توصيات حزمة التقنيات',
+            'svc.modal.consult.inc3': 'مراجعة الكود والملاحظات',
+            'svc.modal.consult.inc4': 'إرشادات أفضل الممارسات'
         },
 
         fr: {
@@ -2752,10 +3585,15 @@
             'featured.cta': 'Voir tous les projets',
             'project.view': 'Voir le projet',
             'project.meta.fullstack': 'Full-Stack',
+            'project.meta.frontend': 'Frontend',
             'project.cleanspark.tag': 'Gestion de services de nettoyage',
             'project.cleanspark.desc': 'Un système de gestion de services de nettoyage qui numérise clients, réservations, personnel, paiements, planification et administration.',
             'project.lams.tag': 'Gestion administrative locale',
             'project.lams.desc': "Un système de gestion administrative locale reliant les citoyens à l'administration de quartier pour les services, paiements et documents.",
+            'project.ssms.tag': 'Gestion du personnel scolaire',
+            'project.ssms.desc': "Un système de gestion du personnel scolaire — profils, rôles, présence et opérations administratives liées au personnel.",
+            'project.portfolio.tag': 'Site Portfolio',
+            'project.portfolio.desc': "Un site portfolio personnel premium, entièrement animé et multilingue, construit à partir de zéro avec HTML, CSS et JavaScript vanilla.",
 
             /* ---------- QUICK ABOUT ---------- */
             'quickabout.label': '/ 02 — À propos',
@@ -2856,6 +3694,14 @@
             'about.cta.desc': 'Explorez mes projets et mon expérience, ou contactez-moi directement.',
             'about.cta.projects': 'Voir les projets',
             'about.cta.contact': 'Me contacter',
+
+            'about.info.hint.tap': 'Appuyez pour célébrer 🎉',
+            'about.info.hint.map': 'Ouvrir dans Google Maps ↗',
+            'about.info.hint.learn': 'Appuyez pour explorer 📚',
+            'about.info.hint.play': 'Appuyez pour jouer ⚽',
+            'about.anim.birthday': '🎉 Joyeux anniversaire, DAU !',
+            'about.anim.education': '📚 Toujours apprendre, toujours grandir',
+            'about.anim.hobbies': '⚽ Le jeu commence !',
 
             /* ---------- SKILLS PAGE ---------- */
             'skills.hero.label': '/ Mes compétences',
@@ -3016,6 +3862,7 @@
 
             'proj.filter.all': 'Tous les projets',
             'proj.filter.fullstack': 'Full-Stack',
+            'proj.filter.frontend': 'Frontend',
             'proj.filter.web': 'Systèmes Web',
             'proj.filter.local': 'Contexte local',
 
@@ -3040,7 +3887,6 @@
             'project.workflow.application': 'Demande',
             'project.workflow.document': 'Document',
 
-            /* CleanSpark modal */
             'proj.modal.cleanspark.about.title': 'Système de gestion des services de nettoyage',
             'proj.modal.cleanspark.about.p1': "CleanSpark est conçu pour aider les entreprises de nettoyage à gérer numériquement les clients, les réservations, le personnel, les services de nettoyage, les paiements, la planification et les opérations administratives.",
             'proj.modal.cleanspark.about.p2': "L'idée est venue de problèmes réels observés en travaillant dans l'environnement d'une entreprise de nettoyage à Zanzibar.",
@@ -3065,7 +3911,6 @@
             'proj.modal.cleanspark.features.6': "Le superviseur confirme l'arrivée, le début du service et l'achèvement",
             'proj.modal.cleanspark.role.value': "J'ai conçu et développé l'ensemble du système — frontend, backend et base de données — en tant que projet full-stack.",
 
-            /* LAMS modal */
             'proj.modal.lams.about.title': "Système de gestion de l'administration locale",
             'proj.modal.lams.about.p1': "LAMS est un système de gestion de l'administration locale conçu pour la gestion des services communautaires à Zanzibar. Il se concentre sur l'interaction entre l'administration locale et les citoyens.",
             'proj.modal.lams.about.p2': "Le système gère numériquement les services de l'administration locale, les citoyens, les demandes, les annonces, les paiements, les documents et les activités administratives.",
@@ -3096,6 +3941,48 @@
             'proj.cta.contact': 'Démarrer une conversation',
             'proj.cta.github': 'Voir sur GitHub',
 
+            'proj.modal.ssms.about.title': 'Système de gestion du personnel scolaire',
+            'proj.modal.ssms.about.p1': "Le système de gestion du personnel scolaire est un système administratif basé sur le web conçu pour organiser et gérer les informations du personnel scolaire, les rôles et les opérations quotidiennes liées au personnel.",
+            'proj.modal.ssms.about.p2': "Il fournit une interface numérique propre et structurée permettant aux administrateurs de gérer les dossiers du personnel sans dépendre du papier ou de feuilles de calcul dispersées.",
+            'proj.modal.ssms.problem.title': 'Problèmes traités',
+            'proj.modal.ssms.problem.1': 'Tenue manuelle des dossiers du personnel',
+            'proj.modal.ssms.problem.2': 'Difficulté à suivre les rôles et responsabilités du personnel',
+            'proj.modal.ssms.problem.3': 'Flux de travail administratifs lents',
+            'proj.modal.ssms.problem.4': "Pas d'informations numériques centralisées sur le personnel",
+            'proj.modal.ssms.solution.title': 'Solution',
+            'proj.modal.ssms.solution.1': 'Dossiers du personnel centralisés dans un système numérique',
+            'proj.modal.ssms.solution.2': 'Profils du personnel structurés avec rôles et détails',
+            'proj.modal.ssms.solution.3': "Tableau de bord administratif simple pour un usage quotidien",
+            'proj.modal.ssms.solution.4': 'Informations sur le personnel organisées et imprimables',
+            'proj.modal.ssms.features.title': 'Ce que fait le système',
+            'proj.modal.ssms.features.1': 'Enregistrement du personnel et gestion des profils',
+            'proj.modal.ssms.features.2': 'Attribution des rôles et responsabilités',
+            'proj.modal.ssms.features.3': 'Annuaire du personnel consultable',
+            'proj.modal.ssms.features.4': "Tableau de bord administratif d'aperçu",
+            'proj.modal.ssms.features.5': 'Interface web propre et responsive',
+            'proj.modal.ssms.role.value': "J'ai conçu et développé le frontend et la structure du système en tant que projet pratique de gestion scolaire.",
+
+            'proj.modal.portfolio.about.title': 'Site Portfolio',
+            'proj.modal.portfolio.about.p1': "Un site portfolio personnel premium, entièrement animé, conçu et construit à partir de zéro en utilisant uniquement HTML, CSS et JavaScript vanilla — aucun framework, aucun outil de build.",
+            'proj.modal.portfolio.about.p2': "Il sert de hub central pour présenter mes projets, compétences, expériences et services aux recruteurs, clients et collaborateurs.",
+            'proj.modal.portfolio.problem.title': 'Problèmes traités',
+            'proj.modal.portfolio.problem.1': 'Aucun endroit unique pour présenter les projets et compétences',
+            'proj.modal.portfolio.problem.2': 'Difficulté à atteindre une audience internationale',
+            'proj.modal.portfolio.problem.3': 'Besoin d\'une présence professionnelle en ligne',
+            'proj.modal.portfolio.solution.title': 'Solution',
+            'proj.modal.portfolio.solution.1': 'Un hub portfolio premium unique pour tous les travaux',
+            'proj.modal.portfolio.solution.2': 'Support multilingue (EN, SW, ZH, AR, FR)',
+            'proj.modal.portfolio.solution.3': 'Bascule thème sombre / clair',
+            'proj.modal.portfolio.solution.4': 'Curseur personnalisé, particules et animations cinématographiques',
+            'proj.modal.portfolio.features.title': 'Ce que le site contient',
+            'proj.modal.portfolio.features.1': '9 pages entièrement conçues (Accueil, À propos, Compétences, Expérience, Projets, Certificats, Services, Réalisations, Contact)',
+            'proj.modal.portfolio.features.2': 'Système de traduction complet en 5 langues avec support RTL arabe',
+            'proj.modal.portfolio.features.3': 'Thème sombre / clair avec préférence persistante',
+            'proj.modal.portfolio.features.4': 'Curseur animé personnalisé + fond canvas à particules',
+            'proj.modal.portfolio.features.5': 'Révélation au scroll, compteurs animés et modales de projets interactives',
+            'proj.modal.portfolio.features.6': 'Design entièrement responsive + balisage accessible',
+            'proj.modal.portfolio.role.value': "Concepteur et développeur unique — j'ai tout construit à partir de zéro, y compris le système de design, les animations, le moteur i18n et le commutateur de thème.",
+
             /* ---------- CERTIFICATES PAGE ---------- */
             'cert.hero.label': '/ Certificats',
             'cert.hero.titleA': 'Certificats &',
@@ -3104,11 +3991,13 @@
             'cert.hero.stat.total': 'Total',
             'cert.hero.stat.tech': 'Technique',
             'cert.hero.stat.academic': 'Académique',
+            'cert.hero.stat.lang': 'Langues',
 
             'cert.filter.all': 'Tous',
             'cert.filter.technical': 'Technique',
             'cert.filter.academic': 'Académique',
             'cert.filter.training': 'Formation',
+            'cert.filter.language': 'Langue',
 
             'cert.empty.label': 'Bientôt disponible',
             'cert.empty.title': 'Les certificats arrivent.',
@@ -3124,6 +4013,42 @@
             'cert.cta.desc': "J'apprends et je construis continuellement. Parlons de ce que je peux apporter à votre équipe.",
             'cert.cta.contact': 'Me contacter',
             'cert.cta.experience': "Voir l'expérience",
+
+            'cert.badge.firstClass': 'Première classe',
+            'cert.badge.supervisor': 'Signé par le superviseur',
+            'cert.card.view': 'Voir le certificat',
+
+            'cert.item.cbit.title': "Business des Technologies de l'Information",
+            'cert.item.cbit.issuer': 'Université de Zanzibar',
+            'cert.item.cbit.grade': 'Mention : Première classe · GPA élevé',
+            'cert.item.cbit.desc': "J'ai terminé le cours Business des Technologies de l'Information (B.IT) avec la mention Première classe et un GPA élevé.",
+
+            'cert.item.webprojects.title': 'Achèvement de projets web',
+            'cert.item.webprojects.issuer': 'Superviseur de terrain · ICE',
+            'cert.item.webprojects.grade': 'Achevé avec distinction',
+            'cert.item.webprojects.desc': 'Certificat d\'achèvement pour les projets de développement web, signé par mon superviseur de terrain.',
+
+            'cert.item.hsk2.title': 'HSK Niveau 2 — Chinois',
+            'cert.item.hsk2.issuer': 'Test de compétence en langue chinoise',
+            'cert.item.hsk2.desc': "J'ai réussi l'examen HSK Niveau 2, démontrant une compétence de base en langue chinoise.",
+
+            'cert.item.hsk1.title': 'HSK Niveau 1 — Chinois',
+            'cert.item.hsk1.issuer': 'Test de compétence en langue chinoise',
+            'cert.item.hsk1.desc': "J'ai réussi l'examen HSK Niveau 1, démontrant des compétences fondamentales en langue chinoise.",
+
+            'cert.item.engHigh.title': 'Anglais avancé — Terminé',
+            'cert.item.engHigh.issuer': "Programme de compétence en anglais",
+            'cert.item.engHigh.grade': 'Réussi avec de bonnes notes',
+            'cert.item.engHigh.desc': "J'ai terminé avec succès l'examen d'anglais avancé et je l'ai réussi avec de bonnes notes.",
+
+            'cert.item.engStage5.title': 'Anglais Niveau 5 — Terminé',
+            'cert.item.engStage5.issuer': "Programme de compétence en anglais",
+            'cert.item.engStage5.desc': "J'ai terminé l'anglais Niveau 5, progressant dans le programme de compétence en anglais.",
+
+            'cert.item.chemy.title': 'Participation au Club de Chimie',
+            'cert.item.chemy.issuer': 'Club de sciences de niveau O',
+            'cert.item.chemy.period': 'Niveau O',
+            'cert.item.chemy.desc': 'Certificat de participation au Club de Chimie pendant mes études de niveau O.',
 
             /* ---------- SERVICES PAGE ---------- */
             'svc.hero.label': '/ Services',
@@ -3280,6 +4205,54 @@
             'ach.cta.contact': 'Me contacter',
             'ach.cta.projects': 'Voir les projets',
 
+            /* ---------- ACHIEVEMENTS PAGE — PHASE 8.5 ---------- */
+            'ach.hero.stat.certs': 'Certificats',
+            'ach.filter.certificate': 'Certificat',
+            'ach.filter.language': 'Langue',
+            'ach.cta.certificates': 'Voir les certificats',
+
+            'ach.timeline.label': '/ Chronologie',
+            'ach.timeline.titleA': 'Parcours des',
+            'ach.timeline.titleB': 'jalons',
+            'ach.timeline.desc': "Un aperçu chronologique de ma croissance au fil des années.",
+            'ach.timeline.2023': 'Anglais Niveau 5 terminé',
+            'ach.timeline.2024': 'HSK 1 et 2 · Anglais avancé',
+            'ach.timeline.2025': 'Business des TI — Première classe',
+            'ach.timeline.2026': '4 projets · Admission au Bachelor · ICE et Nyota',
+
+            'ach.card.cbit.title': "Business des Technologies de l'Information — Première classe",
+            'ach.card.cbit.desc': "J'ai obtenu la mention Première classe avec un GPA élevé dans le cours Business des Technologies de l'Information à l'Université de Zanzibar.",
+            'ach.card.cbit.tag': 'Première classe',
+
+            'ach.card.webprojects.title': 'Achèvement des projets web — Certifié par le superviseur',
+            'ach.card.webprojects.desc': "J'ai reçu un certificat officiel d'achèvement pour les projets de développement web, signé par mon superviseur de terrain à ICE.",
+            'ach.card.webprojects.tag': 'Signé',
+
+            'ach.card.hsk1.title': 'Chinois HSK Niveau 1',
+            'ach.card.hsk1.desc': "J'ai réussi l'examen HSK Niveau 1 — test de compétence fondamental en langue chinoise.",
+
+            'ach.card.hsk2.title': 'Chinois HSK Niveau 2',
+            'ach.card.hsk2.desc': "J'ai réussi l'examen HSK Niveau 2 — test de compétence intermédiaire en langue chinoise.",
+
+            'ach.card.engHigh.title': 'Anglais avancé — Terminé',
+            'ach.card.engHigh.desc': "J'ai terminé avec succès l'examen d'anglais avancé et je l'ai réussi avec de bonnes notes.",
+            'ach.card.engHigh.tag': 'Bonnes notes',
+
+            'ach.card.engStage5.title': 'Anglais Niveau 5 — Terminé',
+            'ach.card.engStage5.desc': "J'ai terminé l'anglais Niveau 5, progressant dans le programme de compétence en anglais.",
+
+            'ach.card.chemy.title': 'Participation au Club de Chimie',
+            'ach.card.chemy.desc': "J'ai participé activement au Club de Chimie pendant mes études de niveau O, en construisant une base pour la pensée analytique.",
+            'ach.card.chemy.period': 'Niveau O',
+
+            'ach.card.ssms.title': 'Développement du système de gestion du personnel scolaire',
+            'ach.card.ssms.desc': "J'ai construit un système web de gestion du personnel scolaire pour organiser les dossiers, rôles et opérations administratives.",
+            'ach.card.ssms.tag': 'Full-Stack',
+
+            'ach.card.portfolio.title': 'Création de mon portfolio personnel',
+            'ach.card.portfolio.desc': "J'ai conçu et développé un site portfolio premium, multilingue et entièrement animé à partir de zéro.",
+            'ach.card.portfolio.tag': 'Frontend',
+
             /* ---------- CONTACT PAGE ---------- */
             'contact.hero.label': '/ Contact',
             'contact.hero.titleA': 'Construisons quelque chose',
@@ -3363,7 +4336,77 @@
             'e404.desc': "La page que vous recherchez n'existe pas, a été déplacée ou est temporairement indisponible. Remettons-nous sur les rails.",
             'e404.home': "Retour à l'accueil",
             'e404.contact': 'Me contacter',
-            'e404.quickLabel': 'Liens rapides'
+            'e404.quickLabel': 'Liens rapides',
+
+            /* ---------- SERVICE MODAL DETAILS (PHASE NEW) ---------- */
+            'svc.card.details': 'Voir les détails',
+            'svc.fab': 'Engagez-moi',
+            'svc.modal.about': 'À propos de ce service',
+            'svc.modal.includes': 'Ce qui est inclus',
+            'svc.modal.tech': 'Technologies utilisées',
+            'svc.modal.close': 'Fermer',
+
+            'svc.modal.web-dev.long': "Je crée des sites web rapides et responsives qui s'affichent parfaitement sur téléphones, tablettes et ordinateurs — en utilisant un HTML, CSS et JavaScript propres et modernes.",
+            'svc.modal.web-dev.inc1': 'Design web moderne sur mesure',
+            'svc.modal.web-dev.inc2': 'Mise en page entièrement responsive (mobile, tablette, desktop)',
+            'svc.modal.web-dev.inc3': 'Testé sur plusieurs navigateurs',
+            'svc.modal.web-dev.inc4': 'Structure optimisée pour le SEO',
+            'svc.modal.web-dev.inc5': 'Déploiement et support de lancement',
+
+            'svc.modal.fullstack.long': "De l'interface frontend à l'API backend et à la base de données, je conçois et construis des applications web complètes qui résolvent de vrais problèmes.",
+            'svc.modal.fullstack.inc1': "Développement de l'interface frontend",
+            'svc.modal.fullstack.inc2': "Développement de l'API backend",
+            'svc.modal.fullstack.inc3': 'Conception et intégration de bases de données',
+            'svc.modal.fullstack.inc4': 'Authentification et gestion des utilisateurs',
+            'svc.modal.fullstack.inc5': 'Déploiement et support après lancement',
+
+            'svc.modal.website.long': "Construction complète de sites web — du concept et de la conception au déploiement final — à usage personnel, commercial ou organisationnel.",
+            'svc.modal.website.inc1': "Site web sur mesure du concept au lancement",
+            'svc.modal.website.inc2': 'Sites multi-pages ou une seule page',
+            'svc.modal.website.inc3': "Sites d'entreprise, portfolio ou organisation",
+            'svc.modal.website.inc4': "Déploiement sur GitHub Pages ou hébergement",
+
+            'svc.modal.infosys.long': "Systèmes d'information sur mesure conçus autour de la façon dont votre entreprise ou organisation fonctionne réellement — pas des modèles génériques.",
+            'svc.modal.infosys.inc1': 'Analyse des exigences et conception du système',
+            'svc.modal.infosys.inc2': 'Modélisation des flux de travail',
+            'svc.modal.infosys.inc3': 'Structure de base de données et de reporting',
+            'svc.modal.infosys.inc4': 'Rôles et permissions des utilisateurs',
+
+            'svc.modal.dbdev.long': 'Des schémas de bases de données propres, normalisés et efficaces conçus pour alimenter de vraies applications sans ralentir.',
+            'svc.modal.dbdev.inc1': 'Diagramme ER et conception de schéma',
+            'svc.modal.dbdev.inc2': 'Structures de tables normalisées',
+            'svc.modal.dbdev.inc3': 'Conception des clés primaires et étrangères',
+            'svc.modal.dbdev.inc4': 'Scripts SQL et fichiers de migration',
+
+            'svc.modal.dbmgmt.long': "Gestion, maintenance et optimisation continues de la base de données pour que vos données restent saines, rapides et sûres.",
+            'svc.modal.dbmgmt.inc1': 'Écriture et optimisation de requêtes',
+            'svc.modal.dbmgmt.inc2': 'Sauvegardes et procédures de restauration',
+            'svc.modal.dbmgmt.inc3': "Réglage des index et des performances",
+            'svc.modal.dbmgmt.inc4': 'Nettoyage et structuration des données',
+
+            'svc.modal.itsupport.long': "Support informatique fiable pour les particuliers, les petites entreprises et les organisations — du dépannage à la gestion complète de l'informatique.",
+            'svc.modal.itsupport.inc1': 'Installation et dépannage de Windows 10/11',
+            'svc.modal.itsupport.inc2': 'Installation et support de Microsoft Office',
+            'svc.modal.itsupport.inc3': "Administration générale de l'informatique",
+            'svc.modal.itsupport.inc4': 'Dépannage matériel et logiciel',
+
+            'svc.modal.networking.long': "Configuration, paramétrage et dépannage réseau de base — avec des tâches liées à Cisco si nécessaire.",
+            'svc.modal.networking.inc1': 'Configuration réseau de base',
+            'svc.modal.networking.inc2': 'Configuration de routeur et switch (basique)',
+            'svc.modal.networking.inc3': 'Dépannage réseau',
+            'svc.modal.networking.inc4': 'Tâches liées à Cisco',
+
+            'svc.modal.backend.long': "API REST sécurisées et évolutives construites avec Node.js et Express — avec authentification appropriée, validation et structure propre.",
+            'svc.modal.backend.inc1': 'Conception et développement de REST API',
+            'svc.modal.backend.inc2': 'Authentification et autorisation JWT',
+            'svc.modal.backend.inc3': 'Validation des requêtes et gestion des erreurs',
+            'svc.modal.backend.inc4': 'Documentation API et test Postman',
+
+            'svc.modal.consult.long': "Conseils pratiques et honnêtes sur votre projet web, votre base de données ou votre configuration informatique — pour vous aider à choisir la bonne approche avant d'investir du temps et de l'argent.",
+            'svc.modal.consult.inc1': 'Cadrage et planification du projet',
+            'svc.modal.consult.inc2': 'Recommandations de stack technologique',
+            'svc.modal.consult.inc3': 'Revue de code et retours',
+            'svc.modal.consult.inc4': 'Conseils de bonnes pratiques'
         }
     };
 

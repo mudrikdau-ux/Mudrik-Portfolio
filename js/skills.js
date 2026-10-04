@@ -26,7 +26,6 @@
 
         bars.forEach(bar => io.observe(bar));
     } else {
-        // Fallback: show all instantly
         bars.forEach(bar => {
             const level = parseInt(bar.dataset.level, 10) || 0;
             bar.style.setProperty('--fill', level + '%');
@@ -50,18 +49,18 @@
         function loop() {
             cx += (mx - cx) * 0.06;
             cy += (my - cy) * 0.06;
-
             visual.style.transform = `translate(${cx * 12}px, ${cy * 12}px)`;
-
             requestAnimationFrame(loop);
         }
         loop();
     }
 
-    /* ---------- TECH CARD MOUSE GLOW ---------- */
-    const techCards = document.querySelectorAll('.tech-card, .soft-card, .skill-cat, .learning-item');
+    /* ---------- CARD MOUSE GLOW ---------- */
+    const glowTargets = document.querySelectorAll(
+        '.tech-card, .skill-cat, .learning-item, .flip-card'
+    );
 
-    techCards.forEach(card => {
+    glowTargets.forEach(card => {
         card.addEventListener('mousemove', (e) => {
             const rect = card.getBoundingClientRect();
             const x = ((e.clientX - rect.left) / rect.width) * 100;
@@ -105,10 +104,47 @@
         stats.forEach(s => cIO.observe(s));
     }
 
-    /* ---------- RANDOM SUBTLE FLOAT ON TECH CARDS ---------- */
-    techCards.forEach((card, i) => {
-        if (card.classList.contains('tech-card')) {
-            card.style.transitionDelay = `${(i % 8) * 0.04}s`;
+    /* ---------- FLIP CARDS (mobile tap + keyboard) ---------- */
+    const flipCards = document.querySelectorAll('.flip-card');
+
+    flipCards.forEach(card => {
+        // Make it focusable + keyboard-toggleable
+        card.setAttribute('tabindex', '0');
+        card.setAttribute('role', 'button');
+
+        card.addEventListener('keydown', (e) => {
+            if (e.key === 'Enter' || e.key === ' ') {
+                e.preventDefault();
+                card.classList.toggle('is-flipped');
+            }
+        });
+
+        // Tap to flip on touch devices
+        card.addEventListener('click', () => {
+            if (window.matchMedia('(hover: none)').matches) {
+                card.classList.toggle('is-flipped');
+            }
+        });
+    });
+
+    /* ---------- TECH CARD EXTERNAL LINK SAFETY ---------- */
+    document.querySelectorAll('a[target="_blank"]').forEach(link => {
+        // Ensure rel is set (in case HTML missed it)
+        const rel = link.getAttribute('rel') || '';
+        if (!rel.includes('noopener')) {
+            link.setAttribute('rel', (rel + ' noopener').trim());
+        }
+    });
+
+    /* ---------- STAGGER FOR TECH CARDS ---------- */
+    document.querySelectorAll('.tech-card').forEach((card, i) => {
+        card.style.transitionDelay = `${(i % 8) * 0.04}s`;
+    });
+
+    /* ---------- STAGGER FOR FLIP CARDS ---------- */
+    document.querySelectorAll('.flip-card').forEach((card, i) => {
+        if (!card.hasAttribute('data-delay')) {
+            card.style.transitionDelay = `${(i % 4) * 0.06}s`;
         }
     });
 

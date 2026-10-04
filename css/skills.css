@@ -145,6 +145,24 @@
     border: 1px solid var(--border-accent);
     box-shadow: 0 20px 60px rgba(0, 229, 255, 0.25), inset 0 0 40px rgba(0, 229, 255, 0.08);
     animation: corePulse 4s ease-in-out infinite;
+    overflow: hidden;
+}
+
+.skills-orbit__core::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    border-radius: 50%;
+    background: conic-gradient(
+        from 0deg,
+        transparent 0%,
+        rgba(255, 255, 255, 0.25) 30%,
+        transparent 60%
+    );
+    animation: ringSpin 8s linear infinite;
+    opacity: 0.6;
+    pointer-events: none;
+    mix-blend-mode: overlay;
 }
 
 @keyframes corePulse {
@@ -153,6 +171,8 @@
 }
 
 .skills-orbit__core-num {
+    position: relative;
+    z-index: 1;
     font-size: clamp(1.8rem, 3.5vw, 2.6rem);
     font-weight: 800;
     letter-spacing: -0.02em;
@@ -163,6 +183,8 @@
 }
 
 .skills-orbit__core-label {
+    position: relative;
+    z-index: 1;
     font-family: var(--font-mono);
     font-size: 0.62rem;
     letter-spacing: 0.22em;
@@ -320,14 +342,39 @@
     border-radius: var(--r-full);
     box-shadow: 0 0 12px var(--accent-glow);
     transition: width 1.4s var(--ease);
+    overflow: hidden;
+}
+
+.skill-bar__fill::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(
+        90deg,
+        transparent 0%,
+        rgba(255, 255, 255, 0.5) 50%,
+        transparent 100%);
+    transform: translateX(-100%);
 }
 
 .skill-bar.is-visible .skill-bar__fill {
     width: var(--fill, 0%);
 }
 
+.skill-bar.is-visible .skill-bar__fill::after {
+    animation: skillShimmer 2.2s ease-in-out infinite;
+}
+
+@keyframes skillShimmer {
+    0% { transform: translateX(-100%); }
+    100% { transform: translateX(100%); }
+}
+
 /* =========================================================
-   TECH STACK
+   TECH STACK (INTERACTIVE LINKS)
    ========================================================= */
 .skills-stack {
     padding: 100px 0;
@@ -341,6 +388,7 @@
 }
 
 .tech-card {
+    position: relative;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -356,34 +404,96 @@
                 border-color var(--dur-2) var(--ease),
                 box-shadow var(--dur-2) var(--ease),
                 background var(--dur-2) var(--ease);
+    overflow: hidden;
+    text-decoration: none;
+    color: inherit;
     cursor: default;
 }
 
-.tech-card i {
+.tech-card--link {
+    cursor: pointer;
+}
+
+.tech-card__icon {
+    display: grid;
+    place-items: center;
     font-size: 2rem;
     transition: transform var(--dur-2) var(--ease);
 }
 
-.tech-card span {
+.tech-card__name {
     font-size: 0.82rem;
     font-weight: 600;
     color: var(--text-1);
     letter-spacing: 0.02em;
+    transition: color var(--dur-2) var(--ease);
+}
+
+.tech-card__hint {
+    position: absolute;
+    top: 12px;
+    right: 12px;
+    display: grid;
+    place-items: center;
+    width: 22px;
+    height: 22px;
+    border-radius: 50%;
+    background: var(--accent-soft);
+    color: var(--accent);
+    font-size: 0.6rem;
+    opacity: 0;
+    transform: scale(0.5) rotate(-30deg);
+    transition: opacity var(--dur-2) var(--ease),
+                transform var(--dur-2) var(--ease);
+}
+
+.tech-card--link:hover .tech-card__hint,
+.tech-card--link:focus-visible .tech-card__hint {
+    opacity: 1;
+    transform: scale(1) rotate(0);
+}
+
+.tech-card--link::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    border-radius: inherit;
+    background: radial-gradient(
+        220px circle at var(--mx, 50%) var(--my, 50%),
+        rgba(0, 229, 255, 0.14),
+        transparent 60%);
+    opacity: 0;
+    transition: opacity var(--dur-2) var(--ease);
+    pointer-events: none;
+}
+
+.tech-card--link:hover::before,
+.tech-card--link:focus-visible::before {
+    opacity: 1;
 }
 
 .tech-card:hover {
-    transform: translateY(-6px);
+    transform: translateY(-8px);
     border-color: var(--border-accent);
     background: var(--surface-3);
-    box-shadow: 0 16px 40px rgba(0, 0, 0, 0.4), 0 0 30px rgba(0, 229, 255, 0.1);
+    box-shadow: 0 20px 50px rgba(0, 0, 0, 0.45), 0 0 32px rgba(0, 229, 255, 0.18);
 }
 
-.tech-card:hover i {
-    transform: scale(1.18) rotate(-6deg);
+.tech-card:hover .tech-card__icon {
+    transform: scale(1.22) rotate(-8deg);
+}
+
+.tech-card:hover .tech-card__name {
+    color: var(--text-0);
+}
+
+.tech-card--link:focus-visible {
+    outline: 2px solid var(--accent);
+    outline-offset: 3px;
 }
 
 /* =========================================================
-   PROFESSIONAL SKILLS
+   PROFESSIONAL SKILLS (FLIP CARDS)
    ========================================================= */
 .skills-soft {
     padding: 100px 0;
@@ -396,24 +506,7 @@
     gap: 20px;
 }
 
-.soft-card {
-    padding: 26px 22px;
-    background: var(--glass-bg);
-    border: 1px solid var(--border-1);
-    border-radius: var(--r-md);
-    backdrop-filter: blur(14px);
-    -webkit-backdrop-filter: blur(14px);
-    transition: transform var(--dur-2) var(--ease),
-                border-color var(--dur-2) var(--ease),
-                box-shadow var(--dur-2) var(--ease);
-}
-
-.soft-card:hover {
-    transform: translateY(-6px);
-    border-color: var(--border-accent);
-    box-shadow: 0 20px 50px rgba(0, 0, 0, 0.4), 0 0 30px rgba(0, 229, 255, 0.08);
-}
-
+/* Old soft-card styles kept for icon/title reuse inside flip cards */
 .soft-card__icon {
     display: grid;
     place-items: center;
@@ -435,14 +528,100 @@
     line-height: 1.3;
 }
 
-.soft-card__desc {
-    font-size: 0.82rem;
+/* Flip cards */
+.flip-card {
+    position: relative;
+    min-height: 220px;
+    perspective: 1200px;
+    cursor: pointer;
+    -webkit-tap-highlight-color: transparent;
+}
+
+.flip-card__inner {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    min-height: 220px;
+    transform-style: preserve-3d;
+    transition: transform 0.8s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.flip-card:hover .flip-card__inner,
+.flip-card:focus-within .flip-card__inner,
+.flip-card.is-flipped .flip-card__inner {
+    transform: rotateY(180deg);
+}
+
+.flip-card__face {
+    position: absolute;
+    inset: 0;
+    padding: 26px 22px;
+    background: var(--glass-bg);
+    border: 1px solid var(--border-1);
+    border-radius: var(--r-md);
+    backdrop-filter: blur(14px);
+    -webkit-backdrop-filter: blur(14px);
+    display: flex;
+    flex-direction: column;
+    backface-visibility: hidden;
+    -webkit-backface-visibility: hidden;
+    transition: border-color var(--dur-2) var(--ease),
+                box-shadow var(--dur-2) var(--ease);
+    overflow: hidden;
+}
+
+.flip-card:hover .flip-card__face {
+    border-color: var(--border-accent);
+    box-shadow: 0 20px 50px rgba(0, 0, 0, 0.4), 0 0 30px rgba(0, 229, 255, 0.1);
+}
+
+.flip-card__face--front {
+    align-items: flex-start;
+    justify-content: flex-start;
+    gap: 14px;
+}
+
+.flip-card__face--front .soft-card__icon {
+    margin-bottom: 6px;
+}
+
+.flip-card__hint {
+    margin-top: auto;
+    align-self: flex-end;
+    display: inline-grid;
+    place-items: center;
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+    background: var(--surface-2);
+    border: 1px solid var(--border-1);
+    color: var(--accent);
+    font-size: 0.75rem;
+    transition: transform var(--dur-3) var(--ease),
+                background var(--dur-2) var(--ease);
+}
+
+.flip-card:hover .flip-card__hint {
+    transform: rotate(180deg);
+    background: var(--accent-soft);
+}
+
+.flip-card__face--back {
+    transform: rotateY(180deg);
+    justify-content: center;
+    align-items: flex-start;
+    background: linear-gradient(135deg, rgba(0, 229, 255, 0.08), rgba(168, 85, 247, 0.08));
+    border-color: var(--border-accent);
+}
+
+.flip-card__text {
+    font-size: 0.92rem;
+    line-height: 1.65;
     color: var(--text-1);
-    line-height: 1.6;
 }
 
 /* =========================================================
-   CURRENTLY LEARNING
+   CURRENTLY LEARNING (DEEP LINKS)
    ========================================================= */
 .skills-learning {
     padding: 100px 0;
@@ -469,6 +648,12 @@
     transition: transform var(--dur-2) var(--ease),
                 border-color var(--dur-2) var(--ease),
                 box-shadow var(--dur-2) var(--ease);
+}
+
+.learning-item--link {
+    text-decoration: none;
+    color: inherit;
+    cursor: pointer;
 }
 
 .learning-item:hover {
@@ -499,6 +684,29 @@
     font-size: 0.9rem;
     color: var(--text-1);
     line-height: 1.6;
+}
+
+.learning-item__link-hint {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    margin-top: 10px;
+    font-family: var(--font-mono);
+    font-size: 0.7rem;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--text-3);
+    transition: color var(--dur-2) var(--ease), gap var(--dur-2) var(--ease);
+}
+
+.learning-item--link:hover .learning-item__link-hint {
+    color: var(--accent);
+    gap: 12px;
+}
+
+.learning-item--link:focus-visible {
+    outline: 2px solid var(--accent);
+    outline-offset: 3px;
 }
 
 .learning-item__icon {
@@ -592,16 +800,20 @@
    ========================================================= */
 [data-theme="light"] .skill-cat,
 [data-theme="light"] .tech-card,
-[data-theme="light"] .soft-card,
+[data-theme="light"] .flip-card__face,
 [data-theme="light"] .learning-item {
     background: rgba(255, 255, 255, 0.7);
+}
+
+[data-theme="light"] .flip-card__face--back {
+    background: linear-gradient(135deg, rgba(0, 119, 255, 0.08), rgba(124, 58, 237, 0.08));
 }
 
 [data-theme="light"] .skills-cta__inner {
     background: linear-gradient(135deg, rgba(0, 119, 255, 0.06), rgba(124, 58, 237, 0.06));
 }
 
-[data-theme="light"] .tech-card span {
+[data-theme="light"] .tech-card__name {
     color: var(--text-0);
 }
 
@@ -679,6 +891,15 @@
         grid-template-columns: 1fr;
     }
 
+    .flip-card,
+    .flip-card__inner {
+        min-height: 200px;
+    }
+
+    .flip-card__face {
+        padding: 22px 20px;
+    }
+
     .tech-grid {
         grid-template-columns: repeat(2, 1fr);
         gap: 12px;
@@ -688,11 +909,11 @@
         padding: 20px 12px;
     }
 
-    .tech-card i {
+    .tech-card__icon {
         font-size: 1.6rem;
     }
 
-    .tech-card span {
+    .tech-card__name {
         font-size: 0.74rem;
     }
 

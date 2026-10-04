@@ -16,6 +16,7 @@
             title: 'CleanSpark',
             subtitleKey: 'project.cleanspark.tag',
             gradient: 'linear-gradient(135deg, #00e5ff 0%, #0077ff 100%)',
+            image: 'assets/images/projects/csms.png',
             tags: ['Node.js', 'Express', 'MySQL', 'Bootstrap 5', 'JWT', 'Nodemailer'],
             liveUrl: 'https://mudrikdau-ux.github.io/CLEANING-SERVICE-MANAGEMENT-SYSTEM/index.html',
             about: {
@@ -83,6 +84,7 @@
             title: 'LAMS',
             subtitleKey: 'project.lams.tag',
             gradient: 'linear-gradient(135deg, #a855f7 0%, #ec4899 100%)',
+            image: 'assets/images/projects/lams.png',
             tags: ['Node.js', 'Express', 'MySQL', 'JWT', 'Multer', 'Helmet'],
             liveUrl: 'https://mudrikdau-ux.github.io/Local-administrative-management-system/login.html',
             about: {
@@ -141,6 +143,127 @@
             role: {
                 labelKey: 'proj.modal.role.label',
                 valueKey: 'proj.modal.lams.role.value'
+            }
+        },
+
+        ssms: {
+            num: '03',
+            title: 'School Staff Management System',
+            subtitleKey: 'project.ssms.tag',
+            gradient: 'linear-gradient(135deg, #22e07a 0%, #00e5ff 100%)',
+            image: 'assets/images/projects/ssms.png',
+            tags: ['Web App', 'Admin Panel', 'GitHub Pages', 'Staff Management'],
+            liveUrl: 'https://mudrikdau-ux.github.io/rassaly-school/',
+            about: {
+                labelKey: 'proj.modal.about.label',
+                titleKey: 'proj.modal.ssms.about.title',
+                p1Key: 'proj.modal.ssms.about.p1',
+                p2Key: 'proj.modal.ssms.about.p2'
+            },
+            problem: {
+                titleKey: 'proj.modal.ssms.problem.title',
+                items: [
+                    'proj.modal.ssms.problem.1',
+                    'proj.modal.ssms.problem.2',
+                    'proj.modal.ssms.problem.3',
+                    'proj.modal.ssms.problem.4'
+                ]
+            },
+            solution: {
+                titleKey: 'proj.modal.ssms.solution.title',
+                items: [
+                    'proj.modal.ssms.solution.1',
+                    'proj.modal.ssms.solution.2',
+                    'proj.modal.ssms.solution.3',
+                    'proj.modal.ssms.solution.4'
+                ]
+            },
+            features: {
+                labelKey: 'proj.modal.features.label',
+                titleKey: 'proj.modal.ssms.features.title',
+                items: [
+                    'proj.modal.ssms.features.1',
+                    'proj.modal.ssms.features.2',
+                    'proj.modal.ssms.features.3',
+                    'proj.modal.ssms.features.4',
+                    'proj.modal.ssms.features.5'
+                ]
+            },
+            workflow: {
+                labelKey: 'proj.modal.workflow.label',
+                steps: [
+                    'project.workflow.admin',
+                    'project.workflow.staff',
+                    'project.workflow.report'
+                ]
+            },
+            tech: {
+                labelKey: 'proj.modal.tech.label',
+                items: ['HTML', 'CSS', 'JavaScript', 'Bootstrap', 'GitHub Pages']
+            },
+            role: {
+                labelKey: 'proj.modal.role.label',
+                valueKey: 'proj.modal.ssms.role.value'
+            }
+        },
+
+        portfolio: {
+            num: '04',
+            title: 'Portfolio Website',
+            subtitleKey: 'project.portfolio.tag',
+            gradient: 'linear-gradient(135deg, #f59e0b 0%, #a855f7 100%)',
+            image: 'assets/images/projects/portfolio.png',
+            tags: ['HTML5', 'CSS3', 'JavaScript', 'i18n', 'Animations'],
+            liveUrl: 'https://mudrikdau-ux.github.io/Mudrik-Portfolio/',
+            about: {
+                labelKey: 'proj.modal.about.label',
+                titleKey: 'proj.modal.portfolio.about.title',
+                p1Key: 'proj.modal.portfolio.about.p1',
+                p2Key: 'proj.modal.portfolio.about.p2'
+            },
+            problem: {
+                titleKey: 'proj.modal.portfolio.problem.title',
+                items: [
+                    'proj.modal.portfolio.problem.1',
+                    'proj.modal.portfolio.problem.2',
+                    'proj.modal.portfolio.problem.3'
+                ]
+            },
+            solution: {
+                titleKey: 'proj.modal.portfolio.solution.title',
+                items: [
+                    'proj.modal.portfolio.solution.1',
+                    'proj.modal.portfolio.solution.2',
+                    'proj.modal.portfolio.solution.3',
+                    'proj.modal.portfolio.solution.4'
+                ]
+            },
+            features: {
+                labelKey: 'proj.modal.features.label',
+                titleKey: 'proj.modal.portfolio.features.title',
+                items: [
+                    'proj.modal.portfolio.features.1',
+                    'proj.modal.portfolio.features.2',
+                    'proj.modal.portfolio.features.3',
+                    'proj.modal.portfolio.features.4',
+                    'proj.modal.portfolio.features.5',
+                    'proj.modal.portfolio.features.6'
+                ]
+            },
+            workflow: {
+                labelKey: 'proj.modal.workflow.label',
+                steps: [
+                    'project.workflow.customer',
+                    'project.workflow.report'
+                ]
+            },
+            tech: {
+                labelKey: 'proj.modal.tech.label',
+                items: ['HTML5', 'CSS3', 'JavaScript', 'Font Awesome', 'Google Fonts', 'GitHub Pages']
+            },
+            role: {
+                labelKey: 'proj.modal.role.label',
+                valueKey: 'proj.modal.portfolio.role.value'
             }
         }
     };
@@ -211,6 +334,17 @@
         ).join('');
 
         modalContent.innerHTML = `
+            ${data.image ? `
+            <div class="modal-preview">
+                <img
+                    src="${escapeHtml(data.image)}"
+                    alt="${escapeHtml(data.title)} preview"
+                    class="modal-preview__img"
+                    onerror="this.parentElement.style.display='none';"
+                />
+            </div>
+            ` : ''}
+
             <div class="modal-hero">
                 <div class="modal-hero__bg" style="background:${data.gradient};"></div>
                 <div class="modal-hero__grid"></div>
@@ -370,7 +504,6 @@
        RE-RENDER MODAL ON LANGUAGE CHANGE
        ========================================================= */
     document.addEventListener('dau:langChanged', () => {
-        // If modal is open, just close it (simpler and safer)
         if (modal && modal.classList.contains('is-open')) {
             closeModal();
         }

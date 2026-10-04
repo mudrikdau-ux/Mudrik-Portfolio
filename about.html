@@ -371,53 +371,124 @@
 
                 <div class="about-info__grid">
 
-                    <div class="info-card" data-reveal="up">
-                        <div class="info-card__icon"><i class="fa-solid fa-cake-candles"></i></div>
+                    <!-- ============================================
+                         BIRTHDAY (INTERACTIVE — cake + balloons)
+                         ============================================ -->
+                    <button
+                        type="button"
+                        class="info-card info-card--interactive"
+                        data-anim="birthday"
+                        data-reveal="up"
+                        aria-label="Celebrate birthday"
+                    >
+                        <div class="info-card__icon info-card__icon--cake">
+                            <i class="fa-solid fa-cake-candles"></i>
+                        </div>
                         <div class="info-card__body">
                             <span class="info-card__label" data-i18n="about.info.birthday">Birthday</span>
                             <span class="info-card__value">14 October 2005</span>
+                            <span class="info-card__hint" data-i18n="about.info.hint.tap">Tap to celebrate 🎉</span>
                         </div>
-                    </div>
+                        <span class="info-card__spark" aria-hidden="true">
+                            <i class="fa-solid fa-wand-magic-sparkles"></i>
+                        </span>
+                    </button>
 
-                    <div class="info-card" data-reveal="up" data-delay="1">
-                        <div class="info-card__icon"><i class="fa-solid fa-location-dot"></i></div>
+                    <!-- ============================================
+                         LOCATION (OPENS GOOGLE MAPS)
+                         ============================================ -->
+                    <a
+                        href="https://www.google.com/maps/search/?api=1&query=Maungani%2C+Zanzibar%2C+Tanzania"
+                        target="_blank"
+                        rel="noopener"
+                        class="info-card info-card--interactive"
+                        data-anim="location"
+                        data-reveal="up"
+                        data-delay="1"
+                        aria-label="Open Maungani, Zanzibar on Google Maps"
+                    >
+                        <div class="info-card__icon info-card__icon--pin">
+                            <i class="fa-solid fa-location-dot"></i>
+                        </div>
                         <div class="info-card__body">
                             <span class="info-card__label" data-i18n="about.info.location">Location</span>
                             <span class="info-card__value">Maungani, Zanzibar</span>
+                            <span class="info-card__hint" data-i18n="about.info.hint.map">Open in Google Maps ↗</span>
                         </div>
-                    </div>
+                        <span class="info-card__spark" aria-hidden="true">
+                            <i class="fa-solid fa-map-location-dot"></i>
+                        </span>
+                    </a>
 
-                    <div class="info-card" data-reveal="up" data-delay="2">
-                        <div class="info-card__icon"><i class="fa-solid fa-graduation-cap"></i></div>
+                    <!-- ============================================
+                         EDUCATION (INTERACTIVE — books + caps)
+                         ============================================ -->
+                    <button
+                        type="button"
+                        class="info-card info-card--interactive"
+                        data-anim="education"
+                        data-reveal="up"
+                        data-delay="2"
+                        aria-label="Show education animation"
+                    >
+                        <div class="info-card__icon info-card__icon--book">
+                            <i class="fa-solid fa-graduation-cap"></i>
+                        </div>
                         <div class="info-card__body">
                             <span class="info-card__label" data-i18n="about.info.education">Education</span>
                             <span class="info-card__value">B.IT — Zanzibar University</span>
+                            <span class="info-card__hint" data-i18n="about.info.hint.learn">Tap to explore 📚</span>
                         </div>
-                    </div>
+                        <span class="info-card__spark" aria-hidden="true">
+                            <i class="fa-solid fa-book-open-reader"></i>
+                        </span>
+                    </button>
 
-                    <div class="info-card" data-reveal="up" data-delay="3">
+                    <!-- ============================================
+                         EMAIL
+                         ============================================ -->
+                    <a href="mailto:mudrikdau@gmail.com" class="info-card" data-reveal="up" data-delay="3">
                         <div class="info-card__icon"><i class="fa-solid fa-envelope"></i></div>
                         <div class="info-card__body">
                             <span class="info-card__label" data-i18n="about.info.email">Email</span>
-                            <a href="mailto:mudrikdau@gmail.com" class="info-card__value info-card__value--link">mudrikdau@gmail.com</a>
+                            <span class="info-card__value info-card__value--link">mudrikdau@gmail.com</span>
                         </div>
-                    </div>
+                    </a>
 
-                    <div class="info-card" data-reveal="up" data-delay="4">
+                    <!-- ============================================
+                         PHONE
+                         ============================================ -->
+                    <a href="tel:+255621662883" class="info-card" data-reveal="up" data-delay="4">
                         <div class="info-card__icon"><i class="fa-solid fa-phone"></i></div>
                         <div class="info-card__body">
                             <span class="info-card__label" data-i18n="about.info.phone">Phone</span>
-                            <a href="tel:+255621662883" class="info-card__value info-card__value--link">+255 621 662 883</a>
+                            <span class="info-card__value info-card__value--link">+255 621 662 883</span>
                         </div>
-                    </div>
+                    </a>
 
-                    <div class="info-card" data-reveal="up" data-delay="5">
-                        <div class="info-card__icon"><i class="fa-solid fa-futbol"></i></div>
+                    <!-- ============================================
+                         HOBBIES (INTERACTIVE — football + controller)
+                         ============================================ -->
+                    <button
+                        type="button"
+                        class="info-card info-card--interactive"
+                        data-anim="hobbies"
+                        data-reveal="up"
+                        data-delay="5"
+                        aria-label="Show hobbies animation"
+                    >
+                        <div class="info-card__icon info-card__icon--play">
+                            <i class="fa-solid fa-futbol"></i>
+                        </div>
                         <div class="info-card__body">
                             <span class="info-card__label" data-i18n="about.info.hobbies">Hobbies</span>
                             <span class="info-card__value" data-i18n="about.info.hobbiesValue">Football, Video Games</span>
+                            <span class="info-card__hint" data-i18n="about.info.hint.play">Tap to play ⚽</span>
                         </div>
-                    </div>
+                        <span class="info-card__spark" aria-hidden="true">
+                            <i class="fa-solid fa-gamepad"></i>
+                        </span>
+                    </button>
 
                 </div>
             </div>
@@ -641,6 +712,21 @@
             </div>
         </div>
     </footer>
+
+    <!-- ===================================================
+         INTERACTIVE INFO CARD ANIMATIONS
+         (Fullscreen overlay — filled by JS)
+         =================================================== -->
+    <div class="info-anim" id="infoAnim" aria-hidden="true">
+        <div class="info-anim__bg" data-close-anim></div>
+        <div class="info-anim__canvas-wrap">
+            <canvas class="info-anim__canvas" id="infoAnimCanvas"></canvas>
+        </div>
+        <button class="info-anim__close" data-close-anim aria-label="Close animation">
+            <i class="fa-solid fa-xmark"></i>
+        </button>
+        <div class="info-anim__caption" id="infoAnimCaption"></div>
+    </div>
 
     <!-- Scripts -->
     <script src="js/i18n.js"></script>

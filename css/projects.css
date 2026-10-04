@@ -199,6 +199,7 @@
     position: absolute;
     inset: 0;
     opacity: 0.9;
+    z-index: 0;
     transition: transform 0.8s var(--ease), opacity 0.5s var(--ease);
 }
 
@@ -207,21 +208,45 @@
     opacity: 1;
 }
 
+/* Project preview image */
+.proj-card__visual-img {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: top center;
+    z-index: 1;
+    transition: transform 0.8s var(--ease), filter 0.5s var(--ease);
+}
+
+.proj-card:hover .proj-card__visual-img {
+    transform: scale(1.05);
+    filter: brightness(1.08);
+}
+
+.proj-card__visual-img[data-fallback="true"] {
+    display: none;
+}
+
 .proj-card__visual-grid {
     position: absolute;
     inset: 0;
+    z-index: 2;
     background-image:
         linear-gradient(rgba(255, 255, 255, 0.12) 1px, transparent 1px),
         linear-gradient(90deg, rgba(255, 255, 255, 0.12) 1px, transparent 1px);
     background-size: 30px 30px;
-    opacity: 0.55;
+    opacity: 0.35;
     mix-blend-mode: overlay;
+    pointer-events: none;
 }
 
 .proj-card__visual-overlay {
     position: absolute;
     inset: 0;
-    background: linear-gradient(180deg, transparent 40%, rgba(5, 6, 10, 0.6) 100%);
+    z-index: 3;
+    background: linear-gradient(180deg, transparent 45%, rgba(5, 6, 10, 0.75) 100%);
     pointer-events: none;
 }
 
@@ -229,20 +254,21 @@
     position: absolute;
     top: 18px;
     right: 22px;
+    z-index: 4;
     font-family: var(--font-mono);
     font-size: 0.85rem;
     letter-spacing: 0.14em;
-    color: rgba(255, 255, 255, 0.9);
-    z-index: 2;
+    color: rgba(255, 255, 255, 0.95);
+    text-shadow: 0 2px 8px rgba(0, 0, 0, 0.5);
 }
 
 .proj-card__visual-tag {
     position: absolute;
     bottom: 18px;
     left: 22px;
-    z-index: 2;
+    z-index: 4;
     padding: 6px 12px;
-    background: rgba(0, 0, 0, 0.4);
+    background: rgba(0, 0, 0, 0.5);
     border: 1px solid rgba(255, 255, 255, 0.25);
     border-radius: var(--r-full);
     font-size: 0.7rem;
@@ -524,6 +550,27 @@
     overflow-y: auto;
     max-height: calc(100vh - 40px);
     padding: 0;
+}
+
+/* =========================================================
+   MODAL PREVIEW IMAGE
+   ========================================================= */
+.modal-preview {
+    position: relative;
+    width: 100%;
+    max-height: 420px;
+    overflow: hidden;
+    background: var(--bg-2);
+    border-bottom: 1px solid var(--border-1);
+}
+
+.modal-preview__img {
+    width: 100%;
+    height: auto;
+    max-height: 420px;
+    object-fit: cover;
+    object-position: top center;
+    display: block;
 }
 
 /* Modal hero */
@@ -850,6 +897,14 @@
     .modal-actions .btn {
         flex: 1 1 100%;
         justify-content: center;
+    }
+
+    .modal-preview {
+        max-height: 240px;
+    }
+
+    .modal-preview__img {
+        max-height: 240px;
     }
 }
 

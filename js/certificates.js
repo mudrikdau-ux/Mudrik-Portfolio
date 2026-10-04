@@ -9,53 +9,68 @@
 
     /* =========================================================
        CERTIFICATE DATA
-       ---------------------------------------------------------
-       HOW TO ADD A CERTIFICATE:
-       1. Place the certificate image at:
-          assets/images/certificates/your-cert.jpg
-       2. Add an entry below like:
-          myCert: {
-              image: 'assets/images/certificates/your-cert.jpg',
-              titleKey: 'cert.item.mycert.title',
-              issuerKey: 'cert.item.mycert.issuer',
-              date: '2026',
-              category: 'technical',
-              descKey: 'cert.item.mycert.desc',
-              viewUrl: 'assets/images/certificates/your-cert.jpg'
-          }
-       3. Add the corresponding card HTML inside <div class="cert-grid"> in certificates.html
-       4. Remove the `hidden` attribute from #certGrid and delete/hide #certEmpty
        ========================================================= */
     const CERTIFICATES = {
-        // Example entry (uncomment and edit when you have a real certificate):
-        // exampleCert: {
-        //     image: 'assets/images/certificates/example.jpg',
-        //     titleKey: 'cert.item.example.title',
-        //     issuerKey: 'cert.item.example.issuer',
-        //     date: '2026',
-        //     category: 'technical',
-        //     descKey: 'cert.item.example.desc',
-        //     viewUrl: 'assets/images/certificates/example.jpg'
-        // }
-    };
-
-    /* =========================================================
-       DETECT EMPTY STATE
-       ========================================================= */
-    const grid = document.getElementById('certGrid');
-    const empty = document.getElementById('certEmpty');
-
-    const hasCerts = Object.keys(CERTIFICATES).length > 0;
-
-    if (grid) {
-        if (hasCerts) {
-            grid.removeAttribute('hidden');
-            if (empty) empty.style.display = 'none';
-        } else {
-            grid.setAttribute('hidden', '');
-            if (empty) empty.style.display = '';
+        cbit: {
+            image: 'assets/images/certificates/cbit.jpeg',
+            titleKey: 'cert.item.cbit.title',
+            issuerKey: 'cert.item.cbit.issuer',
+            date: '2025',
+            category: 'technical',
+            gradeKey: 'cert.item.cbit.grade',
+            descKey: 'cert.item.cbit.desc'
+        },
+        webprojects: {
+            image: 'assets/images/certificates/web-projects.png',
+            titleKey: 'cert.item.webprojects.title',
+            issuerKey: 'cert.item.webprojects.issuer',
+            date: '2026',
+            category: 'technical',
+            gradeKey: 'cert.item.webprojects.grade',
+            descKey: 'cert.item.webprojects.desc'
+        },
+        hsk2: {
+            image: 'assets/images/certificates/hsk2.jpeg',
+            titleKey: 'cert.item.hsk2.title',
+            issuerKey: 'cert.item.hsk2.issuer',
+            date: '2024',
+            category: 'language',
+            descKey: 'cert.item.hsk2.desc'
+        },
+        hsk1: {
+            image: 'assets/images/certificates/hsk1.png',
+            titleKey: 'cert.item.hsk1.title',
+            issuerKey: 'cert.item.hsk1.issuer',
+            date: '2024',
+            category: 'language',
+            descKey: 'cert.item.hsk1.desc'
+        },
+        engHigh: {
+            image: 'assets/images/certificates/english-high.jpeg',
+            titleKey: 'cert.item.engHigh.title',
+            issuerKey: 'cert.item.engHigh.issuer',
+            date: '2024',
+            category: 'language',
+            gradeKey: 'cert.item.engHigh.grade',
+            descKey: 'cert.item.engHigh.desc'
+        },
+        engStage5: {
+            image: 'assets/images/certificates/english-stage5.png',
+            titleKey: 'cert.item.engStage5.title',
+            issuerKey: 'cert.item.engStage5.issuer',
+            date: '2023',
+            category: 'language',
+            descKey: 'cert.item.engStage5.desc'
+        },
+        chemy: {
+            image: 'assets/images/certificates/chemy.png',
+            titleKey: 'cert.item.chemy.title',
+            issuerKey: 'cert.item.chemy.issuer',
+            dateKey: 'cert.item.chemy.period',
+            category: 'academic',
+            descKey: 'cert.item.chemy.desc'
         }
-    }
+    };
 
     /* =========================================================
        FILTER
@@ -71,12 +86,11 @@
             btn.classList.add('is-active');
 
             certCards.forEach(card => {
-                const tags = (card.dataset.tags || '').split(',').map(t => t.trim());
+                const tags = (card.dataset.tags || '').split(',').map(tag => tag.trim());
                 const match = filter === 'all' || tags.includes(filter);
 
                 if (match) {
                     card.style.display = '';
-                    // Trigger reveal re-animation
                     card.style.animation = 'none';
                     void card.offsetWidth;
                     card.style.animation = '';
@@ -100,20 +114,23 @@
         const title = data.titleKey ? t(data.titleKey) : (data.title || '');
         const issuer = data.issuerKey ? t(data.issuerKey) : (data.issuer || '');
         const desc = data.descKey ? t(data.descKey) : (data.desc || '');
+        const grade = data.gradeKey ? t(data.gradeKey) : (data.grade || '');
+        const dateText = data.dateKey ? t(data.dateKey) : (data.date || '');
 
         modalContent.innerHTML = `
-            <img class="cert-modal__image" src="${escapeHtml(data.image)}" alt="${escapeHtml(title)}" />
+            <img class="cert-modal__image" src="${escapeHtml(data.image)}" alt="${escapeHtml(title)}" onerror="this.parentElement.classList.add('cert-modal__image--error'); this.style.display='none';" />
             <div class="cert-modal__info">
                 <span class="cert-modal__badge">
                     <i class="fa-solid fa-certificate"></i>
-                    ${escapeHtml(data.category || '')}
+                    ${escapeHtml(t('cert.filter.' + (data.category || 'all')) || data.category || '')}
                 </span>
                 <h2 class="cert-modal__title">${escapeHtml(title)}</h2>
                 <p class="cert-modal__issuer">${escapeHtml(issuer)}</p>
-                <p class="cert-modal__date">${escapeHtml(data.date || '')}</p>
+                <p class="cert-modal__date">${escapeHtml(dateText)}</p>
+                ${grade ? `<p class="cert-modal__desc" style="color:var(--accent);font-weight:600;">${escapeHtml(grade)}</p>` : ''}
                 ${desc ? `<p class="cert-modal__desc">${escapeHtml(desc)}</p>` : ''}
                 <div class="cert-modal__actions">
-                    <a href="${escapeHtml(data.viewUrl || data.image)}" download class="btn btn--primary" data-cursor="hover">
+                    <a href="${escapeHtml(data.image)}" download class="btn btn--primary" data-cursor="hover">
                         <span class="btn__text">${escapeHtml(t('cert.modal.download'))}</span>
                         <span class="btn__icon"><i class="fa-solid fa-download"></i></span>
                     </a>
@@ -141,7 +158,7 @@
         document.body.classList.remove('no-scroll');
     }
 
-    /* ---------- BIND OPEN BUTTONS ---------- */
+    /* ---------- BIND OPEN ---------- */
     document.querySelectorAll('[data-open-cert]').forEach(btn => {
         btn.addEventListener('click', () => {
             openModal(btn.dataset.openCert);
@@ -185,10 +202,10 @@
             const start = performance.now();
 
             function tick(now) {
-                const t = Math.min((now - start) / duration, 1);
-                const eased = 1 - Math.pow(1 - t, 3);
+                const p = Math.min((now - start) / duration, 1);
+                const eased = 1 - Math.pow(1 - p, 3);
                 el.textContent = Math.round(target * eased);
-                if (t < 1) requestAnimationFrame(tick);
+                if (p < 1) requestAnimationFrame(tick);
                 else el.textContent = target;
             }
             requestAnimationFrame(tick);

@@ -5,7 +5,9 @@
 (function () {
     'use strict';
 
-    /* ---------- FILTER ---------- */
+    /* =========================================================
+       FILTER
+       ========================================================= */
     const filterButtons = document.querySelectorAll('.ach-filter__btn');
     const achievementCards = document.querySelectorAll('.ach-card[data-tags]');
 
@@ -22,7 +24,6 @@
 
                 if (match) {
                     card.style.display = '';
-                    // Retrigger reveal
                     card.classList.remove('is-revealed');
                     void card.offsetWidth;
                     card.classList.add('is-revealed');
@@ -33,7 +34,9 @@
         });
     });
 
-    /* ---------- ANIMATED COUNTERS ---------- */
+    /* =========================================================
+       ANIMATED COUNTERS (hero stats)
+       ========================================================= */
     const counters = document.querySelectorAll('[data-count]');
     if (counters.length && 'IntersectionObserver' in window) {
         const animate = (el) => {
@@ -42,10 +45,10 @@
             const start = performance.now();
 
             function tick(now) {
-                const t = Math.min((now - start) / duration, 1);
-                const eased = 1 - Math.pow(1 - t, 3);
+                const p = Math.min((now - start) / duration, 1);
+                const eased = 1 - Math.pow(1 - p, 3);
                 el.textContent = Math.round(target * eased);
-                if (t < 1) requestAnimationFrame(tick);
+                if (p < 1) requestAnimationFrame(tick);
                 else el.textContent = target;
             }
             requestAnimationFrame(tick);
@@ -66,8 +69,9 @@
         counters.forEach(c => cIO.observe(c));
     }
 
-    /* ---------- HIGHLIGHT NUMBER COUNT-UP ---------- */
-    // Animate `.highlight-card__num` from 0 to its content
+    /* =========================================================
+       HIGHLIGHT NUMBER COUNT-UP
+       ========================================================= */
     const highlightNums = document.querySelectorAll('.highlight-card__num');
 
     if (highlightNums.length && 'IntersectionObserver' in window) {
@@ -78,10 +82,10 @@
             const originalText = el.textContent;
 
             function tick(now) {
-                const t = Math.min((now - start) / duration, 1);
-                const eased = 1 - Math.pow(1 - t, 3);
+                const p = Math.min((now - start) / duration, 1);
+                const eased = 1 - Math.pow(1 - p, 3);
                 el.textContent = Math.round(target * eased);
-                if (t < 1) requestAnimationFrame(tick);
+                if (p < 1) requestAnimationFrame(tick);
                 else el.textContent = originalText;
             }
             requestAnimationFrame(tick);
@@ -102,12 +106,14 @@
         highlightNums.forEach(n => hIO.observe(n));
     }
 
-    /* ---------- CARD MOUSE GLOW ---------- */
-    const cards = document.querySelectorAll('.ach-card, .highlight-card');
+    /* =========================================================
+       CARD MOUSE GLOW
+       ========================================================= */
+    const glowTargets = document.querySelectorAll('.ach-card, .highlight-card, .timeline-strip__item');
     const isFine = window.matchMedia('(hover: hover) and (pointer: fine)').matches;
 
     if (isFine) {
-        cards.forEach(card => {
+        glowTargets.forEach(card => {
             card.addEventListener('mousemove', (e) => {
                 const rect = card.getBoundingClientRect();
                 const x = ((e.clientX - rect.left) / rect.width) * 100;
@@ -118,8 +124,10 @@
         });
     }
 
-    /* ---------- STAGGER REVEAL ---------- */
-    const revealEls = document.querySelectorAll('.ach-card, .highlight-card');
+    /* =========================================================
+       STAGGER REVEAL
+       ========================================================= */
+    const revealEls = document.querySelectorAll('.ach-card, .highlight-card, .timeline-strip__item');
     revealEls.forEach((el, i) => {
         const delay = (i % 6) * 0.05;
         el.style.transitionDelay = `${delay}s`;
