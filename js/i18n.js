@@ -762,7 +762,7 @@
             'contact.form.note': 'This form opens your email app with the message pre-filled — there is no server involved, and nothing is sent automatically.',
 
             'contact.form.name': 'Your Name',
-            'contact.form.namePlaceholder': 'John Doe',
+            'contact.form.namePlaceholder': 'Mudrik Dau',
             'contact.form.email': 'Your Email',
             'contact.form.emailPlaceholder': 'you@example.com',
             'contact.form.subject': 'Subject',
@@ -822,7 +822,7 @@
             'e404.contact': 'Contact Me',
             'e404.quickLabel': 'Quick Links',
 
-            /* ---------- SERVICE MODAL DETAILS (PHASE NEW) ---------- */
+            /* ---------- SERVICE MODAL DETAILS ---------- */
             'svc.card.details': 'View Details',
             'svc.fab': 'Hire Me',
             'svc.modal.about': 'About this service',
@@ -890,7 +890,50 @@
             'svc.modal.consult.inc1': 'Project scoping and planning',
             'svc.modal.consult.inc2': 'Technology stack recommendations',
             'svc.modal.consult.inc3': 'Code review and feedback',
-            'svc.modal.consult.inc4': 'Best-practice guidance'
+            'svc.modal.consult.inc4': 'Best-practice guidance',
+
+            /* ---------- CONTACT PAGE — PHASE 9.5 ---------- */
+            'contact.hero.response': 'Responds within 24 hours',
+            'contact.hero.remote': 'Remote-friendly worldwide',
+
+            'contact.info.locationHint': 'View on map',
+
+            'contact.map.label': '/ 01 — Location',
+            'contact.map.titleA': 'Based in',
+            'contact.map.titleB': 'Zanzibar, Tanzania.',
+            'contact.map.desc': 'Click a pin to explore the area, or open in Google Maps for directions.',
+            'contact.map.pin': 'Maungani, Zanzibar',
+            'contact.map.pinSub': 'Zanzibar, Tanzania',
+            'contact.map.open': 'Open in Google Maps',
+
+            'contact.form.customSubject': 'Custom Subject',
+            'contact.form.customSubjectPlaceholder': 'Type your subject here…',
+
+            'contact.subject.project': 'Project Inquiry',
+            'contact.subject.freelance': 'Freelance Work',
+            'contact.subject.fulltime': 'Full-time Position',
+            'contact.subject.internship': 'Internship / Attachment',
+            'contact.subject.collaboration': 'Collaboration',
+            'contact.subject.consultation': 'Technical Consultation',
+            'contact.subject.support': 'IT Support',
+            'contact.subject.feedback': 'Feedback',
+            'contact.subject.other': 'Other (write your own)',
+
+            'contact.form.err.customSubjectRequired': 'Please write your subject',
+            'contact.form.err.subjectRequired': 'Please choose a subject',
+
+            'contact.social.copyId': 'Copy ID',
+            'contact.social.copied': 'Copied!',
+
+            'contact.wechat.title': 'Scan to add me on WeChat',
+            'contact.wechat.subtitle': 'Open WeChat on your phone and scan this QR code.',
+            'contact.wechat.idLabel': 'WeChat ID',
+            'contact.wechat.hint': "Can't scan? Just add my WeChat ID manually.",
+
+            'contact.fab': 'Chat Now',
+
+            'contact.faq.5.q': 'How do I get started with a project?',
+            'contact.faq.5.a': "Just send me a message with a brief description of your idea, timeline, and budget. I'll get back to you within 24 hours with next steps."
         },
 
         sw: {
@@ -1701,7 +1744,7 @@
             'e404.contact': 'Wasiliana Nami',
             'e404.quickLabel': 'Viungo vya Haraka',
 
-            /* ---------- SERVICE MODAL DETAILS (PHASE NEW) ---------- */
+            /* ---------- SERVICE MODAL DETAILS ---------- */
             'svc.card.details': 'Ona Maelezo',
             'svc.fab': 'Niajiri',
             'svc.modal.about': 'Kuhusu huduma hii',
@@ -1769,7 +1812,50 @@
             'svc.modal.consult.inc1': 'Upeo wa mradi na mipango',
             'svc.modal.consult.inc2': 'Mapendekezo ya teknolojia',
             'svc.modal.consult.inc3': 'Ukaguzi wa msimbo na maoni',
-            'svc.modal.consult.inc4': 'Mwongozo wa mbinu bora'
+            'svc.modal.consult.inc4': 'Mwongozo wa mbinu bora',
+
+            /* ---------- CONTACT PAGE — PHASE 9.5 ---------- */
+            'contact.hero.response': 'Hujibu ndani ya masaa 24',
+            'contact.hero.remote': 'Rafiki wa kazi za mbali duniani',
+
+            'contact.info.locationHint': 'Ona kwenye ramani',
+
+            'contact.map.label': '/ 01 — Mahali',
+            'contact.map.titleA': 'Napatikana',
+            'contact.map.titleB': 'Zanzibar, Tanzania.',
+            'contact.map.desc': 'Bofya pini kuchunguza eneo, au fungua Google Maps kwa maelekezo.',
+            'contact.map.pin': 'Maungani, Zanzibar',
+            'contact.map.pinSub': 'Zanzibar, Tanzania',
+            'contact.map.open': 'Fungua kwenye Google Maps',
+
+            'contact.form.customSubject': 'Mada Yako Mwenyewe',
+            'contact.form.customSubjectPlaceholder': 'Andika mada yako hapa…',
+
+            'contact.subject.project': 'Swali kuhusu Mradi',
+            'contact.subject.freelance': 'Kazi Huru',
+            'contact.subject.fulltime': 'Nafasi ya Wakati Wote',
+            'contact.subject.internship': 'Mafunzo / Kiambatisho',
+            'contact.subject.collaboration': 'Ushirikiano',
+            'contact.subject.consultation': 'Ushauri wa Kiufundi',
+            'contact.subject.support': 'Msaada wa IT',
+            'contact.subject.feedback': 'Maoni',
+            'contact.subject.other': 'Nyingine (andika yako)',
+
+            'contact.form.err.customSubjectRequired': 'Tafadhali andika mada yako',
+            'contact.form.err.subjectRequired': 'Tafadhali chagua mada',
+
+            'contact.social.copyId': 'Nakili Kitambulisho',
+            'contact.social.copied': 'Imenakiliwa!',
+
+            'contact.wechat.title': 'Skani ili kuniongeza kwenye WeChat',
+            'contact.wechat.subtitle': 'Fungua WeChat kwenye simu yako na skani msimbo huu wa QR.',
+            'contact.wechat.idLabel': 'Kitambulisho cha WeChat',
+            'contact.wechat.hint': 'Hauwezi kuskani? Ongeza kitambulisho changu cha WeChat kwa mkono.',
+
+            'contact.fab': 'Zungumza Sasa',
+
+            'contact.faq.5.q': 'Ninaanzaje mradi?',
+            'contact.faq.5.a': 'Nituma tu ujumbe na maelezo mafupi ya wazo lako, ratiba, na bajeti. Nitakujibu ndani ya masaa 24 na hatua zinazofuata.'
         },
 
         zh: {
@@ -2520,7 +2606,7 @@
             'contact.form.note': '此表单打开你的邮件应用并预填信息 —— 没有服务器参与，不会有任何内容自动发送。',
 
             'contact.form.name': '你的名字',
-            'contact.form.namePlaceholder': '张三',
+            'contact.form.namePlaceholder': '穆德里克·达乌',
             'contact.form.email': '你的邮箱',
             'contact.form.emailPlaceholder': 'you@example.com',
             'contact.form.subject': '主题',
@@ -2580,7 +2666,7 @@
             'e404.contact': '联系我',
             'e404.quickLabel': '快速链接',
 
-            /* ---------- SERVICE MODAL DETAILS (PHASE NEW) ---------- */
+            /* ---------- SERVICE MODAL DETAILS ---------- */
             'svc.card.details': '查看详情',
             'svc.fab': '雇佣我',
             'svc.modal.about': '关于此服务',
@@ -2648,7 +2734,50 @@
             'svc.modal.consult.inc1': '项目范围界定和规划',
             'svc.modal.consult.inc2': '技术栈建议',
             'svc.modal.consult.inc3': '代码审查和反馈',
-            'svc.modal.consult.inc4': '最佳实践指导'
+            'svc.modal.consult.inc4': '最佳实践指导',
+
+            /* ---------- CONTACT PAGE — PHASE 9.5 ---------- */
+            'contact.hero.response': '24 小时内回复',
+            'contact.hero.remote': '支持全球远程合作',
+
+            'contact.info.locationHint': '在地图上查看',
+
+            'contact.map.label': '/ 01 — 位置',
+            'contact.map.titleA': '位于',
+            'contact.map.titleB': '坦桑尼亚桑给巴尔。',
+            'contact.map.desc': '点击图钉探索该区域，或打开 Google 地图获取路线。',
+            'contact.map.pin': 'Maungani，桑给巴尔',
+            'contact.map.pinSub': '坦桑尼亚桑给巴尔',
+            'contact.map.open': '在 Google 地图中打开',
+
+            'contact.form.customSubject': '自定义主题',
+            'contact.form.customSubjectPlaceholder': '在此输入您的主题…',
+
+            'contact.subject.project': '项目咨询',
+            'contact.subject.freelance': '自由职业工作',
+            'contact.subject.fulltime': '全职职位',
+            'contact.subject.internship': '实习 / 附件',
+            'contact.subject.collaboration': '合作',
+            'contact.subject.consultation': '技术咨询',
+            'contact.subject.support': 'IT 支持',
+            'contact.subject.feedback': '反馈',
+            'contact.subject.other': '其他（自定义）',
+
+            'contact.form.err.customSubjectRequired': '请写下您的主题',
+            'contact.form.err.subjectRequired': '请选择一个主题',
+
+            'contact.social.copyId': '复制 ID',
+            'contact.social.copied': '已复制！',
+
+            'contact.wechat.title': '扫描添加我的微信',
+            'contact.wechat.subtitle': '在手机上打开微信并扫描此二维码。',
+            'contact.wechat.idLabel': '微信号',
+            'contact.wechat.hint': '无法扫描？直接手动添加我的微信号即可。',
+
+            'contact.fab': '立即聊天',
+
+            'contact.faq.5.q': '如何开始一个项目？',
+            'contact.faq.5.a': '只需发送一条消息，简要描述您的想法、时间表和预算。我会在 24 小时内回复您后续步骤。'
         },
 
         ar: {
@@ -3459,7 +3588,7 @@
             'e404.contact': 'تواصل معي',
             'e404.quickLabel': 'روابط سريعة',
 
-            /* ---------- SERVICE MODAL DETAILS (PHASE NEW) ---------- */
+            /* ---------- SERVICE MODAL DETAILS ---------- */
             'svc.card.details': 'عرض التفاصيل',
             'svc.fab': 'وظفني',
             'svc.modal.about': 'حول هذه الخدمة',
@@ -3527,7 +3656,50 @@
             'svc.modal.consult.inc1': 'تحديد نطاق المشروع والتخطيط',
             'svc.modal.consult.inc2': 'توصيات حزمة التقنيات',
             'svc.modal.consult.inc3': 'مراجعة الكود والملاحظات',
-            'svc.modal.consult.inc4': 'إرشادات أفضل الممارسات'
+            'svc.modal.consult.inc4': 'إرشادات أفضل الممارسات',
+
+            /* ---------- CONTACT PAGE — PHASE 9.5 ---------- */
+            'contact.hero.response': 'يرد خلال 24 ساعة',
+            'contact.hero.remote': 'داعم للعمل عن بعد عالمياً',
+
+            'contact.info.locationHint': 'عرض على الخريطة',
+
+            'contact.map.label': '/ 01 — الموقع',
+            'contact.map.titleA': 'مقيم في',
+            'contact.map.titleB': 'زنجبار، تنزانيا.',
+            'contact.map.desc': 'انقر على الدبوس لاستكشاف المنطقة، أو افتح خرائط Google للحصول على الاتجاهات.',
+            'contact.map.pin': 'ماونغاني، زنجبار',
+            'contact.map.pinSub': 'زنجبار، تنزانيا',
+            'contact.map.open': 'افتح في خرائط Google',
+
+            'contact.form.customSubject': 'موضوع مخصص',
+            'contact.form.customSubjectPlaceholder': 'اكتب موضوعك هنا…',
+
+            'contact.subject.project': 'استفسار عن مشروع',
+            'contact.subject.freelance': 'عمل حر',
+            'contact.subject.fulltime': 'وظيفة بدوام كامل',
+            'contact.subject.internship': 'تدريب / إلحاق',
+            'contact.subject.collaboration': 'تعاون',
+            'contact.subject.consultation': 'استشارة تقنية',
+            'contact.subject.support': 'دعم تقنية المعلومات',
+            'contact.subject.feedback': 'ملاحظات',
+            'contact.subject.other': 'أخرى (اكتب خاصتك)',
+
+            'contact.form.err.customSubjectRequired': 'الرجاء كتابة موضوعك',
+            'contact.form.err.subjectRequired': 'الرجاء اختيار موضوع',
+
+            'contact.social.copyId': 'نسخ المعرّف',
+            'contact.social.copied': 'تم النسخ!',
+
+            'contact.wechat.title': 'امسح لإضافتي على WeChat',
+            'contact.wechat.subtitle': 'افتح WeChat على هاتفك وامسح رمز QR هذا.',
+            'contact.wechat.idLabel': 'معرّف WeChat',
+            'contact.wechat.hint': 'لا يمكنك المسح؟ فقط أضف معرّف WeChat الخاص بي يدوياً.',
+
+            'contact.fab': 'الدردشة الآن',
+
+            'contact.faq.5.q': 'كيف أبدأ مشروعاً؟',
+            'contact.faq.5.a': 'فقط أرسل رسالة مع وصف موجز لفكرتك والجدول الزمني والميزانية. سأرد عليك خلال 24 ساعة بالخطوات التالية.'
         },
 
         fr: {
@@ -4030,9 +4202,7 @@
 
             'cert.item.hsk2.title': 'HSK Niveau 2 — Chinois',
             'cert.item.hsk2.issuer': 'Test de compétence en langue chinoise',
-            'cert.item.hsk2.desc': "J'ai réussi l'examen HSK Niveau 2, démontrant une compétence de base en langue chinoise.",
-
-            'cert.item.hsk1.title': 'HSK Niveau 1 — Chinois',
+            'cert.item.hsk2.desc': "J'ai réussi l'examen HSK Niveau 2, démontrant une compétence de base en langue chinoise.",            'cert.item.hsk1.title': 'HSK Niveau 1 — Chinois',
             'cert.item.hsk1.issuer': 'Test de compétence en langue chinoise',
             'cert.item.hsk1.desc': "J'ai réussi l'examen HSK Niveau 1, démontrant des compétences fondamentales en langue chinoise.",
 
@@ -4278,7 +4448,7 @@
             'contact.form.note': "Ce formulaire ouvre votre application de messagerie avec le message pré-rempli — aucun serveur n'est impliqué, et rien n'est envoyé automatiquement.",
 
             'contact.form.name': 'Votre nom',
-            'contact.form.namePlaceholder': 'Jean Dupont',
+            'contact.form.namePlaceholder': 'Mudrik Dau',
             'contact.form.email': 'Votre email',
             'contact.form.emailPlaceholder': 'vous@exemple.com',
             'contact.form.subject': 'Sujet',
@@ -4338,7 +4508,7 @@
             'e404.contact': 'Me contacter',
             'e404.quickLabel': 'Liens rapides',
 
-            /* ---------- SERVICE MODAL DETAILS (PHASE NEW) ---------- */
+            /* ---------- SERVICE MODAL DETAILS ---------- */
             'svc.card.details': 'Voir les détails',
             'svc.fab': 'Engagez-moi',
             'svc.modal.about': 'À propos de ce service',
@@ -4406,7 +4576,50 @@
             'svc.modal.consult.inc1': 'Cadrage et planification du projet',
             'svc.modal.consult.inc2': 'Recommandations de stack technologique',
             'svc.modal.consult.inc3': 'Revue de code et retours',
-            'svc.modal.consult.inc4': 'Conseils de bonnes pratiques'
+            'svc.modal.consult.inc4': 'Conseils de bonnes pratiques',
+
+            /* ---------- CONTACT PAGE — PHASE 9.5 ---------- */
+            'contact.hero.response': 'Répond sous 24 heures',
+            'contact.hero.remote': 'Ouvert au télétravail mondial',
+
+            'contact.info.locationHint': 'Voir sur la carte',
+
+            'contact.map.label': '/ 01 — Localisation',
+            'contact.map.titleA': 'Basé à',
+            'contact.map.titleB': 'Zanzibar, Tanzanie.',
+            'contact.map.desc': 'Cliquez sur un repère pour explorer la zone, ou ouvrez Google Maps pour l\'itinéraire.',
+            'contact.map.pin': 'Maungani, Zanzibar',
+            'contact.map.pinSub': 'Zanzibar, Tanzanie',
+            'contact.map.open': 'Ouvrir dans Google Maps',
+
+            'contact.form.customSubject': 'Sujet personnalisé',
+            'contact.form.customSubjectPlaceholder': 'Écrivez votre sujet ici…',
+
+            'contact.subject.project': 'Demande de projet',
+            'contact.subject.freelance': 'Travail freelance',
+            'contact.subject.fulltime': 'Poste à temps plein',
+            'contact.subject.internship': 'Stage / Attachement',
+            'contact.subject.collaboration': 'Collaboration',
+            'contact.subject.consultation': 'Consultation technique',
+            'contact.subject.support': 'Support informatique',
+            'contact.subject.feedback': 'Retour',
+            'contact.subject.other': 'Autre (écrivez le vôtre)',
+
+            'contact.form.err.customSubjectRequired': 'Veuillez écrire votre sujet',
+            'contact.form.err.subjectRequired': 'Veuillez choisir un sujet',
+
+            'contact.social.copyId': 'Copier l\'ID',
+            'contact.social.copied': 'Copié !',
+
+            'contact.wechat.title': 'Scannez pour m\'ajouter sur WeChat',
+            'contact.wechat.subtitle': 'Ouvrez WeChat sur votre téléphone et scannez ce code QR.',
+            'contact.wechat.idLabel': 'ID WeChat',
+            'contact.wechat.hint': 'Vous ne pouvez pas scanner ? Ajoutez simplement mon ID WeChat manuellement.',
+
+            'contact.fab': 'Discuter',
+
+            'contact.faq.5.q': 'Comment démarrer un projet ?',
+            'contact.faq.5.a': 'Envoyez-moi simplement un message avec une brève description de votre idée, du calendrier et du budget. Je vous répondrai dans les 24 heures avec les prochaines étapes.'
         }
     };
 

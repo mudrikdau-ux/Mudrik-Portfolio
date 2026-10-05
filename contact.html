@@ -17,6 +17,9 @@
     <!-- Icons -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" />
 
+    <!-- Leaflet Map -->
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY=" crossorigin="" />
+
     <!-- Styles -->
     <link rel="stylesheet" href="css/global.css" />
     <link rel="stylesheet" href="css/navbar.css" />
@@ -172,10 +175,6 @@
                         <a href="https://www.linkedin.com/in/mudrik-dau" target="_blank" rel="noopener" aria-label="LinkedIn"><i class="fa-brands fa-linkedin-in"></i></a>
                         <a href="https://www.instagram.com/youngw_04" target="_blank" rel="noopener" aria-label="Instagram"><i class="fa-brands fa-instagram"></i></a>
                         <a href="https://x.com/MudrikDau" target="_blank" rel="noopener" aria-label="X"><i class="fa-brands fa-x-twitter"></i></a>
-                        <a href="https://www.facebook.com/search/top?q=Young%20Wx" target="_blank" rel="noopener" aria-label="Facebook"><i class="fa-brands fa-facebook-f"></i></a>
-                        <a href="https://m.me/" target="_blank" rel="noopener" aria-label="Messenger"><i class="fa-brands fa-facebook-messenger"></i></a>
-                        <a href="https://www.threads.net/@youngw_04" target="_blank" rel="noopener" aria-label="Threads"><i class="fa-brands fa-threads"></i></a>
-                        <a href="#" aria-label="WeChat: Mudrik_2005" title="WeChat: Mudrik_2005"><i class="fa-brands fa-weixin"></i></a>
                     </div>
                 </div>
             </div>
@@ -246,6 +245,11 @@
              HERO
              =================================================== -->
         <section class="contact-hero">
+            <div class="contact-hero__aurora" aria-hidden="true">
+                <span class="contact-hero__aurora-blob contact-hero__aurora-blob--1"></span>
+                <span class="contact-hero__aurora-blob contact-hero__aurora-blob--2"></span>
+                <span class="contact-hero__aurora-blob contact-hero__aurora-blob--3"></span>
+            </div>
             <div class="container">
                 <div class="contact-hero__inner">
                     <span class="section-head__label" data-i18n="contact.hero.label">/ Contact</span>
@@ -258,9 +262,19 @@
                         I'm always happy to connect. Reach out through any channel below.
                     </p>
 
-                    <div class="contact-hero__status">
-                        <span class="dot dot--live"></span>
-                        <span data-i18n="contact.hero.status">Currently open to opportunities</span>
+                    <div class="contact-hero__tags">
+                        <span class="contact-hero__tag">
+                            <span class="dot dot--live"></span>
+                            <span data-i18n="contact.hero.status">Currently open to opportunities</span>
+                        </span>
+                        <span class="contact-hero__tag">
+                            <i class="fa-solid fa-clock"></i>
+                            <span data-i18n="contact.hero.response">Responds within 24 hours</span>
+                        </span>
+                        <span class="contact-hero__tag">
+                            <i class="fa-solid fa-globe"></i>
+                            <span data-i18n="contact.hero.remote">Remote-friendly worldwide</span>
+                        </span>
                     </div>
                 </div>
             </div>
@@ -274,7 +288,10 @@
                 <div class="contact-info__grid">
 
                     <a href="mailto:mudrikdau@gmail.com" class="contact-card" data-reveal="up" data-cursor="hover">
-                        <div class="contact-card__icon"><i class="fa-solid fa-envelope"></i></div>
+                        <div class="contact-card__glow"></div>
+                        <div class="contact-card__icon contact-card__icon--email">
+                            <i class="fa-solid fa-envelope"></i>
+                        </div>
                         <div class="contact-card__body">
                             <span class="contact-card__label" data-i18n="contact.info.email">Email</span>
                             <span class="contact-card__value">mudrikdau@gmail.com</span>
@@ -284,7 +301,10 @@
                     </a>
 
                     <a href="tel:+255621662883" class="contact-card" data-reveal="up" data-delay="1" data-cursor="hover">
-                        <div class="contact-card__icon"><i class="fa-solid fa-phone"></i></div>
+                        <div class="contact-card__glow"></div>
+                        <div class="contact-card__icon contact-card__icon--phone">
+                            <i class="fa-solid fa-phone"></i>
+                        </div>
                         <div class="contact-card__body">
                             <span class="contact-card__label" data-i18n="contact.info.phone">Phone</span>
                             <span class="contact-card__value">+255 621 662 883</span>
@@ -294,7 +314,10 @@
                     </a>
 
                     <a href="https://wa.me/255621662883" target="_blank" rel="noopener" class="contact-card" data-reveal="up" data-delay="2" data-cursor="hover">
-                        <div class="contact-card__icon contact-card__icon--whatsapp"><i class="fa-brands fa-whatsapp"></i></div>
+                        <div class="contact-card__glow"></div>
+                        <div class="contact-card__icon contact-card__icon--whatsapp">
+                            <i class="fa-brands fa-whatsapp"></i>
+                        </div>
                         <div class="contact-card__body">
                             <span class="contact-card__label" data-i18n="contact.info.whatsapp">WhatsApp</span>
                             <span class="contact-card__value">+255 621 662 883</span>
@@ -303,15 +326,63 @@
                         <div class="contact-card__arrow"><i class="fa-solid fa-arrow-right"></i></div>
                     </a>
 
-                    <div class="contact-card contact-card--static" data-reveal="up" data-delay="3">
-                        <div class="contact-card__icon"><i class="fa-solid fa-location-dot"></i></div>
+                    <button type="button" class="contact-card contact-card--interactive" data-reveal="up" data-delay="3" data-scroll-to-map data-cursor="hover">
+                        <div class="contact-card__glow"></div>
+                        <div class="contact-card__icon contact-card__icon--location">
+                            <i class="fa-solid fa-location-dot"></i>
+                        </div>
                         <div class="contact-card__body">
                             <span class="contact-card__label" data-i18n="contact.info.location">Location</span>
                             <span class="contact-card__value">Maungani / Kombeni, Zanzibar</span>
-                            <span class="contact-card__hint">Tanzania, East Africa</span>
+                            <span class="contact-card__hint" data-i18n="contact.info.locationHint">View on map</span>
+                        </div>
+                        <div class="contact-card__arrow"><i class="fa-solid fa-arrow-down"></i></div>
+                    </button>
+
+                </div>
+            </div>
+        </section>
+
+        <!-- ===================================================
+             INTERACTIVE MAP
+             =================================================== -->
+        <section class="contact-map" id="mapSection">
+            <div class="container">
+                <div class="contact-map__head">
+                    <span class="section-head__label" data-i18n="contact.map.label">/ 01 — Location</span>
+                    <h2 class="contact-map__title">
+                        <span data-i18n="contact.map.titleA">Based in</span>
+                        <em data-i18n="contact.map.titleB">Zanzibar, Tanzania.</em>
+                    </h2>
+                    <p class="contact-map__desc" data-i18n="contact.map.desc">
+                        Click a pin to explore the area, or open in Google Maps for directions.
+                    </p>
+                </div>
+
+                <div class="contact-map__card" data-reveal="scale">
+                    <div class="contact-map__frame">
+                        <div id="leafletMap" class="contact-map__leaflet"></div>
+                        <div class="contact-map__overlay">
+                            <div class="contact-map__overlay-inner">
+                                <i class="fa-solid fa-location-dot"></i>
+                                <div>
+                                    <strong data-i18n="contact.map.pin">Maungani, Zanzibar</strong>
+                                    <span data-i18n="contact.map.pinSub">Zanzibar, Tanzania</span>
+                                </div>
+                            </div>
                         </div>
                     </div>
 
+                    <div class="contact-map__footer">
+                        <div class="contact-map__coords">
+                            <i class="fa-solid fa-crosshairs"></i>
+                            <span id="mapCoords">—</span>
+                        </div>
+                        <a href="https://www.google.com/maps/search/?api=1&query=Maungani%2C+Zanzibar%2C+Tanzania" target="_blank" rel="noopener" class="contact-map__link" data-cursor="hover">
+                            <i class="fa-solid fa-arrow-up-right-from-square"></i>
+                            <span data-i18n="contact.map.open">Open in Google Maps</span>
+                        </a>
+                    </div>
                 </div>
             </div>
         </section>
@@ -324,7 +395,7 @@
                 <div class="contact-form__grid">
 
                     <div class="contact-form__aside">
-                        <span class="section-head__label" data-i18n="contact.form.label">/ 01 — Send a Message</span>
+                        <span class="section-head__label" data-i18n="contact.form.label">/ 02 — Send a Message</span>
                         <h2 class="contact-form__title">
                             <span data-i18n="contact.form.titleA">Let's start a</span>
                             <em data-i18n="contact.form.titleB">conversation.</em>
@@ -352,13 +423,13 @@
                         <div class="contact-form__note">
                             <i class="fa-solid fa-circle-info"></i>
                             <p data-i18n="contact.form.note">
-                                This form opens your email app with the message pre-filled —
-                                there is no server involved, and nothing is sent automatically.
+                                 Your message goes straight to my inbox. I'll reply within 24 hours,
+                                 and you'll get an automatic confirmation in your email.
                             </p>
                         </div>
                     </div>
 
-                    <form class="contact-form" id="contactForm" novalidate>
+                    <form class="contact-form" id="contactForm" novalidate autocomplete="on">
                         <div class="form-row">
                             <div class="form-field">
                                 <label for="cfName" class="form-field__label" data-i18n="contact.form.name">Your Name</label>
@@ -372,7 +443,7 @@
                                         required
                                         autocomplete="name"
                                         data-i18n-attr="placeholder:contact.form.namePlaceholder"
-                                        placeholder="John Doe"
+                                        placeholder="Mudrik Dau"
                                     />
                                 </div>
                                 <span class="form-field__error" data-error-for="cfName"></span>
@@ -398,20 +469,46 @@
                         </div>
 
                         <div class="form-field">
-                            <label for="cfSubject" class="form-field__label" data-i18n="contact.form.subject">Subject</label>
-                            <div class="form-field__input-wrap">
+                            <label for="cfSubjectSelect" class="form-field__label" data-i18n="contact.form.subject">Subject</label>
+                            <div class="form-field__input-wrap form-field__input-wrap--select">
                                 <i class="fa-solid fa-tag form-field__icon"></i>
+                                <select
+                                    id="cfSubjectSelect"
+                                    name="subjectSelect"
+                                    class="form-field__input form-field__input--select"
+                                    required
+                                >
+                                    <option value="" disabled selected data-i18n="contact.form.subjectPlaceholder">Choose a subject…</option>
+                                    <option value="project" data-i18n="contact.subject.project">Project Inquiry</option>
+                                    <option value="freelance" data-i18n="contact.subject.freelance">Freelance Work</option>
+                                    <option value="fulltime" data-i18n="contact.subject.fulltime">Full-time Position</option>
+                                    <option value="internship" data-i18n="contact.subject.internship">Internship / Attachment</option>
+                                    <option value="collaboration" data-i18n="contact.subject.collaboration">Collaboration</option>
+                                    <option value="consultation" data-i18n="contact.subject.consultation">Technical Consultation</option>
+                                    <option value="support" data-i18n="contact.subject.support">IT Support</option>
+                                    <option value="feedback" data-i18n="contact.subject.feedback">Feedback</option>
+                                    <option value="other" data-i18n="contact.subject.other">Other (write your own)</option>
+                                </select>
+                                <i class="fa-solid fa-chevron-down form-field__caret"></i>
+                            </div>
+                            <span class="form-field__error" data-error-for="cfSubjectSelect"></span>
+                        </div>
+
+                        <!-- Custom subject input (only visible when "Other" is selected) -->
+                        <div class="form-field form-field--hidden" id="cfCustomSubjectField">
+                            <label for="cfCustomSubject" class="form-field__label" data-i18n="contact.form.customSubject">Custom Subject</label>
+                            <div class="form-field__input-wrap">
+                                <i class="fa-solid fa-pen form-field__icon"></i>
                                 <input
                                     type="text"
-                                    id="cfSubject"
-                                    name="subject"
+                                    id="cfCustomSubject"
+                                    name="customSubject"
                                     class="form-field__input"
-                                    required
-                                    data-i18n-attr="placeholder:contact.form.subjectPlaceholder"
-                                    placeholder="Project Inquiry"
+                                    data-i18n-attr="placeholder:contact.form.customSubjectPlaceholder"
+                                    placeholder="Type your subject here…"
                                 />
                             </div>
-                            <span class="form-field__error" data-error-for="cfSubject"></span>
+                            <span class="form-field__error" data-error-for="cfCustomSubject"></span>
                         </div>
 
                         <div class="form-field">
@@ -456,7 +553,7 @@
         <section class="contact-social">
             <div class="container">
                 <div class="section-head">
-                    <span class="section-head__label" data-i18n="contact.social.label">/ 02 — Social</span>
+                    <span class="section-head__label" data-i18n="contact.social.label">/ 03 — Social</span>
                     <h2 class="section-head__title">
                         <span data-i18n="contact.social.titleA">Find Me</span>
                         <em data-i18n="contact.social.titleB">Online</em>
@@ -469,7 +566,7 @@
                 <div class="social-grid">
 
                     <a href="https://github.com/mudrikdau-ux" target="_blank" rel="noopener" class="social-card" data-reveal="up" data-cursor="hover">
-                        <div class="social-card__icon"><i class="fa-brands fa-github"></i></div>
+                        <div class="social-card__icon social-card__icon--github"><i class="fa-brands fa-github"></i></div>
                         <div class="social-card__body">
                             <span class="social-card__name">GitHub</span>
                             <span class="social-card__handle">@mudrikdau-ux</span>
@@ -554,7 +651,7 @@
         <section class="contact-faq">
             <div class="container">
                 <div class="section-head">
-                    <span class="section-head__label" data-i18n="contact.faq.label">/ 03 — FAQ</span>
+                    <span class="section-head__label" data-i18n="contact.faq.label">/ 04 — FAQ</span>
                     <h2 class="section-head__title">
                         <span data-i18n="contact.faq.titleA">Frequently</span>
                         <em data-i18n="contact.faq.titleB">Asked</em>
@@ -600,6 +697,16 @@
                         </summary>
                         <div class="faq-item__body">
                             <p data-i18n="contact.faq.4.a">Depends on scope. Small websites can take 1–2 weeks; larger systems take longer. We'll agree on a clear timeline before starting.</p>
+                        </div>
+                    </details>
+
+                    <details class="faq-item" data-reveal="up" data-delay="4">
+                        <summary>
+                            <span data-i18n="contact.faq.5.q">How do I get started with a project?</span>
+                            <i class="fa-solid fa-plus faq-item__icon"></i>
+                        </summary>
+                        <div class="faq-item__body">
+                            <p data-i18n="contact.faq.5.a">Just send me a message with a brief description of your idea, timeline, and budget. I'll get back to you within 24 hours with next steps.</p>
                         </div>
                     </details>
 
@@ -670,6 +777,14 @@
         </div>
     </div>
 
+    <!-- ===================================================
+         FLOATING WHATSAPP (MOBILE)
+         =================================================== -->
+    <a href="https://wa.me/255621662883" target="_blank" rel="noopener" class="contact-fab" aria-label="Chat on WhatsApp">
+        <i class="fa-brands fa-whatsapp"></i>
+        <span class="contact-fab__label" data-i18n="contact.fab">Chat Now</span>
+    </a>
+
     <!-- ==================== FOOTER ==================== -->
     <footer class="footer">
         <div class="container">
@@ -689,12 +804,14 @@
     </footer>
 
     <!-- Scripts -->
+    <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js" integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo=" crossorigin=""></script>
     <script src="js/i18n.js"></script>
     <script src="js/theme.js"></script>
     <script src="js/global.js"></script>
     <script src="js/navbar.js"></script>
     <script src="js/particles.js"></script>
     <script src="js/animations.js"></script>
+    <script src="js/api.js"></script>
     <script src="js/contact.js"></script>
 </body>
 </html>
