@@ -1,0 +1,154 @@
+/* =========================================================
+   MOBILE PERFORMANCE OVERRIDES
+   Kills GPU-heavy effects on phones & tablets
+   ========================================================= */
+
+@media (max-width: 900px), (hover: none), (pointer: coarse) {
+
+    /* ---------- 1. Kill backdrop-filter (biggest GPU cost) ---------- */
+    .navbar,
+    .navbar.is-scrolled,
+    .menu__bg,
+    .project-card,
+    .proj-card,
+    .cert-card,
+    .svc-card,
+    .info-card,
+    .edu-card,
+    .interest-card,
+    .skill-cat,
+    .tech-card,
+    .soft-card,
+    .flip-card__face,
+    .learning-item,
+    .contact-card,
+    .social-card,
+    .faq-item,
+    .contact-form,
+    .contact-map__card,
+    .qr-modal__bg,
+    .proj-modal__bg,
+    .cert-modal__bg,
+    .svc-modal__bg,
+    .info-anim__bg,
+    .about-cta__inner,
+    .cta-band__inner,
+    .svc-cta__inner,
+    .proj-cta__inner,
+    .cert-cta__inner,
+    .ach-cta__inner,
+    .contact-cta__inner,
+    .exp-cta__inner,
+    .skills-cta__inner,
+    .ach-note__inner,
+    .quick-about__grid,
+    .hero__visual-badge,
+    .about-hero__badge,
+    .lang__dropdown {
+        backdrop-filter: none !important;
+        -webkit-backdrop-filter: none !important;
+    }
+
+    /* ---------- 2. Reduce heavy glow blur ---------- */
+    .bg-glow {
+        filter: blur(60px) !important;
+        opacity: 0.4 !important;
+    }
+
+    .svc-hero__aurora-blob,
+    .contact-hero__aurora-blob {
+        filter: blur(50px) !important;
+        opacity: 0.5 !important;
+    }
+
+    /* ---------- 3. Stop continuous chip floating ---------- */
+    .hero__chip,
+    .skills-orbit__chip,
+    .cert-empty__chip,
+    .e404__chip {
+        animation: none !important;
+    }
+
+    /* ---------- 4. Slow down shine animations ---------- */
+    .hero__visual-card-shine,
+    .about-hero__photo-shine {
+        animation-duration: 10s !important;
+    }
+
+    /* ---------- 5. Kill static background glow animations ---------- */
+    .bg-glow--1,
+    .bg-glow--2,
+    .bg-glow--3 {
+        animation: none !important;
+        transform: none !important;
+    }
+
+    /* ---------- 6. Release will-change layers ---------- */
+    .bg-glow,
+    .skills-hero__visual,
+    .about-hero__visual,
+    .hero__visual,
+    .hero__visual-card,
+    .hero__chip,
+    .skills-orbit__chip,
+    .cursor,
+    .cursor__dot,
+    .cursor__ring {
+        will-change: auto !important;
+    }
+
+    /* ---------- 7. Simplify hover transitions on touch ---------- */
+    .project-card:hover,
+    .proj-card:hover,
+    .cert-card:hover,
+    .svc-card:hover,
+    .info-card:hover,
+    .edu-card:hover,
+    .interest-card:hover,
+    .skill-cat:hover,
+    .tech-card:hover,
+    .contact-card:hover,
+    .social-card:hover,
+    .timeline-item:hover .timeline-item__card {
+        transform: none !important;
+        box-shadow: none !important;
+    }
+
+    /* Keep simple tap feedback instead */
+    .project-card:active,
+    .proj-card:active,
+    .cert-card:active,
+    .svc-card:active,
+    .info-card:active,
+    .contact-card:active,
+    .social-card:active {
+        transform: scale(0.985) !important;
+    }
+
+    /* ---------- 8. Hide custom cursor entirely ---------- */
+    .cursor {
+        display: none !important;
+    }
+
+    /* ---------- 9. Keep skill-bar shimmer lightweight ---------- */
+    .skill-bar.is-visible .skill-bar__fill::after {
+        animation: none !important;
+    }
+
+    /* ---------- 10. Reduce orbit core shine frequency ---------- */
+    .skills-orbit__core::after,
+    .contact-map__marker,
+    .hero__visual-ring--outer::before {
+        animation-duration: 20s !important;
+    }
+
+    /* ---------- 11. Disable marquee acceleration ---------- */
+    .marquee__track {
+        animation-duration: 45s !important;
+    }
+
+    /* ---------- 12. Faster loader on mobile ---------- */
+    .loader__bar-fill {
+        transition: width 0.1s linear !important;
+    }
+}

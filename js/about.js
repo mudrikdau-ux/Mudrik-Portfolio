@@ -1,5 +1,6 @@
 /* =========================================================
    ABOUT PAGE — Interactions
+   Mobile-optimized: parallax + glow skipped on touch/small
    ========================================================= */
 
 (function () {
@@ -7,13 +8,14 @@
 
     const t = (key) => (window.DAU_i18n ? window.DAU_i18n.t(key) : key);
 
+    const isFine = window.matchMedia('(hover: hover) and (pointer: fine)').matches;
+    const isMobile = window.innerWidth < 900 || !isFine;
+
     /* =========================================================
-       PARALLAX ON HERO VISUAL
+       PARALLAX ON HERO VISUAL (desktop only)
        ========================================================= */
     const visual = document.querySelector('.about-hero__visual');
-    const isFine = window.matchMedia('(hover: hover) and (pointer: fine)').matches;
-
-    if (visual && isFine) {
+    if (visual && isFine && window.innerWidth >= 900) {
         let mx = 0, my = 0;
         let cx = 0, cy = 0;
 
@@ -32,18 +34,20 @@
     }
 
     /* =========================================================
-       INFO CARD MOUSE GLOW (for interactive cards)
+       INFO CARD MOUSE GLOW (desktop only)
        ========================================================= */
-    const cards = document.querySelectorAll('.info-card, .edu-card, .interest-card');
-    cards.forEach(card => {
-        card.addEventListener('mousemove', (e) => {
-            const rect = card.getBoundingClientRect();
-            const x = ((e.clientX - rect.left) / rect.width) * 100;
-            const y = ((e.clientY - rect.top) / rect.height) * 100;
-            card.style.setProperty('--mx', x + '%');
-            card.style.setProperty('--my', y + '%');
+    if (isFine && window.innerWidth >= 900) {
+        const cards = document.querySelectorAll('.info-card, .edu-card, .interest-card');
+        cards.forEach(card => {
+            card.addEventListener('mousemove', (e) => {
+                const rect = card.getBoundingClientRect();
+                const x = ((e.clientX - rect.left) / rect.width) * 100;
+                const y = ((e.clientY - rect.top) / rect.height) * 100;
+                card.style.setProperty('--mx', x + '%');
+                card.style.setProperty('--my', y + '%');
+            });
         });
-    });
+    }
 
     /* =========================================================
        SKILL PILL STAGGER
@@ -89,7 +93,6 @@
     /* =========================================================
        INTERACTIVE INFO CARD ANIMATIONS
        ========================================================= */
-
     const animLayer = document.getElementById('infoAnim');
     const animCanvas = document.getElementById('infoAnimCanvas');
     const animCaption = document.getElementById('infoAnimCaption');
@@ -97,7 +100,7 @@
     if (!animLayer || !animCanvas) return;
 
     const ctx = animCanvas.getContext('2d');
-    let dpr = Math.min(window.devicePixelRatio || 1, 2);
+    let dpr = Math.min(window.devicePixelRatio || 1, isMobile ? 1.5 : 2);
     let W = 0, H = 0;
     let rafId = null;
     let particles = [];
@@ -116,7 +119,7 @@
     }
 
     window.addEventListener('resize', () => {
-        dpr = Math.min(window.devicePixelRatio || 1, 2);
+        dpr = Math.min(window.devicePixelRatio || 1, isMobile ? 1.5 : 2);
         if (animLayer.classList.contains('is-open')) resizeCanvas();
     });
 
@@ -132,8 +135,6 @@
     /* =========================================================
        PARTICLE FACTORIES
        ========================================================= */
-
-    /* --- Birthday: cakes + balloons + confetti --- */
     function createBirthdayParticle(force) {
         const kind = force || ['cake', 'balloon', 'confetti'][randInt(0, 2)];
 
@@ -167,7 +168,6 @@
             };
         }
 
-        // confetti
         return {
             kind: 'confetti',
             x: rand(0, W),
@@ -182,7 +182,6 @@
         };
     }
 
-    /* --- Education: books + caps + sparkles --- */
     function createEducationParticle(force) {
         const kind = force || ['book', 'cap', 'sparkle'][randInt(0, 2)];
 
@@ -217,7 +216,6 @@
             };
         }
 
-        // sparkle
         return {
             kind: 'sparkle',
             x: rand(0, W),
@@ -231,7 +229,6 @@
         };
     }
 
-    /* --- Hobbies: footballs + controllers --- */
     function createHobbyParticle(force) {
         const kind = force || ['ball', 'controller'][randInt(0, 1)];
 
@@ -269,32 +266,27 @@
     /* =========================================================
        DRAWING FUNCTIONS
        ========================================================= */
-
     function drawCake(c) {
         ctx.save();
         ctx.translate(c.x, c.y);
         ctx.rotate(c.rot);
         const s = c.size;
 
-        // plate
         ctx.fillStyle = 'rgba(255,255,255,0.15)';
         ctx.beginPath();
         ctx.ellipse(0, s * 0.55, s * 0.7, s * 0.14, 0, 0, Math.PI * 2);
         ctx.fill();
 
-        // bottom layer
         ctx.fillStyle = c.color;
         ctx.beginPath();
         ctx.roundRect(-s * 0.55, s * 0.15, s * 1.1, s * 0.4, 6);
         ctx.fill();
 
-        // top layer
         ctx.fillStyle = '#fff';
         ctx.beginPath();
         ctx.roundRect(-s * 0.45, -s * 0.15, s * 0.9, s * 0.35, 6);
         ctx.fill();
 
-        // frosting drips
         ctx.fillStyle = c.color;
         for (let i = 0; i < 5; i++) {
             const dx = -s * 0.38 + i * (s * 0.19);
@@ -303,17 +295,14 @@
             ctx.fill();
         }
 
-        // candle
         ctx.fillStyle = '#f59e0b';
         ctx.fillRect(-s * 0.04, -s * 0.42, s * 0.08, s * 0.28);
 
-        // flame
         ctx.fillStyle = 'rgba(255,200,60,0.95)';
         ctx.beginPath();
         ctx.ellipse(0, -s * 0.5, s * 0.06, s * 0.11, 0, 0, Math.PI * 2);
         ctx.fill();
 
-        // flame glow
         ctx.fillStyle = 'rgba(255,220,100,0.35)';
         ctx.beginPath();
         ctx.arc(0, -s * 0.5, s * 0.18, 0, Math.PI * 2);
@@ -326,7 +315,6 @@
         ctx.save();
         ctx.translate(b.x, b.y);
 
-        // string
         ctx.strokeStyle = 'rgba(255,255,255,0.35)';
         ctx.lineWidth = 1;
         ctx.beginPath();
@@ -334,7 +322,6 @@
         ctx.quadraticCurveTo(b.size * 0.2, b.size * 0.9, 0, b.size * 1.4);
         ctx.stroke();
 
-        // balloon body
         const grad = ctx.createRadialGradient(-b.size * 0.2, -b.size * 0.25, 2, 0, 0, b.size * 0.6);
         grad.addColorStop(0, '#ffffff');
         grad.addColorStop(0.35, b.color);
@@ -344,7 +331,6 @@
         ctx.ellipse(0, 0, b.size * 0.5, b.size * 0.62, 0, 0, Math.PI * 2);
         ctx.fill();
 
-        // knot
         ctx.fillStyle = b.color;
         ctx.beginPath();
         ctx.moveTo(-4, b.size * 0.5);
@@ -371,23 +357,19 @@
         ctx.rotate(b.rot);
         const s = b.size;
 
-        // cover
         ctx.fillStyle = b.color;
         ctx.beginPath();
         ctx.roundRect(-s * 0.55, -s * 0.35, s * 1.1, s * 0.7, 4);
         ctx.fill();
 
-        // pages
         ctx.fillStyle = '#f5f7fa';
         ctx.beginPath();
         ctx.roundRect(-s * 0.5, -s * 0.3, s * 1.0, s * 0.6, 3);
         ctx.fill();
 
-        // spine
         ctx.fillStyle = b.color;
         ctx.fillRect(-s * 0.55, -s * 0.35, s * 0.12, s * 0.7);
 
-        // text lines
         ctx.fillStyle = 'rgba(0,0,0,0.15)';
         for (let i = 0; i < 3; i++) {
             const y = -s * 0.15 + i * s * 0.16;
@@ -403,7 +385,6 @@
         ctx.rotate(c.rot);
         const s = c.size;
 
-        // board (diamond)
         ctx.fillStyle = c.color;
         ctx.beginPath();
         ctx.moveTo(0, -s * 0.35);
@@ -413,13 +394,11 @@
         ctx.closePath();
         ctx.fill();
 
-        // base under board
         ctx.fillStyle = '#1f2937';
         ctx.beginPath();
         ctx.roundRect(-s * 0.32, s * 0.15, s * 0.64, s * 0.22, 3);
         ctx.fill();
 
-        // tassel
         ctx.strokeStyle = c.accent;
         ctx.lineWidth = 3;
         ctx.beginPath();
@@ -446,7 +425,6 @@
         grad.addColorStop(1, 'rgba(0,0,0,0)');
         ctx.fillStyle = grad;
 
-        // 4-point star
         ctx.beginPath();
         for (let i = 0; i < 4; i++) {
             const angle = (Math.PI / 2) * i;
@@ -471,19 +449,16 @@
         ctx.rotate(b.rot);
         const s = b.size;
 
-        // shadow
         ctx.fillStyle = 'rgba(0,0,0,0.15)';
         ctx.beginPath();
         ctx.arc(0, 0, s * 0.52, 0, Math.PI * 2);
         ctx.fill();
 
-        // ball
         ctx.fillStyle = '#ffffff';
         ctx.beginPath();
         ctx.arc(0, 0, s * 0.5, 0, Math.PI * 2);
         ctx.fill();
 
-        // black pentagons (simple approximation)
         ctx.fillStyle = '#111827';
         ctx.beginPath();
         ctx.arc(0, 0, s * 0.15, 0, Math.PI * 2);
@@ -498,7 +473,6 @@
             ctx.fill();
         }
 
-        // highlight
         ctx.fillStyle = 'rgba(255,255,255,0.6)';
         ctx.beginPath();
         ctx.arc(-s * 0.18, -s * 0.18, s * 0.12, 0, Math.PI * 2);
@@ -513,28 +487,23 @@
         ctx.rotate(c.rot);
         const s = c.size;
 
-        // body
         ctx.fillStyle = c.color;
         ctx.beginPath();
         ctx.roundRect(-s * 0.55, -s * 0.2, s * 1.1, s * 0.45, s * 0.18);
         ctx.fill();
 
-        // left grip
         ctx.beginPath();
         ctx.arc(-s * 0.4, s * 0.2, s * 0.22, 0, Math.PI * 2);
         ctx.fill();
 
-        // right grip
         ctx.beginPath();
         ctx.arc(s * 0.4, s * 0.2, s * 0.22, 0, Math.PI * 2);
         ctx.fill();
 
-        // dpad
         ctx.fillStyle = '#9ca3af';
         ctx.fillRect(-s * 0.32, -s * 0.08, s * 0.14, s * 0.05);
         ctx.fillRect(-s * 0.28, -s * 0.12, s * 0.05, s * 0.14);
 
-        // buttons
         ctx.fillStyle = c.accent;
         ctx.beginPath();
         ctx.arc(s * 0.2, -s * 0.02, s * 0.05, 0, Math.PI * 2);
@@ -554,7 +523,6 @@
     function loopAnim(now) {
         ctx.clearRect(0, 0, W, H);
 
-        // Update + draw
         for (let i = particles.length - 1; i >= 0; i--) {
             const p = particles[i];
 
@@ -568,7 +536,6 @@
                 p.y += p.vy;
                 p.rot += p.vr;
 
-                // ground bounce
                 const floor = H * 0.85;
                 if (p.y + p.size * 0.5 > floor) {
                     p.y = floor - p.size * 0.5;
@@ -588,18 +555,15 @@
                 if (p.rot !== undefined) p.rot += p.vr || 0;
             }
 
-            // Life decay
             if (p.kind !== 'ball') {
                 p.life -= 0.0025;
             }
 
-            // Cull
             if (p.life <= 0 || p.y < -200 || p.x < -200 || p.x > W + 200) {
                 particles.splice(i, 1);
                 continue;
             }
 
-            // Draw
             if (p.kind === 'cake') drawCake(p);
             else if (p.kind === 'balloon') drawBalloon(p);
             else if (p.kind === 'confetti') drawConfetti(p);
@@ -610,9 +574,11 @@
             else if (p.kind === 'controller') drawController(p);
         }
 
-        // Spawn new particles
         const elapsed = now - animStartTime;
-        const spawnRate = elapsed < 2500 ? 14 : elapsed < 5000 ? 8 : 4;
+        // Fewer particles spawn on mobile — lighter
+        const spawnRate = isMobile
+            ? (elapsed < 2500 ? 6 : elapsed < 5000 ? 4 : 2)
+            : (elapsed < 2500 ? 14 : elapsed < 5000 ? 8 : 4);
 
         if (elapsed < 9000 && Math.random() < spawnRate / 60) {
             let p;
@@ -622,7 +588,6 @@
             if (p) particles.push(p);
         }
 
-        // Continue
         if (particles.length > 0 || elapsed < 9000) {
             rafId = requestAnimationFrame(loopAnim);
         } else {
@@ -640,16 +605,15 @@
 
         resizeCanvas();
 
-        // Warm-up particles
+        const warmup = isMobile ? 5 : 10;
         if (type === 'birthday') {
-            for (let i = 0; i < 10; i++) particles.push(createBirthdayParticle());
+            for (let i = 0; i < warmup; i++) particles.push(createBirthdayParticle());
         } else if (type === 'education') {
-            for (let i = 0; i < 8; i++) particles.push(createEducationParticle());
+            for (let i = 0; i < Math.ceil(warmup * 0.8); i++) particles.push(createEducationParticle());
         } else if (type === 'hobbies') {
-            for (let i = 0; i < 6; i++) particles.push(createHobbyParticle());
+            for (let i = 0; i < Math.ceil(warmup * 0.6); i++) particles.push(createHobbyParticle());
         }
 
-        // Caption
         const captionKey = {
             birthday: 'about.anim.birthday',
             education: 'about.anim.education',
@@ -665,11 +629,9 @@
         animLayer.setAttribute('aria-hidden', 'false');
         document.body.classList.add('no-scroll');
 
-        // Cancel any existing loop
         if (rafId) cancelAnimationFrame(rafId);
         rafId = requestAnimationFrame(loopAnim);
 
-        // Auto-close after 10s
         clearTimeout(openAnim._autoCloseTimer);
         openAnim._autoCloseTimer = setTimeout(() => {
             if (animLayer.classList.contains('is-open')) closeAnim();
@@ -693,7 +655,6 @@
     document.querySelectorAll('[data-anim]').forEach(el => {
         el.addEventListener('click', (e) => {
             const type = el.dataset.anim;
-            // Only handle internal animations (not location — that one opens a link)
             if (type === 'location') return;
             e.preventDefault();
             openAnim(type);

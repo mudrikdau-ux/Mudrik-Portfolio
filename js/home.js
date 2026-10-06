@@ -1,5 +1,6 @@
 /* =========================================================
    HOME PAGE INTERACTIONS
+   Mobile-optimized: parallax skipped on touch/small screens
    ========================================================= */
 
 (function () {
@@ -30,11 +31,12 @@
         }
     }
 
-    /* ---------- HERO PARALLAX (mousemove) ---------- */
+    /* ---------- HERO PARALLAX (desktop only) ---------- */
     const visual = document.querySelector('.hero__visual');
     const isFine = window.matchMedia('(hover: hover) and (pointer: fine)').matches;
+    const canRunParallax = visual && isFine && window.innerWidth >= 900;
 
-    if (visual && isFine) {
+    if (canRunParallax) {
         let mx = 0, my = 0;
         let cx = 0, cy = 0;
 
@@ -46,27 +48,25 @@
         function loop() {
             cx += (mx - cx) * 0.06;
             cy += (my - cy) * 0.06;
-
             visual.style.transform = `translate(${cx * 14}px, ${cy * 14}px)`;
-
             requestAnimationFrame(loop);
         }
         loop();
     }
 
-    /* ---------- PROJECT CARD MOUSE GLOW ---------- */
-    const cards = document.querySelectorAll('.project-card');
-
-    cards.forEach(card => {
-        card.addEventListener('mousemove', (e) => {
-            const rect = card.getBoundingClientRect();
-            const x = e.clientX - rect.left;
-            const y = e.clientY - rect.top;
-
-            card.style.setProperty('--mx', x + 'px');
-            card.style.setProperty('--my', y + 'px');
+    /* ---------- PROJECT CARD MOUSE GLOW (desktop only) ---------- */
+    if (isFine && window.innerWidth >= 900) {
+        const cards = document.querySelectorAll('.project-card');
+        cards.forEach(card => {
+            card.addEventListener('mousemove', (e) => {
+                const rect = card.getBoundingClientRect();
+                const x = e.clientX - rect.left;
+                const y = e.clientY - rect.top;
+                card.style.setProperty('--mx', x + 'px');
+                card.style.setProperty('--my', y + 'px');
+            });
         });
-    });
+    }
 
     /* ---------- SMOOTH SCROLL TO FEATURED (if hash) ---------- */
     if (window.location.hash === '#featured') {

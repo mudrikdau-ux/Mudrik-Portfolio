@@ -1,5 +1,6 @@
 /* =========================================================
    NAVBAR + FULLSCREEN MENU + LANGUAGE + THEME INTEGRATION
+   Mobile-optimized: parallax disabled on touch/small screens
    ========================================================= */
 
 (function () {
@@ -10,7 +11,6 @@
     const menu = document.getElementById('menu');
     const menuLinks = document.querySelectorAll('.menu__link');
 
-    // Language dropdown refs
     const langSwitcher = document.getElementById('langSwitcher');
     const langToggle = document.getElementById('langToggle');
     const langDropdown = document.getElementById('langDropdown');
@@ -56,8 +56,6 @@
 
     function openMenu() {
         isOpen = true;
-
-        // Close language dropdown first if open
         closeLangDropdown();
 
         menu.classList.add('is-open');
@@ -67,7 +65,6 @@
         toggle.setAttribute('aria-label', 'Close menu');
         document.body.classList.add('no-scroll');
 
-        // Stagger link animations
         menuLinks.forEach((link, i) => {
             link.style.transitionDelay = `${0.2 + i * 0.06}s`;
         });
@@ -99,7 +96,6 @@
         link.addEventListener('click', (e) => {
             const href = link.getAttribute('href');
 
-            // Same-page anchor
             if (href && href.startsWith('#')) {
                 e.preventDefault();
                 closeMenu();
@@ -114,7 +110,6 @@
                 return;
             }
 
-            // Page navigation — animate out then navigate
             if (href) {
                 e.preventDefault();
                 closeMenu();
@@ -135,7 +130,6 @@
         if (isLangOpen()) closeLangDropdown();
     });
 
-    // Custom event (dispatched from global.js)
     document.addEventListener('dau:closeMenu', () => {
         if (isOpen) closeMenu();
         if (isLangOpen()) closeLangDropdown();
@@ -144,14 +138,12 @@
     /* =========================================================
        CLICK OUTSIDE
        ========================================================= */
-    // Clicking on menu background closes menu
     menu.addEventListener('click', (e) => {
         if (e.target === menu || e.target.classList.contains('menu__bg')) {
             closeMenu();
         }
     });
 
-    // Clicking anywhere outside language switcher closes the dropdown
     document.addEventListener('click', (e) => {
         if (!langSwitcher) return;
         if (!langSwitcher.contains(e.target)) {
@@ -160,26 +152,27 @@
     });
 
     /* =========================================================
-       LANG TOGGLE — also close menu when opening lang dropdown
+       LANG TOGGLE — close menu if opening lang dropdown
        ========================================================= */
     if (langToggle && langSwitcher) {
         langToggle.addEventListener('click', (e) => {
             e.stopPropagation();
-
             const willOpen = !langSwitcher.classList.contains('is-open');
-
-            // If we're about to OPEN the language dropdown, close the menu first
-            if (willOpen && isOpen) {
-                closeMenu();
-            }
+            if (willOpen && isOpen) closeMenu();
         });
     }
 
     /* =========================================================
-       PARALLAX BACKGROUND GLOWS ON MOUSE MOVE
+       PARALLAX BACKGROUND GLOWS (desktop only)
        ========================================================= */
     const glows = document.querySelectorAll('.bg-glow');
-    if (glows.length && window.matchMedia('(hover: hover) and (pointer: fine)').matches) {
+    const canRunParallax =
+        glows.length &&
+        window.matchMedia('(hover: hover) and (pointer: fine)').matches &&
+        window.innerWidth >= 900 &&
+        !window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+    if (canRunParallax) {
         let mx = 0, my = 0;
         let cx = 0, cy = 0;
 

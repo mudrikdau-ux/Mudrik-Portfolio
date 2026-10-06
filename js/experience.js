@@ -1,9 +1,13 @@
 /* =========================================================
    EXPERIENCE PAGE — Interactions
+   Mobile-optimized: mouse glow + marker follow skipped on touch
    ========================================================= */
 
 (function () {
     'use strict';
+
+    const isFine = window.matchMedia('(hover: hover) and (pointer: fine)').matches;
+    const canRunHover = isFine && window.innerWidth >= 900;
 
     /* ---------- ANIMATED COUNTERS ---------- */
     const counters = document.querySelectorAll('[data-count]');
@@ -39,24 +43,24 @@
         counters.forEach(c => cIO.observe(c));
     }
 
-    /* ---------- TIMELINE ITEM MOUSE GLOW ---------- */
-    const cards = document.querySelectorAll('.timeline-item__card');
+    /* ---------- TIMELINE ITEM MOUSE GLOW (desktop only) ---------- */
+    if (canRunHover) {
+        const cards = document.querySelectorAll('.timeline-item__card');
 
-    cards.forEach(card => {
-        card.addEventListener('mousemove', (e) => {
-            const rect = card.getBoundingClientRect();
-            const x = ((e.clientX - rect.left) / rect.width) * 100;
-            const y = ((e.clientY - rect.top) / rect.height) * 100;
-            card.style.setProperty('--mx', x + '%');
-            card.style.setProperty('--my', y + '%');
+        cards.forEach(card => {
+            card.addEventListener('mousemove', (e) => {
+                const rect = card.getBoundingClientRect();
+                const x = ((e.clientX - rect.left) / rect.width) * 100;
+                const y = ((e.clientY - rect.top) / rect.height) * 100;
+                card.style.setProperty('--mx', x + '%');
+                card.style.setProperty('--my', y + '%');
+            });
         });
-    });
+    }
 
-    /* ---------- TIMELINE MARKER SUBTLE FOLLOW ---------- */
-    const timelineItems = document.querySelectorAll('.timeline-item');
-    const isFine = window.matchMedia('(hover: hover) and (pointer: fine)').matches;
-
-    if (isFine) {
+    /* ---------- TIMELINE MARKER SUBTLE FOLLOW (desktop only) ---------- */
+    if (canRunHover) {
+        const timelineItems = document.querySelectorAll('.timeline-item');
         timelineItems.forEach(item => {
             const marker = item.querySelector('.timeline-item__marker');
             if (!marker) return;

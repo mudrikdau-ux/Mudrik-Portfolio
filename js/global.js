@@ -1,9 +1,16 @@
 /* =========================================================
    GLOBAL JS — MUDRIK DAU PORTFOLIO
+   Mobile-optimized: cursor, parallax, and heavy effects skipped on touch
    ========================================================= */
 
 (function () {
     'use strict';
+
+    /* ---------- MOBILE DETECTION (used by all features below) ---------- */
+    const isTouch = window.matchMedia('(hover: none), (pointer: coarse)').matches;
+    const isSmallScreen = window.innerWidth < 900;
+    const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    const isMobile = isTouch || isSmallScreen || prefersReducedMotion;
 
     /* ---------- UTILITY: $ and $$ ---------- */
     window.$ = (sel, ctx = document) => ctx.querySelector(sel);
@@ -42,7 +49,6 @@
     document.body.classList.add('no-scroll');
     window.addEventListener('load', runLoader);
 
-    // Fallback: hide loader after 4s no matter what
     setTimeout(() => {
         if (loader && !loader.classList.contains('is-hidden')) {
             loader.classList.add('is-hidden');
@@ -51,93 +57,64 @@
         }
     }, 4000);
 
-    /* ---------- CUSTOM CURSOR ---------- */
+    /* ---------- CUSTOM CURSOR (desktop only) ---------- */
     const cursor = document.getElementById('cursor');
 
-    if (cursor && window.matchMedia('(hover: hover) and (pointer: fine)').matches) {
+    if (cursor && !isMobile) {
         const dot = cursor.querySelector('.cursor__dot');
         const ring = cursor.querySelector('.cursor__ring');
 
-        let mouseX = window.innerWidth / 2;
-        let mouseY = window.innerHeight / 2;
-        let ringX = mouseX;
-        let ringY = mouseY;
+        if (dot && ring) {
+            let mouseX = window.innerWidth / 2;
+            let mouseY = window.innerHeight / 2;
+            let ringX = mouseX;
+            let ringY = mouseY;
 
-        document.addEventListener('mousemove', (e) => {
-            mouseX = e.clientX;
-            mouseY = e.clientY;
+            document.addEventListener('mousemove', (e) => {
+                mouseX = e.clientX;
+                mouseY = e.clientY;
+                dot.style.transform = `translate(${mouseX}px, ${mouseY}px) translate(-50%, -50%)`;
+            });
 
-            // dot follows instantly
-            dot.style.transform = `translate(${mouseX}px, ${mouseY}px) translate(-50%, -50%)`;
-        });
+            function animateRing() {
+                ringX += (mouseX - ringX) * 0.18;
+                ringY += (mouseY - ringY) * 0.18;
+                ring.style.transform = `translate(${ringX}px, ${ringY}px) translate(-50%, -50%)`;
+                requestAnimationFrame(animateRing);
+            }
+            animateRing();
 
-        // Smooth ring lag
-        function animateRing() {
-            ringX += (mouseX - ringX) * 0.18;
-            ringY += (mouseY - ringY) * 0.18;
-            ring.style.transform = `translate(${ringX}px, ${ringY}px) translate(-50%, -50%)`;
-            requestAnimationFrame(animateRing);
+            const hoverTargets = [
+                'a', 'button', '.btn', '[data-cursor="hover"]', '[data-tilt]',
+                '.project-card', '.menu__link', '.navbar__toggle', '.menu__socials a',
+                '.hero__chip', '.info-card', '.edu-card', '.interest-card',
+                '.skill-pill', '.about-hero__badge'
+            ].join(',');
+
+            document.addEventListener('mouseover', (e) => {
+                if (e.target.closest(hoverTargets)) cursor.classList.add('is-hover');
+            });
+            document.addEventListener('mouseout', (e) => {
+                if (e.target.closest(hoverTargets)) cursor.classList.remove('is-hover');
+            });
+
+            document.addEventListener('mousedown', () => cursor.classList.add('is-click'));
+            document.addEventListener('mouseup', () => cursor.classList.remove('is-click'));
+
+            document.addEventListener('mouseleave', () => { cursor.style.opacity = '0'; });
+            document.addEventListener('mouseenter', () => { cursor.style.opacity = '1'; });
         }
-        animateRing();
-
-        // Hover targets — includes Home + About + (future pages)
-        const hoverTargets = [
-            'a',
-            'button',
-            '.btn',
-            '[data-cursor="hover"]',
-            '[data-tilt]',
-            '.project-card',
-            '.menu__link',
-            '.navbar__toggle',
-            '.menu__socials a',
-            '.hero__chip',
-            /* About page interactive elements */
-            '.info-card',
-            '.edu-card',
-            '.interest-card',
-            '.skill-pill',
-            '.about-hero__badge'
-        ].join(',');
-
-        document.addEventListener('mouseover', (e) => {
-            if (e.target.closest(hoverTargets)) {
-                cursor.classList.add('is-hover');
-            }
-        });
-
-        document.addEventListener('mouseout', (e) => {
-            if (e.target.closest(hoverTargets)) {
-                cursor.classList.remove('is-hover');
-            }
-        });
-
-        // Click state
-        document.addEventListener('mousedown', () => cursor.classList.add('is-click'));
-        document.addEventListener('mouseup', () => cursor.classList.remove('is-click'));
-
-        // Hide when leaving window
-        document.addEventListener('mouseleave', () => {
-            cursor.style.opacity = '0';
-        });
-        document.addEventListener('mouseenter', () => {
-            cursor.style.opacity = '1';
-        });
-
-        // Safety: reset hover state on scroll/hash change
-        window.addEventListener('scroll', () => {
-            if (document.body.classList.contains('no-scroll')) return;
-        }, { passive: true });
+    } else if (cursor) {
+        // Ensure it's completely hidden on mobile
+        cursor.style.display = 'none';
     }
 
     /* ---------- ACTIVE PAGE HIGHLIGHT ---------- */
-    // Normalize current page name
     const path = window.location.pathname;
     const currentFile = (
         path.substring(path.lastIndexOf('/') + 1) || 'index.html'
     ).toLowerCase();
 
-    // Build a mapping of page keys → file names for data-page fallback
     const PAGE_FILE_MAP = {
         'home': 'index.html',
         'about': 'about.html',
@@ -160,11 +137,8 @@
             mappedFile === currentFile ||
             (currentFile === '' && pageAttr === 'home');
 
-        if (isCurrent) {
-            link.classList.add('is-active');
-        } else {
-            link.classList.remove('is-active');
-        }
+        if (isCurrent) link.classList.add('is-active');
+        else link.classList.remove('is-active');
     });
 
     /* ---------- SMOOTH ANCHOR SCROLL ---------- */
@@ -183,7 +157,7 @@
         window.scrollTo({ top: y, behavior: 'smooth' });
     });
 
-    /* ---------- LAZY IMAGES (native + fallback) ---------- */
+    /* ---------- LAZY IMAGES ---------- */
     if ('loading' in HTMLImageElement.prototype) {
         $$('img').forEach(img => {
             if (
@@ -203,8 +177,7 @@
         }
     });
 
-    /* ---------- SAFE: RESET SCROLL LOCK ON PAGE SHOW ---------- */
-    // When navigating back/forward via bfcache, ensure scroll isn't locked
+    /* ---------- RESET SCROLL LOCK ON BF-CACHE ---------- */
     window.addEventListener('pageshow', (e) => {
         if (e.persisted) {
             document.body.classList.remove('no-scroll');

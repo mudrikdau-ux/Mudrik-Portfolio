@@ -1,9 +1,13 @@
 /* =========================================================
    SKILLS PAGE — Interactions
+   Mobile-optimized: orbit parallax + glow skipped on touch
    ========================================================= */
 
 (function () {
     'use strict';
+
+    const isFine = window.matchMedia('(hover: hover) and (pointer: fine)').matches;
+    const isMobile = window.innerWidth < 900 || !isFine;
 
     /* ---------- SKILL BAR PROGRESS ---------- */
     const bars = document.querySelectorAll('.skill-bar');
@@ -33,11 +37,9 @@
         });
     }
 
-    /* ---------- ORBIT PARALLAX (mousemove) ---------- */
+    /* ---------- ORBIT PARALLAX (desktop only) ---------- */
     const visual = document.querySelector('.skills-hero__visual');
-    const isFine = window.matchMedia('(hover: hover) and (pointer: fine)').matches;
-
-    if (visual && isFine) {
+    if (visual && isFine && window.innerWidth >= 900) {
         let mx = 0, my = 0;
         let cx = 0, cy = 0;
 
@@ -55,20 +57,22 @@
         loop();
     }
 
-    /* ---------- CARD MOUSE GLOW ---------- */
-    const glowTargets = document.querySelectorAll(
-        '.tech-card, .skill-cat, .learning-item, .flip-card'
-    );
+    /* ---------- CARD MOUSE GLOW (desktop only) ---------- */
+    if (isFine && window.innerWidth >= 900) {
+        const glowTargets = document.querySelectorAll(
+            '.tech-card, .skill-cat, .learning-item, .flip-card'
+        );
 
-    glowTargets.forEach(card => {
-        card.addEventListener('mousemove', (e) => {
-            const rect = card.getBoundingClientRect();
-            const x = ((e.clientX - rect.left) / rect.width) * 100;
-            const y = ((e.clientY - rect.top) / rect.height) * 100;
-            card.style.setProperty('--mx', x + '%');
-            card.style.setProperty('--my', y + '%');
+        glowTargets.forEach(card => {
+            card.addEventListener('mousemove', (e) => {
+                const rect = card.getBoundingClientRect();
+                const x = ((e.clientX - rect.left) / rect.width) * 100;
+                const y = ((e.clientY - rect.top) / rect.height) * 100;
+                card.style.setProperty('--mx', x + '%');
+                card.style.setProperty('--my', y + '%');
+            });
         });
-    });
+    }
 
     /* ---------- ANIMATED COUNTERS ---------- */
     const stats = document.querySelectorAll('[data-count]');
@@ -108,7 +112,6 @@
     const flipCards = document.querySelectorAll('.flip-card');
 
     flipCards.forEach(card => {
-        // Make it focusable + keyboard-toggleable
         card.setAttribute('tabindex', '0');
         card.setAttribute('role', 'button');
 
@@ -119,7 +122,6 @@
             }
         });
 
-        // Tap to flip on touch devices
         card.addEventListener('click', () => {
             if (window.matchMedia('(hover: none)').matches) {
                 card.classList.toggle('is-flipped');
@@ -129,7 +131,6 @@
 
     /* ---------- TECH CARD EXTERNAL LINK SAFETY ---------- */
     document.querySelectorAll('a[target="_blank"]').forEach(link => {
-        // Ensure rel is set (in case HTML missed it)
         const rel = link.getAttribute('rel') || '';
         if (!rel.includes('noopener')) {
             link.setAttribute('rel', (rel + ' noopener').trim());
