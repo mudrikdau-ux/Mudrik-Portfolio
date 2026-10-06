@@ -12,11 +12,11 @@
     const API_CONFIG = {
         // Change this to your deployed backend URL when you go live
         // Examples:
-        //   Local dev:      http://localhost:5000
+        //   Local dev:      http://192.168.20.171:5000
         //   Railway:        https://your-app.railway.app
         //   Render:         https://dau-backend.onrender.com
         //   VPS/self-host:  https://api.mudrikdau.com
-        baseURL: 'http://localhost:5000',
+        baseURL: 'http://192.168.20.171:5000',
 
         timeout: 20000,   // 20 seconds
         retries: 1        // retry once on network failure

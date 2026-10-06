@@ -500,12 +500,19 @@
 
             'cert.badge.firstClass': 'First Class',
             'cert.badge.supervisor': 'Supervisor Signed',
+            'cert.badge.bestStudent': 'Best Student',
             'cert.card.view': 'View Certificate',
+            'cert.card.tapToReveal': 'Hover to reveal',
 
             'cert.item.cbit.title': 'Business of Information Technology',
             'cert.item.cbit.issuer': 'Zanzibar University',
             'cert.item.cbit.grade': 'Grade: First Class · High GPA',
             'cert.item.cbit.desc': 'Completed the Business of Information Technology (B.IT) course with a First Class grade and a high GPA.',
+
+            'cert.item.firstClass.title': 'First Class Award — Best Student',
+            'cert.item.firstClass.issuer': 'Zanzibar University',
+            'cert.item.firstClass.grade': 'Certificate in Business Information Technology',
+            'cert.item.firstClass.desc': 'Awarded the Best Student certificate by Zanzibar University for excellent academic performance in the Certificate in Business Information Technology program, with a First Class grade.',
 
             'cert.item.webprojects.title': 'Web Projects Completion',
             'cert.item.webprojects.issuer': 'Field Supervisor · ICE',
@@ -759,7 +766,7 @@
             'contact.form.bullet1': 'Quick response time',
             'contact.form.bullet2': 'Open to freelance and full-time',
             'contact.form.bullet3': 'Based in Zanzibar — remote friendly',
-            'contact.form.note': 'This form opens your email app with the message pre-filled — there is no server involved, and nothing is sent automatically.',
+            'contact.form.note': "Your message goes straight to my inbox. I'll reply within 24 hours, and you'll get an automatic confirmation in your email.",
 
             'contact.form.name': 'Your Name',
             'contact.form.namePlaceholder': 'Mudrik Dau',
@@ -782,6 +789,10 @@
             'contact.form.err.messageShort': 'Message is too short (min 10 characters)',
             'contact.form.err.fixErrors': 'Please fix the errors above before submitting.',
             'contact.form.success': 'Opening your email app — please review and send the message.',
+            'contact.form.sending': 'Sending…',
+            'contact.form.err.sendFailed': 'Could not send your message. Please try again or email me directly.',
+            'contact.form.err.tooMany': 'Too many messages. Please try again in 15 minutes.',
+            'contact.form.err.timeout': 'Request timed out. Please check your connection.',
 
             'contact.social.label': '/ 02 — Social',
             'contact.social.titleA': 'Find Me',
@@ -1422,12 +1433,19 @@
 
             'cert.badge.firstClass': 'Daraja la Kwanza',
             'cert.badge.supervisor': 'Imesainiwa na Msimamizi',
+            'cert.badge.bestStudent': 'Mwanafunzi Bora',
             'cert.card.view': 'Ona Cheti',
+            'cert.card.tapToReveal': 'Gusa kuona',
 
             'cert.item.cbit.title': 'Biashara ya Teknolojia ya Habari',
             'cert.item.cbit.issuer': 'Chuo Kikuu cha Zanzibar',
             'cert.item.cbit.grade': 'Daraja: Daraja la Kwanza · GPA ya Juu',
             'cert.item.cbit.desc': 'Nilikamilisha kozi ya Biashara ya Teknolojia ya Habari (B.IT) kwa daraja la kwanza na GPA ya juu.',
+
+            'cert.item.firstClass.title': 'Tuzo ya Daraja la Kwanza — Mwanafunzi Bora',
+            'cert.item.firstClass.issuer': 'Chuo Kikuu cha Zanzibar',
+            'cert.item.firstClass.grade': 'Cheti cha Biashara ya Teknolojia ya Habari',
+            'cert.item.firstClass.desc': 'Nilipewa cheti cha Mwanafunzi Bora na Chuo Kikuu cha Zanzibar kwa ufaulu bora wa kitaaluma katika programu ya Cheti cha Biashara ya Teknolojia ya Habari, kwa daraja la Kwanza.',
 
             'cert.item.webprojects.title': 'Kukamilisha Miradi ya Wavuti',
             'cert.item.webprojects.issuer': 'Msimamizi wa Mafunzo · ICE',
@@ -1681,7 +1699,7 @@
             'contact.form.bullet1': 'Muda mfupi wa kujibu',
             'contact.form.bullet2': 'Niko tayari kwa kazi huru na ya wakati wote',
             'contact.form.bullet3': 'Napatikana Zanzibar — ninafanya kazi kwa mbali',
-            'contact.form.note': 'Fomu hii inafungua programu yako ya barua pepe na ujumbe umewekwa tayari — hakuna seva inayohusika, na hakuna kinachotumwa kiotomatiki.',
+            'contact.form.note': 'Ujumbe wako unakwenda moja kwa moja kwenye barua pepe yangu. Nitakujibu ndani ya masaa 24, na utapokea uthibitisho wa kiotomatiki kwenye barua pepe yako.',
 
             'contact.form.name': 'Jina Lako',
             'contact.form.namePlaceholder': 'Jina lako kamili',
@@ -1704,6 +1722,10 @@
             'contact.form.err.messageShort': 'Ujumbe ni mfupi mno (herufi 10 kwa chini)',
             'contact.form.err.fixErrors': 'Tafadhali rekebisha makosa hapo juu kabla ya kutuma.',
             'contact.form.success': 'Inafungua programu yako ya barua pepe — tafadhali kagua na utume ujumbe.',
+            'contact.form.sending': 'Inatuma…',
+            'contact.form.err.sendFailed': 'Imeshindwa kutuma ujumbe wako. Tafadhali jaribu tena au nitumie barua pepe moja kwa moja.',
+            'contact.form.err.tooMany': 'Ujumbe mwingi mno. Tafadhali jaribu tena baada ya dakika 15.',
+            'contact.form.err.timeout': 'Ombi limechelewa. Tafadhali angalia muunganisho wako.',
 
             'contact.social.label': '/ 02 — Mitandao',
             'contact.social.titleA': 'Nikute',
@@ -2344,12 +2366,19 @@
 
             'cert.badge.firstClass': '一等荣誉',
             'cert.badge.supervisor': '导师签字',
+            'cert.badge.bestStudent': '最佳学生',
             'cert.card.view': '查看证书',
+            'cert.card.tapToReveal': '悬停查看',
 
             'cert.item.cbit.title': '信息技术商业',
             'cert.item.cbit.issuer': '桑给巴尔大学',
             'cert.item.cbit.grade': '等级：一等荣誉 · 高 GPA',
             'cert.item.cbit.desc': '以一等荣誉和高 GPA 完成信息技术商业（B.IT）课程。',
+
+            'cert.item.firstClass.title': '一等荣誉奖 — 最佳学生',
+            'cert.item.firstClass.issuer': '桑给巴尔大学',
+            'cert.item.firstClass.grade': '商业信息技术证书',
+            'cert.item.firstClass.desc': '因在商业信息技术证书课程中取得一等荣誉成绩而被桑给巴尔大学授予最佳学生证书。',
 
             'cert.item.webprojects.title': 'Web 项目完成证书',
             'cert.item.webprojects.issuer': '实地导师 · ICE',
@@ -2603,7 +2632,7 @@
             'contact.form.bullet1': '快速响应',
             'contact.form.bullet2': '接受自由职业和全职',
             'contact.form.bullet3': '位于桑给巴尔 — 支持远程',
-            'contact.form.note': '此表单打开你的邮件应用并预填信息 —— 没有服务器参与，不会有任何内容自动发送。',
+            'contact.form.note': '您的消息将直接发送到我的收件箱。我会在 24 小时内回复，您也将收到一封自动确认邮件。',
 
             'contact.form.name': '你的名字',
             'contact.form.namePlaceholder': '穆德里克·达乌',
@@ -2626,6 +2655,10 @@
             'contact.form.err.messageShort': '消息太短（至少 10 个字符）',
             'contact.form.err.fixErrors': '请在提交前修正上面的错误。',
             'contact.form.success': '正在打开你的邮件应用 —— 请检查并发送消息。',
+            'contact.form.sending': '正在发送…',
+            'contact.form.err.sendFailed': '无法发送您的消息。请重试或直接给我发邮件。',
+            'contact.form.err.tooMany': '消息过多。请在 15 分钟后重试。',
+            'contact.form.err.timeout': '请求超时。请检查您的网络连接。',
 
             'contact.social.label': '/ 02 — 社交',
             'contact.social.titleA': '在线',
@@ -3266,12 +3299,19 @@
 
             'cert.badge.firstClass': 'الدرجة الأولى',
             'cert.badge.supervisor': 'موقّع من المشرف',
+            'cert.badge.bestStudent': 'الطالب الأفضل',
             'cert.card.view': 'عرض الشهادة',
+            'cert.card.tapToReveal': 'مرّر للكشف',
 
             'cert.item.cbit.title': 'أعمال تقنية المعلومات',
             'cert.item.cbit.issuer': 'جامعة زنجبار',
             'cert.item.cbit.grade': 'الدرجة: الأولى · معدل عالٍ',
             'cert.item.cbit.desc': 'أكملت دورة أعمال تقنية المعلومات (B.IT) بدرجة الشرف الأولى ومعدل تراكمي عالٍ.',
+
+            'cert.item.firstClass.title': 'جائزة الدرجة الأولى — الطالب الأفضل',
+            'cert.item.firstClass.issuer': 'جامعة زنجبار',
+            'cert.item.firstClass.grade': 'شهادة في أعمال تقنية المعلومات',
+            'cert.item.firstClass.desc': 'حصلت على شهادة الطالب الأفضل من جامعة زنجبار للأداء الأكاديمي المتميز في برنامج شهادة أعمال تقنية المعلومات، بدرجة الشرف الأولى.',
 
             'cert.item.webprojects.title': 'إكمال مشاريع الويب',
             'cert.item.webprojects.issuer': 'المشرف الميداني · ICE',
@@ -3525,7 +3565,7 @@
             'contact.form.bullet1': 'وقت استجابة سريع',
             'contact.form.bullet2': 'متاح للعمل الحر والبدوام الكامل',
             'contact.form.bullet3': 'مقيم في زنجبار — أعمل عن بعد',
-            'contact.form.note': 'يفتح هذا النموذج تطبيق البريد الإلكتروني الخاص بك مع تعبئة الرسالة مسبقاً — لا يوجد خادم متضمن، ولا يتم إرسال أي شيء تلقائياً.',
+            'contact.form.note': 'تذهب رسالتك مباشرة إلى بريدي الوارد. سأرد خلال 24 ساعة، وستتلقى رسالة تأكيد تلقائية في بريدك الإلكتروني.',
 
             'contact.form.name': 'اسمك',
             'contact.form.namePlaceholder': 'اسمك الكامل',
@@ -3548,6 +3588,10 @@
             'contact.form.err.messageShort': 'الرسالة قصيرة جداً (10 أحرف على الأقل)',
             'contact.form.err.fixErrors': 'الرجاء تصحيح الأخطاء أعلاه قبل الإرسال.',
             'contact.form.success': 'يتم فتح تطبيق البريد الإلكتروني — يرجى المراجعة والإرسال.',
+            'contact.form.sending': 'جارٍ الإرسال…',
+            'contact.form.err.sendFailed': 'تعذّر إرسال رسالتك. الرجاء المحاولة مرة أخرى أو مراسلتي مباشرة.',
+            'contact.form.err.tooMany': 'رسائل كثيرة جداً. الرجاء المحاولة بعد 15 دقيقة.',
+            'contact.form.err.timeout': 'انتهت مهلة الطلب. الرجاء التحقق من اتصالك.',
 
             'contact.social.label': '/ 02 — التواصل',
             'contact.social.titleA': 'جدني',
@@ -4188,12 +4232,19 @@
 
             'cert.badge.firstClass': 'Première classe',
             'cert.badge.supervisor': 'Signé par le superviseur',
+            'cert.badge.bestStudent': 'Meilleur étudiant',
             'cert.card.view': 'Voir le certificat',
+            'cert.card.tapToReveal': 'Survolez pour révéler',
 
             'cert.item.cbit.title': "Business des Technologies de l'Information",
             'cert.item.cbit.issuer': 'Université de Zanzibar',
             'cert.item.cbit.grade': 'Mention : Première classe · GPA élevé',
             'cert.item.cbit.desc': "J'ai terminé le cours Business des Technologies de l'Information (B.IT) avec la mention Première classe et un GPA élevé.",
+
+            'cert.item.firstClass.title': 'Prix de Première Classe — Meilleur étudiant',
+            'cert.item.firstClass.issuer': 'Université de Zanzibar',
+            'cert.item.firstClass.grade': "Certificat en Business des Technologies de l'Information",
+            'cert.item.firstClass.desc': "J'ai reçu le certificat du Meilleur étudiant de l'Université de Zanzibar pour excellence académique dans le programme de Certificat en Business des Technologies de l'Information, avec la mention Première Classe.",
 
             'cert.item.webprojects.title': 'Achèvement de projets web',
             'cert.item.webprojects.issuer': 'Superviseur de terrain · ICE',
@@ -4202,7 +4253,9 @@
 
             'cert.item.hsk2.title': 'HSK Niveau 2 — Chinois',
             'cert.item.hsk2.issuer': 'Test de compétence en langue chinoise',
-            'cert.item.hsk2.desc': "J'ai réussi l'examen HSK Niveau 2, démontrant une compétence de base en langue chinoise.",            'cert.item.hsk1.title': 'HSK Niveau 1 — Chinois',
+            'cert.item.hsk2.desc': "J'ai réussi l'examen HSK Niveau 2, démontrant une compétence de base en langue chinoise.",
+
+            'cert.item.hsk1.title': 'HSK Niveau 1 — Chinois',
             'cert.item.hsk1.issuer': 'Test de compétence en langue chinoise',
             'cert.item.hsk1.desc': "J'ai réussi l'examen HSK Niveau 1, démontrant des compétences fondamentales en langue chinoise.",
 
@@ -4445,7 +4498,7 @@
             'contact.form.bullet1': 'Temps de réponse rapide',
             'contact.form.bullet2': 'Ouvert au freelance et au temps plein',
             'contact.form.bullet3': 'Basé à Zanzibar — favorable au télétravail',
-            'contact.form.note': "Ce formulaire ouvre votre application de messagerie avec le message pré-rempli — aucun serveur n'est impliqué, et rien n'est envoyé automatiquement.",
+            'contact.form.note': "Votre message arrive directement dans ma boîte de réception. Je réponds sous 24 heures et vous recevrez une confirmation automatique par email.",
 
             'contact.form.name': 'Votre nom',
             'contact.form.namePlaceholder': 'Mudrik Dau',
@@ -4468,6 +4521,10 @@
             'contact.form.err.messageShort': 'Le message est trop court (min 10 caractères)',
             'contact.form.err.fixErrors': 'Veuillez corriger les erreurs ci-dessus avant de soumettre.',
             'contact.form.success': 'Ouverture de votre application de messagerie — veuillez vérifier et envoyer le message.',
+            'contact.form.sending': 'Envoi…',
+            'contact.form.err.sendFailed': 'Impossible d\'envoyer votre message. Veuillez réessayer ou m\'envoyer un email directement.',
+            'contact.form.err.tooMany': 'Trop de messages. Veuillez réessayer dans 15 minutes.',
+            'contact.form.err.timeout': 'Délai dépassé. Veuillez vérifier votre connexion.',
 
             'contact.social.label': '/ 02 — Réseaux',
             'contact.social.titleA': 'Trouvez-moi',

@@ -1,5 +1,5 @@
 /* =========================================================
-   CERTIFICATES PAGE — Filtering + Modal
+   CERTIFICATES PAGE — Filtering + Modal + Touch Reveal
    ========================================================= */
 
 (function () {
@@ -8,9 +8,18 @@
     const t = (key) => (window.DAU_i18n ? window.DAU_i18n.t(key) : key);
 
     /* =========================================================
-       CERTIFICATE DATA
+       CERTIFICATE DATA (for modal content)
        ========================================================= */
     const CERTIFICATES = {
+        firstClass: {
+            image: 'assets/images/certificates/first-class.png',
+            titleKey: 'cert.item.firstClass.title',
+            issuerKey: 'cert.item.firstClass.issuer',
+            date: '2025',
+            category: 'academic',
+            gradeKey: 'cert.item.firstClass.grade',
+            descKey: 'cert.item.firstClass.desc'
+        },
         cbit: {
             image: 'assets/images/certificates/cbit.jpeg',
             titleKey: 'cert.item.cbit.title',
@@ -91,11 +100,14 @@
 
                 if (match) {
                     card.style.display = '';
-                    card.style.animation = 'none';
+                    // Reset reveal state when re-shown
+                    card.classList.remove('is-revealed');
+                    // Retrigger reveal animation
+                    card.classList.remove('is-revealed');
                     void card.offsetWidth;
-                    card.style.animation = '';
                 } else {
                     card.style.display = 'none';
+                    card.classList.remove('is-revealed');
                 }
             });
         });
@@ -177,6 +189,72 @@
             }
         });
     }
+
+    /* =========================================================
+       TOUCH TO REVEAL (Mobile only)
+       - Tap a card → reveals image
+       - Tap same card → hides
+       - Tap another card → previous hides, new reveals
+       - Tap outside → all hide
+       ========================================================= */
+    const isTouch = window.matchMedia('(hover: none), (pointer: coarse)').matches;
+
+    if (isTouch) {
+        document.querySelectorAll('.cert-card').forEach(card => {
+            const visual = card.querySelector('.cert-card__visual');
+            if (!visual) return;
+
+            visual.addEventListener('click', (e) => {
+                // Don't trigger reveal if user clicked inside the button or link
+                if (e.target.closest('[data-open-cert]')) return;
+                if (e.target.closest('button')) return;
+                if (e.target.closest('a')) return;
+
+                const wasRevealed = card.classList.contains('is-revealed');
+
+                // Close all other revealed cards
+                document.querySelectorAll('.cert-card.is-revealed').forEach(other => {
+                    if (other !== card) other.classList.remove('is-revealed');
+                });
+
+                // Toggle this card
+                if (wasRevealed) {
+                    card.classList.remove('is-revealed');
+                } else {
+                    card.classList.add('is-revealed');
+                }
+            });
+        });
+
+        // Tap outside closes all reveals
+        document.addEventListener('click', (e) => {
+            if (!e.target.closest('.cert-card')) {
+                document.querySelectorAll('.cert-card.is-revealed').forEach(c => {
+                    c.classList.remove('is-revealed');
+                });
+            }
+        });
+    }
+
+    /* =========================================================
+       KEYBOARD REVEAL (Accessibility)
+       Tab to focus visual → Enter/Space to reveal/hide
+       ========================================================= */
+    document.querySelectorAll('.cert-card').forEach(card => {
+        const visual = card.querySelector('.cert-card__visual');
+        if (!visual) return;
+
+        visual.setAttribute('tabindex', '0');
+        visual.setAttribute('role', 'button');
+        visual.setAttribute('aria-label', 'Reveal certificate');
+
+        visual.addEventListener('keydown', (e) => {
+            if (e.key === 'Enter' || e.key === ' ') {
+                e.preventDefault();
+                card.classList.toggle('is-revealed');
+            }
+        });
+    });
 
     /* =========================================================
        UTILITIES

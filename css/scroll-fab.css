@@ -1,0 +1,230 @@
+/* =========================================================
+   SCROLL FAB — Floating scroll-to-top / scroll-to-bottom
+   ========================================================= */
+
+.scroll-fab {
+    position: fixed;
+    right: 24px;
+    bottom: 100px;
+    z-index: 450;
+
+    width: 52px;
+    height: 52px;
+    display: grid;
+    place-items: center;
+
+    background: var(--glass-bg);
+    border: 1px solid var(--border-2);
+    border-radius: 50%;
+
+    color: var(--text-0);
+    font-size: 1.05rem;
+    cursor: pointer;
+
+    backdrop-filter: blur(14px);
+    -webkit-backdrop-filter: blur(14px);
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.4);
+
+    /* hidden by default — JS adds .is-visible */
+    opacity: 0;
+    visibility: hidden;
+    transform: translateY(20px) scale(0.85);
+
+    transition:
+        opacity 0.4s var(--ease),
+        visibility 0.4s var(--ease),
+        transform 0.4s var(--ease),
+        background 0.3s var(--ease),
+        border-color 0.3s var(--ease),
+        box-shadow 0.3s var(--ease),
+        color 0.3s var(--ease);
+}
+
+.scroll-fab.is-visible {
+    opacity: 1;
+    visibility: visible;
+    transform: translateY(0) scale(1);
+}
+
+.scroll-fab:hover {
+    background: var(--grad-accent);
+    border-color: transparent;
+    color: #05060a;
+    transform: translateY(-4px) scale(1.05);
+    box-shadow: 0 16px 40px rgba(0, 229, 255, 0.4);
+}
+
+.scroll-fab:active {
+    transform: translateY(-2px) scale(0.98);
+}
+
+.scroll-fab:focus-visible {
+    outline: 2px solid var(--accent);
+    outline-offset: 3px;
+}
+
+/* Icons stacked for a smooth arrow swap */
+.scroll-fab__icon {
+    position: relative;
+    display: grid;
+    place-items: center;
+    width: 20px;
+    height: 20px;
+}
+
+.scroll-fab__arrow {
+    position: absolute;
+    inset: 0;
+    display: grid;
+    place-items: center;
+    transition:
+        transform 0.4s var(--ease),
+        opacity 0.35s var(--ease);
+    will-change: transform, opacity;
+}
+
+/* Default state: DOWN arrow visible */
+.scroll-fab__arrow--down {
+    opacity: 1;
+    transform: translateY(0) rotate(0deg);
+}
+
+.scroll-fab__arrow--up {
+    opacity: 0;
+    transform: translateY(-10px) rotate(0deg);
+}
+
+/* When scrolling up mode: UP arrow visible */
+.scroll-fab.is-up .scroll-fab__arrow--down {
+    opacity: 0;
+    transform: translateY(10px) rotate(0deg);
+}
+
+.scroll-fab.is-up .scroll-fab__arrow--up {
+    opacity: 1;
+    transform: translateY(0) rotate(0deg);
+}
+
+/* Subtle pulse hint on first appearance */
+.scroll-fab.is-visible::before {
+    content: '';
+    position: absolute;
+    inset: -6px;
+    border-radius: 50%;
+    border: 1px solid var(--border-accent);
+    opacity: 0;
+    animation: scrollFabPulse 3s ease-out infinite;
+    pointer-events: none;
+}
+
+@keyframes scrollFabPulse {
+    0% {
+        opacity: 0.7;
+        transform: scale(0.85);
+    }
+    80%, 100% {
+        opacity: 0;
+        transform: scale(1.35);
+    }
+}
+
+/* =========================================================
+   LIGHT THEME
+   ========================================================= */
+[data-theme="light"] .scroll-fab {
+    background: rgba(255, 255, 255, 0.85);
+    border-color: rgba(0, 0, 0, 0.1);
+    color: var(--text-0);
+    box-shadow: 0 10px 30px rgba(10, 14, 26, 0.12);
+}
+
+[data-theme="light"] .scroll-fab:hover {
+    background: var(--grad-accent);
+    color: #ffffff;
+}
+
+/* =========================================================
+   MOBILE PERF — reduced cost on phones
+   ========================================================= */
+@media (max-width: 900px), (hover: none), (pointer: coarse) {
+    .scroll-fab {
+        backdrop-filter: none !important;
+        -webkit-backdrop-filter: none !important;
+        background: var(--surface-3);
+        border-color: var(--border-2);
+        box-shadow: 0 6px 20px rgba(0, 0, 0, 0.45);
+    }
+
+    .scroll-fab.is-visible::before {
+        animation: none !important;
+    }
+}
+
+/* =========================================================
+   RESPONSIVE
+   ========================================================= */
+@media (max-width: 768px) {
+    .scroll-fab {
+        right: 18px;
+        bottom: 90px;
+        width: 48px;
+        height: 48px;
+        font-size: 0.95rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .scroll-fab {
+        right: 16px;
+        bottom: 84px;
+        width: 44px;
+        height: 44px;
+        font-size: 0.9rem;
+    }
+}
+
+/* =========================================================
+   PUSH IT UP when other floating buttons exist
+   (e.g., WhatsApp FAB on contact page)
+   ========================================================= */
+
+/* If page has .contact-fab (contact page), lift scroll-fab higher */
+body:has(.contact-fab) .scroll-fab {
+    bottom: 100px;
+}
+
+@media (max-width: 768px) {
+    body:has(.contact-fab) .scroll-fab {
+        bottom: 156px;
+    }
+}
+
+@media (max-width: 480px) {
+    body:has(.contact-fab) .scroll-fab {
+        bottom: 156px;
+    }
+}
+
+/* Fallback for browsers without :has() support */
+.scroll-fab--raised {
+    bottom: 156px !important;
+}
+
+/* =========================================================
+   REDUCED MOTION
+   ========================================================= */
+@media (prefers-reduced-motion: reduce) {
+    .scroll-fab {
+        transition: opacity 0.2s ease, visibility 0.2s ease;
+        transform: none !important;
+    }
+
+    .scroll-fab.is-visible::before {
+        animation: none !important;
+    }
+
+    .scroll-fab__arrow {
+        transition: opacity 0.2s ease;
+        transform: none !important;
+    }
+}
