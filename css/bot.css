@@ -1,0 +1,549 @@
+/* =========================================================
+   MUDRIK DAU — AI PORTFOLIO ASSISTANT (BOT) STYLES
+   ========================================================= */
+
+.dau-bot {
+    --bot-radius: 18px;
+    --bot-radius-sm: 12px;
+    --bot-radius-full: 999px;
+    --bot-shadow: 0 24px 60px rgba(0, 0, 0, 0.45), 0 0 40px rgba(0, 229, 255, 0.10);
+    --bot-shadow-sm: 0 8px 24px rgba(0, 0, 0, 0.35);
+    --bot-z-toggle: 9990;
+    --bot-z-panel: 9991;
+    --bot-transition: 0.32s cubic-bezier(0.4, 0, 0.2, 1);
+
+    position: fixed;
+    inset: auto 0 0 auto;
+    z-index: var(--bot-z-toggle);
+    pointer-events: none;
+    font-family: 'Sora', 'Space Grotesk', system-ui, sans-serif;
+    color: var(--text-0, #e8ecf5);
+}
+
+.dau-bot__toggle {
+    position: fixed;
+    right: 22px;
+    bottom: 22px;
+    z-index: var(--bot-z-toggle);
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    border: 1px solid rgba(255, 255, 255, 0.14);
+    background: linear-gradient(135deg, #00e5ff 0%, #0077ff 60%, #a855f7 100%);
+    color: #05060a;
+    font-size: 1.4rem;
+    cursor: pointer;
+    display: grid;
+    place-items: center;
+    box-shadow:
+        0 10px 30px rgba(0, 229, 255, 0.35),
+        0 0 0 0 rgba(0, 229, 255, 0.4);
+    pointer-events: auto;
+    transition: transform var(--bot-transition),
+                box-shadow var(--bot-transition),
+                background var(--bot-transition);
+    -webkit-tap-highlight-color: transparent;
+    overflow: visible;
+}
+
+.dau-bot__toggle:hover {
+    transform: translateY(-3px) scale(1.05);
+    box-shadow:
+        0 16px 40px rgba(0, 229, 255, 0.5),
+        0 0 0 8px rgba(0, 229, 255, 0.08);
+}
+
+.dau-bot__toggle:active {
+    transform: translateY(-1px) scale(1.02);
+}
+
+.dau-bot__toggle.is-active {
+    background: linear-gradient(135deg, #ec4899 0%, #a855f7 100%);
+}
+
+.dau-bot__toggle-icon {
+    display: grid;
+    place-items: center;
+    line-height: 1;
+    transform: translateY(1px);
+    transition: transform var(--bot-transition);
+}
+
+.dau-bot__toggle.is-active .dau-bot__toggle-icon {
+    transform: rotate(180deg) scale(0.9);
+}
+
+.dau-bot__toggle-pulse {
+    position: absolute;
+    inset: -6px;
+    border-radius: 50%;
+    border: 2px solid rgba(0, 229, 255, 0.5);
+    animation: dauBotPulse 2.4s ease-out infinite;
+    pointer-events: none;
+}
+
+.dau-bot__toggle.is-active .dau-bot__toggle-pulse {
+    display: none;
+}
+
+@keyframes dauBotPulse {
+    0% { transform: scale(0.9); opacity: 0.9; }
+    70% { transform: scale(1.35); opacity: 0; }
+    100% { transform: scale(1.35); opacity: 0; }
+}
+
+.dau-bot__panel {
+    position: fixed;
+    right: 22px;
+    bottom: 96px;
+    z-index: var(--bot-z-panel);
+    width: min(420px, calc(100vw - 32px));
+    height: min(620px, calc(100vh - 140px));
+    display: flex;
+    flex-direction: column;
+    background: rgba(10, 12, 20, 0.92);
+    border: 1px solid rgba(255, 255, 255, 0.10);
+    border-radius: var(--bot-radius);
+    box-shadow: var(--bot-shadow);
+    backdrop-filter: blur(22px) saturate(1.2);
+    -webkit-backdrop-filter: blur(22px) saturate(1.2);
+    overflow: hidden;
+
+    opacity: 0;
+    visibility: hidden;
+    transform: translateY(20px) scale(0.96);
+    transform-origin: bottom right;
+    pointer-events: none;
+    transition: opacity 0.28s ease,
+                visibility 0.28s ease,
+                transform 0.34s cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+
+.dau-bot__panel.is-open {
+    opacity: 1;
+    visibility: visible;
+    transform: translateY(0) scale(1);
+    pointer-events: auto;
+}
+
+.dau-bot__panel[dir="rtl"] { direction: rtl; }
+.dau-bot__panel[dir="rtl"] .dau-bot__bubble { text-align: right; }
+.dau-bot__panel[dir="rtl"] .dau-bot__msg--user { align-items: flex-start; }
+.dau-bot__panel[dir="rtl"] .dau-bot__msg--bot { align-items: flex-end; }
+
+.dau-bot__header {
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 12px;
+    padding: 14px 16px;
+    background: linear-gradient(135deg, rgba(0, 229, 255, 0.10), rgba(168, 85, 247, 0.10));
+    border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+    flex-shrink: 0;
+}
+
+.dau-bot__brand {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    min-width: 0;
+}
+
+.dau-bot__brand-mark {
+    width: 40px;
+    height: 40px;
+    border-radius: 12px;
+    display: grid;
+    place-items: center;
+    font-weight: 800;
+    font-size: 1.1rem;
+    color: #05060a;
+    background: linear-gradient(135deg, #00e5ff, #0077ff);
+    box-shadow: 0 6px 18px rgba(0, 229, 255, 0.35);
+    flex-shrink: 0;
+}
+
+.dau-bot__brand-text {
+    display: flex;
+    flex-direction: column;
+    min-width: 0;
+    line-height: 1.2;
+}
+
+.dau-bot__title {
+    font-size: 0.98rem;
+    font-weight: 700;
+    color: #ffffff;
+    letter-spacing: -0.01em;
+}
+
+.dau-bot__subtitle {
+    font-size: 0.72rem;
+    color: rgba(255, 255, 255, 0.62);
+    font-family: 'JetBrains Mono', monospace;
+    letter-spacing: 0.02em;
+    margin-top: 2px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.dau-bot__actions {
+    display: flex;
+    gap: 6px;
+    flex-shrink: 0;
+}
+
+.dau-bot__action {
+    width: 34px;
+    height: 34px;
+    border-radius: 10px;
+    border: 1px solid rgba(255, 255, 255, 0.10);
+    background: rgba(255, 255, 255, 0.04);
+    color: rgba(255, 255, 255, 0.85);
+    font-size: 0.85rem;
+    cursor: pointer;
+    display: grid;
+    place-items: center;
+    transition: background var(--bot-transition),
+                color var(--bot-transition),
+                transform var(--bot-transition);
+}
+
+.dau-bot__action:hover {
+    background: rgba(255, 255, 255, 0.10);
+    color: #ffffff;
+    transform: translateY(-1px);
+}
+
+.dau-bot__action:active { transform: translateY(0); }
+
+.dau-bot__body {
+    flex: 1;
+    overflow-y: auto;
+    overscroll-behavior: contain;
+    padding: 16px 14px 8px;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    scroll-behavior: smooth;
+    scrollbar-width: thin;
+    scrollbar-color: rgba(255, 255, 255, 0.14) transparent;
+}
+
+.dau-bot__body::-webkit-scrollbar { width: 6px; }
+.dau-bot__body::-webkit-scrollbar-thumb {
+    background: rgba(255, 255, 255, 0.14);
+    border-radius: 999px;
+}
+.dau-bot__body::-webkit-scrollbar-thumb:hover {
+    background: rgba(255, 255, 255, 0.24);
+}
+
+.dau-bot__msg {
+    display: flex;
+    width: 100%;
+    animation: dauBotMsgIn 0.35s cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+
+.dau-bot__msg--user { justify-content: flex-end; }
+.dau-bot__msg--bot { justify-content: flex-start; }
+
+.dau-bot__bubble {
+    max-width: 86%;
+    padding: 11px 14px;
+    border-radius: 16px;
+    font-size: 0.88rem;
+    line-height: 1.55;
+    word-break: break-word;
+    overflow-wrap: anywhere;
+    white-space: normal;
+}
+
+.dau-bot__msg--user .dau-bot__bubble {
+    background: linear-gradient(135deg, #00e5ff 0%, #0077ff 100%);
+    color: #05060a;
+    font-weight: 500;
+    border-bottom-right-radius: 4px;
+    box-shadow: 0 4px 14px rgba(0, 119, 255, 0.28);
+}
+
+.dau-bot__msg--bot .dau-bot__bubble {
+    background: rgba(255, 255, 255, 0.055);
+    color: rgba(255, 255, 255, 0.94);
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    border-bottom-left-radius: 4px;
+}
+
+.dau-bot__msg--bot .dau-bot__bubble strong {
+    color: #00e5ff;
+    font-weight: 700;
+}
+
+.dau-bot__msg--bot .dau-bot__bubble em {
+    color: rgba(255, 255, 255, 0.78);
+}
+
+.dau-bot__panel[dir="rtl"] .dau-bot__msg--user .dau-bot__bubble {
+    border-bottom-right-radius: 16px;
+    border-bottom-left-radius: 4px;
+}
+
+.dau-bot__panel[dir="rtl"] .dau-bot__msg--bot .dau-bot__bubble {
+    border-bottom-left-radius: 16px;
+    border-bottom-right-radius: 4px;
+}
+
+@keyframes dauBotMsgIn {
+    from { opacity: 0; transform: translateY(8px) scale(0.97); }
+    to   { opacity: 1; transform: translateY(0) scale(1); }
+}
+
+.dau-bot__typing {
+    display: none;
+    align-items: center;
+    gap: 4px;
+    padding: 0 18px 8px;
+    height: 0;
+    opacity: 0;
+    transition: opacity 0.2s ease, height 0.2s ease;
+}
+
+.dau-bot__typing.is-visible {
+    display: flex;
+    height: 22px;
+    opacity: 1;
+    padding-bottom: 12px;
+}
+
+.dau-bot__typing-dot {
+    width: 7px;
+    height: 7px;
+    border-radius: 50%;
+    background: rgba(0, 229, 255, 0.7);
+    animation: dauBotTyping 1.4s ease-in-out infinite;
+}
+
+.dau-bot__typing-dot:nth-child(2) { animation-delay: 0.18s; }
+.dau-bot__typing-dot:nth-child(3) { animation-delay: 0.36s; }
+
+@keyframes dauBotTyping {
+    0%, 60%, 100% { transform: translateY(0); opacity: 0.5; }
+    30% { transform: translateY(-5px); opacity: 1; }
+}
+
+.dau-bot__form {
+    display: flex;
+    gap: 8px;
+    padding: 10px 12px;
+    border-top: 1px solid rgba(255, 255, 255, 0.08);
+    background: rgba(0, 0, 0, 0.18);
+    flex-shrink: 0;
+}
+
+.dau-bot__input {
+    flex: 1;
+    min-width: 0;
+    padding: 11px 14px;
+    border-radius: var(--bot-radius-full);
+    border: 1px solid rgba(255, 255, 255, 0.10);
+    background: rgba(255, 255, 255, 0.04);
+    color: #ffffff;
+    font-size: 0.9rem;
+    font-family: inherit;
+    outline: none;
+    transition: border-color var(--bot-transition),
+                background var(--bot-transition),
+                box-shadow var(--bot-transition);
+}
+
+.dau-bot__input::placeholder { color: rgba(255, 255, 255, 0.40); }
+
+.dau-bot__input:focus {
+    border-color: rgba(0, 229, 255, 0.55);
+    background: rgba(0, 229, 255, 0.05);
+    box-shadow: 0 0 0 3px rgba(0, 229, 255, 0.12);
+}
+
+.dau-bot__send {
+    width: 44px;
+    height: 44px;
+    border-radius: 50%;
+    border: none;
+    background: linear-gradient(135deg, #00e5ff, #0077ff);
+    color: #05060a;
+    font-size: 0.95rem;
+    cursor: pointer;
+    display: grid;
+    place-items: center;
+    transition: transform var(--bot-transition),
+                box-shadow var(--bot-transition);
+    flex-shrink: 0;
+}
+
+.dau-bot__send:hover {
+    transform: scale(1.06);
+    box-shadow: 0 8px 22px rgba(0, 229, 255, 0.4);
+}
+
+.dau-bot__send:active { transform: scale(0.98); }
+
+.dau-bot__langs {
+    display: flex;
+    gap: 4px;
+    padding: 8px 12px 12px;
+    border-top: 1px solid rgba(255, 255, 255, 0.06);
+    background: rgba(0, 0, 0, 0.22);
+    flex-shrink: 0;
+    justify-content: center;
+}
+
+.dau-bot__lang {
+    padding: 5px 10px;
+    border-radius: var(--bot-radius-full);
+    border: 1px solid rgba(255, 255, 255, 0.10);
+    background: transparent;
+    color: rgba(255, 255, 255, 0.65);
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.68rem;
+    font-weight: 700;
+    letter-spacing: 0.06em;
+    cursor: pointer;
+    transition: color var(--bot-transition),
+                background var(--bot-transition),
+                border-color var(--bot-transition);
+}
+
+.dau-bot__lang:hover {
+    color: #ffffff;
+    background: rgba(255, 255, 255, 0.06);
+}
+
+.dau-bot__lang.is-active {
+    color: #05060a;
+    background: linear-gradient(135deg, #00e5ff, #0077ff);
+    border-color: transparent;
+    box-shadow: 0 4px 12px rgba(0, 229, 255, 0.3);
+}
+
+[data-theme="light"] .dau-bot { color: var(--text-0, #0b0e17); }
+
+[data-theme="light"] .dau-bot__panel {
+    background: rgba(255, 255, 255, 0.94);
+    border-color: rgba(0, 0, 0, 0.08);
+    box-shadow: 0 24px 60px rgba(0, 0, 0, 0.18), 0 0 40px rgba(0, 119, 255, 0.08);
+}
+
+[data-theme="light"] .dau-bot__header {
+    background: linear-gradient(135deg, rgba(0, 119, 255, 0.10), rgba(168, 85, 247, 0.10));
+    border-bottom-color: rgba(0, 0, 0, 0.06);
+}
+
+[data-theme="light"] .dau-bot__title { color: #0b0e17; }
+[data-theme="light"] .dau-bot__subtitle { color: rgba(0, 0, 0, 0.55); }
+
+[data-theme="light"] .dau-bot__action {
+    border-color: rgba(0, 0, 0, 0.08);
+    background: rgba(0, 0, 0, 0.03);
+    color: rgba(0, 0, 0, 0.7);
+}
+
+[data-theme="light"] .dau-bot__action:hover {
+    background: rgba(0, 0, 0, 0.07);
+    color: #0b0e17;
+}
+
+[data-theme="light"] .dau-bot__msg--bot .dau-bot__bubble {
+    background: rgba(0, 0, 0, 0.045);
+    color: #0b0e17;
+    border-color: rgba(0, 0, 0, 0.07);
+}
+
+[data-theme="light"] .dau-bot__msg--bot .dau-bot__bubble strong { color: #0077ff; }
+[data-theme="light"] .dau-bot__msg--bot .dau-bot__bubble em { color: rgba(0, 0, 0, 0.7); }
+
+[data-theme="light"] .dau-bot__form {
+    background: rgba(0, 0, 0, 0.03);
+    border-top-color: rgba(0, 0, 0, 0.06);
+}
+
+[data-theme="light"] .dau-bot__input {
+    background: rgba(255, 255, 255, 0.9);
+    border-color: rgba(0, 0, 0, 0.1);
+    color: #0b0e17;
+}
+
+[data-theme="light"] .dau-bot__input::placeholder { color: rgba(0, 0, 0, 0.4); }
+
+[data-theme="light"] .dau-bot__input:focus {
+    border-color: rgba(0, 119, 255, 0.55);
+    background: rgba(0, 119, 255, 0.04);
+    box-shadow: 0 0 0 3px rgba(0, 119, 255, 0.12);
+}
+
+[data-theme="light"] .dau-bot__langs {
+    background: rgba(0, 0, 0, 0.03);
+    border-top-color: rgba(0, 0, 0, 0.05);
+}
+
+[data-theme="light"] .dau-bot__lang {
+    border-color: rgba(0, 0, 0, 0.08);
+    color: rgba(0, 0, 0, 0.6);
+}
+
+[data-theme="light"] .dau-bot__lang:hover {
+    color: #0b0e17;
+    background: rgba(0, 0, 0, 0.04);
+}
+
+@media (max-width: 640px) {
+    .dau-bot__toggle {
+        right: 16px;
+        bottom: 16px;
+        width: 56px;
+        height: 56px;
+        font-size: 1.25rem;
+    }
+    .dau-bot__panel {
+        right: 8px;
+        left: 8px;
+        bottom: 84px;
+        width: auto;
+        height: min(72vh, 560px);
+        border-radius: 16px;
+    }
+    .dau-bot__header { padding: 12px 14px; }
+    .dau-bot__body { padding: 14px 12px 6px; }
+    .dau-bot__bubble { max-width: 90%; font-size: 0.85rem; }
+    .dau-bot__form { padding: 8px 10px; }
+    .dau-bot__input { font-size: 0.88rem; padding: 10px 12px; }
+    .dau-bot__send { width: 40px; height: 40px; }
+    .dau-bot__langs { padding: 6px 10px 10px; gap: 3px; }
+    .dau-bot__lang { font-size: 0.62rem; padding: 4px 8px; }
+}
+
+@media (max-width: 380px) {
+    .dau-bot__panel { height: min(74vh, 520px); }
+    .dau-bot__title { font-size: 0.9rem; }
+    .dau-bot__subtitle { font-size: 0.66rem; }
+    .dau-bot__lang { font-size: 0.58rem; padding: 4px 6px; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .dau-bot__toggle, .dau-bot__panel, .dau-bot__msg,
+    .dau-bot__typing-dot, .dau-bot__toggle-pulse {
+        animation: none !important;
+        transition: none !important;
+    }
+    .dau-bot__toggle-pulse { display: none; }
+}
+
+.dau-bot__toggle:focus-visible,
+.dau-bot__action:focus-visible,
+.dau-bot__send:focus-visible,
+.dau-bot__lang:focus-visible,
+.dau-bot__input:focus-visible {
+    outline: 2px solid #00e5ff;
+    outline-offset: 2px;
+}
