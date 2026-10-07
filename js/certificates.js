@@ -102,8 +102,6 @@
                     card.style.display = '';
                     // Reset reveal state when re-shown
                     card.classList.remove('is-revealed');
-                    // Retrigger reveal animation
-                    card.classList.remove('is-revealed');
                     void card.offsetWidth;
                 } else {
                     card.style.display = 'none';

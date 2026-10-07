@@ -1,5 +1,6 @@
 /* =========================================================
    CERTIFICATES PAGE — PHASE 6.5 + HIDDEN-TO-REVEAL
+   With mobile readability fix (dark overlay instead of heavy blur)
    ========================================================= */
 
 .cert-page {
@@ -732,20 +733,20 @@
 }
 
 [data-theme="light"] .cert-card__lock-icon {
-    background: rgba(255, 255, 255, 0.9);
+    background: rgba(255, 255, 255, 0.95);
     color: var(--accent);
     border-color: var(--border-accent);
-    box-shadow: 0 8px 30px rgba(0, 0, 0, 0.15), 0 0 30px rgba(0, 119, 255, 0.15);
+    box-shadow: 0 8px 30px rgba(0, 0, 0, 0.15), 0 0 30px rgba(0, 119, 255, 0.2);
 }
 
 [data-theme="light"] .cert-card__lock-text {
-    background: rgba(255, 255, 255, 0.9);
+    background: rgba(255, 255, 255, 0.95);
     color: var(--text-0);
     border-color: rgba(0, 0, 0, 0.1);
 }
 
 /* =========================================================
-   RESPONSIVE
+   RESPONSIVE — Tablet
    ========================================================= */
 @media (max-width: 1024px) {
     .cert-grid {
@@ -753,6 +754,9 @@
     }
 }
 
+/* =========================================================
+   RESPONSIVE — Mobile
+   ========================================================= */
 @media (max-width: 768px) {
     .cert-hero {
         padding: 40px 0 50px;
@@ -806,6 +810,20 @@
     .cert-modal__info {
         padding: 24px 22px 28px;
     }
+
+    /* Bigger, clearer lock on mobile */
+    .cert-card__lock-icon {
+        width: 60px;
+        height: 60px;
+        font-size: 1.4rem;
+        border-width: 2px;
+    }
+
+    .cert-card__lock-text {
+        font-size: 0.72rem;
+        padding: 7px 14px;
+        letter-spacing: 0.14em;
+    }
 }
 
 @media (max-width: 480px) {
@@ -832,39 +850,115 @@
     }
 
     .cert-card__lock-icon {
-        width: 48px;
-        height: 48px;
-        font-size: 1.1rem;
+        width: 54px;
+        height: 54px;
+        font-size: 1.25rem;
     }
 
     .cert-card__lock-text {
-        font-size: 0.62rem;
-        padding: 5px 10px;
+        font-size: 0.66rem;
+        padding: 6px 12px;
     }
 }
 
 /* =========================================================
-   MOBILE PERF — Reduce blur cost on low-end devices
+   MOBILE PERF — Replace heavy blur with dark overlay
+   FIX: iOS Safari shows blur(18px) + dark bg as solid black.
+   Solution: use only brightness/saturate filter + radial overlay.
    ========================================================= */
 @media (max-width: 900px), (hover: none), (pointer: coarse) {
+
+    /* Remove the heavy blur entirely — use brightness + saturate only */
     .cert-card__visual img {
-        filter: blur(14px) brightness(0.55) saturate(0.75);
+        filter: brightness(0.45) saturate(0.55) !important;
+        transform: scale(1) !important;
+        transition: filter 0.5s var(--ease) !important;
     }
 
+    /* When revealed, restore full color */
+    .cert-card:hover .cert-card__visual img,
+    .cert-card:focus-within .cert-card__visual img,
+    .cert-card.is-revealed .cert-card__visual img {
+        filter: brightness(1) saturate(1) !important;
+        transform: scale(1) !important;
+    }
+
+    /* Radial dark overlay — sits above image, below lock */
+    .cert-card__visual::after {
+        content: '';
+        position: absolute;
+        inset: 0;
+        z-index: 3;
+        background: radial-gradient(
+            circle at 50% 50%,
+            rgba(5, 6, 10, 0.25) 0%,
+            rgba(5, 6, 10, 0.65) 70%,
+            rgba(5, 6, 10, 0.85) 100%
+        );
+        pointer-events: none;
+        opacity: 1;
+        transition: opacity 0.5s var(--ease);
+    }
+
+    /* Hide the overlay when revealed */
+    .cert-card:hover .cert-card__visual::after,
+    .cert-card:focus-within .cert-card__visual::after,
+    .cert-card.is-revealed .cert-card__visual::after {
+        opacity: 0;
+    }
+
+    /* Ensure z-stacking works: badge & lock above overlay */
     .cert-card__preview {
+        z-index: 4;
         backdrop-filter: none !important;
         -webkit-backdrop-filter: none !important;
-        background: rgba(5, 6, 10, 0.55);
+        background: rgba(5, 6, 10, 0.5);
     }
 
+    .cert-card__lock {
+        z-index: 5;
+    }
+
+    .cert-card__badge {
+        z-index: 6;
+    }
+
+    /* Lock icon — solid bg instead of blur */
     .cert-card__lock-icon {
         backdrop-filter: none !important;
         -webkit-backdrop-filter: none !important;
+        background: rgba(5, 6, 10, 0.9);
+        box-shadow: 0 6px 20px rgba(0, 0, 0, 0.6), 0 0 20px rgba(0, 229, 255, 0.25);
     }
 
+    /* Lock text — solid bg */
     .cert-card__lock-text {
         backdrop-filter: none !important;
         -webkit-backdrop-filter: none !important;
+        background: rgba(5, 6, 10, 0.9);
+        color: rgba(255, 255, 255, 0.95);
+    }
+
+    /* Light theme mobile overlay */
+    [data-theme="light"] .cert-card__visual::after {
+        background: radial-gradient(
+            circle at 50% 50%,
+            rgba(255, 255, 255, 0.3) 0%,
+            rgba(255, 255, 255, 0.7) 70%,
+            rgba(255, 255, 255, 0.88) 100%
+        );
+    }
+
+    [data-theme="light"] .cert-card__lock-icon {
+        background: rgba(255, 255, 255, 0.95);
+        color: var(--accent);
+        border-color: var(--border-accent);
+    }
+
+    [data-theme="light"] .cert-card__lock-text {
+        background: rgba(255, 255, 255, 0.95);
+        color: var(--text-0);
+        border-color: rgba(0, 0, 0, 0.1);
     }
 }
 
@@ -873,7 +967,7 @@
    ========================================================= */
 @media (prefers-reduced-motion: reduce) {
     .cert-card__visual img {
-        filter: blur(10px) brightness(0.7) !important;
+        filter: brightness(0.55) !important;
         transform: scale(1) !important;
         transition: filter 0.2s ease !important;
     }
@@ -881,7 +975,7 @@
     .cert-card:hover .cert-card__visual img,
     .cert-card:focus-within .cert-card__visual img,
     .cert-card.is-revealed .cert-card__visual img {
-        filter: blur(0) brightness(1) !important;
+        filter: brightness(1) !important;
     }
 
     .cert-card__lock-icon {
