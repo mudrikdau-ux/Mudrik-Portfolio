@@ -360,7 +360,6 @@
     font-family: inherit;
 }
 
-/* Dark theme tint on tiles */
 [data-theme="dark"] .contact-map__leaflet .leaflet-tile {
     filter: invert(1) hue-rotate(180deg) brightness(0.9) contrast(1.05) saturate(0.85);
 }
@@ -369,7 +368,6 @@
     background: #0a0e1a;
 }
 
-/* Custom marker */
 .contact-map__marker {
     display: grid;
     place-items: center;
@@ -388,7 +386,6 @@
     50% { box-shadow: 0 8px 24px rgba(0, 229, 255, 0.75), 0 0 0 12px rgba(0, 229, 255, 0.08); }
 }
 
-/* Overlay label */
 .contact-map__overlay {
     position: absolute;
     top: 20px;
@@ -430,7 +427,6 @@
     opacity: 0.75;
 }
 
-/* Footer of map card */
 .contact-map__footer {
     display: flex;
     align-items: center;
@@ -689,7 +685,6 @@
     color: var(--text-3);
 }
 
-/* Select input */
 .form-field__input-wrap--select {
     position: relative;
 }
@@ -725,7 +720,6 @@
     transform: translateY(-50%) rotate(180deg);
 }
 
-/* RTL icon flip */
 [dir="rtl"] .form-field__icon {
     left: auto;
     right: 16px;
@@ -746,7 +740,6 @@
     left: 18px;
 }
 
-/* Error states */
 .form-field__error {
     display: none;
     font-size: 0.78rem;
@@ -763,7 +756,6 @@
     display: block;
 }
 
-/* Form actions */
 .form-actions {
     display: flex;
     gap: 12px;
@@ -776,7 +768,6 @@
     justify-content: center;
 }
 
-/* Status */
 .form-status {
     display: none;
     padding: 14px 18px;
@@ -799,6 +790,13 @@
     background: rgba(255, 77, 109, 0.1);
     border: 1px solid rgba(255, 77, 109, 0.35);
     color: var(--red);
+}
+
+.form-status.is-info {
+    display: flex;
+    background: rgba(0, 229, 255, 0.1);
+    border: 1px solid rgba(0, 229, 255, 0.35);
+    color: var(--accent);
 }
 
 .form-status i {
@@ -982,7 +980,6 @@
     transform: translate(2px, -2px);
 }
 
-/* WeChat copy button */
 .social-card__copy {
     display: inline-flex;
     align-items: center;
@@ -1351,10 +1348,14 @@
 
 /* =========================================================
    FLOATING WHATSAPP (MOBILE)
+   Stacks ABOVE the AI Bot toggle so they never overlap.
+   Bot toggle: bottom 22px / right 22px (mobile: 16px / 16px)
+   Bot height: 60px (mobile: 56px)
+   Gap: 12px
    ========================================================= */
 .contact-fab {
     position: fixed;
-    bottom: 22px;
+    bottom: calc(22px + 60px + 12px);   /* 94px on desktop */
     right: 22px;
     z-index: 500;
     display: none;
@@ -1368,7 +1369,12 @@
     font-size: 0.86rem;
     letter-spacing: 0.02em;
     box-shadow: 0 14px 40px rgba(37, 211, 102, 0.4), 0 0 0 6px rgba(37, 211, 102, 0.12);
-    transition: transform var(--dur-2) var(--ease), box-shadow var(--dur-2) var(--ease);
+    transition: transform var(--dur-2) var(--ease),
+                box-shadow var(--dur-2) var(--ease),
+                bottom var(--dur-2) var(--ease),
+                opacity var(--dur-2) var(--ease);
+    text-decoration: none;
+    -webkit-tap-highlight-color: transparent;
 }
 
 .contact-fab:hover {
@@ -1378,6 +1384,13 @@
 
 .contact-fab i {
     font-size: 1.15rem;
+}
+
+/* ---------- Hide WhatsApp FAB when the bot panel is open ---------- */
+body.bot-open .contact-fab {
+    opacity: 0;
+    pointer-events: none;
+    transform: translateY(20px) scale(0.9);
 }
 
 /* =========================================================
@@ -1509,8 +1522,11 @@
         justify-content: center;
     }
 
+    /* ---------- Show WhatsApp FAB on mobile, stacked above the bot ---------- */
     .contact-fab {
         display: inline-flex;
+        bottom: calc(16px + 56px + 12px);  /* 84px */
+        right: 16px;
     }
 }
 
@@ -1574,6 +1590,7 @@
         justify-content: center;
     }
 
+    /* ---------- WhatsApp becomes a circle, still stacked above the bot ---------- */
     .contact-fab__label {
         display: none;
     }
@@ -1584,14 +1601,7 @@
         width: 58px;
         height: 58px;
         justify-content: center;
+        bottom: calc(16px + 56px + 12px);   /* 84px */
+        right: 16px;
     }
 }
-
-/* Info state (sending) */
-.form-status.is-info {
-    display: flex;
-    background: rgba(0, 229, 255, 0.1);
-    border: 1px solid rgba(0, 229, 255, 0.35);
-    color: var(--accent);
-}
-
