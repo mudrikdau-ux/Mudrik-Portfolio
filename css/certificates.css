@@ -1,6 +1,5 @@
 /* =========================================================
-   CERTIFICATES PAGE — PHASE 6.5 + HIDDEN-TO-REVEAL
-   With mobile readability fix (dark overlay instead of heavy blur)
+   CERTIFICATES PAGE — SIMPLE VEIL SYSTEM (works on iOS)
    ========================================================= */
 
 .cert-page {
@@ -101,7 +100,6 @@
 }
 
 .cert-filter__btn {
-    position: relative;
     display: inline-flex;
     align-items: center;
     gap: 10px;
@@ -114,9 +112,9 @@
     background: transparent;
     border: 1px solid transparent;
     cursor: pointer;
-    transition: color var(--dur-1) var(--ease),
-                background var(--dur-2) var(--ease),
-                border-color var(--dur-2) var(--ease);
+    transition: color 0.25s var(--ease),
+                background 0.3s var(--ease),
+                border-color 0.3s var(--ease);
     white-space: nowrap;
 }
 
@@ -142,7 +140,6 @@
     font-family: var(--font-mono);
     font-size: 0.68rem;
     font-weight: 700;
-    letter-spacing: 0.04em;
 }
 
 .cert-filter__btn.is-active .cert-filter__count {
@@ -151,7 +148,7 @@
 }
 
 /* =========================================================
-   CERTIFICATES GRID
+   GRID
    ========================================================= */
 .cert-grid-section {
     padding: 20px 0 60px;
@@ -184,11 +181,6 @@
     box-shadow: 0 24px 60px rgba(0, 0, 0, 0.5), 0 0 40px rgba(0, 229, 255, 0.12);
 }
 
-/* Featured card (First Class, B.IT, Web Projects) */
-.cert-card--featured {
-    grid-column: span 1;
-}
-
 .cert-card--featured .cert-card__title {
     background: var(--grad-text);
     -webkit-background-clip: text;
@@ -197,157 +189,125 @@
 }
 
 /* =========================================================
-   VISUAL — HIDDEN BY DEFAULT (blurred + darkened)
+   VISUAL — image + veil
    ========================================================= */
 .cert-card__visual {
     position: relative;
     aspect-ratio: 4 / 3;
     overflow: hidden;
-    background:
-        radial-gradient(circle at 30% 20%, rgba(0, 229, 255, 0.08), transparent 60%),
-        radial-gradient(circle at 70% 80%, rgba(168, 85, 247, 0.08), transparent 60%),
-        var(--bg-2);
+    background: var(--bg-2);
     cursor: pointer;
     -webkit-tap-highlight-color: transparent;
 }
 
-.cert-card__visual--noimg::before {
-    content: '\f0a3';
-    font-family: 'Font Awesome 6 Free';
-    font-weight: 900;
-    position: absolute;
-    inset: 0;
-    display: grid;
-    place-items: center;
-    font-size: 3rem;
-    color: var(--text-3);
-}
-
 .cert-card__visual img {
-    position: relative;
-    z-index: 1;
+    position: absolute;
+    top: 0;
+    left: 0;
     width: 100%;
     height: 100%;
     object-fit: cover;
-    /* Hidden state: heavy blur + darkened + slight zoom */
-    filter: blur(18px) brightness(0.55) saturate(0.75);
-    transform: scale(1.08);
-    transition: filter 0.55s var(--ease),
-                transform 0.65s var(--ease),
-                opacity 0.45s var(--ease);
+    display: block;
     user-select: none;
     -webkit-user-drag: none;
     pointer-events: none;
 }
 
 /* =========================================================
-   LOCK OVERLAY (visible while hidden)
+   VEIL — solid cover panel (100% reliable on iOS)
+   Contains the lock icon and text INSIDE it.
    ========================================================= */
-.cert-card__lock {
+.cert-card__veil {
     position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    z-index: 5;
+    inset: 0;
+    z-index: 3;
+
     display: flex;
     flex-direction: column;
     align-items: center;
-    gap: 10px;
-    pointer-events: none;
-    transition: opacity 0.35s var(--ease),
-                transform 0.45s var(--ease);
+    justify-content: center;
+    gap: 12px;
+
+    /* Solid opaque gradient — no filters, no blur, no
+       pseudo-elements, no z-index fights. Just a panel. */
+    background:
+        radial-gradient(circle at 50% 30%, #1a2135 0%, #0a0e1a 100%);
+
+    transition: opacity 0.4s ease, visibility 0.4s ease;
+    opacity: 1;
+    visibility: visible;
 }
 
-.cert-card__lock-icon {
+/* Hidden when revealed */
+.cert-card.is-revealed .cert-card__veil,
+.cert-card:hover .cert-card__veil,
+.cert-card:focus-within .cert-card__veil {
+    opacity: 0;
+    visibility: hidden;
+}
+
+.cert-card__veil-icon {
     display: grid;
     place-items: center;
     width: 58px;
     height: 58px;
     border-radius: 50%;
-    background: rgba(5, 6, 10, 0.7);
-    border: 1.5px solid rgba(0, 229, 255, 0.4);
+    background: rgba(0, 229, 255, 0.1);
+    border: 1.5px solid rgba(0, 229, 255, 0.45);
     color: var(--accent);
-    font-size: 1.3rem;
-    backdrop-filter: blur(10px);
-    -webkit-backdrop-filter: blur(10px);
-    box-shadow: 0 8px 30px rgba(0, 0, 0, 0.5), 0 0 30px rgba(0, 229, 255, 0.15);
-    animation: certLockPulse 2.6s ease-in-out infinite;
+    font-size: 1.35rem;
+    box-shadow: 0 0 30px rgba(0, 229, 255, 0.2);
+    animation: certVeilPulse 2.6s ease-in-out infinite;
 }
 
-.cert-card__lock-text {
+.cert-card__veil-text {
     font-family: var(--font-mono);
-    font-size: 0.68rem;
+    font-size: 0.7rem;
     font-weight: 600;
     letter-spacing: 0.18em;
     text-transform: uppercase;
-    color: rgba(255, 255, 255, 0.9);
+    color: rgba(255, 255, 255, 0.92);
     padding: 6px 14px;
-    background: rgba(5, 6, 10, 0.7);
+    background: rgba(0, 0, 0, 0.4);
     border: 1px solid rgba(255, 255, 255, 0.15);
     border-radius: var(--r-full);
-    backdrop-filter: blur(8px);
-    -webkit-backdrop-filter: blur(8px);
     white-space: nowrap;
 }
 
-@keyframes certLockPulse {
-    0%, 100% {
-        box-shadow: 0 8px 30px rgba(0, 0, 0, 0.5), 0 0 30px rgba(0, 229, 255, 0.15);
-        transform: scale(1);
-    }
-    50% {
-        box-shadow: 0 8px 30px rgba(0, 0, 0, 0.5), 0 0 45px rgba(0, 229, 255, 0.35);
-        transform: scale(1.05);
-    }
-}
-
-/* =========================================================
-   REVEAL — on hover, focus, or touch (.is-revealed)
-   ========================================================= */
-.cert-card:hover .cert-card__visual img,
-.cert-card:focus-within .cert-card__visual img,
-.cert-card.is-revealed .cert-card__visual img {
-    filter: blur(0) brightness(1) saturate(1);
-    transform: scale(1);
-}
-
-.cert-card:hover .cert-card__lock,
-.cert-card:focus-within .cert-card__lock,
-.cert-card.is-revealed .cert-card__lock {
-    opacity: 0;
-    transform: translate(-50%, -50%) scale(0.75);
-}
-
-.cert-card:hover .cert-card__preview,
-.cert-card:focus-within .cert-card__preview,
-.cert-card.is-revealed .cert-card__preview {
-    opacity: 1;
-}
-
-/* =========================================================
-   VISUAL OVERLAY (gradient at bottom)
-   ========================================================= */
-.cert-card__visual-overlay {
+/* Dashed frame inside veil */
+.cert-card__veil::before {
+    content: '';
     position: absolute;
-    inset: 0;
-    z-index: 2;
-    background: linear-gradient(180deg, transparent 55%, rgba(5, 6, 10, 0.55) 100%);
+    inset: 14px;
+    border: 1px dashed rgba(255, 255, 255, 0.08);
+    border-radius: var(--r-md);
     pointer-events: none;
 }
 
+@keyframes certVeilPulse {
+    0%, 100% {
+        box-shadow: 0 0 30px rgba(0, 229, 255, 0.2);
+        transform: scale(1);
+    }
+    50% {
+        box-shadow: 0 0 45px rgba(0, 229, 255, 0.45);
+        transform: scale(1.06);
+    }
+}
+
 /* =========================================================
-   BADGE
+   BADGE — always visible above veil
    ========================================================= */
 .cert-card__badge {
     position: absolute;
     top: 16px;
     left: 16px;
-    z-index: 4;
+    z-index: 5;
     display: inline-flex;
     align-items: center;
     gap: 7px;
     padding: 6px 12px;
-    background: rgba(0, 0, 0, 0.55);
+    background: rgba(0, 0, 0, 0.7);
     border: 1px solid rgba(255, 255, 255, 0.22);
     border-radius: var(--r-full);
     font-size: 0.68rem;
@@ -355,8 +315,6 @@
     letter-spacing: 0.1em;
     text-transform: uppercase;
     color: #fff;
-    backdrop-filter: blur(8px);
-    -webkit-backdrop-filter: blur(8px);
 }
 
 .cert-card__badge i {
@@ -371,54 +329,6 @@
 }
 
 .cert-card__badge--featured i {
-    color: #ffffff;
-}
-
-/* =========================================================
-   PREVIEW (visible only when revealed)
-   ========================================================= */
-.cert-card__preview {
-    position: absolute;
-    inset: 0;
-    z-index: 3;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    gap: 12px;
-    background: rgba(5, 6, 10, 0.45);
-    backdrop-filter: blur(4px);
-    -webkit-backdrop-filter: blur(4px);
-    opacity: 0;
-    transition: opacity 0.4s var(--ease);
-    pointer-events: none;
-}
-
-.cert-card__preview-icon {
-    display: grid;
-    place-items: center;
-    width: 54px;
-    height: 54px;
-    border-radius: 50%;
-    background: var(--grad-accent);
-    color: #05060a;
-    font-size: 1.15rem;
-    box-shadow: 0 8px 24px rgba(0, 229, 255, 0.4);
-    transform: scale(0.75);
-    transition: transform 0.4s var(--ease);
-}
-
-.cert-card:hover .cert-card__preview-icon,
-.cert-card:focus-within .cert-card__preview-icon,
-.cert-card.is-revealed .cert-card__preview-icon {
-    transform: scale(1);
-}
-
-.cert-card__preview-text {
-    font-family: var(--font-mono);
-    font-size: 0.7rem;
-    letter-spacing: 0.16em;
-    text-transform: uppercase;
     color: #ffffff;
 }
 
@@ -484,11 +394,11 @@
     font-weight: 600;
     border: 1px solid transparent;
     cursor: pointer;
-    transition: transform var(--dur-1) var(--ease),
-                background var(--dur-2) var(--ease),
-                border-color var(--dur-2) var(--ease),
-                color var(--dur-2) var(--ease),
-                box-shadow var(--dur-2) var(--ease);
+    transition: transform 0.25s var(--ease),
+                background 0.3s var(--ease),
+                border-color 0.3s var(--ease),
+                color 0.3s var(--ease),
+                box-shadow 0.3s var(--ease);
 }
 
 .cert-card__btn--primary {
@@ -632,11 +542,8 @@
     background: rgba(0, 0, 0, 0.55);
     color: #fff;
     border: 1px solid rgba(255, 255, 255, 0.18);
-    backdrop-filter: blur(12px);
-    -webkit-backdrop-filter: blur(12px);
     cursor: pointer;
-    transition: transform var(--dur-1) var(--ease),
-                background var(--dur-2) var(--ease);
+    transition: transform 0.25s var(--ease), background 0.3s var(--ease);
 }
 
 .cert-modal__close:hover {
@@ -647,7 +554,6 @@
 .cert-modal__content {
     overflow-y: auto;
     max-height: calc(100vh - 40px);
-    padding: 0;
 }
 
 .cert-modal__image {
@@ -681,7 +587,6 @@
 .cert-modal__title {
     font-size: clamp(1.3rem, 3vw, 1.8rem);
     font-weight: 700;
-    letter-spacing: -0.01em;
     margin-bottom: 8px;
     color: var(--text-0);
 }
@@ -724,6 +629,27 @@
     background: rgba(255, 255, 255, 0.7);
 }
 
+[data-theme="light"] .cert-card__veil {
+    background: radial-gradient(circle at 50% 30%, #eef2f8 0%, #dde4ee 100%);
+}
+
+[data-theme="light"] .cert-card__veil-icon {
+    background: rgba(0, 119, 255, 0.08);
+    border-color: rgba(0, 119, 255, 0.4);
+    color: #0077ff;
+    box-shadow: 0 0 30px rgba(0, 119, 255, 0.2);
+}
+
+[data-theme="light"] .cert-card__veil-text {
+    color: #0a0e1a;
+    background: rgba(255, 255, 255, 0.75);
+    border-color: rgba(0, 0, 0, 0.1);
+}
+
+[data-theme="light"] .cert-card__veil::before {
+    border-color: rgba(0, 0, 0, 0.06);
+}
+
 [data-theme="light"] .cert-modal__dialog {
     background: #ffffff;
 }
@@ -732,21 +658,8 @@
     background: linear-gradient(135deg, rgba(0, 119, 255, 0.06), rgba(124, 58, 237, 0.06));
 }
 
-[data-theme="light"] .cert-card__lock-icon {
-    background: rgba(255, 255, 255, 0.95);
-    color: var(--accent);
-    border-color: var(--border-accent);
-    box-shadow: 0 8px 30px rgba(0, 0, 0, 0.15), 0 0 30px rgba(0, 119, 255, 0.2);
-}
-
-[data-theme="light"] .cert-card__lock-text {
-    background: rgba(255, 255, 255, 0.95);
-    color: var(--text-0);
-    border-color: rgba(0, 0, 0, 0.1);
-}
-
 /* =========================================================
-   RESPONSIVE — Tablet
+   RESPONSIVE
    ========================================================= */
 @media (max-width: 1024px) {
     .cert-grid {
@@ -754,9 +667,6 @@
     }
 }
 
-/* =========================================================
-   RESPONSIVE — Mobile
-   ========================================================= */
 @media (max-width: 768px) {
     .cert-hero {
         padding: 40px 0 50px;
@@ -811,18 +721,15 @@
         padding: 24px 22px 28px;
     }
 
-    /* Bigger, clearer lock on mobile */
-    .cert-card__lock-icon {
-        width: 60px;
-        height: 60px;
-        font-size: 1.4rem;
-        border-width: 2px;
+    .cert-card__veil-icon {
+        width: 64px;
+        height: 64px;
+        font-size: 1.5rem;
     }
 
-    .cert-card__lock-text {
-        font-size: 0.72rem;
-        padding: 7px 14px;
-        letter-spacing: 0.14em;
+    .cert-card__veil-text {
+        font-size: 0.74rem;
+        padding: 7px 15px;
     }
 }
 
@@ -849,135 +756,31 @@
         font-size: 1rem;
     }
 
-    .cert-card__lock-icon {
-        width: 54px;
-        height: 54px;
-        font-size: 1.25rem;
+    .cert-card__veil-icon {
+        width: 56px;
+        height: 56px;
+        font-size: 1.3rem;
     }
 
-    .cert-card__lock-text {
-        font-size: 0.66rem;
-        padding: 6px 12px;
+    .cert-card__veil-text {
+        font-size: 0.68rem;
+        padding: 6px 13px;
     }
 }
 
 /* =========================================================
-   MOBILE PERF — Replace heavy blur with dark overlay
-   FIX: iOS Safari shows blur(18px) + dark bg as solid black.
-   Solution: use only brightness/saturate filter + radial overlay.
+   MOBILE PERF — kill all backdrop-filters + animation cost
    ========================================================= */
 @media (max-width: 900px), (hover: none), (pointer: coarse) {
-
-    /* Remove the heavy blur entirely — use brightness + saturate only */
-    .cert-card__visual img {
-        filter: brightness(0.45) saturate(0.55) !important;
-        transform: scale(1) !important;
-        transition: filter 0.5s var(--ease) !important;
-    }
-
-    /* When revealed, restore full color */
-    .cert-card:hover .cert-card__visual img,
-    .cert-card:focus-within .cert-card__visual img,
-    .cert-card.is-revealed .cert-card__visual img {
-        filter: brightness(1) saturate(1) !important;
-        transform: scale(1) !important;
-    }
-
-    /* Radial dark overlay — sits above image, below lock */
-    .cert-card__visual::after {
-        content: '';
-        position: absolute;
-        inset: 0;
-        z-index: 3;
-        background: radial-gradient(
-            circle at 50% 50%,
-            rgba(5, 6, 10, 0.25) 0%,
-            rgba(5, 6, 10, 0.65) 70%,
-            rgba(5, 6, 10, 0.85) 100%
-        );
-        pointer-events: none;
-        opacity: 1;
-        transition: opacity 0.5s var(--ease);
-    }
-
-    /* Hide the overlay when revealed */
-    .cert-card:hover .cert-card__visual::after,
-    .cert-card:focus-within .cert-card__visual::after,
-    .cert-card.is-revealed .cert-card__visual::after {
-        opacity: 0;
-    }
-
-    /* Ensure z-stacking works: image above overlay when revealed */
-    .cert-card.is-revealed .cert-card__visual img {
-        position: relative;
-        z-index: 4; /* Higher than the ::after overlay (z-index: 3) */
-    }
-
-    /* Ensure preview doesn't cover the image with a dark box */
-    .cert-card.is-revealed .cert-card__preview {
-        opacity: 1;
-        background: transparent; /* Remove the dark background */
-        backdrop-filter: none;
-        -webkit-backdrop-filter: none;
-    }
-
-    /* Ensure z-stacking works: badge & lock above overlay */
-    .cert-card__preview {
-        z-index: 4;
+    .cert-card,
+    .cert-filter__inner,
+    .cert-cta__inner {
         backdrop-filter: none !important;
         -webkit-backdrop-filter: none !important;
-        background: rgba(5, 6, 10, 0.5);
     }
 
-    .cert-card__lock {
-        z-index: 5;
-    }
-
-    .cert-card__badge {
-        z-index: 6;
-    }
-
-    /* Lock icon — solid bg instead of blur */
-    .cert-card__lock-icon {
-        backdrop-filter: none !important;
-        -webkit-backdrop-filter: none !important;
-        background: rgba(5, 6, 10, 0.9);
-        box-shadow: 0 6px 20px rgba(0, 0, 0, 0.6), 0 0 20px rgba(0, 229, 255, 0.25);
-    }
-
-    /* Lock text — solid bg */
-    .cert-card__lock-text {
-        backdrop-filter: none !important;
-        -webkit-backdrop-filter: none !important;
-        background: rgba(5, 6, 10, 0.9);
-        color: rgba(255, 255, 255, 0.95);
-    }
-
-    /* Hide redundant bottom gradient overlay on mobile */
-    .cert-card__visual-overlay {
-        display: none;
-    }
-
-    /* Light theme mobile overlay */
-    [data-theme="light"] .cert-card__visual::after {
-        background: radial-gradient(
-            circle at 50% 50%,
-            rgba(255, 255, 255, 0.3) 0%,
-            rgba(255, 255, 255, 0.7) 70%,
-            rgba(255, 255, 255, 0.88) 100%
-        );
-    }
-
-    [data-theme="light"] .cert-card__lock-icon {
-        background: rgba(255, 255, 255, 0.95);
-        color: var(--accent);
-        border-color: var(--border-accent);
-    }
-
-    [data-theme="light"] .cert-card__lock-text {
-        background: rgba(255, 255, 255, 0.95);
-        color: var(--text-0);
-        border-color: rgba(0, 0, 0, 0.1);
+    .cert-card__veil-icon {
+        animation: none !important;
     }
 }
 
@@ -985,19 +788,12 @@
    REDUCED MOTION
    ========================================================= */
 @media (prefers-reduced-motion: reduce) {
+    .cert-card__veil,
     .cert-card__visual img {
-        filter: brightness(0.55) !important;
-        transform: scale(1) !important;
-        transition: filter 0.2s ease !important;
+        transition: none !important;
     }
 
-    .cert-card:hover .cert-card__visual img,
-    .cert-card:focus-within .cert-card__visual img,
-    .cert-card.is-revealed .cert-card__visual img {
-        filter: brightness(1) !important;
-    }
-
-    .cert-card__lock-icon {
+    .cert-card__veil-icon {
         animation: none !important;
     }
 }
