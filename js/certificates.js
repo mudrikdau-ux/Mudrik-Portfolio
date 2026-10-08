@@ -1,5 +1,7 @@
 /* =========================================================
    CERTIFICATES PAGE — Filter + Modal + Tap Reveal
+   FIXED: uses .cert-open (not .is-revealed) so it never
+   conflicts with animations.js scroll-reveal system.
    ========================================================= */
 
 (function () {
@@ -8,7 +10,7 @@
     const t = (key) => (window.DAU_i18n ? window.DAU_i18n.t(key) : key);
 
     /* =========================================================
-       CERTIFICATE DATA (modal content)
+       CERTIFICATE DATA
        ========================================================= */
     const CERTIFICATES = {
         firstClass: {
@@ -98,41 +100,38 @@
                 const tags = (card.dataset.tags || '').split(',').map(x => x.trim());
                 const match = filter === 'all' || tags.includes(filter);
 
-                if (match) {
-                    card.style.display = '';
-                    card.classList.remove('is-revealed');
-                } else {
-                    card.style.display = 'none';
-                    card.classList.remove('is-revealed');
-                }
+                card.style.display = match ? '' : 'none';
+                card.classList.remove('cert-open');
             });
         });
     });
 
     /* =========================================================
-       TAP / HOVER TO REVEAL
+       TAP-TO-REVEAL — uses .cert-open (unique class name)
        ========================================================= */
-    const isTouch = window.matchMedia('(hover: none), (pointer: coarse)').matches;
-
     document.querySelectorAll('.cert-card').forEach(card => {
         const visual = card.querySelector('.cert-card__visual');
         if (!visual) return;
 
-        // Tap on touch devices
         visual.addEventListener('click', (e) => {
+            // Let the "View Certificate" button and any link handle their own clicks
             if (e.target.closest('button')) return;
             if (e.target.closest('a')) return;
 
-            if (isTouch) {
-                const wasRevealed = card.classList.contains('is-revealed');
+            e.stopPropagation();
 
-                // Close all others
-                document.querySelectorAll('.cert-card.is-revealed').forEach(other => {
-                    if (other !== card) other.classList.remove('is-revealed');
-                });
+            const wasOpen = card.classList.contains('cert-open');
 
-                // Toggle this one
-                card.classList.toggle('is-revealed', !wasRevealed);
+            // Close all other opened cards
+            document.querySelectorAll('.cert-card.cert-open').forEach(other => {
+                if (other !== card) other.classList.remove('cert-open');
+            });
+
+            // Toggle this card
+            if (wasOpen) {
+                card.classList.remove('cert-open');
+            } else {
+                card.classList.add('cert-open');
             }
         });
 
@@ -144,18 +143,14 @@
         visual.addEventListener('keydown', (e) => {
             if (e.key === 'Enter' || e.key === ' ') {
                 e.preventDefault();
-                card.classList.toggle('is-revealed');
+                e.stopPropagation();
+
+                document.querySelectorAll('.cert-card.cert-open').forEach(other => {
+                    if (other !== card) other.classList.remove('cert-open');
+                });
+                card.classList.toggle('cert-open');
             }
         });
-    });
-
-    // Tap outside closes all
-    document.addEventListener('click', (e) => {
-        if (!e.target.closest('.cert-card')) {
-            document.querySelectorAll('.cert-card.is-revealed').forEach(c => {
-                c.classList.remove('is-revealed');
-            });
-        }
     });
 
     /* =========================================================

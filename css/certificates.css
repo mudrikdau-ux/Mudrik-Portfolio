@@ -1,5 +1,7 @@
 /* =========================================================
-   CERTIFICATES PAGE — SIMPLE VEIL SYSTEM (works on iOS)
+   CERTIFICATES PAGE — SIMPLE VEIL SYSTEM
+   FIXED: uses .cert-open (not .is-revealed) — no collision
+   with animations.js scroll-reveal system.
    ========================================================= */
 
 .cert-page {
@@ -158,6 +160,7 @@
     display: grid;
     grid-template-columns: repeat(3, 1fr);
     gap: 26px;
+    align-items: start;
 }
 
 .cert-card {
@@ -173,6 +176,9 @@
                 box-shadow 0.5s var(--ease);
     display: flex;
     flex-direction: column;
+    /* Ensure card is always visible — even if some other script
+       applies [data-reveal] styles to a parent. */
+    opacity: 1;
 }
 
 .cert-card:hover {
@@ -198,6 +204,8 @@
     background: var(--bg-2);
     cursor: pointer;
     -webkit-tap-highlight-color: transparent;
+    touch-action: manipulation;
+    flex-shrink: 0;
 }
 
 .cert-card__visual img {
@@ -214,8 +222,7 @@
 }
 
 /* =========================================================
-   VEIL — solid cover panel (100% reliable on iOS)
-   Contains the lock icon and text INSIDE it.
+   VEIL — solid cover panel
    ========================================================= */
 .cert-card__veil {
     position: absolute;
@@ -228,20 +235,20 @@
     justify-content: center;
     gap: 12px;
 
-    /* Solid opaque gradient — no filters, no blur, no
-       pseudo-elements, no z-index fights. Just a panel. */
-    background:
-        radial-gradient(circle at 50% 30%, #1a2135 0%, #0a0e1a 100%);
+    background: radial-gradient(circle at 50% 30%, #1a2135 0%, #0a0e1a 100%);
 
     transition: opacity 0.4s ease, visibility 0.4s ease;
     opacity: 1;
     visibility: visible;
+
+    pointer-events: none;
 }
 
-/* Hidden when revealed */
-.cert-card.is-revealed .cert-card__veil,
-.cert-card:hover .cert-card__veil,
-.cert-card:focus-within .cert-card__veil {
+/* =========================================================
+   REVEAL — ONLY controlled by .cert-open class.
+   NO :hover and NO :focus-within. Predictable behavior.
+   ========================================================= */
+.cert-card.cert-open .cert-card__veil {
     opacity: 0;
     visibility: hidden;
 }
@@ -274,7 +281,6 @@
     white-space: nowrap;
 }
 
-/* Dashed frame inside veil */
 .cert-card__veil::before {
     content: '';
     position: absolute;
@@ -296,7 +302,7 @@
 }
 
 /* =========================================================
-   BADGE — always visible above veil
+   BADGE
    ========================================================= */
 .cert-card__badge {
     position: absolute;
@@ -315,6 +321,7 @@
     letter-spacing: 0.1em;
     text-transform: uppercase;
     color: #fff;
+    pointer-events: none;
 }
 
 .cert-card__badge i {
@@ -769,7 +776,7 @@
 }
 
 /* =========================================================
-   MOBILE PERF — kill all backdrop-filters + animation cost
+   MOBILE PERF
    ========================================================= */
 @media (max-width: 900px), (hover: none), (pointer: coarse) {
     .cert-card,
@@ -796,4 +803,20 @@
     .cert-card__veil-icon {
         animation: none !important;
     }
+}
+
+/* =========================================================
+   FIX: Prevent the certificate card from being hidden
+   by the global [data-reveal] scroll-animation system.
+   The .cert-card element should ALWAYS be visible.
+   ========================================================= */
+.cert-card[data-reveal],
+.cert-card[data-reveal="up"],
+.cert-card[data-reveal="down"],
+.cert-card[data-reveal="left"],
+.cert-card[data-reveal="right"],
+.cert-card[data-reveal="scale"] {
+    opacity: 1 !important;
+    transform: none !important;
+    visibility: visible !important;
 }
