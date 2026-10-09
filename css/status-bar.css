@@ -11,6 +11,10 @@
     --dau-status-height: 38px;
     --dau-nav-height: var(--nav-h, 84px);
     --dau-nav-h-total: calc(var(--dau-nav-height) + var(--dau-status-height));
+
+    /* Mobile navbar height — used to position the welcome pill
+       safely BELOW the navbar controls */
+    --dau-mobile-nav-h: 72px;
 }
 
 @media (max-width: 1023px) {
@@ -18,15 +22,24 @@
 }
 
 @media (max-width: 767px) {
-    :root { --dau-status-height: 34px; }
+    :root {
+        --dau-status-height: 34px;
+        --dau-mobile-nav-h: 72px;
+    }
 }
 
 @media (max-width: 479px) {
-    :root { --dau-status-height: 32px; }
+    :root {
+        --dau-status-height: 32px;
+        --dau-mobile-nav-h: 68px;
+    }
 }
 
 @media (max-width: 359px) {
-    :root { --dau-status-height: 30px; }
+    :root {
+        --dau-status-height: 30px;
+        --dau-mobile-nav-h: 64px;
+    }
 }
 
 /* =========================================================
@@ -571,7 +584,8 @@
 
 /* =========================================================
    RESPONSIVE — MOBILE LARGE (480px – 767px)
-   Welcome becomes a floating pill BELOW the status bar.
+   Welcome becomes a floating pill BELOW the NAVBAR
+   so it never overlaps theme/lang/hamburger controls.
    ========================================================= */
 @media (max-width: 767px) {
     .dau-status {
@@ -594,11 +608,16 @@
         text-overflow: ellipsis;
     }
 
-    /* ==== Welcome becomes a floating pill ==== */
+    /* ==== Welcome becomes a floating pill BELOW THE NAVBAR ==== */
     .dau-status__welcome {
         display: block;
         position: fixed;
-        top: calc(var(--dau-status-height) + 8px);
+
+        /* Status bar + mobile navbar + a small gap.
+           This pushes the pill below the theme/lang/hamburger
+           controls so they are never covered. */
+        top: calc(var(--dau-status-height) + var(--dau-mobile-nav-h) + 6px);
+
         left: 50%;
         transform: translateX(-50%);
         margin: 0;
@@ -611,8 +630,13 @@
         -webkit-backdrop-filter: blur(14px) saturate(1.2);
         box-shadow: 0 8px 24px rgba(0, 0, 0, 0.35),
                     0 0 20px rgba(0, 229, 255, 0.08);
+
+        /* Decorative only — never blocks taps */
         pointer-events: none;
-        z-index: 190;
+
+        /* Sit BELOW navbar controls in stacking order */
+        z-index: 90;
+
         overflow: hidden;
         height: auto;
     }
@@ -660,10 +684,11 @@
         max-width: 100px;
     }
 
-    /* Smaller welcome pill */
+    /* Smaller welcome pill, still BELOW navbar */
     .dau-status__welcome {
         padding: 5px 12px;
         max-width: calc(100vw - 24px);
+        top: calc(var(--dau-status-height) + var(--dau-mobile-nav-h) + 5px);
     }
     .dau-status__welcome-text {
         font-size: 0.66rem;
@@ -678,10 +703,11 @@
     .dau-status__date { display: none; }
     .dau-status__clock { font-size: 0.7rem; }
 
-    /* Tiny welcome pill */
+    /* Tiny welcome pill, still BELOW navbar */
     .dau-status__welcome {
         max-width: calc(100vw - 20px);
         padding: 4px 10px;
+        top: calc(var(--dau-status-height) + var(--dau-mobile-nav-h) + 4px);
     }
     .dau-status__welcome-text {
         font-size: 0.62rem;
