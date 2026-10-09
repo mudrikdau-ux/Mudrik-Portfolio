@@ -1,10 +1,11 @@
 /* =========================================================
-   TOP STATUS BAR — Time + Day + Date + Weather
+   TOP STATUS BAR — Time + Day + Date + Weather + Welcome
    FULLY RESPONSIVE — Desktop, Tablet, Mobile
    - Auto-detects location via IP
    - Fetches weather from Open-Meteo (free, no API key)
    - Clock hides seconds on small screens
    - Date shortens gracefully on mobile
+   - Rotating welcome message in center (desktop only)
    - Re-renders on window resize / orientation change
    ========================================================= */
 
@@ -17,9 +18,9 @@
     const CONFIG = {
         weatherRefreshMs: 30 * 60 * 1000,   // refresh weather every 30 min
         clockRefreshMs: 1000,                // update clock every second
+        welcomeIntervalMs: 6500,             // welcome message display time
         cacheKey: 'dau:statusBar:weather',
         langKey: 'dau:lang',
-        // Fallback location if IP detection fails (Zanzibar)
         fallback: { lat: -6.1622, lon: 39.1999, city: 'Zanzibar' }
     };
 
@@ -105,11 +106,79 @@
     };
 
     /* =========================================================
+       WELCOME MESSAGES
+       ========================================================= */
+    const WELCOME_MESSAGES = {
+        en: {
+            morning:   ['Good morning', 'Welcome to Mr Dau Portfolio'],
+            afternoon: ['Good afternoon', 'Welcome to Mr Dau Portfolio'],
+            evening:   ['Good evening', 'Welcome to Mr Dau Portfolio'],
+            night:     ['Good night', 'Welcome to Mr Dau Portfolio'],
+            extras: [
+                'Explore my work',
+                'Full-Stack Developer',
+                'Based in Zanzibar',
+                'Open to opportunities'
+            ]
+        },
+        sw: {
+            morning:   ['Habari za asubuhi', 'Karibu kwenye Portfolio ya Bw. Dau'],
+            afternoon: ['Habari za mchana', 'Karibu kwenye Portfolio ya Bw. Dau'],
+            evening:   ['Habari za jioni', 'Karibu kwenye Portfolio ya Bw. Dau'],
+            night:     ['Usiku mwema', 'Karibu kwenye Portfolio ya Bw. Dau'],
+            extras: [
+                'Chunguza kazi zangu',
+                'Msanidi Full-Stack',
+                'Nipo Zanzibar',
+                'Nipo tayari kufanya kazi'
+            ]
+        },
+        ar: {
+            morning:   ['صباح الخير', 'مرحباً بكم في محفظة السيد Dau'],
+            afternoon: ['مساء الخير', 'مرحباً بكم في محفظة السيد Dau'],
+            evening:   ['مساء الخير', 'مرحباً بكم في محفظة السيد Dau'],
+            night:     ['طابت ليلتكم', 'مرحباً بكم في محفظة السيد Dau'],
+            extras: [
+                'استكشف أعمالي',
+                'مطور Full-Stack',
+                'من زنجبار',
+                'متاح للفرص'
+            ]
+        },
+        zh: {
+            morning:   ['早上好', '欢迎来到 Dau 先生的作品集'],
+            afternoon: ['下午好', '欢迎来到 Dau 先生的作品集'],
+            evening:   ['晚上好', '欢迎来到 Dau 先生的作品集'],
+            night:     ['晚安', '欢迎来到 Dau 先生的作品集'],
+            extras: [
+                '浏览我的作品',
+                '全栈开发者',
+                '来自桑给巴尔',
+                '欢迎合作'
+            ]
+        },
+        fr: {
+            morning:   ['Bonjour', 'Bienvenue sur le portfolio de M. Dau'],
+            afternoon: ['Bon après-midi', 'Bienvenue sur le portfolio de M. Dau'],
+            evening:   ['Bonsoir', 'Bienvenue sur le portfolio de M. Dau'],
+            night:     ['Bonne nuit', 'Bienvenue sur le portfolio de M. Dau'],
+            extras: [
+                'Explorez mon travail',
+                'Développeur Full-Stack',
+                'Basé à Zanzibar',
+                'Ouvert aux opportunités'
+            ]
+        }
+    };
+
+    /* =========================================================
        STATE
        ========================================================= */
     let currentLang = 'en';
     let clockTimer = null;
     let weatherTimer = null;
+    let welcomeTimer = null;
+    let welcomeIndex = 0;
     let bar = null;
 
     /* =========================================================
@@ -135,7 +204,6 @@
 
     /* =========================================================
        WEATHER CODE → description key + animation class
-       (WMO Weather interpretation codes used by Open-Meteo)
        ========================================================= */
     function weatherCodeInfo(code) {
         const c = Number(code);
@@ -187,6 +255,11 @@
                     </div>
                 </div>
 
+                <!-- WELCOME MESSAGE (center) -->
+                <div class="dau-status__welcome" aria-live="polite">
+                    <span class="dau-status__welcome-text" id="dauStatusWelcome"></span>
+                </div>
+
                 <!-- DIVIDER -->
                 <div class="dau-status__divider" aria-hidden="true"></div>
 
@@ -217,10 +290,8 @@
         /* ---------------- CLOCK ---------------- */
         if (clockEl) {
             if (w < 480) {
-                // Hide seconds on small screens — "15:51"
                 clockEl.textContent = `${pad(now.getHours())}:${pad(now.getMinutes())}`;
             } else {
-                // Full clock on larger screens — "15:51:12"
                 clockEl.textContent =
                     `${pad(now.getHours())}:${pad(now.getMinutes())}:${pad(now.getSeconds())}`;
             }
@@ -242,13 +313,10 @@
             let text = '';
 
             if (w < 360) {
-                // Hidden by CSS anyway
                 text = '';
             } else if (w < 480) {
-                // "Fri 8 Oct"
                 text = `${shortDay} ${dayNum} ${shortMonth}`;
             } else if (w < 768) {
-                // "Friday, 8 Oct"
                 text = `${dayName}, ${dayNum} ${shortMonth}`;
             } else if (currentLang === 'ar') {
                 text = `${dayName}، ${dayNum} ${monthName} ${year}`;
@@ -265,6 +333,52 @@
     }
 
     /* =========================================================
+       WELCOME MESSAGE — rotating greeting in the center
+       ========================================================= */
+    function getTimeSlot() {
+        const h = new Date().getHours();
+        if (h >= 5 && h < 12)  return 'morning';
+        if (h >= 12 && h < 17) return 'afternoon';
+        if (h >= 17 && h < 21) return 'evening';
+        return 'night';
+    }
+
+    function buildWelcomeQueue() {
+        const set = WELCOME_MESSAGES[currentLang] || WELCOME_MESSAGES.en;
+        const slot = getTimeSlot();
+        return [
+            ...(set[slot] || []),
+            ...(set.extras || [])
+        ];
+    }
+
+    function showWelcomeMessage() {
+        const el = document.getElementById('dauStatusWelcome');
+        if (!el) return;
+
+        const queue = buildWelcomeQueue();
+        if (!queue.length) return;
+
+        const text = queue[welcomeIndex % queue.length];
+        welcomeIndex++;
+
+        // Fade out current
+        el.classList.remove('is-shown');
+        el.classList.add('is-hiding');
+
+        setTimeout(() => {
+            el.textContent = text;
+            el.classList.remove('is-hiding');
+            void el.offsetWidth; // force reflow to restart animation
+            el.classList.add('is-shown');
+        }, 420);
+
+        // Schedule next message
+        if (welcomeTimer) clearTimeout(welcomeTimer);
+        welcomeTimer = setTimeout(showWelcomeMessage, CONFIG.welcomeIntervalMs);
+    }
+
+    /* =========================================================
        WEATHER — Open-Meteo + IP geolocation
        ========================================================= */
     async function fetchLocation() {
@@ -275,7 +389,6 @@
             }
         } catch (e) {}
 
-        // Free IP geolocation (no key)
         try {
             const res = await fetch('https://ipapi.co/json/', { cache: 'no-store' });
             if (res.ok) {
@@ -290,7 +403,6 @@
             }
         } catch (e) {}
 
-        // Second fallback
         try {
             const res = await fetch('https://ipwho.is/', { cache: 'no-store' });
             if (res.ok) {
@@ -487,7 +599,7 @@
         if (clockTimer) clearInterval(clockTimer);
         clockTimer = setInterval(updateClock, CONFIG.clockRefreshMs);
 
-        /* ---- NEW: re-render on resize / orientation change ---- */
+        /* ---- Re-render on resize / orientation change ---- */
         let resizeTimer;
         window.addEventListener('resize', () => {
             clearTimeout(resizeTimer);
@@ -508,6 +620,10 @@
             if (cityEl) cityEl.textContent = S.loading;
         }
 
+        // Start the rotating welcome message
+        welcomeIndex = 0;
+        setTimeout(showWelcomeMessage, 1200);
+
         // Fetch fresh weather
         loadWeather();
 
@@ -520,6 +636,10 @@
             currentLang = getLang();
             updateClock();
             loadCachedWeather();
+            // Reset welcome cycle so new language shows immediately
+            welcomeIndex = 0;
+            if (welcomeTimer) clearTimeout(welcomeTimer);
+            showWelcomeMessage();
         });
 
         // Show bar only after loader is done (if a loader exists)
@@ -531,7 +651,6 @@
                     clearInterval(io);
                 }
             }, 200);
-            // Fallback: force show after 4s
             setTimeout(() => bar.classList.add('is-visible'), 4000);
         } else {
             requestAnimationFrame(() => bar.classList.add('is-visible'));

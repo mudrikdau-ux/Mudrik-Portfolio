@@ -1,5 +1,5 @@
 /* =========================================================
-   TOP STATUS BAR — Time + Date + Weather
+   TOP STATUS BAR — Time + Date + Weather + Welcome
    FULLY RESPONSIVE — Desktop, Tablet, Mobile
    INTEGRATED with navbar so they never overlap.
    ========================================================= */
@@ -37,7 +37,7 @@
     top: 0;
     left: 0;
     right: 0;
-    z-index: 200; /* Above navbar (usually 1000+ would block; we keep it lower) */
+    z-index: 200;
 
     display: flex;
     align-items: center;
@@ -157,6 +157,81 @@
     text-overflow: ellipsis;
     max-width: 140px;
     min-width: 0;
+}
+
+/* =========================================================
+   WELCOME MESSAGE — Flowing center text
+   ========================================================= */
+.dau-status__welcome {
+    flex: 1;
+    min-width: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+    position: relative;
+    height: 100%;
+    margin: 0 12px;
+    pointer-events: none;
+}
+
+.dau-status__welcome-text {
+    display: inline-block;
+    font-family: 'Sora', 'Space Grotesk', system-ui, sans-serif;
+    font-size: 0.78rem;
+    font-weight: 600;
+    letter-spacing: 0.02em;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    max-width: 100%;
+
+    /* Animated gradient text */
+    background: linear-gradient(90deg,
+        #ffffff 0%,
+        #00e5ff 30%,
+        #a855f7 50%,
+        #00e5ff 70%,
+        #ffffff 100%);
+    background-size: 200% 100%;
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+    color: transparent;
+
+    opacity: 0;
+    transform: translateY(8px);
+    transition: opacity 0.4s ease, transform 0.4s ease;
+    animation: dauWelcomeShine 4s linear infinite;
+}
+
+.dau-status__welcome-text.is-shown {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+.dau-status__welcome-text.is-hiding {
+    opacity: 0;
+    transform: translateY(-8px);
+}
+
+@keyframes dauWelcomeShine {
+    0%   { background-position: 0% 50%; }
+    100% { background-position: 200% 50%; }
+}
+
+/* Light theme welcome text */
+[data-theme="light"] .dau-status__welcome-text {
+    background: linear-gradient(90deg,
+        #0b0e17 0%,
+        #0077ff 30%,
+        #7c3aed 50%,
+        #0077ff 70%,
+        #0b0e17 100%);
+    background-size: 200% 100%;
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
 }
 
 /* =========================================================
@@ -479,6 +554,9 @@
         font-size: 0.74rem;
     }
     .dau-status__weather-city { max-width: 110px; }
+
+    /* Hide welcome message on tablet — no room */
+    .dau-status__welcome { display: none; }
 }
 
 /* =========================================================
@@ -496,6 +574,7 @@
     .dau-status__weather-temp { font-size: 0.76rem; }
     .dau-status__weather-city { display: none; }
     .dau-status__divider { display: none; }
+    .dau-status__welcome { display: none; }
     .dau-status__time { gap: 8px; }
     .dau-status__clock { font-size: 0.76rem; }
     .dau-status__date {
@@ -551,8 +630,14 @@
     .dau-wx__lightning,
     .dau-wx__fog-lines span,
     .dau-status::after,
-    .dau-wx__dot {
+    .dau-wx__dot,
+    .dau-status__welcome-text {
         animation: none !important;
+    }
+
+    .dau-status__welcome-text {
+        transition: opacity 0.3s ease;
+        transform: none !important;
     }
 }
 
@@ -560,8 +645,7 @@
    LAYOUT INTEGRATION — Push NAVBAR & content below the bar
    ========================================================= */
 
-/* Push the NAVBAR down so it sits BELOW the status bar.
-   Works whether navbar is `position: fixed` or `sticky`. */
+/* Push the NAVBAR down so it sits BELOW the status bar. */
 .navbar {
     top: var(--dau-status-height) !important;
 }
@@ -571,8 +655,7 @@ body {
     padding-top: var(--dau-nav-h-total);
 }
 
-/* Remove any old `padding-top: var(--nav-h)` from page containers
-   so they don't double-pad. */
+/* Remove any old padding-top from page containers. */
 .home,
 .about-page,
 .skills-page,
@@ -588,10 +671,9 @@ body {
 
 /* =========================================================
    FIX: Fullscreen menu (hamburger) must sit BELOW the status bar
-   so its top items aren't hidden behind it.
    ========================================================= */
 .menu {
-    z-index: 9998; /* Above status bar, below loader */
+    z-index: 9998;
 }
 
 .menu__inner {
@@ -614,8 +696,7 @@ body {
 }
 
 /* =========================================================
-   FIX: Scroll FAB should stay above page content but below
-   navbar's hamburger menu.
+   FIX: Scroll FAB
    ========================================================= */
 .scroll-fab {
     z-index: 500;
