@@ -547,6 +547,7 @@
 
 /* =========================================================
    RESPONSIVE — TABLET (768px – 1023px)
+   Welcome stays INSIDE the bar, just smaller.
    ========================================================= */
 @media (max-width: 1023px) {
     .dau-status {
@@ -555,12 +556,22 @@
     }
     .dau-status__weather-city { max-width: 110px; }
 
-    /* Hide welcome message on tablet — no room */
-    .dau-status__welcome { display: none; }
+    /* Welcome stays visible but shrinks */
+    .dau-status__welcome {
+        display: flex;
+        margin: 0 8px;
+        flex: 1;
+        min-width: 0;
+    }
+
+    .dau-status__welcome-text {
+        font-size: 0.7rem;
+    }
 }
 
 /* =========================================================
    RESPONSIVE — MOBILE LARGE (480px – 767px)
+   Welcome becomes a floating pill BELOW the status bar.
    ========================================================= */
 @media (max-width: 767px) {
     .dau-status {
@@ -574,7 +585,6 @@
     .dau-status__weather-temp { font-size: 0.76rem; }
     .dau-status__weather-city { display: none; }
     .dau-status__divider { display: none; }
-    .dau-status__welcome { display: none; }
     .dau-status__time { gap: 8px; }
     .dau-status__clock { font-size: 0.76rem; }
     .dau-status__date {
@@ -582,6 +592,48 @@
         max-width: 130px;
         overflow: hidden;
         text-overflow: ellipsis;
+    }
+
+    /* ==== Welcome becomes a floating pill ==== */
+    .dau-status__welcome {
+        display: block;
+        position: fixed;
+        top: calc(var(--dau-status-height) + 8px);
+        left: 50%;
+        transform: translateX(-50%);
+        margin: 0;
+        padding: 6px 14px;
+        max-width: calc(100vw - 32px);
+        background: rgba(10, 14, 26, 0.78);
+        border: 1px solid rgba(0, 229, 255, 0.22);
+        border-radius: 999px;
+        backdrop-filter: blur(14px) saturate(1.2);
+        -webkit-backdrop-filter: blur(14px) saturate(1.2);
+        box-shadow: 0 8px 24px rgba(0, 0, 0, 0.35),
+                    0 0 20px rgba(0, 229, 255, 0.08);
+        pointer-events: none;
+        z-index: 190;
+        overflow: hidden;
+        height: auto;
+    }
+
+    .dau-status__welcome-text {
+        font-size: 0.7rem;
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        max-width: 100%;
+        display: block;
+    }
+}
+
+/* Light theme mobile pill */
+@media (max-width: 767px) {
+    [data-theme="light"] .dau-status__welcome {
+        background: rgba(255, 255, 255, 0.85);
+        border-color: rgba(0, 119, 255, 0.18);
+        box-shadow: 0 8px 24px rgba(0, 0, 0, 0.1),
+                    0 0 20px rgba(0, 119, 255, 0.06);
     }
 }
 
@@ -607,6 +659,15 @@
         font-size: 0.62rem;
         max-width: 100px;
     }
+
+    /* Smaller welcome pill */
+    .dau-status__welcome {
+        padding: 5px 12px;
+        max-width: calc(100vw - 24px);
+    }
+    .dau-status__welcome-text {
+        font-size: 0.66rem;
+    }
 }
 
 /* =========================================================
@@ -616,6 +677,15 @@
     .dau-status { font-size: 0.64rem; }
     .dau-status__date { display: none; }
     .dau-status__clock { font-size: 0.7rem; }
+
+    /* Tiny welcome pill */
+    .dau-status__welcome {
+        max-width: calc(100vw - 20px);
+        padding: 4px 10px;
+    }
+    .dau-status__welcome-text {
+        font-size: 0.62rem;
+    }
 }
 
 /* =========================================================
