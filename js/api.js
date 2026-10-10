@@ -7,48 +7,61 @@
     'use strict';
 
     /* =========================================================
-       CONFIG
+       CONFIGURATION
        ========================================================= */
-    const API_CONFIG = {
-        // Change this to your deployed backend URL when you go live
-        // Examples:
-        //   Local dev:      http://192.168.20.171:5000
-        //   Railway:        https://your-app.railway.app
-        //   Render:         https://dau-backend.onrender.com
-        //   VPS/self-host:  https://api.mudrikdau.com
-        baseURL: 'http://192.168.20.171:5000',
 
-        timeout: 20000,   // 20 seconds
-        retries: 1        // retry once on network failure
+    const API_CONFIG = {
+        // Production backend hosted on Render
+        baseURL: 'https://portfolio-backend-sel3.onrender.com',
+
+        // Maximum request duration: 20 seconds
+        timeout: 20000,
+
+        // Retry once after a network failure
+        retries: 1
     };
 
     /* =========================================================
        CORE REQUEST HELPER
        ========================================================= */
+
     async function request(endpoint, options = {}) {
-        const url = `${API_CONFIG.baseURL}${endpoint}`;
+        const normalizedEndpoint = endpoint.startsWith('/')
+            ? endpoint
+            : `/${endpoint}`;
+
+        const url = `${API_CONFIG.baseURL}${normalizedEndpoint}`;
         const method = (options.method || 'GET').toUpperCase();
 
         const headers = {
-            'Accept': 'application/json',
+            Accept: 'application/json',
             ...(options.headers || {})
         };
 
-        // JSON body for POST/PUT/PATCH
         let body = options.body;
-        if (body && typeof body === 'object' && !(body instanceof FormData)) {
+
+        // Convert JavaScript objects to JSON.
+        // FormData must be sent without manually setting Content-Type.
+        if (
+            body !== undefined &&
+            body !== null &&
+            typeof body === 'object' &&
+            !(body instanceof FormData)
+        ) {
             headers['Content-Type'] = 'application/json';
             body = JSON.stringify(body);
         }
-
-        // Abort controller for timeout
-        const controller = new AbortController();
-        const timeoutId = setTimeout(() => controller.abort(), API_CONFIG.timeout);
 
         let attempt = 0;
         let lastError = null;
 
         while (attempt <= API_CONFIG.retries) {
+            const controller = new AbortController();
+
+            const timeoutId = setTimeout(() => {
+                controller.abort();
+            }, API_CONFIG.timeout);
+
             try {
                 const response = await fetch(url, {
                     method,
@@ -61,9 +74,11 @@
 
                 clearTimeout(timeoutId);
 
-                // Try to parse JSON
                 let data = null;
-                const contentType = response.headers.get('content-type') || '';
+
+                const contentType =
+                    response.headers.get('content-type') || '';
+
                 if (contentType.includes('application/json')) {
                     data = await response.json().catch(() => null);
                 } else {
@@ -71,33 +86,53 @@
                 }
 
                 if (!response.ok) {
-                    const err = new Error(
-                        (data && data.message) || `Request failed with status ${response.status}`
-                    );
-                    err.status = response.status;
-                    err.data = data;
-                    throw err;
+                    const errorMessage =
+                        data &&
+                        typeof data === 'object' &&
+                        data.message
+                            ? data.message
+                            : `Request failed with status ${response.status}`;
+
+                    const error = new Error(errorMessage);
+
+                    error.status = response.status;
+                    error.data = data;
+
+                    throw error;
                 }
 
                 return data;
 
-            } catch (err) {
-                lastError = err;
+            } catch (error) {
+                lastError = error;
 
-                // Don't retry on validation/client errors
-                if (err.status && err.status >= 400 && err.status < 500) {
-                    throw err;
+                // Do not retry HTTP client errors.
+                if (
+                    error.status &&
+                    error.status >= 400 &&
+                    error.status < 500
+                ) {
+                    throw error;
                 }
 
-                // Don't retry on abort (timeout)
-                if (err.name === 'AbortError') {
-                    throw new Error('Request timed out. Please check your connection.');
+                // Stop immediately if the request times out.
+                if (error.name === 'AbortError') {
+                    throw new Error(
+                        'Request timed out. Please check your connection and try again.'
+                    );
                 }
 
                 attempt++;
+
+                // Retry once after a short delay.
                 if (attempt <= API_CONFIG.retries) {
-                    await new Promise(r => setTimeout(r, 800));
+                    await new Promise(resolve => {
+                        setTimeout(resolve, 800);
+                    });
                 }
+
+            } finally {
+                clearTimeout(timeoutId);
             }
         }
 
@@ -107,36 +142,57 @@
     /* =========================================================
        CONVENIENCE METHODS
        ========================================================= */
+
     const api = {
-        get: (endpoint, options = {}) => request(endpoint, { ...options, method: 'GET' }),
-        post: (endpoint, body, options = {}) => request(endpoint, { ...options, method: 'POST', body }),
-        put: (endpoint, body, options = {}) => request(endpoint, { ...options, method: 'PUT', body }),
-        patch: (endpoint, body, options = {}) => request(endpoint, { ...options, method: 'PATCH', body }),
-        del: (endpoint, options = {}) => request(endpoint, { ...options, method: 'DELETE' })
+        get: (endpoint, options = {}) =>
+            request(endpoint, {
+                ...options,
+                method: 'GET'
+            }),
+
+        post: (endpoint, body, options = {}) =>
+            request(endpoint, {
+                ...options,
+                method: 'POST',
+                body
+            }),
+
+        put: (endpoint, body, options = {}) =>
+            request(endpoint, {
+                ...options,
+                method: 'PUT',
+                body
+            }),
+
+        patch: (endpoint, body, options = {}) =>
+            request(endpoint, {
+                ...options,
+                method: 'PATCH',
+                body
+            }),
+
+        del: (endpoint, options = {}) =>
+            request(endpoint, {
+                ...options,
+                method: 'DELETE'
+            })
     };
 
     /* =========================================================
        DOMAIN ENDPOINTS
        ========================================================= */
+
     const endpoints = {
 
-        /* ---------- Health Check ---------- */
+        // Backend health check
         health: () => api.get('/api/health'),
 
-        /* ---------- Root info ---------- */
+        // Backend information
         info: () => api.get('/'),
 
-        /* ---------- Contact Form ---------- */
-        /**
-         * Submit a contact message
-         * @param {Object} payload
-         * @param {string} payload.name
-         * @param {string} payload.email
-         * @param {string} payload.subject
-         * @param {string} payload.message
-         * @returns {Promise<{ok: boolean, message: string, data?: object}>}
-         */
-        submitContact: (payload) => api.post('/api/contact', payload)
+        // Submit a contact form message
+        submitContact: payload =>
+            api.post('/api/contact', payload)
 
     };
 
@@ -145,28 +201,38 @@
        ========================================================= */
 
     /**
-     * Check if the backend is reachable
-     * @returns {Promise<boolean>}
+     * Check whether the backend is reachable.
+     * Returns true if the health endpoint responds successfully.
      */
     async function ping() {
         try {
-            const res = await endpoints.health();
-            return !!(res && res.ok !== false);
-        } catch (err) {
+            const response = await endpoints.health();
+
+            return Boolean(response && response.ok === true);
+
+        } catch (error) {
+            console.error('[API] Backend health check failed:', error.message);
             return false;
         }
     }
 
     /**
-     * Set a new backend base URL at runtime
-     * @param {string} url
+     * Change the backend URL at runtime.
      */
     function setBaseURL(url) {
-        API_CONFIG.baseURL = String(url || '').replace(/\/+$/, '');
+        const normalizedURL = String(url || '')
+            .trim()
+            .replace(/\/+$/, '');
+
+        if (!normalizedURL) {
+            throw new Error('A valid backend URL is required.');
+        }
+
+        API_CONFIG.baseURL = normalizedURL;
     }
 
     /**
-     * Get the current base URL
+     * Return the currently configured backend URL.
      */
     function getBaseURL() {
         return API_CONFIG.baseURL;
@@ -175,6 +241,7 @@
     /* =========================================================
        PUBLIC API
        ========================================================= */
+
     window.DAU_api = {
         config: API_CONFIG,
         endpoints,
@@ -182,11 +249,14 @@
         setBaseURL,
         getBaseURL,
         request,
+
         get: api.get,
         post: api.post,
         put: api.put,
         patch: api.patch,
         del: api.del
     };
+
+    console.log('[API] Backend configured:', API_CONFIG.baseURL);
 
 })();
