@@ -1,5 +1,10 @@
+# robots.txt for https://mudrikdau.cc/
+# Mudrik Dau Portfolio
+
 User-agent: *
 Allow: /
 
-# Sitemap
-Sitemap: https://mudrikdau-ux.github.io/DAU-PORTFOLIO/sitemap.xml
+# Block nothing — all public pages should be indexed
+
+# Sitemap location
+Sitemap: https://mudrikdau.cc/sitemap.xml

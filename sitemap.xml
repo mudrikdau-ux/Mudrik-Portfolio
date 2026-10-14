@@ -1,56 +1,67 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
 
+    <!-- Homepage -->
     <url>
-        <loc>https://mudrikdau-ux.github.io/DAU-PORTFOLIO/index.html</loc>
-        <changefreq>monthly</changefreq>
+        <loc>https://mudrikdau.cc/</loc>
+        <lastmod>2026-10-14</lastmod>
+        <changefreq>weekly</changefreq>
         <priority>1.0</priority>
     </url>
 
+    <!-- Main Pages -->
     <url>
-        <loc>https://mudrikdau-ux.github.io/DAU-PORTFOLIO/about.html</loc>
+        <loc>https://mudrikdau.cc/about.html</loc>
+        <lastmod>2026-10-14</lastmod>
         <changefreq>monthly</changefreq>
         <priority>0.9</priority>
     </url>
 
     <url>
-        <loc>https://mudrikdau-ux.github.io/DAU-PORTFOLIO/skills.html</loc>
-        <changefreq>monthly</changefreq>
-        <priority>0.9</priority>
-    </url>
-
-    <url>
-        <loc>https://mudrikdau-ux.github.io/DAU-PORTFOLIO/experience.html</loc>
-        <changefreq>monthly</changefreq>
-        <priority>0.9</priority>
-    </url>
-
-    <url>
-        <loc>https://mudrikdau-ux.github.io/DAU-PORTFOLIO/projects.html</loc>
-        <changefreq>monthly</changefreq>
-        <priority>1.0</priority>
-    </url>
-
-    <url>
-        <loc>https://mudrikdau-ux.github.io/DAU-PORTFOLIO/certificates.html</loc>
-        <changefreq>monthly</changefreq>
-        <priority>0.7</priority>
-    </url>
-
-    <url>
-        <loc>https://mudrikdau-ux.github.io/DAU-PORTFOLIO/services.html</loc>
-        <changefreq>monthly</changefreq>
-        <priority>0.9</priority>
-    </url>
-
-    <url>
-        <loc>https://mudrikdau-ux.github.io/DAU-PORTFOLIO/achievements.html</loc>
+        <loc>https://mudrikdau.cc/skills.html</loc>
+        <lastmod>2026-10-14</lastmod>
         <changefreq>monthly</changefreq>
         <priority>0.8</priority>
     </url>
 
     <url>
-        <loc>https://mudrikdau-ux.github.io/DAU-PORTFOLIO/contact.html</loc>
+        <loc>https://mudrikdau.cc/experience.html</loc>
+        <lastmod>2026-10-14</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.8</priority>
+    </url>
+
+    <url>
+        <loc>https://mudrikdau.cc/projects.html</loc>
+        <lastmod>2026-10-14</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.9</priority>
+    </url>
+
+    <url>
+        <loc>https://mudrikdau.cc/certificates.html</loc>
+        <lastmod>2026-10-14</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.7</priority>
+    </url>
+
+    <url>
+        <loc>https://mudrikdau.cc/services.html</loc>
+        <lastmod>2026-10-14</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.8</priority>
+    </url>
+
+    <url>
+        <loc>https://mudrikdau.cc/achievements.html</loc>
+        <lastmod>2026-10-14</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.7</priority>
+    </url>
+
+    <url>
+        <loc>https://mudrikdau.cc/contact.html</loc>
+        <lastmod>2026-10-14</lastmod>
         <changefreq>monthly</changefreq>
         <priority>0.9</priority>
     </url>
