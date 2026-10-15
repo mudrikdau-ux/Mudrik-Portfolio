@@ -13,6 +13,52 @@
 
     <title>About Mudrik Dau | Full-Stack Developer & IT Professional in Zanzibar</title>
 
+    <!-- ===================================================
+         PHASE 5 — STRUCTURED DATA (JSON-LD)
+         =================================================== -->
+
+    <!-- BreadcrumbList Schema -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+        {
+          "@type": "ListItem",
+          "position": 1,
+          "name": "Home",
+          "item": "https://mudrikdau.cc/"
+        },
+        {
+          "@type": "ListItem",
+          "position": 2,
+          "name": "About",
+          "item": "https://mudrikdau.cc/about.html"
+        }
+      ]
+    }
+    </script>
+
+    <!-- AboutPage Schema -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "AboutPage",
+      "name": "About Mudrik Dau",
+      "url": "https://mudrikdau.cc/about.html",
+      "description": "Learn about Mudrik Dau — Full-Stack Developer from Zanzibar, Tanzania.",
+      "mainEntity": {
+        "@type": "Person",
+        "@id": "https://mudrikdau.cc/#person",
+        "name": "Mudrik Mohamed Othman",
+        "alternateName": "Mudrik Dau",
+        "jobTitle": "Full-Stack Developer",
+        "url": "https://mudrikdau.cc/",
+        "image": "https://mudrikdau.cc/assets/images/profile/profile.jpg"
+      }
+    }
+    </script>
+
     <!-- Open Graph -->
     <meta property="og:type" content="website" />
     <meta property="og:site_name" content="Mudrik Dau Portfolio" />

@@ -13,6 +13,59 @@
 
     <title>Contact Mudrik Dau | Full-Stack Developer in Zanzibar, Tanzania</title>
 
+    <!-- ===================================================
+         PHASE 5 — STRUCTURED DATA (JSON-LD)
+         =================================================== -->
+
+    <!-- BreadcrumbList Schema -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+        {
+          "@type": "ListItem",
+          "position": 1,
+          "name": "Home",
+          "item": "https://mudrikdau.cc/"
+        },
+        {
+          "@type": "ListItem",
+          "position": 2,
+          "name": "Contact",
+          "item": "https://mudrikdau.cc/contact.html"
+        }
+      ]
+    }
+    </script>
+
+    <!-- ContactPage Schema -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "ContactPage",
+      "name": "Contact Mudrik Dau",
+      "url": "https://mudrikdau.cc/contact.html",
+      "description": "Get in touch with Mudrik Dau — Full-Stack Developer from Zanzibar, Tanzania.",
+      "mainEntity": {
+        "@type": "Person",
+        "@id": "https://mudrikdau.cc/#person",
+        "name": "Mudrik Mohamed Othman",
+        "alternateName": "Mudrik Dau",
+        "jobTitle": "Full-Stack Developer",
+        "email": "mailto:mudrikdau@gmail.com",
+        "telephone": "+255621662883",
+        "url": "https://mudrikdau.cc/",
+        "address": {
+          "@type": "PostalAddress",
+          "addressLocality": "Maungani, Zanzibar",
+          "addressRegion": "Zanzibar",
+          "addressCountry": "TZ"
+        }
+      }
+    }
+    </script>
+
     <!-- Open Graph -->
     <meta property="og:type" content="website" />
     <meta property="og:site_name" content="Mudrik Dau Portfolio" />

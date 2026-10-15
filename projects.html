@@ -13,6 +13,113 @@
 
     <title>Projects | Mudrik Dau — Full-Stack Developer in Zanzibar</title>
 
+    <!-- ===================================================
+         PHASE 5 — STRUCTURED DATA (JSON-LD)
+         =================================================== -->
+
+    <!-- BreadcrumbList Schema -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+        {
+          "@type": "ListItem",
+          "position": 1,
+          "name": "Home",
+          "item": "https://mudrikdau.cc/"
+        },
+        {
+          "@type": "ListItem",
+          "position": 2,
+          "name": "Projects",
+          "item": "https://mudrikdau.cc/projects.html"
+        }
+      ]
+    }
+    </script>
+
+    <!-- ItemList Schema — describes all 4 projects -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "ItemList",
+      "name": "Projects by Mudrik Dau",
+      "url": "https://mudrikdau.cc/projects.html",
+      "numberOfItems": 4,
+      "itemListElement": [
+        {
+          "@type": "ListItem",
+          "position": 1,
+          "item": {
+            "@type": "SoftwareApplication",
+            "name": "CleanSpark — Cleaning Service Management System",
+            "description": "A cleaning service management system that digitizes customers, bookings, staff, payments, scheduling, and administration.",
+            "applicationCategory": "BusinessApplication",
+            "operatingSystem": "Web",
+            "url": "https://mudrikdau.cc/projects.html",
+            "author": {
+              "@type": "Person",
+              "@id": "https://mudrikdau.cc/#person",
+              "name": "Mudrik Dau"
+            }
+          }
+        },
+        {
+          "@type": "ListItem",
+          "position": 2,
+          "item": {
+            "@type": "SoftwareApplication",
+            "name": "LAMS — Local Administration Management System",
+            "description": "A local administration management system connecting citizens with ward administration for services, payments, and documents.",
+            "applicationCategory": "GovernmentApplication",
+            "operatingSystem": "Web",
+            "url": "https://mudrikdau.cc/projects.html",
+            "author": {
+              "@type": "Person",
+              "@id": "https://mudrikdau.cc/#person",
+              "name": "Mudrik Dau"
+            }
+          }
+        },
+        {
+          "@type": "ListItem",
+          "position": 3,
+          "item": {
+            "@type": "SoftwareApplication",
+            "name": "School Staff Management System",
+            "description": "A web-based system for managing school staff profiles, roles, and administrative operations.",
+            "applicationCategory": "EducationalApplication",
+            "operatingSystem": "Web",
+            "url": "https://mudrikdau.cc/projects.html",
+            "author": {
+              "@type": "Person",
+              "@id": "https://mudrikdau.cc/#person",
+              "name": "Mudrik Dau"
+            }
+          }
+        },
+        {
+          "@type": "ListItem",
+          "position": 4,
+          "item": {
+            "@type": "SoftwareApplication",
+            "name": "Portfolio Website",
+            "description": "A premium, fully animated, multi-language personal portfolio website built with HTML, CSS, and vanilla JavaScript.",
+            "applicationCategory": "PersonalWebsite",
+            "operatingSystem": "Web",
+            "url": "https://mudrikdau.cc/",
+            "author": {
+              "@type": "Person",
+              "@id": "https://mudrikdau.cc/#person",
+              "name": "Mudrik Dau"
+            }
+          }
+        }
+      ]
+    }
+    </script>
+
     <!-- Open Graph -->
     <meta property="og:type" content="website" />
     <meta property="og:site_name" content="Mudrik Dau Portfolio" />

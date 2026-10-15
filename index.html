@@ -16,6 +16,135 @@
 
     <title>Mudrik Dau | Full-Stack Developer in Zanzibar, Tanzania</title>
 
+    <!-- ===================================================
+         PHASE 5 — STRUCTURED DATA (JSON-LD)
+         Tells Google exactly who Mudrik Dau is
+         =================================================== -->
+
+    <!-- Person Schema — the core of your SEO identity -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "Person",
+      "@id": "https://mudrikdau.cc/#person",
+      "name": "Mudrik Mohamed Othman",
+      "alternateName": "Mudrik Dau",
+      "givenName": "Mudrik",
+      "familyName": "Othman",
+      "url": "https://mudrikdau.cc/",
+      "image": "https://mudrikdau.cc/assets/images/profile/profile.jpg",
+      "jobTitle": "Full-Stack Developer",
+      "description": "Full-Stack Developer and IT Professional from Zanzibar, Tanzania, creating practical digital solutions with modern web technologies.",
+      "email": "mailto:mudrikdau@gmail.com",
+      "telephone": "+255621662883",
+      "nationality": {
+        "@type": "Country",
+        "name": "Tanzania"
+      },
+      "address": {
+        "@type": "PostalAddress",
+        "addressLocality": "Maungani, Zanzibar",
+        "addressRegion": "Zanzibar",
+        "addressCountry": "TZ"
+      },
+      "birthDate": "2005-10-14",
+      "alumniOf": {
+        "@type": "CollegeOrUniversity",
+        "name": "Zanzibar University"
+      },
+      "knowsAbout": [
+        "Full-Stack Development",
+        "Web Development",
+        "Database Design",
+        "Node.js",
+        "Express.js",
+        "MySQL",
+        "JavaScript",
+        "HTML5",
+        "CSS3",
+        "REST APIs",
+        "Networking",
+        "Cybersecurity",
+        "IT Support",
+        "Information Systems"
+      ],
+      "knowsLanguage": [
+        { "@type": "Language", "name": "English" },
+        { "@type": "Language", "name": "Swahili" },
+        { "@type": "Language", "name": "Chinese" }
+      ],
+      "hasCredential": [
+        {
+          "@type": "EducationalOccupationalCredential",
+          "name": "Diploma in Business Information",
+          "credentialCategory": "Diploma",
+          "educationalLevel": "Diploma",
+          "recognizedBy": {
+            "@type": "CollegeOrUniversity",
+            "name": "Zanzibar University"
+          }
+        },
+        {
+          "@type": "EducationalOccupationalCredential",
+          "name": "HSK Level 2 Chinese Proficiency",
+          "credentialCategory": "Language Certificate"
+        },
+        {
+          "@type": "EducationalOccupationalCredential",
+          "name": "High Level English Certificate",
+          "credentialCategory": "Language Certificate"
+        }
+      ],
+      "sameAs": [
+        "https://github.com/mudrikdau-ux",
+        "https://www.linkedin.com/in/mudrik-dau",
+        "https://x.com/MudrikDau",
+        "https://www.instagram.com/youngw_04",
+        "https://www.threads.net/@youngw_04"
+      ],
+      "worksFor": {
+        "@type": "Organization",
+        "name": "Zan Drive Car Rental"
+      }
+    }
+    </script>
+
+    <!-- WebSite Schema — helps Google understand the site -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "WebSite",
+      "@id": "https://mudrikdau.cc/#website",
+      "url": "https://mudrikdau.cc/",
+      "name": "Mudrik Dau Portfolio",
+      "description": "Portfolio of Mudrik Dau — Full-Stack Developer from Zanzibar, Tanzania. Projects, skills, services, and contact.",
+      "inLanguage": "en",
+      "publisher": {
+        "@id": "https://mudrikdau.cc/#person"
+      },
+      "author": {
+        "@id": "https://mudrikdau.cc/#person"
+      }
+    }
+    </script>
+
+    <!-- ProfilePage Schema — tells Google this is a personal profile -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "ProfilePage",
+      "@id": "https://mudrikdau.cc/#profilepage",
+      "url": "https://mudrikdau.cc/",
+      "name": "Mudrik Dau — Full-Stack Developer",
+      "mainEntity": {
+        "@id": "https://mudrikdau.cc/#person"
+      },
+      "isPartOf": {
+        "@id": "https://mudrikdau.cc/#website"
+      }
+    }
+    </script>
+
     <!-- Open Graph (Facebook, LinkedIn, WhatsApp) -->
     <meta property="og:type" content="website" />
     <meta property="og:site_name" content="Mudrik Dau Portfolio" />
@@ -202,7 +331,7 @@
                         <a href="https://github.com/mudrikdau-ux" target="_blank" rel="noopener" aria-label="GitHub"><i class="fa-brands fa-github"></i></a>
                         <a href="https://www.linkedin.com/in/mudrik-dau" target="_blank" rel="noopener" aria-label="LinkedIn"><i class="fa-brands fa-linkedin-in"></i></a>
                         <a href="https://www.instagram.com/youngw_04" target="_blank" rel="noopener" aria-label="Instagram"><i class="fa-brands fa-instagram"></i></a>
-                        <a href="https://x.com/" target="_blank" rel="noopener" aria-label="X"><i class="fa-brands fa-x-twitter"></i></a>
+                        <a href="https://x.com/MudrikDau" target="_blank" rel="noopener" aria-label="X"><i class="fa-brands fa-x-twitter"></i></a>
                     </div>
                 </div>
             </div>
